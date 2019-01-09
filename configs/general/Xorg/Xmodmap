@@ -10,11 +10,11 @@
 keycode 169 = Delete
 
 ! Change left Alt key to Command
-clear mod4
-keycode  64 = Super_L
+!clear mod4
+!keycode  64 = Super_L
 
 ! Change left Command key to Alt
-clear mod3
-keycode 133 = Alt_L
+!clear mod3
+!keycode 133 = Alt_L
 
 ! ToDO: The Alt key is now recognized as both Alt and Super. Find a way to fix it later.
