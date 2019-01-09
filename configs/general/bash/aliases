@@ -47,5 +47,6 @@ alias watch='watch -ct -n 1 -d'
 alias net='bwm-ng -t 1000'
 
 # Git
-#alias push='git push origin master'
-#alias status='git status'
+alias push='git push origin master'
+alias status='git status'
+alias commit='git commit -m "$(date +"%x %r")"' 
