@@ -1,0 +1,3 @@
+#! /bin/sh
+
+dzen2 -geometry 1366x30+0+738 -ta center

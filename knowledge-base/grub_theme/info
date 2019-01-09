@@ -1,0 +1,5 @@
+Open following file:
+/etc/default/grub
+
+Comment out GRUB_BACKGROUND parameter and then run:
+sudo update-grub

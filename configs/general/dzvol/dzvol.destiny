@@ -1,0 +1,80 @@
+#!/bin/bash
+
+IF="Master"         	# Audio Channel
+SECS="1"            	# Display Timeout
+
+BG="#09090D"       	    # Background color of window
+FG="#8C8B8B"        	# Volume Icon Normal Color
+FG_dull="#2B353B"		# Volume Icon mute color
+BAR_FG="#5F8787"    	# Volume bar fill color
+BAR_BG="#434352"    	# Volume bar normal color
+
+XPOS="568"         	    # Horizontal position
+YPOS="665"          	# Vertical position
+HEIGHT="50"         	# Window Height
+WIDTH="220"         	# Window Width
+BAR_WIDTH="180"     	# Volume bar width
+
+
+# Don't change this
+PIPE="/tmp/dvolpipe"
+
+err() {
+  echo "$1"
+  exit 1
+}
+
+usage() {
+  echo "usage: dvol [option] [argument]"
+  echo
+  echo "Options:"
+  echo "     -i, --increase - increase volume by \`argument'"
+  echo "     -d, --decrease - decrease volume by \`argument'"
+  echo "     -t, --toggle   - toggle mute on and off"
+  echo "     -h, --help     - display this"
+  exit
+}
+
+
+# Parcing Arguments
+case "$1" in
+  '-i'|'--increase')
+			[ -z "$2" ] && err "No argument specified for increase."
+			[ -n "$(tr -d [0-9] <<<$2)" ] && err "The argument needs to be an integer."
+		AMIXARG="${2}%+"
+    ;;
+  '-d'|'--decrease')
+			[ -z "$2" ] && err "No argument specified for decrease."
+			[ -n "$(tr -d [0-9] <<<$2)" ] && err "The argument needs to be an integer."
+		AMIXARG="${2}%-"
+    ;;
+  '-t'|'--toggle')
+		AMIXARG="toggle"
+    ;;
+  ''|'-h'|'--help')
+		usage
+    ;;
+  *)
+		err "Unrecognized option"
+    ;;
+esac
+
+# Actual volume changing (readability low)
+AMIXOUT="$(amixer set "$IF" "$AMIXARG" | tail -n 1)"
+MUTE="$(cut -d '[' -f 4 <<<"$AMIXOUT")"
+VOL="$(cut -d '[' -f 2 <<<"$AMIXOUT" | sed 's/%.*//g')"
+if [ "$MUTE" = "off]" ]; then
+	BAR_FG="#67677D"
+  else
+	BAR_FG="#5F8787"
+fi
+
+
+if [ ! -e "$PIPE" ]; then
+  mkfifo "$PIPE"
+  (dzen2 -tw "$WIDTH" -h "$HEIGHT" -x "$XPOS" -y "$YPOS" -ta left < "$PIPE"
+   rm -f "$PIPE") &
+fi
+
+# Feed into the pipe
+(echo "$VOL" | gdbar -l "   " -fg "$BAR_FG" -bg "$BAR_BG" -w "$BAR_WIDTH" -h "15" -ss "3" -sw "7" ; sleep "$SECS") > "$PIPE"

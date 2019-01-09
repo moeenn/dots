@@ -1,0 +1,51 @@
+# Aliases
+alias update='sudo apt-get update'
+alias search='apt-cache search'
+alias install='sudo apt-get install'
+alias remove='sudo apt-get remove'
+alias upgrade='sudo apt-get upgrade'
+
+# Operations
+alias c='clear'
+
+alias mv='mv -ivf'
+alias rm='rm -iv'
+alias link='ln -s -r'
+alias ls='ls'
+alias ll='ls  -l -AhGg'
+
+# Programs
+#alias sound='alsamixer'
+alias load='htop -u moeen'
+#alias bin='cd ~/bin/'
+alias df='dfc -f -s'
+alias time='tty-clock -cb -C 6'
+alias uptime='uptime -p'
+alias wget='wget -c -q --show-progress -4 -E'
+alias extract='dtrx -v'
+alias m='mpv'
+
+# Super User Tasks
+alias poweroff='sudo poweroff'
+alias reboot='sudo reboot'
+alias kill='killall -v --ignore-case'
+alias mount='sudo mount -t auto -v'
+#alias mountall='sudo bash ~/bin/mountall'
+alias full_access='sudo chmod -R a+rw ./'
+
+# Configs, Scripts & Dirs
+#alias class='xprop | grep WM_CLASS'
+#alias sba='cat ~/.aliases | grep'
+#alias bg='bash ~/bin/bg'
+alias dir='tree -d'
+
+# n = delay second
+# d = difference
+alias watch='watch -ct -n 1 -d' 
+
+# Network
+alias net='bwm-ng -t 1000'
+
+# Git
+#alias push='git push origin master'
+#alias status='git status'

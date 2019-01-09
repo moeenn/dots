@@ -1,0 +1,41 @@
+#! /bin/bash
+
+clock() {
+	date +'%I:%M %p'
+}
+
+groups() {
+    cur=`xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}'`
+    #tot=`xprop -root _NET_NUMBER_OF_DESKTOPS | awk '{print $3}'`
+
+	# These are openbox settings
+	case $cur in 
+	0	)	echo " x  -  -  - "	;;
+	1	)	echo " -  x  -  - "	;;
+	2	)	echo " -  -  x  - "	;;
+	3	)	echo " -  -  -  x "	;;
+	esac
+}
+
+host() {
+	echo "moeen @ pc"
+}
+
+battery() {
+	state=`acpi | awk '{print $3}'`
+	if [ "$state" = "Discharging," ]; then
+		echo 'Unplugged'
+	else
+		echo 'Plugged-In'
+	fi	
+}	
+
+net() {
+	essid=`iwconfig wls1 | awk 'NR==1 {print $4}' | cut -d '"' -f2`
+	echo "$essid"
+}	
+
+while true; do
+	echo "ý  $(battery)       ò  $(net) %{c}$(groups) %{r}ô  $(host)       ÷  $(clock)"
+	sleep 0.2
+done

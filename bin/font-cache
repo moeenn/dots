@@ -1,0 +1,7 @@
+#! /bin/sh
+
+cd $HOME/.fonts/
+mkfontscale
+mkfontdir
+xset fp rehash
+fc-cache -fv

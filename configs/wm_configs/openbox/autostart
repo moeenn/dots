@@ -1,0 +1,11 @@
+#! /bin/bash
+
+#-----------Openbox Startup Apps------------#
+xrdb ~/.Xresources &
+#feh --bg-fill ~/.bg &
+#xbindkeys &
+#compton &
+#tint2 &
+#nm-applet &
+
+#--------------End of File------------------#

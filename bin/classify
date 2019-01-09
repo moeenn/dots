@@ -1,0 +1,60 @@
+#! /bin/sh
+
+## Global Variables
+Downloads="$HOME/Downloads"
+
+# File Extension lists
+extension_list_pictures='{jpg,JPG,jpeg,JPEG,png,PNG,svg,SVG}'
+extension_list_videos='{mp4,MP4,avi,AVI,mkv,MKV,flv,FLV}'
+extension_list_documents='{mp4,MP4,avi,AVI,mkv,MKV,flv,FLV}'
+extension_list_documents='{pdf,PDF,doc,DOC,docx,DOCX,xls,XLS,xlsx,XLSX}'
+
+
+## Pictures
+dir_check_pictures() {
+	if [ ! -d $Downloads/pictures ]; then
+		mkdir $Downloads/pictures;
+		echo "Picture directory missing. Creating...";
+	fi
+}	
+
+
+classify_pictures() {
+	dir_check_pictures;
+	mv -v "$Downloads/*.$extension_list_pictures" $Downloads/pictures/;		
+}
+
+
+
+## Videos
+dir_check_videos() {
+	if [ ! -d $Downloads/videos ]; then
+		mkdir $Downloads/videos;
+		echo "Videos directory missing. Creating...";
+	fi
+}	
+
+classify_videos() {
+	dir_check_videos;
+	mv -v "$Downloads/*.$extension_list_videos" $Downloads/videos/;		
+}
+
+
+## Documents
+dir_check_documents() {
+	if [ ! -d $Downloads/documents ]; then
+		mkdir $Downloads/documents;
+		echo "Documents directory missing. Creating...";
+	fi
+}	
+
+classify_documents() {
+	dir_check_documents;
+	mv -v "$Downloads/*.$extension_list_documents" $Downloads/documents/;		
+}
+
+
+## Actual Execution Events
+classify_pictures
+classify_videos
+classify_documents

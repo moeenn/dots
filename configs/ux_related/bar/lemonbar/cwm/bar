@@ -1,0 +1,7 @@
+#! /bin/sh
+
+fg='#FEFEFE'
+font='-*-drift-*-*-*-*-10-*-*-*-*-*-*-*'
+geom='1326x30+20+732'
+
+lemonbar -d -f $font -F $fg -g $geom

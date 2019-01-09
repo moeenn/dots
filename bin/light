@@ -1,0 +1,25 @@
+#! /bin/bash
+
+step="10"
+light_down="xbacklight -dec $step"
+light_up="xbacklight -inc $step"
+light="xbacklight"
+
+help() {
+			echo -e "The Correct usage for this program :: \n  +  \tIncrease Brightness"
+			echo -e "  -  \tDeacrease Brghtness"
+			echo -e "  -h \tDisplay this help page\n"
+			echo -e "Usage:  $0 +/-/-h"
+}
+
+if [ -z $1 ]; then
+		$light
+	else
+		case $1 in
+			+   		)  $light_up			;;
+			-   		)  $light_down		    ;;
+			-h  		)  help					;;
+			[0-9][0-9]*	)  xbacklight -set $1   ;;
+			*   		)  help					;;
+		esac
+fi

@@ -1,0 +1,72 @@
+#! /bin/sh
+
+# variables definition
+step="5%"		# step to increment/decrement volume levels
+sink="0"		# output handling device [Default=0]
+
+# common commands
+vol_up="pactl set-sink-volume $sink +$step"
+vol_down="pactl set-sink-volume $sink -$step"
+mute="pactl set-sink-mute $sink toggle"
+
+
+# echo help
+usage() {
+	echo "usage: pa-vol [option] [argument]"
+	echo
+	echo "Options:"
+	echo "     -i, --increase - increase volume by \`argument'"
+	echo "     -d, --decrease - decrease volume by \`argument'"
+	echo "     -t, --toggle   - toggle mute on and off"
+	echo "     -h, --help     - display this"
+	exit
+}
+
+
+# echo basic informaation 
+vol_info() {
+	# echo output audio source (headphones or speakers)
+	vol_output() {
+		state=`pacmd list-sinks | grep "active port" | cut -d ":" -f 2`
+		case $state in 
+			" <analog-output-headphones>" )		echo "Output:  Headphones"		;;
+			" <analog-output-speaker>"	  )		echo "Output:  Speakers"		;;
+			*							  )		echo "Unknown output device"	;;
+		esac	
+	}
+
+	
+	vol_level() {
+		muted=`pacmd list-sinks | grep "mute" | head -1 | cut -d ":" -f 2`
+		
+		level=`pactl list sinks | grep "Volume" | cut -d "/" -f2 | head -1`
+		echo "Volume:$level"
+		echo "Muted:  $muted"
+	}
+	
+	vol_output
+	vol_level
+}
+
+# actions and arguments
+case $1 in
+	-i | --increase )	$vol_up		;;
+	-d | --decrease )	$vol_down	;;
+	-t | --toggle	)	$mute		;;
+	-o | --output	)	output		;;
+	-h | --help		)	usage		;;
+esac
+
+# echo general info when no arguments are present
+if [ -z $1 ]; then
+	vol_info
+fi
+
+
+
+
+
+
+
+
+

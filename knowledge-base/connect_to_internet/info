@@ -1,0 +1,4 @@
+# cp /etc/wpa_supplicant/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant-wls1.conf
+# wpa_passphrase skynet na03004200730 >> /etc/wpa_supplicant/wpa_supplicant-wls1.conf
+# sudo ln -s /usr/share/dhcpcd/hooks/10-wpa_supplicant /usr/libexec/dhcpcd-hooks
+# reboot

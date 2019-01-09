@@ -1,0 +1,33 @@
+#! /bin/bash
+
+clock() {
+	date +'%I:%M %p'
+}
+
+day() {
+	date +'%A %d'
+}
+groups() {
+    cur=`xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}'`
+    #tot=`xprop -root _NET_NUMBER_OF_DESKTOPS | awk '{print $3}'`
+
+	# These are openbox settings
+	case $cur in 
+	0	)	echo ' %{F#B9924A}1%{F-}    2    3    4 '	;;
+	1	)	echo ' 1    %{F#B9924A}2%{F-}    3    4 '	;;
+	2	)	echo ' 1    2    %{F#B9924A}3%{F-}    4 '	;;
+	3	)	echo ' 1    2    3    %{F#B9924A}4%{F-} '	;;
+	esac
+}
+
+host() {
+	echo "moeen @ pc"
+}
+
+sepa="%{F#986345}|%{F-}"
+float="%{F#788249}[F]%{F-}"
+
+while true; do
+	echo " $(groups)   $float %{r} $(host)    $sepa    $(day)    $sepa    $(clock)  "
+	sleep 0.2
+done

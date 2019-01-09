@@ -1,0 +1,7 @@
+reset=$(print "\e[0m" )
+blue=$(print "\e[34m" )
+green=$(print "\e[32m" )
+PS1=$'
+$green$PWD $blue $ $reset '
+
+. $HOME/.aliases

@@ -1,0 +1,3 @@
+To Execute
+
+conky -c $HOME/.conky.lua | some_sorta_bar

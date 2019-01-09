@@ -1,0 +1,12 @@
+#! /bin/bash
+
+if [ -z $1 ]; then
+	feh --bg-fill /home/moeen/.bg
+	exit 0
+fi	
+
+if [ -f $1 ]; then
+	feh --bg-fill $1
+	echo "Specified file set as wallpaper"
+	exit 0	
+fi

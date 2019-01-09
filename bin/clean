@@ -1,0 +1,7 @@
+#! /bin/bash
+
+thumbs() {
+	rm -vr $HOME/.thumbnails/*
+}
+
+thumbs

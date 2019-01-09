@@ -1,0 +1,62 @@
+background yesc
+use_xft yes
+#xftfont Coda:Regular:pixelsize=10:lcdfilter=lcddefault:hintstyle=hintnone:hinting=false:rgba=rgb:antialias=true:autohint=false
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_colour dcdcdc
+double_buffer yes
+minimum_size 1 1
+maximum_width 200
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+default_color B9B9B9
+default_outline_color DCD0CF
+alignment tl
+gap_x 1150
+gap_y 10
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale no
+color1 red
+color2 gray
+
+
+# Output
+########
+TEXT
+${font bitbuntu:Regular:size=8}${color ECDDDB}
+RAM $alignr ${membar 3,150}
+Battary $alignr ${battery_bar 3,150}$color
+
+#Time $alignr ${time %I . %M %p}
+
+${color ECDDDB}// System $alignr[$nodename]$color
+
+Arch $alignr $machine
+Uptime $alignr$uptime_short
+
+
+
+${color ECDDDB}// Network $alignr[${wireless_essid wlp2s0b1}]$color
+
+Down $alignr${downspeedf wlp2s0b1} kb/s
+Up $alignr${upspeedf wlp2s0b1} kb/s
+
+
+
+${color ECDDDB}// Processes $alignr[$processes]$color
+
+${top_mem name 1}${alignr}${top mem 1} %
+${top_mem name 2}${alignr}${top mem 2} %
+${top_mem name 3}${alignr}${top mem 3} %
+${top_mem name 4}${alignr}${top mem 4} %
+
+

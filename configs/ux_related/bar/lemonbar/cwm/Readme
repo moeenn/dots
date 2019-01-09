@@ -1,0 +1,7 @@
+Using this panel requires:
+	acpi
+	drift font (modified)
+	
+Notes:
+1.	Workspace widget is not compatible with Dwm
+2.	In Openbox desktop count starts from 0 and in Cwm 1	

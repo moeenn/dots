@@ -1,0 +1,13 @@
+#! /bin/sh
+
+if [ -f /usr/local/bin/dzvol ]; then
+	sudo rm -v /usr/local/bin/dzvol;
+fi
+
+link_estb() {
+	sudo ln -s -r ./dzvol /usr/local/bin/dzvol;
+	echo "Link Established"
+}
+
+link_estb
+exit 0

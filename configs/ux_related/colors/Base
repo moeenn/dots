@@ -1,0 +1,75 @@
+!-- General Settings --
+Xft.dpi:			    	96
+Xft.antialias: 				true
+Xft.hinting: 				true
+Xft.rgba: 			    	rgb
+Xft.autohint: 				false
+Xft.hintstyle: 				hintslight
+Xft.lcdfilter: 				lcddefault
+
+
+! Xterm Settings
+xterm*faceName: 			Monospace Bold
+xterm*faceSize: 			8
+xterm*allowBoldFonts: 		false
+XTerm*boldMode: 			false
+xterm*savelines: 			1500
+xterm*borderWidth: 			20
+
+
+!-- URxvt Settings --
+URxvt.font: 				-*-uushi-*-*-*-*-*-*-*-*-*-*-*-*
+URxvt.boldFont:				-*-uushi-*-*-*-*-*-*-*-*-*-*-*-*
+!URxvt.font: 				xft:Fira Mono:Medium:size=8:lcdfilter=lcddefault:hintstyle=hintfull:hinting=true:rgba=rgb:antialias=true:autohint=false
+!URxvt.boldFont:			xft:Fira Mono:Medium:size=8:lcdfilter=lcddefault:hintstyle=hintfull:hinting=true:rgba=rgb:antialias=true:autohint=false
+
+URxvt*cursorUnderline:  	true
+URxvt.scrollBar: 			false
+URxvt.perl-ext:
+URxvt.perl-ext-common: 
+
+! Character Spacing
+URxvt.letterSpace:     	    1
+URxvt.lineSpace:      		4
+
+URxvt*scrollColor: 			#2D4E56
+URxvt.scrollstyle:     		plain
+URxvt*cursorBlink: 			true
+
+!-- Desktop Background --
+desktop:					#455045
+
+
+!-- Dmenu Settings
+dmenu.font:					-*-bitbuntu-*-*-*-*-10-*-*-*-*-*-*-*
+dmenu.background:			#131314
+dmenu.foreground:			#a5a5a5
+dmenu.selbackground:		#131314
+dmenu.selforeground:		#78AEC8
+
+
+!-- Xclock --
+
+xclock*Foreground:      	#24BCBC
+xclock*background:      	#040D0F
+
+
+!-- Dzen2 --
+dzen2.font:       			-*-bitbuntu-*-*-*-*-10-*-*-*-*-*-*-*
+dzen2.foreground: 			#a5a5a5
+dzen2.background: 			#131314
+
+!-- Urxvt Border --
+URxvt.borderColor:      	#1C1C24
+URxvt.internalBorder:   	10
+URxvt.geometry:         	82x20
+
+!-- Urxvt Transparency --
+!URxvt.depth: 		 		32
+!URxvt.background:    		[95]#1f1f1f
+!URxvt.color0:	     		[95]#1f1f1f
+
+
+!-- Colors ----------------------------------------------------------------
+*highlightColor: #3A3A4A
+!*cursorColor: #8c9440

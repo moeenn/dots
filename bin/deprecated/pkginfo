@@ -1,0 +1,4 @@
+#! /bin/bash
+
+pacman -Qi $1 | grep -e "Name" -e "Version " -e "Description" &&
+exit 0
