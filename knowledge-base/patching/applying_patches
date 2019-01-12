@@ -1,0 +1,2 @@
+To apply a patch to a folder, cd into the folder and run command:
+$ patch -p1 < /path/to/patch.diff
