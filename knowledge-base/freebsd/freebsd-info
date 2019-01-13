@@ -1,0 +1,67 @@
+At first boot the system will need to install the package manager. In BSD
+the package manager is simply called pkg
+
+You can update the ports tree using following commands
+# pkg update -f
+# pkg check -Ba
+# pkg upgrade
+
+You should also install the latest upgrades
+# freebsd-update fetch
+# freebsd-update install
+
+Login as root and install following packages:
+sudo
+nano 
+bash
+xorg
+xbindkeys
+feh
+dmenu
+dzen2
+rxvt-unicode
+geany
+firefox
+lxappearance
+htop
+pkgconf
+py27-ranger
+mpv
+
+
+Configure sudo for the user:
+# bash
+# export EDITOR=nano
+# pw groupmod wheel -M moeen
+# visudo
+
+Find the following line:
+root	ALL=(ALL) ALL
+
+Add the following line underneath it
+moeen	ALL=(ALL) ALL
+
+Two lines further down, uncomment the following line:
+%wheel	ALL=(ALL=ALL)	ALL
+
+Save and exit the root login. Re-Login as moeen
+
+Change Default shell to bash
+$ bash
+$ export EDITOR=nano
+$ sudo chsh
+
+Note: Bash is installed at /usr/local/bin/bash
+
+
+OPTIONAL: If you are using FreeBSD inside virutal machine you will need to do the following:
+$ sudo pkg install virtualbox-ose-additions
+$ sudo nano /etc/rc.conf
+
+Add the following lines at the end:
+vboxguest_enable="YES"
+vboxservice_enable="YES"
+
+Resolve DBus config error:
+# touch /etc/machine-id
+# dbus-uuidgen > /etc/machine-id
