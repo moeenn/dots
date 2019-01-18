@@ -17,13 +17,15 @@ alias ll='ls  -l -AhGg'
 # Programs
 #alias sound='alsamixer'
 alias load='htop -u moeen'
-#alias bin='cd ~/bin/'
+alias bin='cd ~/.bin/'
 alias df='dfc -f -s'
 alias time='tty-clock -cb -C 6'
 alias uptime='uptime -p'
-alias wget='wget -c -q --show-progress -4 -E'
+#alias wget='wget -c -q --show-progress -4 -E'
+alias get='aria2c -x 4'
 alias extract='dtrx -v'
 alias m='mpv'
+alias f='ranger'
 
 # Super User Tasks
 alias poweroff='sudo poweroff'
@@ -36,7 +38,7 @@ alias full_access='sudo chmod -R a+rw ./'
 # Configs, Scripts & Dirs
 #alias class='xprop | grep WM_CLASS'
 #alias sba='cat ~/.aliases | grep'
-#alias bg='bash ~/bin/bg'
+alias merge='xrdb ~/.Xresources'
 alias dir='tree -d'
 
 # n = delay second
@@ -50,3 +52,4 @@ alias net='bwm-ng -t 1000'
 alias push='git push origin master'
 alias status='git status'
 alias commit='git commit -m "$(date +"%x %r")"' 
+alias clone='git clone'

@@ -1,14 +1,8 @@
 #!/bin/sh
 
 xrdb ~/.Xresources &				# set the font and colors
-xset -b &							# disable console beep
-wall &								# wallpaper
-sound_init &						# set amixer speaker states
-xmodmap -e "pointer = 1 2 3 5 4" &  # Set scrolling direction
-compton &							# compositing
-#redshift -O 5500K &				# Nightshift colors
-#nitrogen --restore &				# wallpaper
-#pulseaudio -D &					# Start PA Daemon
-wall &								# Set the wallpaper
-xbindkeys &							# keyboard shortcuts
-exec openbox-session				# WM (Fallback)
+#wall &								# wallpaper
+#compton &							# compositing
+pulseaudio -D							# enable if system uses pulseaudio
+dwmstatus &							# Statusbar
+exec dwm							# WM (Fallback)
