@@ -7,11 +7,10 @@ alias upgrade='sudo apt-get upgrade'
 
 # Operations
 alias c='clear'
-
+alias cp='rsync --info=progress2'
 alias mv='mv -ivf'
 alias rm='rm -iv'
 alias link='ln -s -r'
-alias ls='ls'
 alias ll='ls  -l -AhGg'
 
 # Programs
