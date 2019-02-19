@@ -1,0 +1,2 @@
+It has been observed that tweaking the following setting for Maximum Transmission Unit (MTU) vastly improves the DNS performance:
+# sysctl -w net.ipv4.ip_no_pmtu_disc=1
