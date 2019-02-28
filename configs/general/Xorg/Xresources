@@ -11,41 +11,21 @@ Xft.lcdfilter: 				lcddefault
 
 !-- URxvt Settings --------------------------------------------------------
 
-URxvt.font: 				xft:Ubuntu Mono:Regular:size=12:lcdfilter=lcddefault:hintstyle=hintslight:hinting=true:rgba=rgb:antialias=true:autohint=false
-URxvt.boldFont:				xft:Ubuntu Mono:Regular:size=12:lcdfilter=lcddefault:hintstyle=hintslight:hinting=true:rgba=rgb:antialias=true:autohint=false
+URxvt.font: 				xft:Iosevka:Medium:size=10
+URxvt.boldFont:				xft:Iosevka:Medium:size=10
 
 *cursorUnderline:  			true
 *cursorBlink: 				false
 URxvt.scrollBar: 			false
 URxvt.letterSpace:     		0
-URxvt.lineSpace:      		5
-URxvt.geometry:         	98x18
+URxvt.lineSpace:      		4
+URxvt.geometry:         	98x22
 URxvt.internalBorder:   	20
-URxvt.borderColor:      	#181818
+!URxvt.borderColor:      	#0a0f0d
 
 
 !-- Colors ----------------------------------------------------------------
 
-*color0: #4a4131
-*color1: #cb712a
-*color2: #cc7c34
-*color3: #c38e45
-*color4: #767b6f
-*color5: #9fafaf
-*color6: #86a3a4
-*color7: #cad7ca
-*color8: #4b4131
-*color9: #cb712a
-*color10: #cc7c34
-*color11: #c38e45
-*color12: #767b6f
-*color13: #abbcbc
-*color14: #87a4a5
-*color15: #cad7ca
+!*background:	#202020
+!*foreground:	#cdcdcd
 
-*background: #181818
-*foreground: #767b6f
-*cursorColor: #c7c7c7
-
-*highlightTextColor: #000000
-*highlightColor: #c1ddff
