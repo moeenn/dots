@@ -1,4 +1,3 @@
-In Ubuntu and other Debian based distros following packages will also be required:
 libx11-dev
 libfontconfig1-dev
 libxft-dev
