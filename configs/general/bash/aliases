@@ -1,10 +1,10 @@
 # Aliases
-alias update='sudo apt update'
+alias update='sudo apt-get update'
 alias search='apt-cache search'
-alias install='sudo apt install'
-alias remove='sudo apt remove'
-alias upgrade='sudo apt upgrade'
-alias fix-broken='sudo apt --fix-broken install'
+alias install='sudo apt-get install'
+alias remove='sudo apt-get remove'
+alias upgrade='sudo apt-get upgrade'
+alias fix-broken='sudo apt-get --fix-broken install'
 
 # Operations
 alias c='clear'
