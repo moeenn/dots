@@ -1,4 +1,4 @@
-# Colors
+# PS Colors
 RS="\[\033[0m\]"    # reset
 HC="\[\033[1m\]"    # hicolor
 UL="\[\033[4m\]"    # underline
@@ -24,18 +24,20 @@ BWHT="\[\033[47m\]" # background white
 PS1="
 $INV \D{%H:%M} \W $ $RS "
 
-# Auto-CD
+# Bash settings
 shopt -s autocd
-
-# Path
-PATH=$HOME/.bin:$PATH
-
-# Set all the aliases
-. $HOME/.aliases
-
-# new stuff
 shopt -s cdspell
 shopt -s checkwinsize
 shopt -s dotglob
 shopt -s expand_aliases
 shopt -s nocaseglob
+
+
+# Define the Path
+PATH=$HOME/.bin:$PATH
+
+# Set the functions
+. $HOME/.bash_functions
+
+# Set the command aliases
+. $HOME/.aliases

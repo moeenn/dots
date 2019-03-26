@@ -1,3 +1,5 @@
+#! /bin/bash
+
 # Aliases
 alias update='sudo apt-get update'
 alias search='apt-cache search'
@@ -26,6 +28,10 @@ alias get='aria2c -x 4'
 alias extract='dtrx -v'
 alias m='mpv'
 alias f='ranger'
+
+# Functions
+alias colors='term_colors'
+alias info='system_info'
 
 # Super User Tasks
 alias poweroff='sudo poweroff'
