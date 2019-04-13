@@ -1,0 +1,20 @@
+#! /bin/bash
+
+file=$1
+tmp="$HOME/.cache/cpp"
+
+
+if [ -z $1 ]; then
+	echo "An Argument is required:"
+	echo "Usage: $0 ./file.cpp"
+else
+	if [ -f ./$file ]; then
+		g++ ./$file -o $tmp/test
+		$tmp/test
+		rm -f ./test
+		exit 0
+	else
+		echo "The argument must be a valid C++ file"
+		exit 1
+	fi
+fi
