@@ -1,0 +1,8 @@
+{
+	"color_scheme": "Packages/Dracula Color Scheme/Dracula.tmTheme",
+	"font_face": "Ubuntu Mono",
+	"font_size": 13,
+	"theme": "Adaptive.sublime-theme",
+	"highlight_line": true,
+	"scroll_past_end": false,
+}
