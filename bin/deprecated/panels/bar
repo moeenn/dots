@@ -1,0 +1,13 @@
+#! /bin/sh
+
+# Colors are specifiee in following formats:
+# 1. #RRGGBB
+# 2. #AARRGGBB
+
+bg='#09090D'
+fg='#839496'
+#uline='#B9924A'
+font='-*-clean-medium-r-*-*-12-*-*-*-*-*-*-*'
+geom='1366x24'
+
+lemonbar -f $font -F $fg -g $geom -B $bg #-U $uline -u 2

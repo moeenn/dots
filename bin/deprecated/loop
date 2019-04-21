@@ -1,7 +1,0 @@
-#! /bin/sh
-
-while [ -f "$1" ]; do
-		cp -v "$1" ./1	;
-		sleep 30s		;
-done
-notify

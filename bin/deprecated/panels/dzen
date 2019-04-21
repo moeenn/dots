@@ -1,0 +1,21 @@
+#! /bin/bash
+
+# Geometry: width x heigth + x + y
+# Margin 10px
+
+# Default geometry
+if [ -z $1 ]; then
+	geom='-geometry 180x40+1176+718'
+fi	
+
+case $1 in
+	top				)	geom='-geometry 1366x25'				;;
+	top-right		)	geom='-geometry 180x40+1176+10'			;;
+	top-left		)	geom='-geometry 180x40+10+10'			;;
+
+	bottom			)	geom='-geometry 1366x25+0+743'			;;
+	bottom-right	)	geom='-geometry 180x40+1176+718'		;;
+	bottom-left		)	geom='-geometry 180x40+10+718'			;;
+esac
+
+dzen2 $geom
