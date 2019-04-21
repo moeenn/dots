@@ -1,18 +1,19 @@
 #!/bin/bash
+# NEW
 
 IF="Master"         	# Audio Channel
 SECS="1"            	# Display Timeout
 
-BG="#1c1c1c"       		# Background color of window
-FG="#6E6E6E"        	# Volume Icon Normal Color
-BAR_FG="#7B8748"    	# Volume bar fill color
-BAR_BG="#555555"    	# Volume bar trough color
+BG="#1F1F1F"       		# Background color of window
+FG="#C4BCA9"        	# Volume Icon Normal Color
+BAR_FG="#BBBBBB"    	# Volume bar fill color
+BAR_BG="#444444"    	# Volume bar trough color
 
-XPOS="1157"        		# Horizontal position
-YPOS="30"  	        	# Vertical position
+XPOS="1158"        		# Horizontal position
+YPOS="690"  	        	# Vertical position
 HEIGHT="40"         	# Window Height
 WIDTH="200"         	# Window Width
-BAR_WIDTH="130"     	# Volume bar width
+BAR_WIDTH="170"     	# Volume bar width
 
 
 # Don't change this
@@ -63,10 +64,10 @@ AMIXOUT="$(amixer set "$IF" "$AMIXARG" | tail -n 1)"
 MUTE="$(cut -d '[' -f 4 <<<"$AMIXOUT")"
 VOL="$(cut -d '[' -f 2 <<<"$AMIXOUT" | sed 's/%.*//g')"
 if [ "$MUTE" = "off]" ]; then
-	label=" 0"
-	#BAR_FG='#7F6767'
-  else
-	label="$VOL"
+	#label=" 0"
+	BAR_FG=$BAR_MUTE
+  #else
+  #	label="$VOL"
 fi
 
 
@@ -78,4 +79,4 @@ fi
 
 # Feed into the pipe
 # $VOL %
-(echo "$VOL" | gdbar -l "  $label %  " -fg "$BAR_FG" -bg "$BAR_BG" -w "$BAR_WIDTH" -h "2" ; sleep "$SECS") > "$PIPE"
+(echo "$VOL" | gdbar -l "   " -fg "$BAR_FG" -bg "$BAR_BG" -w "$BAR_WIDTH" -h "15" -ss "3" -sw "7" ; sleep "$SECS") > "$PIPE"
