@@ -3,16 +3,27 @@
 file=$1
 tmp="$HOME/.cache/cpp"
 
+# compile c++ source files
+compile() 
+{
+	g++ ./$file -o $tmp/test
+	$tmp/test
+	rm -f ./test
+	exit 0
+}
 
+# if temp directory is missing, make one
+if [ ! -d $tmp ]; then
+	mkdir $tmp
+fi	
+
+# check if accurate file is specified for compilation
 if [ -z $1 ]; then
 	echo "An Argument is required:"
 	echo "Usage: $0 ./file.cpp"
 else
-	if [ -f ./$file ]; then
-		g++ ./$file -o $tmp/test
-		$tmp/test
-		rm -f ./test
-		exit 0
+	if [ -f $file ]; then
+		compile
 	else
 		echo "The argument must be a valid C++ file"
 		exit 1
