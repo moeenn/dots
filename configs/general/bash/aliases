@@ -6,7 +6,7 @@ alias search='apt-cache search'
 alias install='sudo apt-get install'
 alias remove='sudo apt-get remove'
 alias upgrade='sudo apt-get upgrade'
-alias fix-broken='sudo apt-get --fix-broken install'
+#alias fix-broken='sudo apt-get --fix-broken install'
 
 # Operations
 alias c='clear'
@@ -27,7 +27,7 @@ alias uptime='uptime -p'
 alias get='aria2c -x 4'
 alias extract='dtrx -v'
 alias m='mpv'
-alias f='ranger'
+alias cf='cfiles'
 
 # Functions
 alias colors='term_colors'
@@ -37,25 +37,28 @@ alias info='system_info'
 alias poweroff='sudo poweroff'
 alias reboot='sudo reboot'
 alias kill='killall -v --ignore-case'
-alias mount='sudo mount -t auto -v'
+#alias mount='sudo mount -t auto -v'
 #alias mountall='sudo bash ~/bin/mountall'
 alias full_access='sudo chmod -R a+rw ./'
 
 # Configs, Scripts & Dirs
 #alias class='xprop | grep WM_CLASS'
 #alias sba='cat ~/.aliases | grep'
-alias merge='xrdb ~/.Xresources'
-alias dir='tree -d'
+#alias merge='xrdb ~/.Xresources'
+#alias dir='tree -d'
 
 # n = delay second
 # d = difference
-alias watch='watch -ct -n 1 -d' 
+alias watch='watch -ct -n 1 -d'
 
 # Network
 alias net='bwm-ng -t 1000'
 
 # Git
 alias push='git push origin master'
+
+# Before you can use this command you need to do: git remote add upstream https://github.com/moeenn/repo
+alias pull='git pull upstream master'
 alias status='git status'
-alias commit='git commit -m "$(date +"%x %r")"' 
+alias commit='git commit -m "$(date +"%x %r")"'
 alias clone='git clone'
