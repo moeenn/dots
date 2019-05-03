@@ -1,8 +1,13 @@
 {
-	"color_scheme": "Packages/Dracula Color Scheme/Dracula.tmTheme",
-	"font_face": "Ubuntu Mono",
-	"font_size": 13,
-	"theme": "Adaptive.sublime-theme",
+	"always_show_minimap_viewport": true,
+	"bold_folder_labels": true,
+	"color_scheme": "Packages/Theme - Dark Material/schemes/Dark-Material.tmTheme",
+	"font_face": "Office Code Pro Medium",
+	"font_size": 11,
 	"highlight_line": true,
+	"line_padding_bottom": 3,
+	"line_padding_top": 3,
+	"overlay_scroll_bars": "enabled",
 	"scroll_past_end": false,
+	"theme": "Dark-Material.sublime-theme"
 }
