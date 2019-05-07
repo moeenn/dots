@@ -60,5 +60,5 @@ alias push='git push origin master'
 # Before you can use this command you need to do: git remote add upstream https://github.com/moeenn/repo
 alias pull='git pull upstream master'
 alias status='git status'
-alias commit='git commit -m "$(date +"%x %r")"'
+alias commit='git commit -m "$(date +"%d/%B/%Y - %r")"'
 alias clone='git clone'
