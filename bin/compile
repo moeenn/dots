@@ -4,8 +4,7 @@ file=$1
 tmp="$HOME/.cache/cpp"
 
 # compile c++ source files
-compile() 
-{
+compile() {
 	g++ ./$file -o $tmp/test
 	$tmp/test
 	rm -f ./test
@@ -15,6 +14,11 @@ compile()
 # if temp directory is missing, make one
 if [ ! -d $tmp ]; then
 	mkdir $tmp
+fi	
+
+# if old executable is still present, remove it
+if [ -f $tmp/test ]; then
+	rm $tmp/test
 fi	
 
 # check if accurate file is specified for compilation

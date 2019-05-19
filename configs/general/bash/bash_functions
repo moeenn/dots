@@ -15,12 +15,12 @@ inv=$'\e[7m'
 cat << EOF
 $bld
 
-$f7 OS            $f4$f1 Linux Mint$f2 x64
+$f7 OS            $f4$f1 Ubuntu$f2 x64
 $f7 Page          $f4 moeenn.deviantart.com
 $f7 Github        $f4 github.com/moeenn
-$f7 WM            $f4 xfwm4
+$f7 WM            $f4 Gnome
 $f7 Gtk           $f4 Arc
-$f7 Icons         $f4 Pap Icons
+$f7 Icons         $f4 Papirus Icons
 $f7 Font          $f4 UI: Ubuntu
 $f7               $f4 Shell: Ubuntu
 $rst
@@ -29,7 +29,8 @@ EOF
 }
 
 # View the colors
-term_colors() {
+term_colors()
+{
     echo "  ";for i in {0..7}; do echo -en " \e[0;3${i}m████\e[0m"; done;
     echo "  ";for i in {0..7}; do echo -en " \e[1;3${i}m████\e[0m"; done; echo;
     echo "  "

@@ -62,3 +62,6 @@ alias pull='git pull upstream master'
 alias status='git status'
 alias commit='git commit -m "$(date +"%d/%B/%Y - %r")"'
 alias clone='git clone'
+
+# programming
+alias py='python3'
