@@ -36,8 +36,6 @@ shopt -s nocaseglob
 # Define the Path
 PATH=$HOME/.bin:$PATH
 
-# Set the functions
-. $HOME/.bash_functions
-
-# Set the command aliases
+# link other files
 . $HOME/.aliases
+. $HOME/.bash_functions
