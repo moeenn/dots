@@ -1,0 +1,44 @@
+#! /bin/bash
+
+# Start the loop 
+while true; do
+
+
+# Date and Time
+clock1=$( date +'%I:%M %p' );
+clock2=$( date +'%A %d' );
+dwm_clock=$(echo -e "\x07  ü\x06 $clock2    \x07  ÷\x06 $clock1 ");
+
+
+# User and host
+user=$(echo -e "\x07  ó\x06 moeen @ pc ");
+
+
+# Net Status
+essid=$( iwconfig wls1 | awk '/ESSID/ {print $4}' );
+
+if [ $essid = "ESSID:off/any" ]; then
+		net_state=$(echo -e "  \x07  ò\x06 Offline  ");
+	else
+		net_state=$(echo -e "  \x07  ò\x06 Online  ");
+fi
+
+
+# Battery Satus
+battery=$( acpi -a | awk '{print $3}' );
+
+if [ "$battery" = "off-line" ]; then
+        dwm_battery=$(echo -e "\x07  ý\x06 Discharging ");
+else
+        dwm_battery=$(echo -e "\x07  ý\x06 Charging ");
+fi
+
+
+# Overall output command
+DWM_STATUS=" $dwm_battery   $net_state   $user   $dwm_clock";
+xsetroot -name "$DWM_STATUS";
+sleep 0.2;
+
+
+# End of loop
+done &

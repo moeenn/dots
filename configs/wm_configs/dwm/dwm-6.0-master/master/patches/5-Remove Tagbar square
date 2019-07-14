@@ -1,0 +1,3 @@
+Inside the drawbar function (dwm.c), comment-out following two lines::
+		drawsquare(m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
+		           occ & 1 << i, urg & 1 << i, col);
