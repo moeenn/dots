@@ -113,7 +113,7 @@ def get_allGalleries(model_name):
 # get list of image urls from single gallery page
 # return: list
 def get_galleryImageURLS(url):
-    print('Resolving JavaScript')
+    print('Resolving JavaScript and ', end='')
     # create a new Firefox session
     # IMPORTANT: make sure the geckodriver is in our path
     try:
@@ -149,6 +149,24 @@ def get_galleryImageURLS(url):
 
 
 
+# create the image url dump file
+def create_dump(model_name, dump_file):
+    all_galleries = get_allGalleries(model_name)
+
+    # counters for showing progress
+    total_galleries = len(all_galleries)
+    current_gallery = 1
+
+    with open(dump_file, 'wt') as url_dump_file:
+        for gallery in all_galleries:
+            print(f'({current_gallery}/{total_galleries}) ', end='')
+            image_urls = get_galleryImageURLS(gallery)
+            current_gallery += 1
+            for url in image_urls:
+                url_dump_file.write(f'{url}\n')
+
+
+
 # read url from file and download it
 def read_and_download(file, destination):
     try:
@@ -163,33 +181,21 @@ def read_and_download(file, destination):
                 filename = url.split('/')[-1]
 
                 #download and create the file
-                print(f'\nDownloading {filename}')
-                print(url)
-                wget.download(url)
+                #print(f'\nDownloading {filename}')
+                wget.download(url.strip(), f'{destination}/{filename}')
 
 
 if __name__ == '__main__':
-    #model_name = input('Enter Name: ').lower()
-    model_name = 'laura_lion'
+    model_name = input('Enter Name: ').lower()
 
     # format the name of the model 
-    #model_name = model_name.replace(' ', '_')
-
-    #all_galleries = get_allGalleries(model_name)
-    #for gallery in all_galleries:
-        #print(gallery)
-
-    all_galleries = ['https://fuskator.com/thumbs/i3l6tZ6UfCu/Busty-Shaved-Brunette-Laura-Lion-with-Hangers-from-Met-Art.html', 'https://fuskator.com/thumbs/mYh9pBjgsbb/Shaved-Laura-Lion-with-Big-Tits-Giving-Blowjob.html']
+    model_name = model_name.replace(' ', '_')
 
     # get urls of images from all galleries and dump them into a file
     dump_file = f'{model_name}.txt'
 
-    #with open(dump_file, 'wt') as url_dump_file:
-        #for gallery in all_galleries:
-            #image_urls = get_galleryImageURLS(gallery)
-            #for url in image_urls:
-                #url_dump_file.write(f'{url}\n')
-
+    # create the dump of image urls
+    create_dump(model_name, dump_file)
 
     # read urls from dump file and download them
     read_and_download(dump_file, model_name)
