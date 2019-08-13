@@ -6,7 +6,6 @@ alias search='apt-cache search'
 alias install='sudo apt-get install'
 alias remove='sudo apt-get remove'
 alias upgrade='sudo apt-get upgrade'
-#alias fix-broken='sudo apt-get --fix-broken install'
 
 # Operations
 alias c='clear'
@@ -14,16 +13,13 @@ alias cp='rsync --info=progress2 -r'
 alias mv='mv -ivf'
 alias rm='rm -iv'
 alias link='ln -s -r'
-alias ll='ls  -l -AhGg'
 
 # Programs
-#alias sound='alsamixer'
 alias load='htop -u moeen'
 alias bin='cd ~/.bin/'
 alias df='dfc -f -s'
 alias time='tty-clock -cb -C 6'
 alias uptime='uptime -p'
-#alias wget='wget -c -q --show-progress -4 -E'
 alias get='aria2c -x 4'
 alias extract='dtrx -v'
 alias m='mpv'
@@ -43,7 +39,7 @@ alias full_access='sudo chmod -R a+rw ./'
 
 # Configs, Scripts & Dirs
 #alias class='xprop | grep WM_CLASS'
-#alias sba='cat ~/.aliases | grep'
+alias sba='cat ~/.aliases | grep'
 #alias merge='xrdb ~/.Xresources'
 #alias dir='tree -d'
 
@@ -58,7 +54,7 @@ alias net='bwm-ng -t 1000'
 alias push='git push origin master'
 
 # Before you can use this command you need to do: git remote add upstream https://github.com/moeenn/repo
-alias pull='git pull upstream master'
+alias pull='git pull origin master'
 alias status='git status'
 alias commit='git commit -m "$(date +"%d/%B/%Y - %r")"'
 alias clone='git clone'
