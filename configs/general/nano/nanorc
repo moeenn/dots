@@ -42,3 +42,6 @@ include /usr/share/nano/sh.nanorc
 
 ## XML-type files
 include /usr/share/nano/xml.nanorc
+
+## GoLang
+include /home/moeen/.config/nano/go.nanorc

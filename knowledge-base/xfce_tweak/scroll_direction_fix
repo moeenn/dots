@@ -1,0 +1,2 @@
+$ synclient | grep VertScrollDelta
+$ synclient VertScrollDelta=-110
