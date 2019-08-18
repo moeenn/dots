@@ -1,3 +1,7 @@
+# colors
+export HC=$'\e[1m'
+export NC=$'\e[0m'
+export NL=$'\n'
 export red=$'\e[0;31m'
 export RED=$'\e[1;31m'
 export green=$'\e[0;32m'
@@ -12,13 +16,11 @@ export white=$'\e[0;37m'
 export WHITE=$'\e[1;37m'
 export yellow=$'\e[0;33m'
 export YELLOW=$'\e[01;33m'
-export HC=$'\e[1m'
-export NC=$'\e[0m'
-export NL=$'\n'
+
 
 [ -o login ] && . $HOME/.profile
 . $HOME/.sh/aliases
-. $HOME/.sh/style
+
 
 case $TERM in
     *xterm*|rxvt*)
@@ -37,6 +39,31 @@ case $TERM in
         ;;
 esac
 
+PRINT='echo -n'
+[ `$PRINT | wc -c` -ne 0 ] && PRINT=printf
+PS1='$(_prompt) '
+
+_prompt() {
+	case $? in
+	# EXIT_SUCCESS or ^C
+	0|130)
+		RET=240
+		;;
+	# command not found
+	127)
+		RET=196
+		;;
+	*)
+		RET=202
+		;;
+	esac
+
+	RET="[38;5;${RET}m"
+	RET="${RET}─[0m "
+
+	$PRINT $RET
+}
+
 HISTFILE=$HOME/.sh/.history
 HISTSIZE=4096
 CDPATH=.:$HOME:/
@@ -45,4 +72,5 @@ function dirname() {
 	echo $(basename $(pwd))
 }
 
+# prompt
 PS1='$NL$HC$(dirname) $  $NC'

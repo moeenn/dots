@@ -8,6 +8,8 @@ alias remove='sudo apt-get remove'
 alias upgrade='sudo apt-get upgrade'
 
 # Operations
+alias ..='cd ..'
+alias ...='.. && ..'
 alias c='clear'
 alias cp='rsync --info=progress2 -r'
 alias mv='mv -ivf'
@@ -24,10 +26,6 @@ alias get='aria2c -x 4'
 alias extract='dtrx -v'
 alias m='mpv'
 alias cf='cfiles'
-
-# Functions
-alias colors='term_colors'
-alias info='system_info'
 
 # Super User Tasks
 alias poweroff='sudo poweroff'
