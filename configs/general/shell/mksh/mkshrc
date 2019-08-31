@@ -6,6 +6,8 @@ export red=$'\e[0;31m'
 export RED=$'\e[1;31m'
 export green=$'\e[0;32m'
 export GREEN=$'\e[1;32m'
+export yellow=$'\e[0;33m'
+export YELLOW=$'\e[01;33m'
 export blue=$'\e[0;34m'
 export BLUE=$'\e[1;34m'
 export purple=$'\e[0;35m'
@@ -14,9 +16,6 @@ export cyan=$'\e[0;36m'
 export CYAN=$'\e[1;36m'
 export white=$'\e[0;37m'
 export WHITE=$'\e[1;37m'
-export yellow=$'\e[0;33m'
-export YELLOW=$'\e[01;33m'
-
 
 [ -o login ] && . $HOME/.profile
 . $HOME/.sh/aliases
@@ -73,4 +72,5 @@ function dirname() {
 }
 
 # prompt
-PS1='$NL$HC$(dirname) $  $NC'
+PS1='$NL$HC[!!]. $WHITE$(dirname)  $NC'
+

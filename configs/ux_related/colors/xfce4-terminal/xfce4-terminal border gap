@@ -1,8 +1,0 @@
-Create the following file:
-$HOME/.config/gtk-3.0/gtk.css
-
-Paste the following inside it:
-
-VteTerminal, vte-terminal {
-    padding: 10px;
-}

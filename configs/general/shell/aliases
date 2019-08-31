@@ -15,6 +15,7 @@ alias cp='rsync --info=progress2 -r'
 alias mv='mv -ivf'
 alias rm='rm -iv'
 alias link='ln -s -r'
+alias :q='exit'
 
 # Programs
 alias load='htop -u moeen'
@@ -51,11 +52,14 @@ alias net='bwm-ng -t 1000'
 # Git
 alias push='git push origin master'
 
-# Before you can use this command you need to do: git remote add upstream https://github.com/moeenn/repo
-alias pull='git pull origin master'
+# Before you can use this command you need to do: git remote add upstream git+ssh://git@github.com/moeenn/repo
+alias upstream='git remote add upstream'
+alias pull='git pull origin master --allow-unrelated-histories'
 alias status='git status'
-alias commit='git commit -m "$(date +"%d/%B/%Y - %r")"'
+alias commit='git commit -m "$(date +"%B %d, %Y - %r")"'
 alias clone='git clone'
 
 # programming
 alias py='python3'
+alias test='pytest -v'
+alias test_all='py.test -v'
