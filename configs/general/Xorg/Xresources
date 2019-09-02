@@ -7,7 +7,7 @@ Xft.rgba: 			    	rgb
 Xft.autohint: 				false
 Xft.hintstyle: 				hintnone
 Xft.lcdfilter: 				lcddefault
-
+Xcursor.size: 				16
 
 !-- URxvt Settings --------------------------------------------------------
 
