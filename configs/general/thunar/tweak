@@ -1,0 +1,2 @@
+Set the toolbar icon size to small
+$ xfconf-query --channel thunar --property /misc-small-toolbar-icons --create --type bool --set true
