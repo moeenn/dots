@@ -1,7 +1,7 @@
-"urxvt"
+"xfce4-terminal"
 	mod4 + t
 	
-"pcmanfm"
+"thunar"
 	mod4 + e
 
 "dmenu_run -i -p ' Run >  ' -l 6 -w 350 -h 25 -x 8 -y 8"
