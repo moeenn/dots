@@ -3,7 +3,7 @@ IF="Headphone"         	# Audio Channel
 SECS="1"            	# Display Timeout
 
 XPOS="1158"        		# Horizontal position
-YPOS="8"	  	        # Vertical position
+YPOS="33"	  	        # Vertical position
 HEIGHT="50"         	# Window Height
 WIDTH="200"         	# Window Width
 BAR_WIDTH="155"     	# Volume bar width
