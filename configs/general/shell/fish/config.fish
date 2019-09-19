@@ -22,7 +22,7 @@ abbr -a get 'axel -n 4'
 abbr -a extract 'dtrx -v'
 abbr -a m 'mpv'
 abbr -a cf 'cfiles'
-abbr -a youtube-dl 'youtube-dl --external-downloader axel'
+abbr -a ydl 'youtube-dl --external-downloader axel'
 abbr -a net 'bwm-ng -t 1000'
 
 # Super User Tasks
@@ -36,11 +36,12 @@ abbr -a full_access 'sudo chmod -R a+rw'
 abbr -a upstream 'git remote add upstream'
 abbr -a status 'git status'
 abbr -a pull 'git pull origin master --allow-unrelated-histories'
+abbr -a commit 'git commit -m "bugfixes"'
 abbr -a push 'git push origin master'
-abbr -a commit 'git commit -m "(date +'%B %d, %Y - %r')"'
 abbr -a clone 'git clone'
 
 # programming
 abbr -a py 'python3'
 #abbr -a test 'pytest -v'
 #abbr -a test_all 'py.test -v'
+
