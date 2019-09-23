@@ -1,9 +1,27 @@
-# abbr -aes
-abbr -a update 'sudo apt-get update'
-abbr -a search 'apt-cache search'
-abbr -a install 'sudo apt-get install'
-abbr -a remove 'sudo apt-get remove'
-abbr -a upgrade 'sudo apt-get upgrade'
+# set the $PATH
+set PATH /usr/local/bin /usr/sbin $HOME/.bin $PATH
+set GOPATH $HOME/.go $GOPATH
+
+# disable the startup message
+set -U fish_greeting
+
+function pkg_ubuntu
+	abbr -a update 'sudo apt-get update'
+	abbr -a search 'apt-cache search'
+	abbr -a install 'sudo apt-get install'
+	abbr -a remove 'sudo apt-get remove'
+	abbr -a upgrade 'sudo apt-get upgrade'
+end
+
+function pkg_solus
+	abbr -a search 'eopkg search'
+	abbr -a install 'sudo eopkg install'
+	abbr -a remove 'sudo eopkg remove'
+	abbr -a upgrade 'sudo eopkg upgrade'
+end
+
+# set the package manager
+pkg_solus
 
 # Operations
 abbr -a c 'clear'
@@ -44,4 +62,3 @@ abbr -a clone 'git clone'
 abbr -a py 'python3'
 #abbr -a test 'pytest -v'
 #abbr -a test_all 'py.test -v'
-
