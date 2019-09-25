@@ -44,4 +44,3 @@ abbr -a clone 'git clone'
 abbr -a py 'python3'
 #abbr -a test 'pytest -v'
 #abbr -a test_all 'py.test -v'
-
