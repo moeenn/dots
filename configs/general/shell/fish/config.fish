@@ -1,9 +1,13 @@
-# abbr -aes
 abbr -a update 'sudo apt-get update'
 abbr -a search 'apt-cache search'
 abbr -a install 'sudo apt-get install'
 abbr -a remove 'sudo apt-get remove'
 abbr -a upgrade 'sudo apt-get upgrade'
+
+#abbr -a search 'eopkg search'
+#abbr -a install 'sudo eopkg install'
+#abbr -a remove 'sudo eopkg remove'
+#abbr -a upgrade 'sudo eopkg upgrade'
 
 # Operations
 abbr -a c 'clear'
@@ -43,4 +47,5 @@ abbr -a clone 'git clone'
 # programming
 abbr -a py 'python3'
 #abbr -a test 'pytest -v'
+#abbr -a test_all 'py.test -v'
 #abbr -a test_all 'py.test -v'
