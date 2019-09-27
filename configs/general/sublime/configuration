@@ -1,9 +1,9 @@
 {
 	"always_show_minimap_viewport": true,
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/Predawn/predawn.tmTheme",
-	"font_face": "Office Code Pro Medium",
-	"font_size": 12,
+	"color_scheme": "Packages/Oceanic Next Color Scheme/Oceanic Next.tmTheme",
+	"font_face": "Cascadia Code",
+	"font_size": 11,
 	"highlight_line": true,
 	"ignored_packages":
 	[
@@ -17,7 +17,7 @@
 		80
 	],
 	"scroll_past_end": false,
-	"theme": "predawn.sublime-theme",
+	"theme": "Delta.sublime-theme",
 	"trim_trailing_white_space_on_save": true
 }
 
