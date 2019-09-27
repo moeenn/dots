@@ -2,19 +2,21 @@ VteTerminal, vte-terminal {
     padding: 10px;
 }
 
-.xfce4-panel.background button* 
+.tasklist button {
+    padding: 6px;
+    border-radius: 0px;
+}
+
+/*
+.xfce4-panel.background button*
 {
     padding: 3px;
     border-radius: 0px;
 }
 
-.xfce4-panel.background button:hover 
+.xfce4-panel.background button:hover
 {
 	border: solid 1px transparent;
 	background: rgba(0,0,0,0.3)
 }
-
-.tasklist* {
-    padding: 3px;
-    border-radius: 0px;
-}
+*/

@@ -1,13 +1,12 @@
+# environment variables
+set -x GO_SESSION_KEY 9a4772a776c6de8f446c2125b21346a601507333140c5e48c0c99210bbc3b247
+
+# abbr -aes
 abbr -a update 'sudo apt-get update'
 abbr -a search 'apt-cache search'
 abbr -a install 'sudo apt-get install'
 abbr -a remove 'sudo apt-get remove'
 abbr -a upgrade 'sudo apt-get upgrade'
-
-#abbr -a search 'eopkg search'
-#abbr -a install 'sudo eopkg install'
-#abbr -a remove 'sudo eopkg remove'
-#abbr -a upgrade 'sudo eopkg upgrade'
 
 # Operations
 abbr -a c 'clear'
@@ -47,5 +46,4 @@ abbr -a clone 'git clone'
 # programming
 abbr -a py 'python3'
 #abbr -a test 'pytest -v'
-#abbr -a test_all 'py.test -v'
 #abbr -a test_all 'py.test -v'

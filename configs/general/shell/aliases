@@ -1,5 +1,3 @@
-#! /bin/bash
-
 # Aliases
 alias update='sudo apt-get update'
 alias search='apt-cache search'
