@@ -1,12 +1,19 @@
 # environment variables
 set -x GO_SESSION_KEY 9a4772a776c6de8f446c2125b21346a601507333140c5e48c0c99210bbc3b247
+set -x CGO_ENABLED 1
 
-# abbr -aes
+# ubuntu package management
 abbr -a update 'sudo apt-get update'
 abbr -a search 'apt-cache search'
 abbr -a install 'sudo apt-get install'
 abbr -a remove 'sudo apt-get remove'
 abbr -a upgrade 'sudo apt-get upgrade'
+
+# fedora package management
+# abbr -a update 'sudo dnf update'
+# abbr -a search 'sudo dnf search'
+# abbr -a install 'sudo dnf install'
+# abbr -a remove 'sudo dnf remove'
 
 # Operations
 abbr -a c 'clear'
