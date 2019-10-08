@@ -1,0 +1,29 @@
+#! /usr/bin/sh
+
+f=3 b=4
+for j in f b; do
+  for i in {0..7}; do
+    printf -v $j$i %b "\e[${!j}${i}m"
+  done
+done
+bld=$'\e[1m'
+rst=$'\e[0m'
+inv=$'\e[7m'
+
+cat << EOF
+$bld
+
+$f7 OS            $f4$f1 Void Linux$f2 x64
+$f7 Page          $f4 moeenn.deviantart.com
+$f7 Github        $f4 github.com/moeenn
+$f7 WM            $f4 Openbox
+$f7 Gtk           $f4 Laten-Dull
+$f7 Icons         $f4 Papyrus
+$f7 Font          $f4 UI: Roboto 9
+$f7               $f4 Shell: Roboto Mono
+$f7               $f4 Conky: Bitbuntu
+$rst
+EOF
+echo "    ";for i in {0..7}; do echo -en " \e[0;3${i}m███\e[0m"; done;
+echo "    ";for i in {0..7}; do echo -en " \e[1;3${i}m███\e[0m"; done; echo;
+echo "    "

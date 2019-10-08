@@ -1,8 +1,0 @@
-#! /bin/bash
-
-if [ -z $1 ]; then
-	echo "Need an Argument"
-	exit 1
-fi
-
-echo $1 | bc
