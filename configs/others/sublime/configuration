@@ -1,0 +1,22 @@
+{
+	"always_show_minimap_viewport": true,
+	"bold_folder_labels": true,
+	"color_scheme": "Packages/10% Too Dull for My Tastes Color Scheme/scotchy.tmTheme",
+	"font_face": "Cascadia Code",
+	"font_size": 11,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"line_padding_bottom": 3,
+	"line_padding_top": 3,
+	"overlay_scroll_bars": "enabled",
+	"rulers":
+	[
+		80
+	],
+	"scroll_past_end": true,
+	"theme": "Delta.sublime-theme",
+	"trim_trailing_white_space_on_save": true
+}
