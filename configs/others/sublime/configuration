@@ -1,9 +1,10 @@
 {
 	"always_show_minimap_viewport": true,
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/10% Too Dull for My Tastes Color Scheme/scotchy.tmTheme",
+	"color_scheme": "Packages/User/scotchy (Flake8Lint).tmTheme",
 	"font_face": "Cascadia Code",
 	"font_size": 11,
+	"format_on_save": true,
 	"highlight_line": true,
 	"ignored_packages":
 	[

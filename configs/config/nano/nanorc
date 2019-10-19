@@ -22,17 +22,8 @@ include /usr/share/nano/debian.nanorc
 ## Patch files
 include /usr/share/nano/patch.nanorc
 
-## Manpages
-include /usr/share/nano/man.nanorc
-
-## Perl
-include /usr/share/nano/perl.nanorc
-
 ## Python
 include /usr/share/nano/python.nanorc
-
-## Objective-C
-include /usr/share/nano/objc.nanorc
 
 ## AWK
 include /usr/share/nano/awk.nanorc
@@ -40,8 +31,5 @@ include /usr/share/nano/awk.nanorc
 ## Bourne shell scripts
 include /usr/share/nano/sh.nanorc
 
-## XML-type files
-include /usr/share/nano/xml.nanorc
-
 ## GoLang
-include /home/moeen/.config/nano/go.nanorc
+include /home/moeenn/.config/nano/go.nanorc

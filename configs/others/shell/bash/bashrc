@@ -20,7 +20,6 @@ BMAG="\[\033[45m\]" # background magenta
 BCYN="\[\033[46m\]" # background cyan
 BWHT="\[\033[47m\]" # background white
 
-
 PS1="
 $INV \D{%H:%M} \W $ $RS "
 
@@ -32,10 +31,13 @@ shopt -s dotglob
 shopt -s expand_aliases
 shopt -s nocaseglob
 
-
 # Define the Path
 PATH=$HOME/.bin:$PATH
 
-# link other files
-. $HOME/.aliases
-. $HOME/.bash_functions
+# View the colors
+term_colors()
+{
+    echo "  ";for i in {0..7}; do echo -en " \e[0;3${i}m████\e[0m"; done;
+    echo "  ";for i in {0..7}; do echo -en " \e[1;3${i}m████\e[0m"; done; echo;
+    echo "  "
+}

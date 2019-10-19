@@ -1,5 +1,8 @@
 LC_CTYPE=en_US.UTF-8
 TZ=Asia/Karachi
-PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/snap/bin
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 PATH=$PATH:$HOME/.bin:$HOME/.local/bin:$GOPATH/bin
-export LC_CTYPE TZ PATH EDITOR
+GOPATH=$HOME/.go
+CGO_ENABLED=1
+XDG_DATA_HOME=$HOME/.config
+export LC_CTYPE TZ PATH GOPATH CGO_ENABLED XDG_DATA_HOME
