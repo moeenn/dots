@@ -21,7 +21,7 @@ BCYN="\[\033[46m\]" # background cyan
 BWHT="\[\033[47m\]" # background white
 
 PS1="
-$INV \D{%H:%M} \W $ $RS "
+$INV \W $ $RS "
 
 # Bash settings
 shopt -s autocd
@@ -31,12 +31,12 @@ shopt -s dotglob
 shopt -s expand_aliases
 shopt -s nocaseglob
 
-# Define the Path
-PATH=$HOME/.bin:$PATH
+# set env variables
+. ${HOME}/.profile
+. ${HOME}/.aliases
 
 # View the colors
-term_colors()
-{
+function colors() {
     echo "  ";for i in {0..7}; do echo -en " \e[0;3${i}m████\e[0m"; done;
     echo "  ";for i in {0..7}; do echo -en " \e[1;3${i}m████\e[0m"; done; echo;
     echo "  "

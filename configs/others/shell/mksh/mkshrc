@@ -1,7 +1,8 @@
 # colors
-export HC=$'\e[1m'
-export NC=$'\e[0m'
 export NL=$'\n'
+export NC=$'\e[0m'
+export HC=$'\e[1m'
+export INV=$'\e[7m'
 export red=$'\e[0;31m'
 export RED=$'\e[1;31m'
 export green=$'\e[0;32m'
@@ -18,8 +19,7 @@ export white=$'\e[0;37m'
 export WHITE=$'\e[1;37m'
 
 [ -o login ] && . $HOME/.profile
-. $HOME/.sh/aliases
-
+# . $HOME/.sh/aliases
 
 case $TERM in
     *xterm*|rxvt*)
@@ -72,5 +72,5 @@ function dirname() {
 }
 
 # prompt
-PS1='$NL$HC[!!]. $WHITE$(dirname)  $NC'
-
+#PS1='$NL$HC[!!]. $WHITE$(dirname)  $NC'
+PS1='$NL$INV$WHITE $(dirname) $ $NC '
