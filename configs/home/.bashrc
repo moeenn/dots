@@ -21,7 +21,12 @@ BCYN="\[\033[46m\]" # background cyan
 BWHT="\[\033[47m\]" # background white
 
 PS1="
-$FGRN\u@\H$RS:$FBLE\W $RS$ "
+$FGRN\u$FBLE@$FGRN\H$RS:$FBLE\W $RS\$ "
+
+# auto launch tmux
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
+fi
 
 # Bash settings
 shopt -s autocd
