@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 os='fedora'
 
 case $os in
@@ -17,6 +18,14 @@ case $os in
     ;;
 esac
     
+=======
+# Aliases
+alias update='sudo apt-get update -y'
+alias search='apt-cache search'
+alias install='sudo apt-get install -y'
+alias remove='sudo apt-get remove'
+alias upgrade='sudo apt-get upgrade'
+>>>>>>> 884aea7201cb9be52e9ba33080879c751d8e6de7
 
 # Operations
 alias ..='cd ..'
@@ -38,6 +47,7 @@ alias get='axel -n 4'
 alias extract='dtrx -v'
 alias m='mpv'
 alias net='bwm-ng -t 1000'
+alias feh='feh --fullscreen'
 
 # Super User Tasks
 alias poweroff='sudo poweroff'
@@ -62,4 +72,7 @@ alias clone='git clone'
 # programming
 alias py='python3'
 #alias test='pytest -v'
+<<<<<<< HEAD
 #alias test_all='py.test -v'
+=======
+>>>>>>> 884aea7201cb9be52e9ba33080879c751d8e6de7
