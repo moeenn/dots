@@ -1,9 +1,22 @@
-# Aliases
-alias update='sudo apt-get update'
-alias search='apt-cache search'
-alias install='sudo apt-get install'
-alias remove='sudo apt-get remove'
-alias upgrade='sudo apt-get upgrade'
+os='fedora'
+
+case $os in
+    debian) 
+        alias update='sudo apt-get update'
+        alias search='apt-cache search'
+        alias install='sudo apt-get install'
+        alias remove='sudo apt-get remove'
+        alias upgrade='sudo apt-get upgrade'            
+    ;;
+    
+    fedora) 
+        alias update='sudo dnf update'
+        alias search='dnf search'
+        alias install='sudo dnf install -y'
+        alias remove='sudo dnf remove'
+    ;;
+esac
+    
 
 # Operations
 alias ..='cd ..'
@@ -48,5 +61,5 @@ alias clone='git clone'
 
 # programming
 alias py='python3'
-alias test='pytest -v'
-alias test_all='py.test -v'
+#alias test='pytest -v'
+#alias test_all='py.test -v'
