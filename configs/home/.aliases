@@ -1,7 +1,7 @@
 # Aliases
-alias update='sudo apt-get update'
+alias update='sudo apt-get update -y'
 alias search='apt-cache search'
-alias install='sudo apt-get install'
+alias install='sudo apt-get install -y'
 alias remove='sudo apt-get remove'
 alias upgrade='sudo apt-get upgrade'
 
@@ -25,6 +25,7 @@ alias get='axel -n 4'
 alias extract='dtrx -v'
 alias m='mpv'
 alias net='bwm-ng -t 1000'
+alias feh='feh --fullscreen'
 
 # Super User Tasks
 alias poweroff='sudo poweroff'
@@ -48,5 +49,4 @@ alias clone='git clone'
 
 # programming
 alias py='python3'
-alias test='pytest -v'
-alias test_all='py.test -v'
+#alias test='pytest -v'
