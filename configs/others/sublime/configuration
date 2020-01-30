@@ -1,7 +1,7 @@
 {
 	"always_show_minimap_viewport": true,
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/10% Too Dull for My Tastes Color Scheme/scotchy.tmTheme",
+	"color_scheme": "Packages/gruvbox/gruvbox (Dark) (Hard).sublime-color-scheme",
 	"font_face": "Cascadia Code",
 	"font_size": 11,
 	"format_on_save": true,
@@ -18,6 +18,7 @@
 		80
 	],
 	"scroll_past_end": true,
-	"theme": "Delta.sublime-theme",
+	"theme": "gruvbox.sublime-theme",
 	"trim_trailing_white_space_on_save": true
 }
+

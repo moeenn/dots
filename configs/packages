@@ -1,5 +1,6 @@
 tlp
 tlp-rdw
+dtrx
 htop
 p7zip
 p7zip-full
@@ -23,7 +24,9 @@ gcc
 g++
 gimp
 gparted
-docker
 mpv
+acpi
 lm-sensors
 python3-pip
+synaptic
+cppcheck
