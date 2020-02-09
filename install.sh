@@ -24,4 +24,4 @@ sudo cp -vr ./dots-master/configs/others/Xorg/xorg.conf.d /etc/X11/;
 
 # diplay command for installation of common packages
 echo "\033[32mCommon applications and utilities can be installed using following command\033[0m";
-echo "sudo apt-get install \$\(cat ./dots-master/configs/packages)"
+echo "sudo apt-get install \$(cat ./dots-master/configs/packages)"
