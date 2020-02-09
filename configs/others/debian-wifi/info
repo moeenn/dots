@@ -1,17 +1,16 @@
-Thinkpad x220 required non-free firmware for the built-in wifi adapter. Couple 
+Thinkpad x220 required non-free firmware for the built-in wifi adapter. Couple
 of steps are required for installing these drivers
 
 1. Enable the non-free and contrib repos
 		a. Open the repo file: /etc/apt/source.list
 		b. At the end of each line add the following 'contrib non-free' e.g. the
 		   first line becomes:
-		   
+
 		   deb http://deb.debian.org/debian buster main contrib non-free
-	
-		   
+
+
 2. Update the repositories and install the following package
-	
    $ sudo apt-get install firmware-iwlwifi
-   
-   
+
+
 3. Reboot and use the wifi normally

@@ -1,7 +1,6 @@
 #!/bin/sh
 
 xrdb ~/.Xresources &					# set the font and colors
-#wall &									# wallpaper
 #compton &								# compositing
 xrandr --output DP1 --rotate left --left-of HDMI3 &	# dispay settings
 redshift -o 3500k &						# color temperature

@@ -1,23 +1,24 @@
 os='debian'
 
 case $os in
-    debian) 
+    debian)
         alias update='sudo apt-get update'
         alias search='apt-cache search'
         alias install='sudo apt-get install -y'
         alias remove='sudo apt-get remove'
-        alias upgrade='sudo apt-get upgrade -y'            
+        alias upgrade='sudo apt-get upgrade -y'
 		alias autoremove='sudo apt-get autoremove'
+		#alias purge-config='sudo dpkg --purge $(dpkg --get-selections | grep deinstall | cut -f1 )'
     ;;
-    
-    fedora) 
+
+    fedora)
         alias update='sudo dnf update'
         alias search='dnf search'
         alias install='sudo dnf install -y'
         alias remove='sudo dnf remove'
     ;;
 esac
-    
+
 
 # Operations
 alias ..='cd ..'
@@ -26,8 +27,8 @@ alias cp='cp -vrf'
 alias mv='mv -ivf'
 alias rm='rm -iv'
 alias link='ln -s -r'
-alias ls='ls --color=always'
-alias lsa='ls -l | column -t'
+alias ls='ls -p --color=always'
+alias lsa='ls -lp | column -t'
 alias :q='exit'
 
 # Programs
