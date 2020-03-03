@@ -15,7 +15,7 @@ rm -vf master.zip;
 # copy the conf_dir content
 cp -vrf ./dots-master/configs/config $HOME/.config;
 
-# copy home holder dots
+# copy home folder dots
 cp -vrf ./dots-master/configs/home/.* $HOME/;
 
 # copy xorg configs

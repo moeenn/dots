@@ -21,7 +21,7 @@ BCYN="\[\033[46m\]" # background cyan
 BWHT="\[\033[47m\]" # background white
 
 PS1="
-$FGRN\u$FBLE@$FGRN\H$RS:$FBLE\W $RS\$ "
+$HC$FGRN[!]. $FBLE\W $RS "
 
 # auto launch tmux
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then

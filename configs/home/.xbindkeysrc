@@ -1,0 +1,20 @@
+"thunar"
+	Mod4 + e
+
+"dmenu_startmenu"
+	F1
+
+"i3lock -c 000000 -e -f"
+	Mod4 + l
+
+"dmenu_run -h 35 -p 'Run ' -l 6 -w 500 -x 418"
+	Mod1 + p
+
+"amixer sset Master 5db+"
+	XF86AudioRaiseVolume
+
+"amixer sset Master 5db-"
+	XF86AudioLowerVolume
+
+"amixer sset Master toggle"
+	XF86AudioMute
