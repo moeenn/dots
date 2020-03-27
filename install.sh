@@ -12,16 +12,19 @@ unzip master.zip;
 echo "\033[33mRemoving Dots Archive\033[0m";
 rm -vf master.zip;
 
-# copy the conf_dir content
-cp -vrf ./dots-master/configs/config $HOME/.config;
+# place the core dots folder
+ln -s -r ./dots-master/ $HOME/.dots/;
 
-# copy home folder dots
-cp -vrf ./dots-master/configs/home/.* $HOME/;
+# link the conf_dir content
+ln -s -r $HOME/.dots/configs/config $HOME/.config;
+
+# link home folder dots
+ln -s -r $HOME/.dots/configs/home/.* $HOME/;
 
 # copy xorg configs
 echo "\033[32mXorg Tear-free Configs need to be installed System-wide. Please provide authentication\033[0m";
-sudo cp -vr ./dots-master/configs/others/Xorg/xorg.conf.d /etc/X11/;
+sudo ln -s -r $HOME/.dots/configs/others/Xorg/xorg.conf.d /etc/X11/;
 
 # diplay command for installation of common packages
 echo "\033[32mCommon applications and utilities can be installed using following command\033[0m";
-echo "sudo apt-get install \$(cat ./dots-master/configs/packages)"
+echo "sudo apt-get install \$(cat $HOME/.dots/configs/packages)"

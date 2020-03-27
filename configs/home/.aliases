@@ -28,7 +28,7 @@ alias mv='mv -ivf'
 alias rm='rm -iv'
 alias link='ln -s -r'
 alias ls='ls -p --color=always'
-alias lsa='ls -lp | column -t'
+alias lsa='ls -lpa | column -t'
 alias :q='exit'
 
 # Programs
@@ -54,6 +54,9 @@ alias watch='watch -ct -n 1 -d'
 
 # Git
 alias push='git push origin master'
+
+# tmux
+alias att='tmux attach -t default'
 
 # Before you can use this command you need to do: git remote add upstream git+ssh://git@github.com/moeenn/repo
 alias upstream='git remote add upstream'
