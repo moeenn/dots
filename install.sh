@@ -13,7 +13,7 @@ echo "\033[33mRemoving Dots Archive\033[0m";
 rm -vf master.zip;
 
 # place the core dots folder
-ln -srf ./dots-master/ $HOME/.dots/;
+mv -vrf ./dots-master/ $HOME/.dots/;
 
 # link the conf_dir content
 ln -srf $HOME/.dots/configs/config $HOME/.config;
