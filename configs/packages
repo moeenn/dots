@@ -29,4 +29,4 @@ acpi
 lm-sensors
 python3-pip
 synaptic
-cppcheck
+pavucontrol
