@@ -24,9 +24,9 @@ PS1="
 $HC$FGRN[!]. $FBLE\W $RS "
 
 # auto launch tmux
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    tmux attach -t default || tmux new -s default
-fi
+# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+#     tmux attach -t default || tmux new -s default
+# fi
 
 # Bash settings
 shopt -s autocd
@@ -36,7 +36,7 @@ shopt -s dotglob
 shopt -s expand_aliases
 shopt -s nocaseglob
 
-# set env variables
+# set env variables and aliases
 . ${HOME}/.profile
 . ${HOME}/.aliases
 

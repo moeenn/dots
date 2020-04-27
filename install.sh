@@ -16,7 +16,7 @@ rm -vf master.zip;
 mv -vrf ./dots-master/ $HOME/.dots/;
 
 # link the conf_dir content
-ln -srf $HOME/.dots/configs/config $HOME/.config;
+ln -srf $HOME/.dots/configs/config/* $HOME/.config;
 
 # link home folder dots
 ln -srf $HOME/.dots/configs/home/.* $HOME/;

@@ -5,13 +5,10 @@ htop
 p7zip
 p7zip-full
 profile-sync-daemon
-rxvt-unicode
 chromium-browser
 git
 tmux
-viewnior
 preload
-blueman
 adb
 axel
 breeze-cursor-theme
@@ -24,9 +21,7 @@ gcc
 g++
 gimp
 gparted
-mpv
 acpi
 lm-sensors
 python3-pip
 synaptic
-pavucontrol
