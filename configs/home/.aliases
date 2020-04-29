@@ -23,8 +23,8 @@ esac
 # Operations
 alias ..='cd ..'
 alias ...='.. && ..'
-alias cp='cp -vrf'
-alias mv='mv -ivf'
+alias cp='cp -v'
+alias mv='mv -iv'
 alias rsync='rsync -avP'
 alias rm='rm -iv'
 alias link='ln -s -r'
