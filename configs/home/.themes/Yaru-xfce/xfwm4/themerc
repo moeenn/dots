@@ -1,0 +1,25 @@
+# Name: Communitheme / Yaru theme for XFCE
+# Author: volex <support@pingup.ru>
+# License: GPL-3.0+
+# Date: July 2018
+
+button_offset=8
+maximized_offset=8
+button_spacing=12
+full_width_title=true
+title_horizontal_offset=3
+
+show_app_icon=true
+
+active_text_color=#f7f7f7
+title_shadow_active=false
+
+inactive_text_color=#969696
+title_shadow_inactive=false
+
+shadow_delta_height=2
+shadow_delta_width=0
+shadow_delta_x=0
+shadow_delta_y=-5
+shadow_opacity=80 
+
