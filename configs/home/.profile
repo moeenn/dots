@@ -1,5 +1,5 @@
 LC_CTYPE=en_US.UTF-8
-GOPATH=${HOME}/.go
+GOPATH=${HOME}/Documents/current/golang
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 PATH=${PATH}:${HOME}/.bin:${HOME}/.local/bin:${GOPATH}/bin:${HOME}/.cargo/bin:/snap/bin
 XDG_DATA_HOME=${HOME}/.config
