@@ -15,7 +15,7 @@
    height="100"
    viewBox="0 0 100 100"
    sodipodi:docname="menu-light.svg"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
   <metadata
      id="metadata3773">
     <rdf:RDF>
@@ -24,7 +24,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -40,13 +40,13 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1366"
-     inkscape:window-height="716"
+     inkscape:window-height="701"
      id="namedview3769"
      showgrid="false"
      showguides="true"
-     inkscape:zoom="2.225"
-     inkscape:cx="-35.393258"
-     inkscape:cy="51.744301"
+     inkscape:zoom="7.469262"
+     inkscape:cx="56.862445"
+     inkscape:cy="49.94382"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -69,7 +69,7 @@
            r="7.5939651" />
         <circle
            r="7.5939651"
-           style="fill:#1a1a1a;stroke-width:7.37567472"
+           style="fill:#2e3436;stroke-width:7.37567472;fill-opacity:1"
            id="circle3873"
            cx="41.829575"
            cy="-51.692806" />
@@ -77,17 +77,17 @@
            cy="-51.692806"
            cx="63.829575"
            id="circle3884"
-           style="fill:#1a1a1a;stroke-width:7.37567472"
+           style="fill:#2e3436;stroke-width:7.37567472;fill-opacity:1"
            r="7.5939651" />
         <circle
            cy="-29.692806"
            cx="41.829575"
            id="circle3886"
-           style="fill:#1a1a1a;stroke-width:7.37567472"
+           style="fill:#2e3436;stroke-width:7.37567472;fill-opacity:1"
            r="7.5939651" />
         <circle
            r="7.5939651"
-           style="fill:#1a1a1a;stroke-width:7.37567472"
+           style="fill:#2e3436;stroke-width:7.37567472;fill-opacity:1"
            id="circle3888"
            cx="63.829575"
            cy="-29.692806" />
