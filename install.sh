@@ -2,18 +2,10 @@
 
 # pull the latest dots
 echo "\033[32mGetting the latest configuration dot files ...\033[0m";
-wget "https://github.com/moeenn/dots/archive/master.zip";
-
-# unzip the fetched archive
-echo "\033[32mUnzipping Dots Archive\033[0m";
-unzip master.zip;
-
-# remove downloaded dots archive
-echo "\033[33mRemoving Dots Archive\033[0m";
-rm -vf master.zip;
+git clone https://github.com/moeenn/dots
 
 # place the core dots folder
-mv -vrf ./dots-master/ $HOME/.dots/;
+mv -vrf ./dots/ $HOME/.dots/;
 
 # link the conf_dir content
 ln -srf $HOME/.dots/configs/config/* $HOME/.config;
