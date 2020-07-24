@@ -8,7 +8,7 @@ case $os in
         alias remove='sudo apt-get remove'
         alias upgrade='sudo apt-get upgrade -y'
 		alias autoremove='sudo apt-get autoremove'
-		alias purge-config='sudo dpkg --purge $(dpkg --get-selections | grep deinstall | cut -f1 )'
+		alias purge_config='sudo dpkg --purge $(dpkg --get-selections | grep deinstall | cut -f1 )'
     ;;
 
     fedora)
