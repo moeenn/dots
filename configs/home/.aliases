@@ -62,11 +62,17 @@ alias push='git push origin master'
 alias att='tmux attach -t default'
 
 # Before you can use this command you need to do: git remote add upstream git+ssh://git@github.com/moeenn/repo
-alias upstream='git remote add upstream'
-alias pull='git pull origin master --allow-unrelated-histories'
+alias gupstream='git remote add upstream'
+alias gpull='git pull origin master --allow-unrelated-histories'
 alias :s='git status'
-alias commit='git commit -m "$(date +"%B %d, %Y - %r")"'
-alias clone='git clone'
+alias gcommit='git commit -m "$(date +"%B %d, %Y - %r")"'
+alias gclone='git clone'
+
+# drop unindexed local changes
+alias gcheckout='git checkout .'
+
+# drop indexed local changes
+alias greset='git reset'
 
 # programming
 alias py='python3'
