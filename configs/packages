@@ -24,3 +24,9 @@ acpi
 lm-sensors
 python3-pip
 synaptic
+npm
+docker 
+docker-compose
+redshift
+gufw
+papirus-icon-theme
