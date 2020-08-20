@@ -68,10 +68,10 @@ alias :s='git status'
 alias gcommit='git commit -m "$(date +"%B %d, %Y - %r")"'
 alias gclone='git clone'
 
-# drop unindexed local changes
+# drop un-commited local changes
 alias gcheckout='git checkout .'
 
-# drop indexed local changes
+# drop commited local changes
 alias greset='git reset'
 
 # programming
