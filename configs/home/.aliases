@@ -7,8 +7,9 @@ case $os in
         alias install='sudo apt-get install -y'
         alias remove='sudo apt-get remove'
         alias upgrade='sudo apt-get upgrade -y'
-		alias autoremove='sudo apt-get autoremove'
-		alias purge_config='sudo dpkg --purge $(dpkg --get-selections | grep deinstall | cut -f1 )'
+				alias autoremove='sudo apt-get autoremove'
+				alias purge_config='sudo dpkg --purge $(dpkg --get-selections | grep deinstall | cut -f1 )'
+				alias clean='sudo apt-get autoclean; sudo apt-get clean'
     ;;
 
     fedora)
@@ -62,17 +63,18 @@ alias push='git push origin master'
 alias att='tmux attach -t default'
 
 # Before you can use this command you need to do: git remote add upstream git+ssh://git@github.com/moeenn/repo
-alias gupstream='git remote add upstream'
-alias gpull='git pull origin master --allow-unrelated-histories'
+alias upstream='git remote add upstream'
+alias pull='git pull origin master --allow-unrelated-histories'
 alias :s='git status'
-alias gcommit='git commit -m "$(date +"%B %d, %Y - %r")"'
-alias gclone='git clone'
+alias commit='git commit -m "$(date +"%B %d, %Y - %r")"'
+alias clone='git clone'
 
 # drop un-commited local changes
-alias gcheckout='git checkout .'
+alias checkout='git checkout .'
 
 # drop commited local changes
-alias greset='git reset'
+alias reset='git reset'
 
 # programming
 alias py='python3'
+alias dc='sudo docker-compose'
