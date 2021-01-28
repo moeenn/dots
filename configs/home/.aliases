@@ -7,9 +7,9 @@ case $os in
         alias install='sudo apt-get install -y'
         alias remove='sudo apt-get remove'
         alias upgrade='sudo apt-get upgrade -y'
-				alias autoremove='sudo apt-get autoremove'
-				alias purge_config='sudo dpkg --purge $(dpkg --get-selections | grep deinstall | cut -f1 )'
-				alias clean='sudo apt-get autoclean; sudo apt-get clean'
+		alias autoremove='sudo apt-get autoremove'
+		alias purge_config='sudo dpkg --purge $(dpkg --get-selections | grep deinstall | cut -f1 )'
+		alias clean='sudo apt-get autoclean; sudo apt-get clean'
     ;;
 
     fedora)
@@ -57,7 +57,7 @@ alias full_access='sudo chmod -R a+rw ./'
 alias watch='watch -ct -n 1 -d'
 
 # Git
-alias push='git push origin master'
+alias push='git push origin'
 
 # tmux
 alias att='tmux attach -t default'
