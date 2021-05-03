@@ -39,6 +39,7 @@ shopt -s nocaseglob
 # set env variables and aliases
 . ${HOME}/.profile
 . ${HOME}/.aliases
+. ${HOME}/.bin/wp-completion.bash
 
 # View the colors
 function colors() {

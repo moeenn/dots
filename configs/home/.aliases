@@ -45,12 +45,15 @@ alias m='mpv'
 alias net='bwm-ng -t 1000'
 alias dtrx='dtrx -v'
 alias lsblk='lsblk -e 7'
+alias find='find -iname'
+alias c='codium'
 
 # Super User Tasks
 alias poweroff='sudo poweroff'
 alias reboot='sudo reboot'
 alias kill='killall -v --ignore-case'
 alias full_access='sudo chmod -R a+rw ./'
+alias wp_full_access='sudo chown -R www-data:www-data ./'
 
 # n = delay second
 # d = difference
@@ -60,13 +63,14 @@ alias watch='watch -ct -n 1 -d'
 alias push='git push origin'
 
 # tmux
+alias t='tmux'
 alias att='tmux attach -t default'
 
 # Before you can use this command you need to do: git remote add upstream git+ssh://git@github.com/moeenn/repo
 alias upstream='git remote add upstream'
-alias pull='git pull origin master --allow-unrelated-histories'
+alias pull='git pull origin main --allow-unrelated-histories'
 alias :s='git status'
-alias commit='git commit -m "$(date +"%B %d, %Y - %r")"'
+alias commit='git commit -m'
 alias clone='git clone'
 
 # drop un-commited local changes
