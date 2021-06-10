@@ -20,8 +20,7 @@ BMAG="\[\033[45m\]" # background magenta
 BCYN="\[\033[46m\]" # background cyan
 BWHT="\[\033[47m\]" # background white
 
-PS1="
-$HC$FGRN[!]. $FBLE\W $RS "
+PS1="$HC\n\n$FRED\u$FWHT in $FGRN\w \n$FWHT$ $RS "
 
 # auto launch tmux
 # if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
@@ -39,7 +38,6 @@ shopt -s nocaseglob
 # set env variables and aliases
 . ${HOME}/.profile
 . ${HOME}/.aliases
-. ${HOME}/.bin/wp-completion.bash
 
 # View the colors
 function colors() {
