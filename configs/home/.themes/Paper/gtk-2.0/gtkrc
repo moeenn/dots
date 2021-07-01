@@ -1,0 +1,51 @@
+# Copyright 2016 Sam Hewitt.
+#
+# This file is part of the Paper GTK theme.
+#
+# The Paper GTK theme is free software: you can redistribute it
+# and/or modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# The Paper GTK theme is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+# Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with the Paper GTK theme. If not, see http://www.gnu.org/licenses/.
+
+# ==============================================================================
+# PAPER GTK2 THEME
+# ==============================================================================
+
+# Text/base colors
+gtk-color-scheme = "text_color:#333333\nbase_color:white"
+# Foreground/background colors
+gtk-color-scheme = "fg_color:#4d4d4d\nbg_color:#ececec"
+# Selection colors
+gtk-color-scheme = "selected_fg_color:#ffffff\nselected_bg_color:#607d8b"
+# Tooltip colors
+gtk-color-scheme = "tooltip_fg_color:#4d4d4d\ntooltip_bg_color:#ffffff"
+# Window colors
+gtk-color-scheme = "wm_color:#546e7a\nunfocused_wm_color:#5A6367"
+# Panel colors
+gtk-color-scheme = "panel_bg_color:#263238\npanel_fg_color:#ffffff"
+# Dark Theme - Text/base colors
+gtk-color-scheme = "dark_text_color:#ffffff\ndark_base_color:#455a64"
+# Dark Theme - Foreground/background colors
+gtk-color-scheme = "dark_fg_color:#cfd8dc\ndark_bg_color:#37474f"
+
+gtk-auto-mnemonics = 1
+gtk-primary-button-warps-slider = 1
+
+include "main.rc"
+# include "dark.rc"
+
+# App stylings
+include "apps/chrome.rc"
+include "apps/gimp.rc"
+include "apps/libreoffice.rc"
+include "apps/terminal.rc"
+include "apps/thunar.rc"
+# include "apps/xfce.rc"

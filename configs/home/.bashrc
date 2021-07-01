@@ -23,9 +23,9 @@ BWHT="\[\033[47m\]" # background white
 PS1="$HC\n\n$FRED\u$FWHT in $FGRN\w \n$FWHT$ $RS "
 
 # auto launch tmux
-# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-#     tmux attach -t default || tmux new -s default
-# fi
+#if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+#    tmux attach -t default || tmux new -s default
+#fi
 
 # Bash settings
 shopt -s autocd
