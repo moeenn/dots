@@ -58,21 +58,17 @@ alias full_access='sudo chmod -R a+rw ./'
 # d = difference
 alias watch='watch -ct -n 1 -d'
 
-# Git
-alias push='git push origin'
-
 # tmux
 alias t='tmux'
 alias att='tmux attach -t default'
 
 # Before you can use this command you need to do: git remote add upstream git+ssh://git@github.com/moeenn/repo
-alias g='git'
-alias ga='git add'
 alias upstream='git remote add upstream'
 alias pull='git pull origin main --allow-unrelated-histories'
+alias push='git push origin'
 alias :s='git status'
 alias commit='git commit -m'
-alias clone='git clone'
+alias gap='~/.bin/gap'
 
 # drop un-commited local changes
 alias checkout='git checkout .'

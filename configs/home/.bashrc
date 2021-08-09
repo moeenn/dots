@@ -20,7 +20,7 @@ BMAG="\[\033[45m\]" # background magenta
 BCYN="\[\033[46m\]" # background cyan
 BWHT="\[\033[47m\]" # background white
 
-PS1="$HC\n\n$FRED\u$FWHT in $FGRN\w \n$FWHT$ $RS "
+PS1="\n\n$FBLE\u$FWHT in $FGRN\w \n$FWHT$ $RS "
 
 # auto launch tmux
 #if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
