@@ -68,7 +68,6 @@ alias pull='git pull origin main --allow-unrelated-histories'
 alias push='git push origin'
 alias :s='git status'
 alias commit='git commit -m'
-alias gap='~/.bin/gap'
 
 # drop un-commited local changes
 alias checkout='git checkout .'
@@ -79,3 +78,6 @@ alias reset='git reset'
 # programming
 alias py='python3'
 alias dc='sudo docker-compose'
+
+# automation scripts
+alias gacp='node ~/.bin/gacp.js'
