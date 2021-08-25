@@ -1,5 +1,5 @@
 const fs = require("fs")
-const {exec} = require("child_process")
+const {execute, parseArgs} = require("./common/utils.js")
 const log = console.log
 
 async function main(args) {
@@ -31,31 +31,6 @@ async function main(args) {
 }
 
 main(process.argv)
-
-function parseArgs(args) {
-	const result = {}
-
-	for (const arg of args) {
-		const isFlag = arg.startsWith("-")
-
-		if (isFlag) {
-			const flagIndex = args.indexOf(arg)
-			result[arg] = args[flagIndex + 1]
-		}
-	}
-
-	return result
-}
-
-function execute(command) {
-	return new Promise((resolve, reject) => {
-		exec(command, (err, stdOut, stdErr) => {
-			if (err) reject(err)
-			if (stdErr) reject(stdErr)
-			resolve(stdOut)
-		})
-	})
-}
 
 function printHelp() {
 	log("Usage:\t[script] -c [Commit Message] -b [Git Branch] -h [Print Help]")
