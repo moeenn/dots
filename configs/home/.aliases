@@ -47,6 +47,7 @@ alias dtrx='dtrx -v'
 alias lsblk='lsblk -e 7'
 alias find='find -iname'
 alias c='codium'
+alias v='vim'
 
 # Super User Tasks
 alias poweroff='sudo poweroff'

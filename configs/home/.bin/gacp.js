@@ -6,9 +6,13 @@ async function main(args) {
 	const parsedArgs = parseArgs(args)
 
 	/** print help message when appropriate */
-	if (parsedArgs["-h"] || !parsedArgs["-c"] || !parsedArgs["-b"]) {
+	if (parsedArgs["-h"] || !parsedArgs["-c"]) {
 		printHelp()
 		return
+	}
+
+	if (!parsedArgs["-b"]) {
+		parsedArgs["-b"] = "main"
 	}
 
 	const isRepo = await isGitRepo()
@@ -21,13 +25,16 @@ async function main(args) {
 		"git add .",
 		`git commit -m "${ parsedArgs['-c']}"`,
 		`git push origin ${ parsedArgs['-b']}`,
+		'git status',
 	]
 
+	/** 
+	 *  since output of all commands is already shown, we can
+   *  ignore any exceptions thrown 
+	 */
 	try {
 		await runCommands(commands, execute)
-	} catch(error) {
-		log(error)
-	}
+	} catch (_) {}
 }
 
 main(process.argv)
@@ -44,7 +51,7 @@ async function isGitRepo() {
 }
 
 async function runCommands(commands, executor) {
-	const sepa = "\n____________________________________________________\n"
+	const sepa = "\n____________________________________________________"
 	for (const command of commands) {
 		log("Command: ", command, sepa)
 		const result = await executor(command).catch(error => {

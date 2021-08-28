@@ -19,6 +19,6 @@
 	],
 	"scroll_past_end": true,
 	"tab_size": 2,
-	"theme": "GitHub-Theme.sublime-theme",
-	"trim_trailing_white_space_on_save": true
+	"theme": "GitHub Dark.sublime-theme",
+	"trim_trailing_white_space_on_save": true,
 }
