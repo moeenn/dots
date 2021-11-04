@@ -1,14 +1,14 @@
 {
 	"always_show_minimap_viewport": true,
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/GitHub Theme/schemes/GitHub Dark.sublime-color-scheme",
+	"color_scheme": "Packages/GitHub Theme/schemes/GitHub Dimmed.sublime-color-scheme",
 	"font_face": "Fira Code Medium",
-	"font_size": 10,
+	"font_size": 11,
 	"format_on_save": true,
 	"highlight_line": true,
 	"ignored_packages":
 	[
-		"Vintage"
+		"Vintage",
 	],
 	"line_padding_bottom": 4,
 	"line_padding_top": 4,
@@ -19,6 +19,6 @@
 	],
 	"scroll_past_end": true,
 	"tab_size": 2,
-	"theme": "GitHub Dark.sublime-theme",
+	"theme": "GitHub Dimmed.sublime-theme",
 	"trim_trailing_white_space_on_save": true,
 }

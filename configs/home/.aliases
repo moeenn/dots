@@ -1,29 +1,27 @@
 os='debian'
 
 case $os in
-    debian)
-        alias update='sudo apt-get update'
-        alias search='apt-cache search'
-        alias install='sudo apt-get install -y'
-        alias remove='sudo apt-get remove'
-        alias upgrade='sudo apt-get upgrade -y'
-		alias autoremove='sudo apt-get autoremove'
+	debian)
+		alias update='sudo apt-get update'
+		alias search='apt-cache search'
+		alias install='sudo apt-get install -y'
+		alias remove='sudo apt-get remove'
+		alias upgrade='sudo apt-get upgrade -y'
 		alias purge_config='sudo dpkg --purge $(dpkg --get-selections | grep deinstall | cut -f1 )'
+		alias autoremove='sudo apt-get autoremove && purge_config'
 		alias clean='sudo apt-get autoclean; sudo apt-get clean'
-    ;;
+	;;
 
-    fedora)
-        alias update='sudo dnf update'
-        alias search='dnf search'
-        alias install='sudo dnf install -y'
-        alias remove='sudo dnf remove'
-    ;;
+	fedora)
+		alias update='sudo dnf update'
+		alias search='dnf search'
+		alias install='sudo dnf install -y'
+		alias remove='sudo dnf remove'
+	;;
 esac
-
 
 # Operations
 alias ..='cd ..'
-alias ...='.. && ..'
 alias cp='cp -v'
 alias mv='mv -iv'
 alias rsync='rsync -avP'
@@ -35,19 +33,18 @@ alias :q='exit'
 
 # Programs
 alias load='htop -u moeenn'
-alias bin='cd ~/.bin/'
 alias df='dfc -f -s'
 alias time='tty-clock -cb -C 6'
 alias uptime='uptime -p'
-alias get='axel -n 4'
+alias axel='axel -n 4'
 alias extract='dtrx -v'
 alias m='mpv'
 alias net='bwm-ng -t 1000'
-alias dtrx='dtrx -v'
 alias lsblk='lsblk -e 7'
 alias find='find -iname'
 alias c='codium'
 alias v='vim'
+alias patch='patch -p1 < '
 
 # Super User Tasks
 alias poweroff='sudo poweroff'
@@ -63,22 +60,15 @@ alias watch='watch -ct -n 1 -d'
 alias t='tmux'
 alias att='tmux attach -t default'
 
-# Before you can use this command you need to do: git remote add upstream git+ssh://git@github.com/moeenn/repo
-alias upstream='git remote add upstream'
+# git
 alias pull='git pull origin main --allow-unrelated-histories'
 alias push='git push origin'
 alias :s='git status'
 alias commit='git commit -m'
-
 # drop un-commited local changes
 alias checkout='git checkout .'
-
 # drop commited local changes
 alias reset='git reset'
 
 # programming
-alias py='python3'
 alias dc='sudo docker-compose'
-
-# automation scripts
-alias gacp='node ~/.bin/gacp.js'
