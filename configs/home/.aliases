@@ -61,10 +61,11 @@ alias t='tmux'
 alias att='tmux attach -t default'
 
 # git
+alias :s='git status'
+alias ga='git add'
+alias :c='git commit -m'
 alias pull='git pull origin main --allow-unrelated-histories'
 alias push='git push origin'
-alias :s='git status'
-alias commit='git commit -m'
 # drop un-commited local changes
 alias checkout='git checkout .'
 # drop commited local changes
