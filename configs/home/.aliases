@@ -36,7 +36,7 @@ alias load='htop -u moeenn'
 alias df='dfc -f -s'
 alias time='tty-clock -cb -C 6'
 alias uptime='uptime -p'
-alias axel='axel -n 4'
+alias axel='axel -n 3'
 alias extract='dtrx -v'
 alias m='mpv'
 alias net='bwm-ng -t 1000'
@@ -73,3 +73,4 @@ alias reset='git reset'
 
 # programming
 alias dc='sudo docker-compose'
+alias laraclear='php artisan config:clear; php artisan cache:clear; php artisan view:clear; php artisan route:clear; composer dump-autoload'

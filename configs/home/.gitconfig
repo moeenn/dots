@@ -27,5 +27,4 @@
 	helper = store
 [init]
 	defaultBranch = main
-[alias]
-	ac = git add . add -A && git commit -m
+
