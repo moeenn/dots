@@ -22,11 +22,6 @@ BWHT="\[\033[47m\]" # background white
 
 PS1="\n\n$FBLE\u$FWHT in $FGRN\w \n$FWHT$ $RS "
 
-# auto launch tmux
-#if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-#    tmux attach -t default || tmux new -s default
-#fi
-
 # Bash settings
 shopt -s autocd
 shopt -s cdspell
@@ -36,8 +31,8 @@ shopt -s expand_aliases
 shopt -s nocaseglob
 
 # set env variables and aliases
-. ${HOME}/.profile
-. ${HOME}/.aliases
+test -s ${HOME}/.profile && . ${HOME}/.profile || true
+test -s ${HOME}/.aliases && . ${HOME}/.aliases || true
 
 # View the colors
 function colors() {

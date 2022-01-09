@@ -1,3 +1,0 @@
-Profile Sync Daemon
-# apt-get install profile-sync-daemon
-# systemctl --user start psd
