@@ -30,6 +30,7 @@ alias link='ln -s -r'
 alias ls='ls -p --color=always'
 alias lsa='ls -lpa | column -t'
 alias :q='exit'
+alias :Q='exit'
 
 # Programs
 alias load='htop -u moeenn'
@@ -38,23 +39,15 @@ alias time='tty-clock -cb -C 6'
 alias uptime='uptime -p'
 alias axel='axel -n 3'
 alias extract='dtrx -v'
-alias m='mpv'
 alias net='bwm-ng -t 1000'
 alias lsblk='lsblk -e 7'
 alias find='find -iname'
 alias c='codium'
-alias v='vim'
 alias patch='patch -p1 < '
 
 # Super User Tasks
-alias poweroff='sudo poweroff'
-alias reboot='sudo reboot'
 alias kill='killall -v --ignore-case'
 alias full_access='sudo chmod -R a+rw ./'
-
-# n = delay second
-# d = difference
-alias watch='watch -ct -n 1 -d'
 
 # tmux
 alias t='tmux'
@@ -62,14 +55,12 @@ alias att='tmux attach -t default'
 
 # git
 alias :s='git status'
+alias :S='git status'
 alias ga='git add'
 alias :c='git commit -m'
-alias pull='git pull origin main --allow-unrelated-histories'
+alias :C='git commit -m'
+alias pull='git pull origin --allow-unrelated-histories'
 alias push='git push origin'
-# drop un-commited local changes
-alias checkout='git checkout .'
-# drop commited local changes
-alias reset='git reset'
 
 # programming
 alias dc='sudo docker-compose'
