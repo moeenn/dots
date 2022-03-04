@@ -63,5 +63,5 @@ alias pull='git pull origin --allow-unrelated-histories'
 alias push='git push origin'
 
 # programming
-alias dc='sudo docker-compose'
+alias dc='docker-compose'
 alias laraclear='php artisan config:clear; php artisan cache:clear; php artisan view:clear; php artisan route:clear; composer dump-autoload'

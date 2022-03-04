@@ -1,3 +1,7 @@
+# set env variables and aliases
+test -s ${HOME}/.profile && . ${HOME}/.profile || true
+test -s ${HOME}/.aliases && . ${HOME}/.aliases || true
+
 # PS Colors
 RS="\[\033[0m\]"    # reset
 HC="\[\033[1m\]"    # hicolor
@@ -21,7 +25,7 @@ FCYN="\[\033[36m\]" # foreground cyan
 # BWHT="\[\033[47m\]" # background white
 
 #PS1="\n\n$FBLE\u$FWHT in $FGRN\w \n$FWHT$ $RS "
-PS1="\n$HC$ $FCYN\W $RS  "
+PS1="\n$HC$ $FCYN\W $RS "
 
 # Bash settings
 shopt -s autocd
@@ -31,13 +35,9 @@ shopt -s dotglob
 shopt -s expand_aliases
 shopt -s nocaseglob
 
-# set env variables and aliases
-test -s ${HOME}/.profile && . ${HOME}/.profile || true
-test -s ${HOME}/.aliases && . ${HOME}/.aliases || true
-
 # View the colors
 function colors() {
-    echo "  ";for i in {0..7}; do echo -en " \e[0;3${i}m████\e[0m"; done;
-    echo "  ";for i in {0..7}; do echo -en " \e[1;3${i}m████\e[0m"; done; echo;
-    echo "  "
+  echo "  ";for i in {0..7}; do echo -en " \e[0;3${i}m████\e[0m"; done;
+  echo "  ";for i in {0..7}; do echo -en " \e[1;3${i}m████\e[0m"; done; echo;
+  echo "  "
 }
