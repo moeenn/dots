@@ -56,11 +56,11 @@ alias att='tmux attach -t default'
 # git
 alias :s='git status'
 alias :S='git status'
-alias ga='git add'
 alias :c='git commit -m'
 alias :C='git commit -m'
-alias pull='git pull origin --allow-unrelated-histories'
-alias push='git push origin'
+alias :b='git branch'
+alias :B='git branch'
+
 
 # programming
 alias dc='docker-compose'

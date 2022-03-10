@@ -1,0 +1,26 @@
+{
+    "window.menuBarVisibility": "toggle",
+    "workbench.colorTheme": "GitHub Dark Dimmed",
+    "editor.fontLigatures": true,
+    "editor.inlineHints.fontFamily": "'Cascadia Code'",
+    "editor.rulers": [
+        80
+    ],
+    "editor.fontFamily": "'Cascadia Code'",
+    "editor.tabSize": 2,
+    "editor.minimap.enabled": false,
+    "breadcrumbs.enabled": false,
+    "workbench.editor.enablePreview": false,
+    "editor.bracketPairColorization.enabled": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "editor.lineHeight": 1.75
+}
