@@ -3,7 +3,7 @@ set brackets ""')>]}"
 set matchbrackets "(<[{)>]}"
 
 ## Use 4-space tabsize
-set tabsize 4
+set tabsize 2
 
 ## Don't display the helpful shortcut lists at the bottom of the screen.
 set nohelp

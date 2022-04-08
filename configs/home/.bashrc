@@ -7,7 +7,7 @@ RS="\[\033[0m\]"    # reset
 HC="\[\033[1m\]"    # hicolor
 # UL="\[\033[4m\]"    # underline
 # INV="\[\033[7m\]"   # inverse background and foreground
-FBLK="\[\033[30m\]" # foreground black
+# FBLK="\[\033[30m\]" # foreground black
 # FRED="\[\033[31m\]" # foreground red
 # FGRN="\[\033[32m\]" # foreground green
 # FYEL="\[\033[33m\]" # foreground yellow
@@ -24,7 +24,7 @@ FCYN="\[\033[36m\]" # foreground cyan
 # BCYN="\[\033[46m\]" # background cyan
 # BWHT="\[\033[47m\]" # background white
 
-#PS1="\n\n$FBLE\u$FWHT in $FGRN\w \n$FWHT$ $RS "
+# PS1="\n\n$FBLE\u$FWHT in $FGRN\w \n$FWHT$ $RS "
 PS1="\n$HC$ $FCYN\W $RS "
 
 # Bash settings

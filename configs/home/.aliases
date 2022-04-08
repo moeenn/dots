@@ -60,7 +60,7 @@ alias :c='git commit -m'
 alias :C='git commit -m'
 alias :b='git branch'
 alias :B='git branch'
-
+alias push='git push'
 
 # programming
 alias dc='docker-compose'
