@@ -41,7 +41,6 @@ alias axel='axel -n 3'
 alias extract='dtrx -v'
 alias net='bwm-ng -t 1000'
 alias lsblk='lsblk -e 7'
-alias find='find -iname'
 alias c='codium'
 alias patch='patch -p1 < '
 
@@ -63,5 +62,7 @@ alias :B='git branch'
 alias push='git push'
 
 # programming
+alias py='python3'
 alias dc='docker-compose'
 alias laraclear='php artisan config:clear; php artisan cache:clear; php artisan view:clear; php artisan route:clear; composer dump-autoload'
+
