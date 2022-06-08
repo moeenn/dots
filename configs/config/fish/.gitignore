@@ -1,3 +1,2 @@
-./generated_completions
-./fish_history
-./fish_variables
+generated_completions/*
+fish_history
