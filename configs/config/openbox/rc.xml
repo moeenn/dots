@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Clearlooks</name>
+    <name>adwaita-min</name>
     <titleLayout>LIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -178,15 +178,20 @@
   </dock>
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
-
     <!-- open main menu -->
-    <keybind key="F1">
+<!--     <keybind key="F1">
       <action name="ShowMenu">
         <menu>root-menu</menu>
       </action>
     </keybind>
+ -->
 
-    <!-- Keybindings for desktop switching -->
+    <!--
+     *
+     *  desktop switching and moving windows between desktops
+     *
+    -->
+    <!-- switch to desktop -->
     <keybind key="A-1">
       <action name="GoToDesktop">
         <to>1</to>
@@ -219,28 +224,58 @@
         <to>2</to>
       </action>
     </keybind>
-        <keybind key="A-S-3">
+    <keybind key="A-S-3">
       <action name="SendToDesktop">
         <to>3</to>
       </action>
     </keybind>
-        <keybind key="A-S-4">
+    <keybind key="A-S-4">
       <action name="SendToDesktop">
         <to>4</to>
       </action>
     </keybind>
 
+    <!--
+     *
+     *  Window management related shortcuts
+     *
+    -->
+
+    <!-- toggle show desktop -->
     <keybind key="W-d">
       <action name="ToggleShowDesktop"/>
     </keybind>
 
-    <!-- Keybindings for windows -->
+    <!-- close a window -->
     <keybind key="A-F4">
       <action name="Close"/>
     </keybind>
 
+    <!-- toggle window maximize -->
     <keybind key="W-Up">
       <action name="ToggleMaximize"/>
+    </keybind>
+
+    <!-- snap window left -->
+    <keybind key="W-Left">
+      <action name="Unmaximize" />
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>100%</height>
+      </action>
+    </keybind>
+
+    <!-- snap window right -->
+    <keybind key="W-Right">
+      <action name="Unmaximize" />
+      <action name="MoveResizeTo">
+        <x>-0</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>100%</height>
+      </action>
     </keybind>
 
     <keybind key="A-space">
@@ -265,6 +300,16 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
+    <keybind key="F1">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Start</name>
+        </startupnotify>
+        <command>dmenu_startmenu</command>
+      </action>
+    </keybind>
+
     <keybind key="W-e">
       <action name="Execute">
         <startupnotify>
@@ -272,6 +317,15 @@
           <name>Thunar</name>
         </startupnotify>
         <command>thunar</command>
+      </action>
+    </keybind>
+    <keybind key="A-p">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Run</name>
+        </startupnotify>
+        <command>run</command>
       </action>
     </keybind>
     <keybind key="W-t">
@@ -292,7 +346,6 @@
         <command>i3lock -c 000000</command>
       </action>
     </keybind>
-
     <!-- Launch scrot when Print is pressed -->
     <keybind key="Print">
       <action name="Execute">
