@@ -1,0 +1,2 @@
+compton &
+hsetroom -solid '#505050' &

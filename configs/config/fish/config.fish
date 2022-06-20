@@ -1,7 +1,12 @@
 # suppress welcome message
 set fish_greeting
 
-# environment and path configurations
+
+# --------------------------------------------------------------------
+#
+#   Environment and path config
+#
+# --------------------------------------------------------------------
 set RUST_BACKTRACE 0
 set GOPATH {$HOME}/.go
 set GOBIN {$GOPATH}/bin
@@ -13,6 +18,12 @@ set PHPBIN {$HOME}/.config/composer/vendor/bin
 set -U fish_user_paths $fish_user_paths {$HOME}/.bin {$HOME}/.local/bin
 set -U fish_user_paths $fish_user_paths {$GOBIN} {$RUSTBIN} {$NODEBIN} {$DENOBIN} {$PHPBIN}
 
+
+# --------------------------------------------------------------------
+#
+#   Shell Aliases
+#
+# --------------------------------------------------------------------
 # package management
 alias update "sudo apt-get update"
 alias search "apt-cache search"
