@@ -1,3 +1,5 @@
+## TO set a colorscheme: $ fish_config colors
+
 # suppress welcome message
 set fish_greeting
 
@@ -7,16 +9,18 @@ set fish_greeting
 #   Environment and path config
 #
 # --------------------------------------------------------------------
+set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin {$HOME}/.bin {$HOME}/.local/bin
+
 set RUST_BACKTRACE 0
 set GOPATH {$HOME}/.go
 set GOBIN {$GOPATH}/bin
+
 set RUSTBIN {$HOME}/.cargo/bin
 set NODEBIN {$HOME}/.npm/bin
 set DENOBIN {$HOME}/.deno/bin
 set PHPBIN {$HOME}/.config/composer/vendor/bin
 
-set -U fish_user_paths $fish_user_paths {$HOME}/.bin {$HOME}/.local/bin
-set -U fish_user_paths $fish_user_paths {$GOBIN} {$RUSTBIN} {$NODEBIN} {$DENOBIN} {$PHPBIN}
+set -U fish_user_paths {$SYSPATH} {$HOME}/.bin {$HOME}/.local/bin {$GOBIN} {$RUSTBIN} {$NODEBIN} {$DENOBIN} {$PHPBIN}
 
 
 # --------------------------------------------------------------------
@@ -78,3 +82,6 @@ alias push "git push"
 alias py "python3"
 alias dc "docker-compose"
 alias laraclear "php artisan config:clear; php artisan cache:clear; php artisan view:clear; php artisan route:clear; composer dump-autoload; composer dump"
+
+# Load fishmarks (http://github.com/techwizrd/fishmarks)
+. $HOME/.fishmarks/marks.fish
