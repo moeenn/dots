@@ -1,0 +1,12 @@
+#! /bin/bash
+
+actions="flatpak run org.chromium.Chromium
+firefox
+xfce4-terminal
+thunar
+subl
+flatpak run com.bitwarden.desktop
+flatpak run rest.insomnia.Insomnia"
+result=$(echo "$actions" | dmenu -l 7 -h 30 -w 500 -x 433 -y 264)
+cmd=$(echo "$result")
+[ -n "$cmd" ] && eval setsid setsid "$cmd"
