@@ -22,7 +22,7 @@
 		<item label="Terminal">
 			<action name="Execute">
 				<command>
-					xfce4-terminal
+					st
 				</command>
 			</action>
 		</item>
@@ -57,6 +57,22 @@
 			<action name="Execute">
 				<command>
 					flatpak run rest.insomnia.Insomnia
+				</command>
+			</action>
+		</item>
+
+		<item label="Filezilla">
+			<action name="Execute">
+				<command>
+					filezilla
+				</command>
+			</action>
+		</item>
+
+		<item label="Remmina">
+			<action name="Execute">
+				<command>
+					remmina
 				</command>
 			</action>
 		</item>

@@ -123,10 +123,10 @@
     <number>4</number>
     <firstdesk>1</firstdesk>
     <names>
-      <!-- set names up here if you want to, like this:
-    <name>desktop 1</name>
-    <name>desktop 2</name>
-    -->
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
     </names>
     <popupTime>500</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -179,13 +179,12 @@
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
     <!-- open main menu -->
-<!--     <keybind key="F1">
+    <!--     <keybind key="F1">
       <action name="ShowMenu">
         <menu>root-menu</menu>
       </action>
     </keybind>
  -->
-
     <!--
      *
      *  desktop switching and moving windows between desktops
@@ -212,7 +211,6 @@
         <to>4</to>
       </action>
     </keybind>
-
     <!-- send window to desktop -->
     <keybind key="A-S-1">
       <action name="SendToDesktop">
@@ -234,31 +232,26 @@
         <to>4</to>
       </action>
     </keybind>
-
     <!--
      *
      *  Window management related shortcuts
      *
     -->
-
     <!-- toggle show desktop -->
     <keybind key="W-d">
       <action name="ToggleShowDesktop"/>
     </keybind>
-
     <!-- close a window -->
     <keybind key="A-F4">
       <action name="Close"/>
     </keybind>
-
     <!-- toggle window maximize -->
     <keybind key="W-Up">
       <action name="ToggleMaximize"/>
     </keybind>
-
     <!-- snap window left -->
     <keybind key="W-Left">
-      <action name="Unmaximize" />
+      <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>0</x>
         <y>0</y>
@@ -266,10 +259,9 @@
         <height>100%</height>
       </action>
     </keybind>
-
     <!-- snap window right -->
     <keybind key="W-Right">
-      <action name="Unmaximize" />
+      <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>-0</x>
         <y>0</y>
@@ -277,7 +269,6 @@
         <height>100%</height>
       </action>
     </keybind>
-
     <keybind key="A-space">
       <action name="ShowMenu">
         <menu>client-menu</menu>
@@ -309,7 +300,6 @@
         <command>dmenu_startmenu</command>
       </action>
     </keybind>
-
     <keybind key="W-e">
       <action name="Execute">
         <startupnotify>
@@ -334,7 +324,7 @@
           <enabled>true</enabled>
           <name>Terminal</name>
         </startupnotify>
-        <command>xfce4-terminal</command>
+        <command>st</command>
       </action>
     </keybind>
     <keybind key="W-l">

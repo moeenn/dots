@@ -78,6 +78,19 @@ alias :b "git branch"
 alias :B "git branch"
 alias push "git push"
 
+# wifi management
+alias wifi-search "nmcli dev wifi list"
+alias wifi-list "nmcli con show"
+alias wifi-on "nmcli radio wifi on"
+alias wifi-off "nmcli radio wifi off"
+alias wifi-add "sudo nmcli "
+alias wifi-disconnect "nmcli con down"
+alias wifi-connect "sudo nmcli con up"
+
+# usage: wifi-connect <ssid> password <password>
+alias wifi-add "sudo nmcli dev wifi connect"
+alias wifi-delete "nmcli con delete"
+
 # programming
 alias py "python3"
 alias dc "docker-compose"

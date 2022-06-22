@@ -1,2 +1,3 @@
 compton &
 hsetroom -solid '#505050' &
+polybar example --config=~/.config/polybar/config.ini &
