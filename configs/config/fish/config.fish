@@ -58,8 +58,9 @@ alias axel "axel -n 3"
 alias extract "dtrx -v"
 alias net "bwm-ng -t 1000"
 alias lsblk "lsblk -e 7"
-alias c "codium"
+alias c "codium ."
 alias patch "patch -p1 < "
+alias alsa "alsamixer"
 
 # Super User Tasks
 alias kill "killall -v --ignore-case"
