@@ -8,7 +8,8 @@ subl
 flatpak run com.bitwarden.desktop
 flatpak run rest.insomnia.Insomnia
 filezilla
-remmina"
-result=$(echo "$actions" | dmenu -l 9 -h 30 -w 500 -x 433 -y 0)
+remmina
+pavucontrol"
+result=$(echo "$actions" | dmenu -l 10 -h 30 -w 500 -x 433 -y 0)
 cmd=$(echo "$result")
 [ -n "$cmd" ] && eval setsid setsid "$cmd"

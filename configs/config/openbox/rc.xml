@@ -120,13 +120,15 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>4</number>
+    <number>6</number>
     <firstdesk>1</firstdesk>
     <names>
       <name>1</name>
       <name>2</name>
       <name>3</name>
       <name>4</name>
+      <name>5</name>
+      <name>6</name>
     </names>
     <popupTime>0</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -211,6 +213,16 @@
         <to>4</to>
       </action>
     </keybind>
+    <keybind key="A-5">
+      <action name="GoToDesktop">
+        <to>5</to>
+      </action>
+    </keybind>
+    <keybind key="A-6">
+      <action name="GoToDesktop">
+        <to>6</to>
+      </action>
+    </keybind>
     <!-- send window to desktop -->
     <keybind key="A-S-1">
       <action name="SendToDesktop">
@@ -230,6 +242,16 @@
     <keybind key="A-S-4">
       <action name="SendToDesktop">
         <to>4</to>
+      </action>
+    </keybind>
+    <keybind key="A-S-5">
+      <action name="SendToDesktop">
+        <to>5</to>
+      </action>
+    </keybind>
+    <keybind key="A-S-6">
+      <action name="SendToDesktop">
+        <to>6</to>
       </action>
     </keybind>
     <!--
@@ -291,7 +313,7 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
-    <keybind key="F1">
+<!--     <keybind key="F1">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -299,8 +321,8 @@
         </startupnotify>
         <command>dmenu_startmenu</command>
       </action>
-    </keybind>
-    <keybind key="W-e">
+    </keybind> -->
+<!--     <keybind key="W-e">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -308,8 +330,8 @@
         </startupnotify>
         <command>thunar</command>
       </action>
-    </keybind>
-    <keybind key="A-p">
+    </keybind> -->
+<!--     <keybind key="A-p">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -317,8 +339,8 @@
         </startupnotify>
         <command>run</command>
       </action>
-    </keybind>
-    <keybind key="W-t">
+    </keybind> -->
+<!--     <keybind key="W-t">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -326,8 +348,8 @@
         </startupnotify>
         <command>st</command>
       </action>
-    </keybind>
-    <keybind key="W-l">
+    </keybind> -->
+<!--     <keybind key="W-l">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -335,13 +357,13 @@
         </startupnotify>
         <command>i3lock -c 000000</command>
       </action>
-    </keybind>
+    </keybind> -->
     <!-- Launch scrot when Print is pressed -->
-    <keybind key="Print">
+<!--     <keybind key="Print">
       <action name="Execute">
         <command>scrot</command>
       </action>
-    </keybind>
+    </keybind> -->
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
