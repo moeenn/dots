@@ -87,10 +87,10 @@
 "scrot"
   Print
 
-"pactl set-sink-volume @DEFAULT_SINK@ +1000"
+"pactl set-sink-volume @DEFAULT_SINK@ +3000"
    XF86AudioRaiseVolume
 
-"pactl set-sink-volume @DEFAULT_SINK@ -1000"
+"pactl set-sink-volume @DEFAULT_SINK@ -3000"
    XF86AudioLowerVolume
 
 "pactl set-sink-mute @DEFAULT_SINK@ toggle"
@@ -98,3 +98,15 @@
 
 "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
    XF86AudioMicMute
+
+"playerctl play-pause"
+  XF86AudioPlay
+
+"playerctl play-pause"
+  XF86AudioStop
+
+"playerctl previous"
+  XF86AudioPrev
+
+"playerctl next"
+  XF86AudioNext
