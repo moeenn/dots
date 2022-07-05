@@ -61,6 +61,14 @@
 			</action>
 		</item>
 
+		<item label="Beekeper">
+			<action name="Execute">
+				<command>
+					/opt/Beekeeper\ Studio/beekeeper-studio
+				</command>
+			</action>
+		</item>
+
 		<item label="Filezilla">
 			<action name="Execute">
 				<command>

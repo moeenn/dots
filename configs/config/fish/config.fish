@@ -45,8 +45,8 @@ alias mv "mv -iv"
 alias rsync "rsync -avP"
 alias rm "rm -iv"
 alias link "ln -s -r"
-alias ls "ls -p --color=always"
-alias lsa "ls -lpa | column -t"
+alias ls "ls -ap --color=always"
+alias lsa "ls -alp"
 alias :q "exit"
 alias :Q "exit"
 
@@ -80,11 +80,10 @@ alias :B "git branch"
 alias push "git push"
 
 # wifi management
-alias wifi-search "nmcli dev wifi list"
+alias wifi-scan "nmcli dev wifi list"
 alias wifi-list "nmcli con show"
 alias wifi-on "nmcli radio wifi on"
 alias wifi-off "nmcli radio wifi off"
-alias wifi-add "sudo nmcli "
 alias wifi-disconnect "nmcli con down"
 alias wifi-connect "sudo nmcli con up"
 

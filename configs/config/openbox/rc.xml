@@ -313,7 +313,7 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
-<!--     <keybind key="F1">
+    <!--     <keybind key="F1">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -322,7 +322,7 @@
         <command>dmenu_startmenu</command>
       </action>
     </keybind> -->
-<!--     <keybind key="W-e">
+    <!--     <keybind key="W-e">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -331,7 +331,7 @@
         <command>thunar</command>
       </action>
     </keybind> -->
-<!--     <keybind key="A-p">
+    <!--     <keybind key="A-p">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -340,7 +340,7 @@
         <command>run</command>
       </action>
     </keybind> -->
-<!--     <keybind key="W-t">
+    <!--     <keybind key="W-t">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -349,7 +349,7 @@
         <command>st</command>
       </action>
     </keybind> -->
-<!--     <keybind key="W-l">
+    <!--     <keybind key="W-l">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -359,7 +359,7 @@
       </action>
     </keybind> -->
     <!-- Launch scrot when Print is pressed -->
-<!--     <keybind key="Print">
+    <!--     <keybind key="Print">
       <action name="Execute">
         <command>scrot</command>
       </action>

@@ -7,9 +7,10 @@ thunar
 subl
 flatpak run com.bitwarden.desktop
 flatpak run rest.insomnia.Insomnia
+/opt/Beekeeper\ Studio/beekeeper-studio
 filezilla
 remmina
 pavucontrol"
-result=$(echo "$actions" | dmenu -l 10 -h 30 -w 500 -x 433 -y 0)
+result=$(echo "$actions" | dmenu -l 11 -h 30 -w 500 -x 433 -y 0)
 cmd=$(echo "$result")
 [ -n "$cmd" ] && eval setsid setsid "$cmd"
