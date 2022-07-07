@@ -61,6 +61,7 @@ alias lsblk "lsblk -e 7"
 alias c "codium ."
 alias patch "patch -p1 < "
 alias alsa "alsamixer"
+alias v "nvim"
 
 # Super User Tasks
 alias kill "killall -v --ignore-case"
