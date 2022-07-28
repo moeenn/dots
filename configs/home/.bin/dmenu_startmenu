@@ -1,16 +1,16 @@
 #! /bin/bash
 
-actions="flatpak run org.chromium.Chromium
-firefox
-xfce4-terminal
+actions="flatpak run com.google.Chrome
+flatpak run org.mozilla.firefox
+st
+flatpak run com.sublimetext.three
 thunar
-subl
 flatpak run com.bitwarden.desktop
 flatpak run rest.insomnia.Insomnia
 /opt/Beekeeper\ Studio/beekeeper-studio
 filezilla
 remmina
 pavucontrol"
-result=$(echo "$actions" | dmenu -l 11 -h 30 -w 500 -x 433 -y 0)
+result=$(echo "$actions" | dmenu -l 12 -h 30 -w 500 -x 10 -y 10)
 cmd=$(echo "$result")
 [ -n "$cmd" ] && eval setsid setsid "$cmd"

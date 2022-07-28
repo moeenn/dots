@@ -92,6 +92,9 @@ alias wifi-connect "sudo nmcli con up"
 alias wifi-add "sudo nmcli dev wifi connect"
 alias wifi-delete "nmcli con delete"
 
+# screen brightness
+alias bright "sudo brightnessctl -d 'intel_backlight' -set"
+
 # programming
 alias py "python3"
 alias dc "docker-compose"

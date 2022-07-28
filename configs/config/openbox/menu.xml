@@ -12,7 +12,7 @@
 		<item label="Firefox">
 			<action name="Execute">
 				<command>
-  				firefox
+  				flatpak run org.mozilla.firefox
 				</command>
 			</action>
 		</item>
@@ -22,7 +22,7 @@
 		<item label="Terminal">
 			<action name="Execute">
 				<command>
-					st
+					tilix
 				</command>
 			</action>
 		</item>
@@ -38,7 +38,7 @@
 		<item label="Sublime">
 			<action name="Execute">
 				<command>
-					subl
+					flatpak run com.sublimetext.three
 				</command>
 			</action>
 		</item>
@@ -67,7 +67,17 @@
 					/opt/Beekeeper\ Studio/beekeeper-studio
 				</command>
 			</action>
-		</item>
+    </item>
+
+    <item label="Compass">
+      <action name="Execute">
+        <command>
+          mongodb-compass
+        </command>
+      </action>
+    </item>
+
+ 		<separator/>
 
 		<item label="Filezilla">
 			<action name="Execute">

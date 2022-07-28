@@ -69,7 +69,7 @@
 # End of xbindkeys configuration #
 ##################################
 
-"st"
+"tilix"
   Mod4 + t
 
 "thunar"

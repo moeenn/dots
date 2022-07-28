@@ -1,2 +1,2 @@
 #! /bin/sh
-dmenu_run -l 6 -h 30 -w 500 -x 433 -y 0 &
+dmenu_run -l 12 -h 30 -w 500 -x 10 -y 10 &

@@ -1,4 +1,4 @@
 compton &
-hsetroot -solid '#505050' &
+hsetroot -solid '#585a6a' &
 xbindkeys &
 polybar example --config=~/.config/polybar/config.ini &
