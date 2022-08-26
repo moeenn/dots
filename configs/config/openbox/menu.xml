@@ -4,7 +4,7 @@
 		<item label="Chromium">
 			<action name="Execute">
 				<command>
-					flatpak run org.chromium.Chromium
+					flatpak run com.google.Chrome
 				</command>
 			</action>
 		</item>

@@ -1,4 +1,5 @@
+xrdb ~/.Xresources &
 compton &
 hsetroot -solid '#585a6a' &
-xbindkeys &
+xrandr --dpi 120 &
 polybar example --config=~/.config/polybar/config.ini &

@@ -2,7 +2,7 @@
 
 actions="flatpak run com.google.Chrome
 flatpak run org.mozilla.firefox
-st
+tilix
 flatpak run com.sublimetext.three
 thunar
 flatpak run com.bitwarden.desktop

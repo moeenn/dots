@@ -313,7 +313,7 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
-    <!--     <keybind key="F1">
+    <keybind key="F1">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -321,8 +321,8 @@
         </startupnotify>
         <command>dmenu_startmenu</command>
       </action>
-    </keybind> -->
-    <!--     <keybind key="W-e">
+    </keybind>
+    <keybind key="W-e">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -330,8 +330,8 @@
         </startupnotify>
         <command>thunar</command>
       </action>
-    </keybind> -->
-    <!--     <keybind key="A-p">
+    </keybind>
+    <keybind key="A-p">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -339,17 +339,17 @@
         </startupnotify>
         <command>run</command>
       </action>
-    </keybind> -->
-    <!--     <keybind key="W-t">
+    </keybind>
+    <keybind key="W-t">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
           <name>Terminal</name>
         </startupnotify>
-        <command>st</command>
+        <command>urxvt</command>
       </action>
-    </keybind> -->
-    <!--     <keybind key="W-l">
+    </keybind>
+    <keybind key="W-l">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -357,13 +357,13 @@
         </startupnotify>
         <command>i3lock -c 000000</command>
       </action>
-    </keybind> -->
+    </keybind>
     <!-- Launch scrot when Print is pressed -->
-    <!--     <keybind key="Print">
+    <keybind key="Print">
       <action name="Execute">
         <command>scrot</command>
       </action>
-    </keybind> -->
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
