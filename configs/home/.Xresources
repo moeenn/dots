@@ -8,7 +8,7 @@ Xft.dpi:       120
 !! URXVT config
 URxvt.font: xft:Cascadia Code:style=Regular:size=10
 URxvt.letterSpace: -1
-URxvt.lineSpace: 10
+URxvt.lineSpace: 7
 URxvt.scrollBar: false
 URxvt.internalBorder: 24
 URxvt.cursorUnderline: true

@@ -10,6 +10,7 @@ set fish_greeting
 #
 # --------------------------------------------------------------------
 set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin {$HOME}/.bin {$HOME}/.local/bin
+set FLATPAK_PATH /var/lib/flatpak/exports/bin
 
 set RUST_BACKTRACE 0
 set GOPATH {$HOME}/.go
@@ -20,7 +21,7 @@ set NODEBIN {$HOME}/.npm/bin
 set DENOBIN {$HOME}/.deno/bin
 set PHPBIN {$HOME}/.config/composer/vendor/bin
 
-set -U fish_user_paths {$SYSPATH} {$HOME}/.bin {$HOME}/.local/bin {$GOBIN} {$RUSTBIN} {$NODEBIN} {$DENOBIN} {$PHPBIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$HOME}/.bin {$HOME}/.local/bin {$GOBIN} {$RUSTBIN} {$NODEBIN} {$DENOBIN} {$PHPBIN}
 
 
 # --------------------------------------------------------------------
