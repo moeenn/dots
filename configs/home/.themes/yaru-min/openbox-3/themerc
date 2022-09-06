@@ -1,10 +1,9 @@
 # Decorator
 window.active.title.bg.color: #2C2C2C
-window.inactive.title.bg.color: #343434
+window.inactive.title.bg.color: #353535
 window.active.label.text.color: #E7E4C1
 window.inactive.label.text.color: #E7E4C1
-window.active.button.*.image.color: #E7E4C1
-window.inactive.button.*.image.color: #000000
+window.*.button.*.image.color: #E7E4C1
 
 # Borders
 window.handle.width: 0
@@ -21,12 +20,13 @@ window.label.text.justify: center
 # Menu
 menu.overlap.x: -2
 menu.*.bg: flat solid
-menu.*.bg.color: #2C2C2C
-menu.*.color: #2C2C2C
-menu.title.text.color: #E7E4C1
-menu.items.text.color: #E7E4C1
-menu.items.active.text.color: #E7E4C1
-menu.items.active.bg.color: #E95420
+menu.*.bg.color: #1D1D1D
+menu.*.color: #1D1D1D
+menu.border.color: #1D1D1D
+menu.title.text.color: #ececec
+menu.items.text.color: #ececec
+menu.items.active.text.color: #ececec
+menu.items.active.bg.color: #3E3E3E
 menu.title.text.justify: center
 menu.border.width: 20
 menu.separator.padding.height: 5
