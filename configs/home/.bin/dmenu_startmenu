@@ -1,8 +1,16 @@
 #! /bin/bash
 
+wscreen=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
+# hscreen=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
+
+menu_lines=12
+line_height=30
+menu_width=500
+x=$(expr $(expr $wscreen - $menu_width) / 2)
+
 actions="flatpak run com.google.Chrome
 flatpak run org.mozilla.firefox
-tilix
+st
 flatpak run com.sublimetext.three
 thunar
 flatpak run com.bitwarden.desktop
@@ -11,6 +19,6 @@ flatpak run rest.insomnia.Insomnia
 filezilla
 remmina
 pavucontrol"
-result=$(echo "$actions" | dmenu -l 12 -h 30 -w 500 -x 10 -y 10)
+result=$(echo "$actions" | dmenu -l $menu_lines -h $line_height -w $menu_width -x $x -y 0)
 cmd=$(echo "$result")
 [ -n "$cmd" ] && eval setsid setsid "$cmd"

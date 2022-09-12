@@ -361,7 +361,19 @@
     <!-- Launch scrot when Print is pressed -->
     <keybind key="Print">
       <action name="Execute">
-        <command>scrot</command>
+        <command>shutter -f</command>
+      </action>
+    </keybind>
+    <!-- Increase backlight 10% -->
+    <keybind key="XF86MonBrightnessUp">
+      <action name="Execute">
+        <command>xbacklight -inc 5</command>
+      </action>
+    </keybind>
+    <!-- Decrease backlight 10% -->
+    <keybind key="XF86MonBrightnessDown">
+      <action name="Execute">
+        <command>xbacklight -dec 5</command>
       </action>
     </keybind>
   </keyboard>

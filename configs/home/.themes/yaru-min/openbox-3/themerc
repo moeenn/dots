@@ -3,7 +3,7 @@ window.active.title.bg.color: #2C2C2C
 window.inactive.title.bg.color: #353535
 window.active.label.text.color: #E7E4C1
 window.inactive.label.text.color: #E7E4C1
-window.*.button.*.image.color: #E7E4C1
+window.*.button.*.image.color: #999999
 
 # Borders
 window.handle.width: 0

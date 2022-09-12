@@ -2,7 +2,6 @@
     "window.menuBarVisibility": "toggle",
     "workbench.colorTheme": "GitHub Dark Dimmed",
     "editor.fontLigatures": true,
-    "editor.inlineHints.fontFamily": "'Cascadia Code'",
     "editor.rulers": [
         80
     ],
@@ -22,5 +21,5 @@
         "**/.settings": true,
         "**/.factorypath": true
     },
-    "editor.lineHeight": 1.75
+    "editor.lineHeight": 1.75,
 }
