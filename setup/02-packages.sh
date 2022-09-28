@@ -3,6 +3,17 @@
 install_cmd="sudo apt-get install -y"
 
 declare -a packages=(
+	"libx11-dev"
+	"libfontconfig1-dev"
+	"libxft-dev"
+	"libxinerama-dev"
+	"make"
+	"cmake"
+	"clang"
+	"clangd"
+	"clang-format"
+	"acpi"
+	"notify-osd"
 	"git"
 	"htop"
 	"tmux"

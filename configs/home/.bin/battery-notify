@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# -----------------------------------------------------------------------------
+#
+#  this script sends a desktop notification when the current battery level
+#  drops below the specified low_level.
+#
+# -----------------------------------------------------------------------------
+
+low_level=20
+sleep=900
+
+battery_level=$(acpi - b | grep -P -o "[0-9]+(?=%)")
+notify_cmd="notify-send -i battery-low -u critical 'Battery low'"
+
+while [ true ]; do
+	if [[ $battery_level -lt $low_level ]]; then
+		eval $notify_cmd
+	fi
+
+	sleep $sleep
+done
