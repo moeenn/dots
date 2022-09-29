@@ -1,5 +1,3 @@
-. "$HOME/.cargo/env"
-
 LC_CTYPE=en_US.UTF-8
 XDG_DATA_HOME=${HOME}/.config
 RUST_BACKTRACE=0

@@ -8,14 +8,18 @@
 # -----------------------------------------------------------------------------
 
 low_level=20
-sleep=900
+high_level=80
+sleep=600
 
 battery_level=$(acpi - b | grep -P -o "[0-9]+(?=%)")
-notify_cmd="notify-send -i battery-low -u critical 'Battery low'"
 
-while [ true ]; do
+while true; do
 	if [[ $battery_level -lt $low_level ]]; then
-		eval $notify_cmd
+		eval "notify-send -i battery-low 'Low battery'"
+	fi
+
+	if [[ $battery_level -gt $high_level ]]; then
+		eval "notify-send -i battery 'Battery charged'"
 	fi
 
 	sleep $sleep
