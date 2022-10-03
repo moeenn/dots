@@ -312,16 +312,6 @@
         </finalactions>
       </action>
     </keybind>
-    <!-- Keybindings for running applications -->
-    <keybind key="F1">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Start</name>
-        </startupnotify>
-        <command>dmenu_startmenu</command>
-      </action>
-    </keybind>
     <keybind key="W-e">
       <action name="Execute">
         <startupnotify>
@@ -359,11 +349,11 @@
       </action>
     </keybind>
     <!-- Launch scrot when Print is pressed -->
-    <keybind key="Print">
+<!--     <keybind key="Print">
       <action name="Execute">
         <command>shutter -f</command>
       </action>
-    </keybind>
+    </keybind> -->
     <!-- Increase backlight 10% -->
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
