@@ -1,6 +1,6 @@
 xrdb ~/.Xresources &
+~/.bin/battery-notify &
 # picom --config ~/.picom.conf &
-battery-notify &
 hsetroot -solid '#000000' &
 xrandr --dpi 120 &
 polybar example --config=~/.config/polybar/config.ini &

@@ -11,9 +11,9 @@ low_level=20
 high_level=80
 sleep=600
 
-battery_level=$(acpi - b | grep -P -o "[0-9]+(?=%)")
-
 while true; do
+	battery_level=$(acpi - b | grep -P -o "[0-9]+(?=%)")
+
 	if [[ $battery_level -lt $low_level ]]; then
 		eval "notify-send -i battery-low 'Low battery'"
 	fi
