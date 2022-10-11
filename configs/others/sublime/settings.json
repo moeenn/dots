@@ -1,7 +1,6 @@
 {
 	"always_show_minimap_viewport": true,
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/GitHub Theme/schemes/GitHub Dark.sublime-color-scheme",
 	"font_face": "DM Mono",
 	"font_size": 11,
 	"format_on_save": true,
@@ -20,6 +19,7 @@
 	],
 	"scroll_past_end": true,
 	"tab_size": 2,
-	"theme": "GitHub-Theme.sublime-theme",
-	"trim_trailing_white_space_on_save": true
+	"trim_trailing_white_space_on_save": true,
+	"theme": "GitHub Dimmed.sublime-theme",
+	"color_scheme": "GitHub Dimmed.sublime-color-scheme",
 }

@@ -6,13 +6,12 @@ GOPATH=${HOME}/.go
 GOBIN=${GOPATH}/bin
 RUSTBIN=${HOME}/.cargo/bin
 NODEBIN=${HOME}/.npm/bin
-DENOBIN=${HOME}/.deno/bin
 PHPBIN=${HOME}/.config/composer/vendor/bin
 FLATPAKBIN=/var/lib/flatpak/exports/bin
 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 PATH=${PATH}:${FLATPAKBIN}
 PATH=${PATH}:${HOME}/.bin:${HOME}/.local/bin
-PATH=${PATH}:${GOBIN}:${RUSTBIN}:${NODEBIN}:${DENOBIN}:${PHPBIN}
+PATH=${PATH}:${GOBIN}:${RUSTBIN}:${NODEBIN}:${PHPBIN}
 
 export LC_CTYPE XDG_DATA_HOME RUST_BACKTRACE GOPATH PATH

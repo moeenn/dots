@@ -349,7 +349,7 @@
       </action>
     </keybind>
     <!-- Launch scrot when Print is pressed -->
-<!--     <keybind key="Print">
+    <!--     <keybind key="Print">
       <action name="Execute">
         <command>shutter -f</command>
       </action>

@@ -6,7 +6,7 @@ Xft.hintstyle: hintfull
 Xft.dpi:       120
 
 !! URXVT config
-URxvt.font: xft:Cascadia Code:style=Regular:size=9
+URxvt.font: xft:DM Mono:style=Regular:size=9
 URxvt.geometry: 110x20
 URxvt.letterSpace: -1
 URxvt.lineSpace: 7

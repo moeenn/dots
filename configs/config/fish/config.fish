@@ -18,10 +18,9 @@ set GOBIN {$GOPATH}/bin
 
 set RUSTBIN {$HOME}/.cargo/bin
 set NODEBIN {$HOME}/.npm/bin
-set DENOBIN {$HOME}/.deno/bin
 set PHPBIN {$HOME}/.config/composer/vendor/bin
 
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$HOME}/.bin {$HOME}/.local/bin {$GOBIN} {$RUSTBIN} {$NODEBIN} {$DENOBIN} {$PHPBIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$HOME}/.bin {$HOME}/.local/bin {$GOBIN} {$RUSTBIN} {$NODEBIN} {$PHPBIN}
 
 
 # --------------------------------------------------------------------
