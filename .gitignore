@@ -1,3 +1,3 @@
 *.swp
-.netrwhist
 *.shada
+configs/config/nvim/.netrwhist

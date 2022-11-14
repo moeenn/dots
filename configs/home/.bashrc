@@ -1,6 +1,7 @@
 # set env variables and aliases
 test -s ${HOME}/.profile && . ${HOME}/.profile || true
 test -s ${HOME}/.aliases && . ${HOME}/.aliases || true
+test -s ${HOME}/.cargo/env && . ${HOME}/.cargo/env || true
 
 # PS Colors
 RS="\[\033[0m\]"    # reset
