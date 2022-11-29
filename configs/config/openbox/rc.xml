@@ -297,9 +297,9 @@
       </action>
     </keybind>
     <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
-    <keybind key="A-Print">
+    <keybind key="Print">
       <action name="Execute">
-        <command>scrot -s</command>
+        <command>gnome-screenshot -i</command>
       </action>
     </keybind>
     <!-- Keybindings for window switching -->
