@@ -1,3 +1,4 @@
 *.swp
 *.shada
 configs/config/nvim/.netrwhist
+fish_history*

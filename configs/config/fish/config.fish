@@ -29,14 +29,14 @@ set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$HOME}/.bin {$HOME}/.local/bi
 #
 # --------------------------------------------------------------------
 # package management
-alias update "sudo apt-get update"
-alias search "apt-cache search"
-alias install "sudo apt-get install -y"
-alias remove "sudo apt-get remove"
-alias upgrade "sudo apt-get upgrade -y"
-alias purge_config "sudo dpkg --purge (dpkg --get-selections | grep deinstall | cut -f1 )"
-alias autoremove "sudo apt-get autoremove && purge_config"
-alias clean "sudo apt-get autoclean; sudo apt-get clean"
+alias pkg:update "sudo apt-get update"
+alias pkg:search "apt-cache search"
+alias pkg:install "sudo apt-get install -y"
+alias pkg:remove "sudo apt-get remove"
+alias pkg:upgrade "sudo apt-get upgrade -y"
+alias pkg:purge_config "sudo dpkg --purge (dpkg --get-selections | grep deinstall | cut -f1 )"
+alias pkg:autoremove "sudo apt-get autoremove && purge_config"
+alias pkg:clean "sudo apt-get autoclean; sudo apt-get clean"
 
 # Operations
 alias .. "cd .."

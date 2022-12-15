@@ -3,20 +3,8 @@
 install_cmd="sudo apt-get install -y"
 
 declare -a packages=(
-	"obconf"
-	"lxappearance"
-	"lxappearance-obconf"
-	"viewnior"
-	"thunar"
-	"thunar-archive-plugin"
-	"pavucontrol"
-	"lxrandr"
-	"libnotify-bin"
-	"notify-osd"
-	"i3lock"
-	"compton"
-	"picom"
-	"openbox"
+	"default-jdk"
+	"libeclipse-jdt-core-java"
 )
 
 packages_str=""

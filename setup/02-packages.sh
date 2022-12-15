@@ -7,6 +7,7 @@ declare -a packages=(
 	"libfontconfig1-dev"
 	"libxft-dev"
 	"libxinerama-dev"
+	"rxvt-unicode"
   "mypy"
   "python3-mypy"
   "python3-autopep8"
