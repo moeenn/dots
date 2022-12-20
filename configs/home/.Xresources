@@ -6,7 +6,7 @@ Xft.hintstyle: hintfull
 Xft.dpi:       120
 
 !! URXVT config
-URxvt.font: xft:JetBrains Mono:style=Regular:size=10
+URxvt.font: xft:DM Mono:style=Medium:size=10
 URxvt.geometry: 110x20
 URxvt.letterSpace: -1
 URxvt.lineSpace: 7

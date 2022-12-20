@@ -15,12 +15,14 @@ set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set RUST_BACKTRACE 0
 set GOPATH {$HOME}/.go
 set GOBIN {$GOPATH}/bin
+set DENO_INSTALL {$HOME}/.deno
+set DENOBIN {$DENO_INSTALL}/bin
 
 set RUSTBIN {$HOME}/.cargo/bin
 set NODEBIN {$HOME}/.npm/bin
 set PHPBIN {$HOME}/.config/composer/vendor/bin
 
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$HOME}/.bin {$HOME}/.local/bin {$GOBIN} {$RUSTBIN} {$NODEBIN} {$PHPBIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$HOME}/.bin {$HOME}/.local/bin {$GOBIN} {$RUSTBIN} {$NODEBIN} {$DENOBIN} {$PHPBIN}
 
 
 # --------------------------------------------------------------------
