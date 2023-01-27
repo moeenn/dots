@@ -100,4 +100,3 @@ alias bright "sudo brightnessctl -d 'intel_backlight' -set"
 # programming
 alias py "python3"
 alias dc "docker-compose"
-alias laraclear "php artisan config:clear; php artisan cache:clear; php artisan view:clear; php artisan route:clear; composer dump-autoload; composer dump"
