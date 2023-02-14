@@ -1,0 +1,50 @@
+{
+	"packages": [
+		"libx11-dev",
+		"libfontconfig1-dev",
+		"libxft-dev",
+		"libxinerama-dev",
+		"make",
+		"cmake",
+		"clang",
+		"clangd",
+		"clang-format",
+		"rxvt-unicode",
+		"mypy",
+		"python3-mypy",
+		"python3-autopep8",
+		"python3-venv",
+		"nodejs",
+		"feh",
+		"fonts-roboto",
+		"acpi",
+		"git",
+		"htop",
+		"tmux",
+		"neovim",
+		"hsetroot",
+		"fish",
+		"gnome-screenshot",
+		"yaru-theme-gtk",
+		"yaru-theme-icon",
+		"engrampa",
+		"p7zip",
+		"p7zip-full",
+		"p7zip-rar",
+		"xbacklight",
+		"remmina",
+		"filezilla",
+		"flatpak"
+	],
+	"flatpak": {
+		"remote_url": "https://flathub.org/repo/flathub.flatpakrepo",
+		"packages": [
+			"com.github.tchx84.Flatseal",
+			"org.mozilla.firefox",
+			"com.google.Chrome",
+			"rest.insomnia.Insomnia",
+			"com.sublimetext.three",
+			"com.bitwarden.desktop"
+		]
+	}
+}

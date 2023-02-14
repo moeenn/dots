@@ -2,3 +2,6 @@
 *.shada
 configs/config/nvim/.netrwhist
 fish_history*
+__pycache__
+*.pyc
+.mypy_cache
