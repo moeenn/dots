@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
+	<menu id="root-menu" label="Openbox 3">
+		<item label="Chromium">
+			<action name="Execute">
+				<command>
+					flatpak run com.google.Chrome
+				</command>
+			</action>
+		</item>
+
+		<item label="Firefox">
+			<action name="Execute">
+				<command>
+  				flatpak run org.mozilla.firefox
+				</command>
+			</action>
+		</item>
+
+		<separator/>
+
+		<item label="Terminal">
+			<action name="Execute">
+				<command>
+					tilix
+				</command>
+			</action>
+		</item>
+
+		<item label="File Manager">
+			<action name="Execute">
+				<command>
+					thunar
+				</command>
+			</action>
+		</item>
+
+		<item label="Sublime">
+			<action name="Execute">
+				<command>
+					flatpak run com.sublimetext.three
+				</command>
+			</action>
+		</item>
+
+		<separator/>
+
+		<item label="Bitwarden">
+			<action name="Execute">
+				<command>
+					flatpak run com.bitwarden.desktop
+				</command>
+			</action>
+		</item>
+
+		<item label="Insomnia">
+			<action name="Execute">
+				<command>
+					flatpak run rest.insomnia.Insomnia
+				</command>
+			</action>
+		</item>
+
+		<item label="Beekeper">
+			<action name="Execute">
+				<command>
+					/opt/Beekeeper\ Studio/beekeeper-studio
+				</command>
+			</action>
+    </item>
+
+    <item label="Compass">
+      <action name="Execute">
+        <command>
+          mongodb-compass
+        </command>
+      </action>
+    </item>
+
+ 		<separator/>
+
+		<item label="Filezilla">
+			<action name="Execute">
+				<command>
+					filezilla
+				</command>
+			</action>
+		</item>
+
+		<item label="Remmina">
+			<action name="Execute">
+				<command>
+					remmina
+				</command>
+			</action>
+		</item>
+
+		<separator/>
+
+		<item label="Reset">
+			<action name="Execute">
+				<command>
+					openbox --reconfigure
+				</command>
+			</action>
+		</item>
+
+		<item label="Lock">
+			<action name="Execute">
+				<command>
+					i3lock -c 000000
+				</command>
+			</action>
+		</item>
+
+	</menu>
+</openbox_menu>

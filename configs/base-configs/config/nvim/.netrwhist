@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/media/moeenn/ab1c5d72-5b52-4cad-983b-3583a8810486/sandbox/cpp/src'
+let g:netrw_dirhist_8='/media/moeenn/ab1c5d72-5b52-4cad-983b-3583a8810486/sandbox/cpp'
+let g:netrw_dirhist_7='/media/moeenn/ab1c5d72-5b52-4cad-983b-3583a8810486/projects/banking-application/backend/source'
+let g:netrw_dirhist_6='/media/moeenn/ab1c5d72-5b52-4cad-983b-3583a8810486/sandbox/cpp/src'
+let g:netrw_dirhist_5='/media/moeenn/ab1c5d72-5b52-4cad-983b-3583a8810486/sandbox/cpp'
+let g:netrw_dirhist_4='/media/moeenn/ab1c5d72-5b52-4cad-983b-3583a8810486/sandbox/cpp/bin'
+let g:netrw_dirhist_3='/media/moeenn/ab1c5d72-5b52-4cad-983b-3583a8810486/sandbox/cpp'
+let g:netrw_dirhist_2='/media/moeenn/ab1c5d72-5b52-4cad-983b-3583a8810486/sandbox/cpp/src'
+let g:netrw_dirhist_1='/media/moeenn/ab1c5d72-5b52-4cad-983b-3583a8810486/sandbox/cpp'
+let g:netrw_dirhist_0='/media/moeenn/ab1c5d72-5b52-4cad-983b-3583a8810486/sandbox/rust/src'

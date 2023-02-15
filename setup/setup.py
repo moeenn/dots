@@ -1,4 +1,4 @@
-from modules import entrypoint, Config, FlatpakManager, AptManager
+from modules import entrypoint, Config, FlatpakManager, AptManager, DockerManager
 
 """
     update apt repos and install all packages listed in the config file
@@ -25,6 +25,17 @@ def install_flatpak(config: Config) -> None:
 
 
 """
+    perform docker general configuration
+"""
+
+
+def configure_docker() -> None:
+    dockerManager = DockerManager()
+    dockerManager.create_docker_group()
+    dockerManager.add_user_to_docker_group()
+
+
+"""
     the execution of the program will begin from this function
     the @entrypoint decorator adds error handling to this function
 """
@@ -32,9 +43,10 @@ def install_flatpak(config: Config) -> None:
 
 @entrypoint
 def main() -> None:
-    config = Config()
-    install_apt_packages(config)
-    install_flatpak(config)
+    # config = Config()
+    # install_apt_packages(config)
+    # install_flatpak(config)
+    configure_docker()
 
 
 if __name__ == "__main__":
