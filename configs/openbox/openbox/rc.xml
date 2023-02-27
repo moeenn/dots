@@ -366,6 +366,12 @@
         <command>xbacklight -dec 5</command>
       </action>
     </keybind>
+    <!-- fix override: ghost menu in openbox / dmenu -->
+    <keybind key="C-semicolon">
+      <action name="Execute">
+        <command>echo > /dev/null</command>
+      </action>
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
