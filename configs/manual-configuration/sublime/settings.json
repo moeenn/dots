@@ -5,11 +5,7 @@
 	"font_size": 11,
 	"format_on_save": true,
 	"highlight_line": true,
-	"ignored_packages":
-	[
-		"Rust",
-		"Vintage"
-	],
+	"ignored_packages": [],
 	"line_padding_bottom": 4,
 	"line_padding_top": 4,
 	"overlay_scroll_bars": "enabled",
@@ -20,6 +16,6 @@
 	"scroll_past_end": true,
 	"tab_size": 2,
 	"trim_trailing_white_space_on_save": true,
-	"theme": "GitHub Dimmed.sublime-theme",
+	"theme": "GitHub Adaptive.sublime-theme",
 	"color_scheme": "GitHub Dimmed.sublime-color-scheme",
 }

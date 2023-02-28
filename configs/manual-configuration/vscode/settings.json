@@ -1,11 +1,10 @@
 {
     "window.menuBarVisibility": "toggle",
-    "workbench.colorTheme": "GitHub Dark Dimmed",
     "editor.fontLigatures": true,
     "editor.rulers": [
         80
     ],
-    "editor.fontFamily": "'Cascadia Code'",
+    "editor.fontFamily": "'DM Mono'",
     "editor.tabSize": 2,
     "editor.minimap.enabled": false,
     "breadcrumbs.enabled": false,
@@ -22,4 +21,14 @@
         "**/.factorypath": true
     },
     "editor.lineHeight": 1.75,
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[c]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+    },
+    "[cpp]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+    },
+    "workbench.colorTheme": "Monokai",
 }
