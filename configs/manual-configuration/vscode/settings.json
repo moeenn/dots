@@ -30,5 +30,5 @@
     "[cpp]": {
         "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
     },
-    "workbench.colorTheme": "Monokai",
-}
+    "workbench.colorTheme": "Monokai"
+	}
