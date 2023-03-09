@@ -339,6 +339,15 @@
         <command>st</command>
       </action>
     </keybind>
+    <keybind key="C-A-Delete">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>kill</name>
+        </startupnotify>
+        <command>xkill</command>
+      </action>
+    </keybind>
     <keybind key="W-l">
       <action name="Execute">
         <startupnotify>
