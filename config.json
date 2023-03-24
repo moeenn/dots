@@ -8,6 +8,8 @@
 		"mypy",
 		"python3-mypy",
 		"python3-autopep8",
+		"python3-pylsp",
+		"python3-pylsp-mypy",
 		"python3-venv",
 		"nodejs",
 		"fonts-roboto",
@@ -25,7 +27,8 @@
 		"p7zip-full",
 		"p7zip-rar",
 		"xbacklight",
-		"remmina",
+		"net-tools",
+    "remmina",
 		"filezilla",
 		"flatpak"
 	],

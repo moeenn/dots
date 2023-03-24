@@ -1,4 +1,5 @@
 xrdb ~/.Xresources &
+compton &
 # picom --config ~/.picom.conf &
 hsetroot -solid '#000000' &
 xrandr --dpi 120 &
