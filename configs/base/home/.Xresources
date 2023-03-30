@@ -6,10 +6,10 @@ Xft.hintstyle: hintfull
 Xft.dpi:       120
 
 !! URXVT config
-URxvt.font: xft:JetBrains Mono:style=Regular:size=9
+URxvt.font: xft:JetBrains Mono:style=Regular:size=10
 URxvt.geometry: 110x20
 URxvt.letterSpace: -1
-URxvt.lineSpace: 9
+URxvt.lineSpace: 14
 URxvt.scrollBar: false
 URxvt.internalBorder: 24
 URxvt.cursorUnderline: true
@@ -23,9 +23,9 @@ URxvt.keysym.Control-Right: \033[1;5C
 URxvt.keysym.Control-Left: \033[1;5D
 
 !! Colorscheme
-*.background: #202020
+*.background: #252525
 *.foreground: #CCCCCC
-*.cursorColor: #FDA53C
+*.cursorColor: #FEA63C
 
 !black
 *color0: #404040
