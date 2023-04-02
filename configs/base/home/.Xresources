@@ -5,6 +5,10 @@ Xft.rgba:      rgb
 Xft.hintstyle: hintfull
 Xft.dpi:       120
 
+!! XTerm config
+xterm*font: xft:JetBrains Mono:style=Regular:size=10 
+*.scaleHeight: 1.5
+
 !! URXVT config
 URxvt.font: xft:JetBrains Mono:style=Regular:size=10
 URxvt.geometry: 110x20
@@ -13,6 +17,7 @@ URxvt.lineSpace: 8
 URxvt.scrollBar: false
 URxvt.internalBorder: 24
 URxvt.cursorUnderline: true
+XTerm*allowBoldFonts: false
 
 !! Common Keybinds for Navigations
 URxvt.keysym.Shift-Up: command:\033]720;1\007
