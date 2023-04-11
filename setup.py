@@ -73,7 +73,9 @@ def main() -> None:
     # install_flatpak(config)
     # configure_docker()
     # link_configs()
-    link_openbox_configs()
+
+    # TODO: deprecate
+    # link_openbox_configs()
 
 
 if __name__ == "__main__":
