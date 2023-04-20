@@ -1,2 +1,2 @@
 #!/bin/sh
-${HOME}/Downloads/apps/Beekeeper-Studio.appimage &
+${HOME}/.apps/Beekeeper-Studio.appimage &

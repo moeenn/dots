@@ -62,7 +62,7 @@ alias speed "speedtest-rs"
 alias lsblk "lsblk -e 7"
 alias c "codium ."
 alias patch "patch -p1 < "
-alias v "nvim"
+alias v "vim"
 
 # Super User Tasks
 alias kill "killall -v --ignore-case"

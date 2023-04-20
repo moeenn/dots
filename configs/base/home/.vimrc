@@ -1,6 +1,6 @@
 set number
 syntax on
-set tabstop=2
+set tabstop=4
 set autoindent
 
 inoremap ( ()<Esc>i
@@ -10,3 +10,4 @@ inoremap [ []<Esc>i
 inoremap < <><Esc>i
 inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
+inoremap ` ``<Esc>i
