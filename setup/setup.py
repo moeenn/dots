@@ -1,82 +1,70 @@
 import subprocess
-from modules import entrypoint, Config, FlatpakManager, AptManager, DockerManager, link_files, home, configs_dir
-
-"""
-    update apt repos and install all packages listed in the config file
-"""
+import os
+from config import load_config, FlatpakConfig
+from log import log, Level
 
 
-def install_apt_packages(config: Config) -> None:
-    packages = config.get_apt_config()
-    aptManager = AptManager()
-    aptManager.install_packages(packages)
+def install_apt_packages(packages: list[str]) -> None:
+    """
+        install apt packages listing in config file
+    """
+    log("updating apt mirrors")
+    subprocess.run(["sudo", "apt-get", "update", "-y"])
+
+    log("installing apt packages")
+    command = ["sudo", "apt-get", "install", "-y"] + packages
+    subprocess.run(command)
 
 
-"""
-    flatpak package management will be configured on the system and all 
-    flatpak packages listed in the config.json file will be installed
-"""
+def install_flatpak_packages(config: FlatpakConfig) -> None:
+    """
+        install flatpak packages listed in config file
+    """
+    log("installing flatpak support")
+    subprocess.run(["sudo", "apt-get", "install", "-y", "flatpak"])
 
+    log("adding flathub mirror")
+    subprocess.run(["sudo", "flatpak", "remote-add",
+                   "--if-not-exists", "flathub", config.remote_url])
 
-def install_flatpak(config: Config) -> None:
-    flatpak_config = config.get_flatpak_config()
-
-    flatpakManager = FlatpakManager(flatpak_config.remote_url)
-    flatpakManager.install_packages(flatpak_config.packages)
-
-
-"""
-    perform docker general configuration
-"""
+    log("installing essential flatpaks")
+    subprocess.run(["sudo", "flatpak", "install",
+                   "flathub", "-y"] + config.packages)
 
 
 def configure_docker() -> None:
-    dockerManager = DockerManager()
-    dockerManager.create_docker_group()
-    dockerManager.add_user_to_docker_group()
+    """
+        install and configure docker for the current user
+    """
+    log("adding docker support")
+    subprocess.run(["sudo", "apt-get", "install", "-y", "docker"])
+
+    user: str | None = os.getenv("USER")
+    if not user:
+        raise Exception("failed to get $USER from env")
+
+    log("creating docker group")
+    subprocess.run(["sudo", "groupadd", "docker"])
+
+    log(f"adding current user ({user}) to docker group")
+    subprocess.run(["sudo", "usermod", "-aG", "docker", user])
 
 
-"""
-    link all base configurations from this repo to the user home directory
-"""
-
-
-def link_configs() -> None:
-    home_configs_dir = configs_dir() + "/base/home"
-    link_files(home_configs_dir, home())
-
-    xdg_configs_dir = configs_dir() + "/base/config"
-    link_files(xdg_configs_dir, home() + "/.config")
-
-
-"""
-    links openbox related configurations to the system 
-"""
-
-
-def link_openbox_configs() -> None:
-    openbox_config_dir: str = configs_dir() + "/openbox"
-    link_files(openbox_config_dir, home() + "/.config")
-    subprocess.run(["chmod", "+x", home() + "/.config/openbox/autostart"])    
-
-
-"""
-    the execution of the program will begin from this function
-    the @entrypoint decorator adds error handling to this function
-"""
-
-
-@entrypoint
 def main() -> None:
-    # config = Config()
-    # install_apt_packages(config)
-    # install_flatpak(config)
-    # configure_docker()
-    # link_configs()
-
-    # TODO: deprecate
-    # link_openbox_configs()
+    """
+        main program logic sequence
+    """
+    config = load_config()
+    install_apt_packages(config.apt.packages)
+    install_flatpak_packages(config.flatpak)
+    configure_docker()
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt as err:
+        log("ctrl+c: stopping...", level=Level.ERROR)
+    except Exception as err:
+        log("an errror has occured", level=Level.ERROR)
+        print(err)
