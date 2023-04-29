@@ -60,6 +60,13 @@ def main() -> None:
     configure_docker()
 
 
+"""
+    TODO:
+    - [ ] Generate SSH key
+    - [ ] Install helix editor
+    - [ ] Link dots to home folders
+"""
+
 if __name__ == "__main__":
     try:
         main()

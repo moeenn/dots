@@ -10,3 +10,11 @@ comment-token = "#"
 language-server = { command = "pylsp" }
 # TODO: pyls needs utf-8 offsets
 indent = { tab-width = 4, unit = "    " }
+
+
+[[language]]
+name = "cpp"
+auto-format = true
+scope = "source.cpp"
+file-types = ["cpp", "hpp", "c", "h"]
+language-server = { command = "clangd" }
