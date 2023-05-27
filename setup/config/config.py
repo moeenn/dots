@@ -1,10 +1,9 @@
 import os
 import json
-from .structures import Config, FlatpakConfig, AptConfig, DesktopConfig
+from .structures import Config
 
 
-def load_config() -> Config:
-    config_file = "config.json"
+def load_config(config_file="config.json") -> Config:
     if not os.path.exists(config_file):
         raise Exception(f"{config_file} not found")
 

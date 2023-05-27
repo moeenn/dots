@@ -1,7 +1,8 @@
 import subprocess
 import os
-from config import load_config, FlatpakConfig
-from log import log, Level
+from config.config import load_config
+from config.structures import FlatpakConfig
+from log.log import log, Level
 
 
 def install_apt_packages(packages: list[str]) -> None:

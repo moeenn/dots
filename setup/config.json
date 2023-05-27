@@ -6,11 +6,8 @@
 			"libxft-dev",
 			"libxinerama-dev",
 			"make",
-			"mypy",
-			"python3-mypy",
 			"python3-autopep8",
 			"python3-pylsp",
-			"python3-pylsp-mypy",
 			"python3-venv",
 			"nodejs",
 			"fonts-roboto",
@@ -20,12 +17,9 @@
 			"tmux",
 			"hsetroot",
 			"fish",
-			"gnome-screenshot",
-			"engrampa",
 			"p7zip",
 			"p7zip-full",
 			"p7zip-rar",
-			"xbacklight",
 			"net-tools",
 	    "remmina",
 			"filezilla"
@@ -38,7 +32,8 @@
 			"org.mozilla.firefox",
 			"com.google.Chrome",
 			"rest.insomnia.Insomnia",
-			"com.bitwarden.desktop"
+			"com.bitwarden.desktop",
+			"md.obsidian.Obsidian"
 		]
 	},
 	"desktop": {
@@ -56,7 +51,10 @@
 			"i3lock",
 			"compton",
 			"yaru-theme-gtk",
-			"yaru-theme-icon"
+			"yaru-theme-icon",
+			"xbacklight",
+			"gnome-screenshot",
+			"engrampa"
 		]
 	}
 }

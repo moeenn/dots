@@ -13,9 +13,7 @@ class Level(str, Enum):
 
 
 def log(message: str, level: Level = Level.INFO) -> None:
-    match level:
-        case level.INFO:
-            print(f"\n{Colors.BLUE} {message} {Colors.RESET}")
-
-        case level.ERROR:
-            print(f"\n{Colors.RED} {message} {Colors.RESET}")
+    if level is Level.INFO:
+        print(f"\n{Colors.BLUE} {message} {Colors.RESET}")
+    elif level is Level.ERROR:
+        print(f"\n{Colors.RED} {message} {Colors.RESET}")
