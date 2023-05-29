@@ -36,6 +36,11 @@
 			"md.obsidian.Obsidian"
 		]
 	},
+	"python": {
+		"packages": [
+			"pyright"
+		]
+	},
 	"desktop": {
 		"packages": [
 			"feh",

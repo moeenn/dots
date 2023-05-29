@@ -7,13 +7,22 @@ from log.log import log, Level
 
 def install_apt_packages(packages: list[str]) -> None:
     """
-        install apt packages listing in config file
+        install apt packages listing in config the file
     """
     log("updating apt mirrors")
     subprocess.run(["sudo", "apt-get", "update", "-y"])
 
     log("installing apt packages")
     command = ["sudo", "apt-get", "install", "-y"] + packages
+    subprocess.run(command)
+
+
+def install_python_packages(packages: list[str]) -> None:
+    """
+        install python packages listing in the config file
+    """
+    log("installing python packages")
+    command = ["pip3", "install"] + packages
     subprocess.run(command)
 
 
@@ -57,6 +66,7 @@ def main() -> None:
     """
     config = load_config()
     install_apt_packages(config.apt.packages)
+    install_python_packages(config.python.packages)
     install_flatpak_packages(config.flatpak)
     configure_docker()
 
