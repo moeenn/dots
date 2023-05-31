@@ -1,8 +1,3 @@
-# set env variables and aliases
-test -s ${HOME}/.profile && . ${HOME}/.profile || true
-test -s ${HOME}/.aliases && . ${HOME}/.aliases || true
-test -s ${HOME}/.cargo/env && . ${HOME}/.cargo/env || true
-
 # PS Colors
 RS="\[\033[0m\]"    # reset
 HC="\[\033[1m\]"    # hicolor
@@ -28,6 +23,9 @@ FWHT="\[\033[37m\]" # foreground white
 # PS1="\n\n$FBLE\u$FWHT in $FGRN\w \n$FWHT$ $RS "
 PS1="\n$HC$FBLK\$(date +%H:%M)  $FCYN\W $RS "
 
+# link external config files
+test -s ${HOME}/.profile && . ${HOME}/.profile || true
+
 # Bash settings
 shopt -s autocd
 shopt -s cdspell
@@ -42,3 +40,20 @@ function colors() {
   echo "  ";for i in {0..7}; do echo -en " \e[1;3${i}m████\e[0m"; done; echo;
   echo "  "
 }
+
+# Aliases
+alias ..="cd .."
+alias cp="cp -v"
+alias mv="mv -iv"
+alias rm="rm -iv"
+alias ls="ls -p --color=always"
+alias lsa="ls -lpa | column -t"
+alias :q="exit"
+alias :Q="exit"
+alias :s="git status"
+alias :S="git status"
+alias :c="git commit -m"
+alias :C="git commit -m"
+alias :b="git branch"
+alias :B="git branch"
+alias push="git push"
