@@ -6,8 +6,8 @@ HC="\[\033[1m\]"    # hicolor
 FBLK="\[\033[30m\]" # foreground black
 # FRED="\[\033[31m\]" # foreground red
 # FGRN="\[\033[32m\]" # foreground green
-# FYEL="\[\033[33m\]" # foreground yellow
-# FBLE="\[\033[34m\]" # foreground blue
+FYEL="\[\033[33m\]" # foreground yellow
+FBLE="\[\033[34m\]" # foreground blue
 # FMAG="\[\033[35m\]" # foreground magenta
 FCYN="\[\033[36m\]" # foreground cyan
 FWHT="\[\033[37m\]" # foreground white
@@ -20,8 +20,7 @@ FWHT="\[\033[37m\]" # foreground white
 # BCYN="\[\033[46m\]" # background cyan
 # BWHT="\[\033[47m\]" # background white
 
-# PS1="\n\n$FBLE\u$FWHT in $FGRN\w \n$FWHT$ $RS "
-PS1="\n$HC$FBLK\$(date +%H:%M)  $FCYN\W $RS "
+PS1="\n$HC$FCYN\W $FBLE\$ $RS "
 
 # link external config files
 test -s ${HOME}/.profile && . ${HOME}/.profile || true
@@ -57,3 +56,4 @@ alias :C="git commit -m"
 alias :b="git branch"
 alias :B="git branch"
 alias push="git push"
+. "$HOME/.cargo/env"

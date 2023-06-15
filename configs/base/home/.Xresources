@@ -9,50 +9,25 @@ Xft.dpi:       120
 xterm*font: xft:JetBrains Mono:style=Regular:size=10 
 *.scaleHeight: 1.5
 
-!! URXVT config
-URxvt.font: xft:JetBrains Mono:style=Regular:size=10
-URxvt.geometry: 110x20
-URxvt.letterSpace: -1
-URxvt.lineSpace: 8
-URxvt.scrollBar: false
-URxvt.internalBorder: 24
-URxvt.cursorUnderline: true
-XTerm*allowBoldFonts: false
-
-!! Common Keybinds for Navigations
-URxvt.keysym.Shift-Up: command:\033]720;1\007
-URxvt.keysym.Shift-Down: command:\033]721;1\007
-URxvt.keysym.Control-Up: \033[1;5A
-URxvt.keysym.Control-Down: \033[1;5B
-URxvt.keysym.Control-Right: \033[1;5C
-URxvt.keysym.Control-Left: \033[1;5D
-
 !! Colorscheme
-*.background: #252525
-*.foreground: #CCCCCC
+*.background: #181818
+*.foreground: #DEDEDE
 *.cursorColor: #FEA63C
 
-!black
-*color0: #404040
-*color8: #606060
-!red
-*color1: #E84F4F
-*color9: #D23D3D
-!green
-*color2: #B7CE42
-*color10: #BDE077
-!yellow
-*color3: #FEA63C
-*color11: #FFE863
-!blue
-*color4: #66AABB
-*color12: #AACCBB
-!magenta
-*color5: #B7416E
-*color13: #E16A98
-!cyan
-*color6: #6D878D
-*color14: #42717B
-!white
-*color7: #DDDDDD
-*color15: #CCCCCC
+*color0:	#232323
+*color1:	#E27373
+*color2:	#94B979
+*color3:	#FFBA7B
+*color4:	#97BEDC
+*color5:	#E1C0FA
+*color6:	#00988E
+*color7:	#DEDEDE
+
+*color8:	#454545
+*color9:	#FFA1A1
+*color10:	#BDDEAB
+*color11:	#FFDCA0
+*color12:	#B1D8F6
+*color13:	#FBDAFF
+*color14:	#1AB2A8
+*color15:	#FFFFFF

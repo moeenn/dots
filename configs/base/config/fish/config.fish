@@ -11,11 +11,10 @@ set fish_greeting
 # --------------------------------------------------------------------
 set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin {$HOME}/.bin {$HOME}/.local/bin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
-set RUSTBIN {$HOME}/.cargo/bin
 set NODEBIN {$HOME}/.npm/bin
-set SCALABIN {$HOME}/.config/coursier/bin
+set RUSTBIN {$HOME}/.cargo/bin
 
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$RUSTBIN} {$NODEBIN} {$SCALABIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$RUSTBIN}
 
 
 # --------------------------------------------------------------------
@@ -53,8 +52,8 @@ alias extract "dtrx -v"
 alias net "bwm-ng -t 1000"
 alias speed "speedtest-rs"
 alias lsblk "lsblk -e 7"
-alias c "codium ."
-alias patch "patch -p1 < "
+alias c "code ."
+alias patch "patch -p1 <"
 alias v "vim"
 alias m "mpv"
 

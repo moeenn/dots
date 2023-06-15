@@ -18,3 +18,11 @@ auto-format = true
 scope = "source.cpp"
 file-types = ["cpp", "hpp", "c", "h"]
 language-server = { command = "clangd" }
+
+
+[[language]]
+name = "rust"
+
+[language.config]
+cachePriming.enable = false
+diagnostics.experimental.enable = true
