@@ -1,6 +1,5 @@
 xrdb ~/.Xresources &
 compton &
-# picom --config ~/.picom.conf &
-hsetroot -solid '#000000' &
+~/.fehbg &
 xrandr --dpi 120 &
 polybar example --config=~/.config/polybar/config.ini &
