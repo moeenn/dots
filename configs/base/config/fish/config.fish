@@ -11,10 +11,12 @@ set fish_greeting
 # --------------------------------------------------------------------
 set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin {$HOME}/.bin {$HOME}/.local/bin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
+set GOPATH {$HOME}/.go
 set NODEBIN {$HOME}/.npm/bin
+set GOBIN {$GOPATH}/bin
 set RUSTBIN {$HOME}/.cargo/bin
 
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$RUSTBIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$GOBIN} {$RUSTBIN}
 
 
 # --------------------------------------------------------------------

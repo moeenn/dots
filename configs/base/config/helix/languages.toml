@@ -26,3 +26,4 @@ name = "rust"
 [language.config]
 cachePriming.enable = false
 diagnostics.experimental.enable = true
+

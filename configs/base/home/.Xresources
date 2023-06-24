@@ -7,7 +7,7 @@ Xft.dpi:       120
 
 !! XTerm config
 xterm*font: xft:JetBrains Mono:style=Regular:size=10 
-*.scaleHeight: 1.5
+*.scaleHeight: 2.0
 
 !! Colorscheme
 *.background: #181818
@@ -23,7 +23,7 @@ xterm*font: xft:JetBrains Mono:style=Regular:size=10
 *color6:	#00988E
 *color7:	#DEDEDE
 
-*color8:	#454545
+*color8:	#707070
 *color9:	#FFA1A1
 *color10:	#BDDEAB
 *color11:	#FFDCA0
