@@ -33,24 +33,12 @@ class PythonConfig:
         self.packages = packages
 
 
-class DesktopConfig:
-    packages: list[str]
-
-    def __init__(self, packages: list[str] | None) -> None:
-        if not packages:
-            raise Exception("invalid config, desktop.packages missing")
-
-        self.packages = packages
-
-
 class Config:
     apt: AptConfig
     flatpak: FlatpakConfig
-    desktop: DesktopConfig
     python: PythonConfig
 
-    def __init__(self, apt: dict, flatpak: dict, python: dict, desktop: dict) -> None:
+    def __init__(self, apt: dict, flatpak: dict, python: dict) -> None:
         self.apt = AptConfig(**apt)
         self.flatpak = FlatpakConfig(**flatpak)
         self.python = PythonConfig(**python)
-        self.desktop = DesktopConfig(**desktop)

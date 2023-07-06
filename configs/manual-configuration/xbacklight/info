@@ -1,3 +1,0 @@
-Do this if xbacklight doesn't change the display brightness (hardware)
-Place the file at /etc/X11/xorg.conf
-

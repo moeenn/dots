@@ -2,11 +2,12 @@
 Xft.antialias: true
 Xft.hinting:   true
 Xft.rgba:      rgb
-Xft.hintstyle: hintfull
+Xft.hintstyle: hintslight
 Xft.dpi:       120
 
 !! XTerm config
 xterm*font: xft:Cascadia Code:style=Regular:size=10 
+XTerm*allowBoldFonts: false
 *.scaleHeight: 2.0
 
 !! Colorscheme

@@ -6,14 +6,13 @@
 			"libxft-dev",
 			"libxinerama-dev",
 			"make",
-			"python3-autopep8",
-			"python3-pylsp",
-			"python3-venv",
+			"python3-pip",
 			"nodejs",
 			"fonts-roboto",
+			"fonts-cascadia-code",
 			"acpi",
 			"git",
-	    "htop",
+	    	"htop",
 			"tmux",
 			"hsetroot",
 			"fish",
@@ -21,30 +20,9 @@
 			"p7zip-full",
 			"p7zip-rar",
 			"net-tools",
-	    "remmina",
-			"filezilla"
-		]
-	},
-	"flatpak": {
-		"remote_url": "https://flathub.org/repo/flathub.flatpakrepo",
-		"packages": [
-			"com.github.tchx84.Flatseal",
-			"org.mozilla.firefox",
-			"com.google.Chrome",
-			"rest.insomnia.Insomnia",
-			"com.bitwarden.desktop",
-			"md.obsidian.Obsidian"
-		]
-	},
-	"python": {
-		"packages": [
-			"pyright"
-		]
-	},
-	"desktop": {
-		"packages": [
+		    "remmina",
+			"filezilla",
 			"feh",
-			"rxvt-unicode",
 			"lxappearance",
 			"viewnior",
 			"thunar",
@@ -59,7 +37,24 @@
 			"yaru-theme-icon",
 			"xbacklight",
 			"gnome-screenshot",
-			"engrampa"
+			"engrampa",
+			"python3-pylsp",
+			"python3-pylsp-black",
+			"python3-pylsp-mypy"
+		]
+	},
+	"flatpak": {
+		"remote_url": "https://flathub.org/repo/flathub.flatpakrepo",
+		"packages": [
+			"com.github.tchx84.Flatseal",
+			"rest.insomnia.Insomnia",
+			"com.bitwarden.desktop",
+			"md.obsidian.Obsidian"
+		]
+	},
+	"python": {
+		"packages": [
+			"black"
 		]
 	}
 }

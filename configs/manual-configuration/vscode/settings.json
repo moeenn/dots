@@ -4,8 +4,8 @@
     "editor.rulers": [
         80
     ],
-    "editor.fontFamily": "'DM Mono'",
-    "editor.tabSize": 2,
+    "editor.fontFamily": "'Cascadia Code'",
+    "editor.tabSize": 4,
     "editor.minimap.enabled": false,
     "breadcrumbs.enabled": false,
     "workbench.editor.enablePreview": false,
@@ -13,12 +13,6 @@
     "workbench.startupEditor": "newUntitledFile",
     "[javascript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-    "files.exclude": {
-        "**/.classpath": true,
-        "**/.project": true,
-        "**/.settings": true,
-        "**/.factorypath": true
     },
     "editor.lineHeight": 1.75,
     "[typescript]": {
@@ -30,5 +24,5 @@
     "[cpp]": {
         "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
     },
-    "workbench.colorTheme": "Monokai"
-	}
+    "workbench.colorTheme": "Visual Studio Dark"
+}
