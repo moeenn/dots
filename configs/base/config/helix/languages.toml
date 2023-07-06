@@ -1,16 +1,12 @@
 [[language]]
 name = "python"
+roots = ["pyproject.toml", "setup.py", "Poetry.lock", ".git"]
+language-server = { command = "pyright-langserver", args = ["--stdio"] }
 auto-format = true
-scope = "source.python"
-injection-regex = "python"
-file-types = ["py","pyi","py3","pyw","ptl",".pythonstartup",".pythonrc","SConstruct"]
-shebangs = ["python"]
-roots = []
-comment-token = "#"
-language-server = { command = "pyright-langserver", args=["--stdio"] }
+formatter = {command = 'black', args = ["--quiet", "-"]}
 config = {}
+shebangs = ["python"]
 indent = { tab-width = 4, unit = "    " }
-
 
 [[language]]
 name = "cpp"

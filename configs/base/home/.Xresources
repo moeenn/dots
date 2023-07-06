@@ -6,7 +6,7 @@ Xft.hintstyle: hintfull
 Xft.dpi:       120
 
 !! XTerm config
-xterm*font: xft:JetBrains Mono:style=Regular:size=10 
+xterm*font: xft:Cascadia Code:style=Regular:size=10 
 *.scaleHeight: 2.0
 
 !! Colorscheme
