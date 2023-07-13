@@ -1,3 +1,5 @@
+theme = "onedarker"
+
 [editor]
 line-number = "absolute"
 mouse = true

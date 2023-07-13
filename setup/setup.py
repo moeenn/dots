@@ -65,10 +65,10 @@ def main() -> None:
         main program logic sequence
     """
     config = load_config()
-    install_apt_packages(config.apt.packages)
+    # install_apt_packages(config.apt.packages)
     # install_python_packages(config.python.packages)
     # install_flatpak_packages(config.flatpak)
-    # configure_docker()
+    configure_docker()
 
 
 """

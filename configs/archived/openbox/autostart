@@ -1,7 +1,5 @@
 xrdb ~/.Xresources &
-# compton &
-~/.fehbg &
 xrandr --dpi 120 &
-# polybar example --config=~/.config/polybar/config.ini &
-tint2 &
-
+~/.fehbg &
+compton &
+polybar example --config=~/.config/polybar/config.ini &

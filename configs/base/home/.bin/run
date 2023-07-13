@@ -1,9 +1,0 @@
-#! /bin/sh
-
-wscreen=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
-menu_lines=12
-line_height=30
-menu_width=500
-x=$(expr $(expr $wscreen - $menu_width) / 2)
-
-dmenu_run -l $menu_lines -h $line_height -w $menu_width -x $x -y 0 &
