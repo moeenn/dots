@@ -1,20 +1,20 @@
 {
+    "workbench.colorTheme": "Visual Studio Dark",
+    "editor.fontFamily": "'JetBrains Mono'",
     "window.menuBarVisibility": "toggle",
     "editor.fontLigatures": true,
-    "editor.rulers": [
-        80
-    ],
-    "editor.fontFamily": "'Cascadia Code'",
-    "editor.tabSize": 4,
     "editor.minimap.enabled": false,
     "breadcrumbs.enabled": false,
     "workbench.editor.enablePreview": false,
     "editor.bracketPairColorization.enabled": true,
-    "workbench.startupEditor": "newUntitledFile",
+    "editor.tabSize": 4,
+    "editor.lineHeight": 1.75,
+    "editor.rulers": [
+        80
+    ],
     "[javascript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
-    "editor.lineHeight": 1.75,
     "[typescript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
@@ -24,5 +24,12 @@
     "[cpp]": {
         "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
     },
-    "workbench.colorTheme": "Visual Studio Dark"
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.analysis.enablePytestSupport": false,
+    "python.analysis.typeCheckingMode": "basic",
+    "files.exclude": {
+        "**/__pycache__": true
+    }
 }

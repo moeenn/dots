@@ -9,6 +9,8 @@ set fish_greeting
 #   Environment and path config
 #
 # --------------------------------------------------------------------
+set -Ux PIPENV_VENV_IN_PROJECT 1
+
 set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin {$HOME}/.bin {$HOME}/.local/bin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set GOPATH {$HOME}/.go
