@@ -56,4 +56,4 @@ alias :C="git commit -m"
 alias :b="git branch"
 alias :B="git branch"
 alias push="git push"
-. "$HOME/.cargo/env"
+

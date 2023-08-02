@@ -7,7 +7,7 @@ from log.log import log, Level
 
 def install_apt_packages(packages: list[str]) -> None:
     """
-        install apt packages listing in config the file
+    install apt packages listing in config the file
     """
     log("updating apt mirrors")
     subprocess.run(["sudo", "apt-get", "update", "-y"])
@@ -19,7 +19,7 @@ def install_apt_packages(packages: list[str]) -> None:
 
 def install_python_packages(packages: list[str]) -> None:
     """
-        install python packages listing in the config file
+    install python packages listing in the config file
     """
     log("installing python packages")
     command = ["pip3", "install"] + packages
@@ -28,23 +28,30 @@ def install_python_packages(packages: list[str]) -> None:
 
 def install_flatpak_packages(config: FlatpakConfig) -> None:
     """
-        install flatpak packages listed in config file
+    install flatpak packages listed in config file
     """
     log("installing flatpak support")
     subprocess.run(["sudo", "apt-get", "install", "-y", "flatpak"])
 
     log("adding flathub mirror")
-    subprocess.run(["sudo", "flatpak", "remote-add",
-                   "--if-not-exists", "flathub", config.remote_url])
+    subprocess.run(
+        [
+            "sudo",
+            "flatpak",
+            "remote-add",
+            "--if-not-exists",
+            "flathub",
+            config.remote_url,
+        ]
+    )
 
     log("installing essential flatpaks")
-    subprocess.run(["sudo", "flatpak", "install",
-                   "flathub", "-y"] + config.packages)
+    subprocess.run(["sudo", "flatpak", "install", "flathub", "-y"] + config.packages)
 
 
 def configure_docker() -> None:
     """
-        install and configure docker for the current user
+    install and configure docker for the current user
     """
     log("adding docker support")
     subprocess.run(["sudo", "apt-get", "install", "-y", "docker"])
@@ -62,18 +69,18 @@ def configure_docker() -> None:
 
 def main() -> None:
     """
-        main program logic sequence
+    main program logic sequence
     """
     config = load_config()
     # install_apt_packages(config.apt.packages)
     # install_python_packages(config.python.packages)
-    # install_flatpak_packages(config.flatpak)
-    configure_docker()
+    install_flatpak_packages(config.flatpak)
+    # configure_docker()
 
 
 """
     TODO:
-    - [ ] Generate SSH key
+    - [ ] Install latest nodejs & npm
     - [ ] Install helix editor
     - [ ] Link dots to home folders
 """

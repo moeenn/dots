@@ -24,11 +24,11 @@ cursor:
 
 colors:
   primary:
-    background: '#181818'
-    foreground: '#DEDEDE'
+    background: '#303030'
+    foreground: '#E6E6E6'
 
   normal:
-    black:   '#232323'
+    black:   '#555555'
     red:     '#E27373'
     green:   '#94B979'
     yellow:  '#FFBA7B'

@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>pop-min</name>
+    <name>adwaita-min</name>
     <titleLayout>DLC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -357,22 +357,26 @@
         <command>i3lock -c 000000</command>
       </action>
     </keybind>
-    <!-- Launch scrot when Print is pressed -->
-    <!--     <keybind key="Print">
-      <action name="Execute">
-        <command>shutter -f</command>
-      </action>
-    </keybind> -->
-    <!-- Increase backlight 10% -->
+    <!-- increase / decreate screen brightness -->
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
         <command>xbacklight -inc 5</command>
       </action>
     </keybind>
-    <!-- Decrease backlight 10% -->
     <keybind key="XF86MonBrightnessDown">
       <action name="Execute">
         <command>xbacklight -dec 5</command>
+      </action>
+    </keybind>
+    <!-- increase / decrease volume -->
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute">
+        <command>amixer -q sset Master 3%+</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute">
+        <command>amixer -q sset Master 3%-</command>
       </action>
     </keybind>
     <!-- fix override: ghost menu in openbox / dmenu -->
