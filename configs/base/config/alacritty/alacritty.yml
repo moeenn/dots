@@ -1,9 +1,9 @@
 font:
   normal:
-    family: Cascadia Mono
+    family: JetBrains Mono
     style: Roman
   bold:
-    family: Cascadia Mono
+    family: JetBrains Mono
     style: Roman
   size: 10.0
   offset:
@@ -24,29 +24,28 @@ cursor:
 
 colors:
   primary:
-    background: '#303030'
-    foreground: '#d3d0c8'
+    background: '#1F2430'
+    foreground: '#DADBD5'
 
   normal:
-    black:       '#4d4d4d'
-    red:       '#f2777a'
-    green:       '#99cc99'
-    yellow:       '#ffcc66'
-    blue:       '#6699cc'
-    magenta:       '#cc99cc'
-    cyan:       '#66cccc'
-    white:       '#d3d0c8'
+    black:       '#434854'
+    red:       '#FF3333'
+    green:       '#BAE67E'
+    yellow:       '#FFA759'
+    blue:       '#73D0FF'
+    magenta:       '#D4BFFF'
+    cyan:       '#95E6CB'
+    white:       '#CBCCC6'
 
   bright:
-    black:       '#303030'
-    red:       '#f2777a'
-    green:      '#99cc99'
-    yellow:      '#ffcc66'
-    blue:      '#6699cc'
-    magenta:      '#cc99cc'
-    cyan:      '#66cccc'
-    white:      '#f2f0ec'
-
+    black:       '#333740'
+    red:       '#FF3333'
+    green:       '#BAE67E'
+    yellow:       '#FFA759'
+    blue:       '#73D0FF'
+    magenta:       '#D4BFFF'
+    cyan:       '#95E6CB'
+    white:       '#CBCCC6'
 
 
 # Configuration for Alacritty, the GPU enhanced terminal emulator.

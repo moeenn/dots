@@ -54,7 +54,7 @@ def configure_docker() -> None:
     install and configure docker for the current user
     """
     log("adding docker support")
-    subprocess.run(["sudo", "apt-get", "install", "-y", "docker"])
+    subprocess.run(["sudo", "apt-get", "install", "-y", "docker", "docker.io"])
 
     user: str | None = os.getenv("USER")
     if not user:
@@ -72,9 +72,9 @@ def main() -> None:
     main program logic sequence
     """
     config = load_config()
-    # install_apt_packages(config.apt.packages)
+    install_apt_packages(config.apt.packages)
     # install_python_packages(config.python.packages)
-    install_flatpak_packages(config.flatpak)
+    # install_flatpak_packages(config.flatpak)
     # configure_docker()
 
 

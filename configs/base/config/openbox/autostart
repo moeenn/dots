@@ -1,5 +1,5 @@
 xrdb ~/.Xresources &
 xrandr --dpi 112 &
 ~/.fehbg &
-compton &
+# compton &
 polybar default --config=~/.config/polybar/config.ini &
