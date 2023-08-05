@@ -18,7 +18,7 @@
 			"docker",
 			"docker.io",
 			"docker-compose",
-    	    "htop",
+    	"htop",
 			"dfc",
 			"tmux",
 			"acpi",
@@ -48,7 +48,7 @@
 			"gnome-screenshot",
 			"engrampa",
 			"evince",
-            "gcolor3",
+      "gcolor3",
 			"remmina",
 			"filezilla"
 		]

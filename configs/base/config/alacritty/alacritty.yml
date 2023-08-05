@@ -24,28 +24,32 @@ cursor:
 
 colors:
   primary:
-    background: '#1F2430'
-    foreground: '#DADBD5'
+    background: '#262626'
+    foreground: '#D7D7AF'
+
+  cursor:
+    text: '#D7D7AF'
+    cursor: '#D7D7AF'
 
   normal:
-    black:       '#434854'
-    red:       '#FF3333'
-    green:       '#BAE67E'
-    yellow:       '#FFA759'
-    blue:       '#73D0FF'
-    magenta:       '#D4BFFF'
-    cyan:       '#95E6CB'
-    white:       '#CBCCC6'
+    black:   '#303030'
+    red:     '#F65D5D'
+    green:   '#83A95D'
+    yellow:  '#F6A95D'
+    blue:    '#87AFD7'
+    magenta: '#8787AF'
+    cyan:    '#87AFAF'
+    white:   '#D7D7AF'
 
   bright:
-    black:       '#333740'
-    red:       '#FF3333'
-    green:       '#BAE67E'
-    yellow:       '#FFA759'
-    blue:       '#73D0FF'
-    magenta:       '#D4BFFF'
-    cyan:       '#95E6CB'
-    white:       '#CBCCC6'
+    black:   '#303030'
+    red:     '#F65D5D'
+    green:   '#83A95D'
+    yellow:  '#F6A95D'
+    blue:    '#87AFD7'
+    magenta: '#8787AF'
+    cyan:    '#87AFAF'
+    white:   '#D7D7AF'
 
 
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
