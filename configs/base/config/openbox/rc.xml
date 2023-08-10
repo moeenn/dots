@@ -297,11 +297,14 @@
       </action>
     </keybind>
     <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
+    <!--
     <keybind key="Print">
       <action name="Execute">
         <command>gnome-screenshot -i</command>
       </action>
     </keybind>
+    -->
+    
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">
       <action name="NextWindow">
@@ -314,6 +317,7 @@
     </keybind>
     
     <!-- spawn system file manager  -->    
+    <!-- 
     <keybind key="W-e">
       <action name="Execute">
         <startupnotify>
@@ -323,15 +327,19 @@
         <command>thunar</command>
       </action>
     </keybind>
+    -->
     
     <!-- open app run dialog -->    
+    <!-- 
     <keybind key="A-p">
       <action name="Execute">
         <command>dmenu_run</command>
       </action>
     </keybind>
+    -->
     
     <!-- spawn new terminal -->    
+    <!-- 
     <keybind key="W-t">
       <action name="Execute">
         <startupnotify>
@@ -341,6 +349,7 @@
         <command>alacritty</command>
       </action>
     </keybind>
+    -->
     
     <!-- kill a running program -->    
     <keybind key="C-A-Delete">
@@ -354,13 +363,16 @@
     </keybind>
     
     <!-- lock screen -->    
+    <!-- 
     <keybind key="W-l">
       <action name="Execute">
         <command>i3lock -c 000000</command>
       </action>
     </keybind>
+    -->
     
     <!-- increase / decreate screen brightness -->
+    <!--
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
         <command>xbacklight -inc 5</command>
@@ -371,8 +383,10 @@
         <command>xbacklight -dec 5</command>
       </action>
     </keybind>
+    -->
     
     <!-- increase / decrease volume -->
+    <!--
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
         <command>amixer -q sset Master 3%+</command>
@@ -383,20 +397,25 @@
         <command>amixer -q sset Master 3%-</command>
       </action>
     </keybind>
+    -->
 
     <!-- mute sound -->
+    <!--
     <keybind key="XF86AudioMute">
       <action name="Execute">
         <command>amixer -q set Master toggle</command>
       </action>
     </keybind>    
+    -->
     
     <!-- mute mic capture -->
+    <!--
     <keybind key="XF86AudioMicMute">
       <action name="Execute">
         <command>amixer -q set Capture toggle</command>
       </action>
-    </keybind>    
+    </keybind> 
+    -->   
     
     <!-- fix override: ghost menu in openbox / dmenu -->
     <keybind key="C-semicolon">
