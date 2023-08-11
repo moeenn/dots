@@ -1,0 +1,10 @@
+[Plugin]
+Loader=python3
+Module=linespacing
+IAge=3
+Name=Line-spacing
+Description=Increase or decrease space between lines
+Authors=
+Copyright=
+Website=
+
