@@ -9,17 +9,15 @@ set fish_greeting
 #   Environment and path config
 #
 # --------------------------------------------------------------------
-set -Ux PIPENV_VENV_IN_PROJECT 1
-
 set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin {$HOME}/.bin {$HOME}/.local/bin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set GOPATH {$HOME}/.go
 set NODEBIN {$HOME}/.npm/bin
 set GOBIN {$GOPATH}/bin
 set RUSTBIN {$HOME}/.cargo/bin
+set SCALABIN {$HOME}/.config/coursier/bin
 
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$GOBIN} {$RUSTBIN}
-
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$GOBIN} {$RUSTBIN} {$SCALABIN}
 
 # --------------------------------------------------------------------
 #
@@ -97,3 +95,7 @@ alias bright "sudo brightnessctl -d 'intel_backlight' -set"
 alias py "python3"
 alias venv "python3 -m venv"
 alias dc "docker-compose"
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH

@@ -2,11 +2,19 @@
     Mod4 + e
     
 
-"alacritty"
+"xterm"
     Mod4 + t
     
+    
+"pavucontrol"
+    Mod4 + v
+    
+
+"nm-connection-editor"
+    Mod4 + n    
+  
  
-"dmenu_run"
+"rofi -show run"
     Mod1 + p 
     
     

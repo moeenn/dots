@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>pop-min</name>
+    <name>yaru-min</name>
     <titleLayout>DLC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -304,7 +304,6 @@
       </action>
     </keybind>
     -->
-    
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">
       <action name="NextWindow">
@@ -315,8 +314,7 @@
         </finalactions>
       </action>
     </keybind>
-    
-    <!-- spawn system file manager  -->    
+    <!-- spawn system file manager  -->
     <!-- 
     <keybind key="W-e">
       <action name="Execute">
@@ -328,8 +326,7 @@
       </action>
     </keybind>
     -->
-    
-    <!-- open app run dialog -->    
+    <!-- open app run dialog -->
     <!-- 
     <keybind key="A-p">
       <action name="Execute">
@@ -337,8 +334,7 @@
       </action>
     </keybind>
     -->
-    
-    <!-- spawn new terminal -->    
+    <!-- spawn new terminal -->
     <!-- 
     <keybind key="W-t">
       <action name="Execute">
@@ -350,8 +346,7 @@
       </action>
     </keybind>
     -->
-    
-    <!-- kill a running program -->    
+    <!-- kill a running program -->
     <keybind key="C-A-Delete">
       <action name="Execute">
         <startupnotify>
@@ -361,8 +356,7 @@
         <command>xkill</command>
       </action>
     </keybind>
-    
-    <!-- lock screen -->    
+    <!-- lock screen -->
     <!-- 
     <keybind key="W-l">
       <action name="Execute">
@@ -370,7 +364,6 @@
       </action>
     </keybind>
     -->
-    
     <!-- increase / decreate screen brightness -->
     <!--
     <keybind key="XF86MonBrightnessUp">
@@ -384,7 +377,6 @@
       </action>
     </keybind>
     -->
-    
     <!-- increase / decrease volume -->
     <!--
     <keybind key="XF86AudioRaiseVolume">
@@ -398,7 +390,6 @@
       </action>
     </keybind>
     -->
-
     <!-- mute sound -->
     <!--
     <keybind key="XF86AudioMute">
@@ -407,7 +398,6 @@
       </action>
     </keybind>    
     -->
-    
     <!-- mute mic capture -->
     <!--
     <keybind key="XF86AudioMicMute">
@@ -415,8 +405,7 @@
         <command>amixer -q set Capture toggle</command>
       </action>
     </keybind> 
-    -->   
-    
+    -->
     <!-- fix override: ghost menu in openbox / dmenu -->
     <keybind key="C-semicolon">
       <action name="Execute">

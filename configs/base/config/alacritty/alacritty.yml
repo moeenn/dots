@@ -1,9 +1,9 @@
 font:
   normal:
-    family: JetBrains Mono
+    family: Cascadia Code
     style: Roman
   bold:
-    family: JetBrains Mono
+    family: Cascadia Code
     style: Roman
   size: 10.0
   offset:

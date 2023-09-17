@@ -11,24 +11,24 @@ XTerm*allowBoldFonts: false
 *.scaleHeight: 2.0
 
 !! Colorscheme
-*.background: #181818
-*.foreground: #DEDEDE
-*.cursorColor: #FEA63C
+*.background: #2F0923
+*.foreground: #D2D6CE
+*.cursorColor: #D2D6CE
 
-*color0:	#232323
-*color1:	#E27373
-*color2:	#94B979
-*color3:	#FFBA7B
-*color4:	#97BEDC
-*color5:	#E1C0FA
-*color6:	#00988E
-*color7:	#DEDEDE
+*color0:	#29081E
+*color1:	#CB0000
+*color2:	#4D9905
+*color3:	#C39F00
+*color4:	#3364A3
+*color5:	#744F7A
+*color6:	#059799
+*color7:	#D2D6CE
 
-*color8:	#707070
-*color9:	#FFA1A1
-*color10:	#BDDEAB
-*color11:	#FFDCA0
-*color12:	#B1D8F6
-*color13:	#FBDAFF
-*color14:	#1AB2A8
-*color15:	#FFFFFF
+*color8:	#858782
+*color9:	#CB0000
+*color10:	#4D9905
+*color11:	#C39F00
+*color12:	#3364A3
+*color13:	#744F7A
+*color14:	#059799
+*color15:	#D2D6CE
