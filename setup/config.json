@@ -47,6 +47,8 @@
 		    "xbindkeys",
 			"openbox",
 			"obconf",
+			"xterm",
+			"rofi",
 			"gnome-screenshot",
 			"engrampa",
 			"evince",
