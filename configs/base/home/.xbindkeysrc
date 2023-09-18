@@ -2,7 +2,7 @@
     Mod4 + e
     
 
-"xterm"
+"gnome-terminal"
     Mod4 + t
     
     
@@ -14,7 +14,7 @@
     Mod4 + n    
   
  
-"rofi -show run"
+"rofi -show run -font 'Cascadia Code 11' -theme gruvbox-dark"
     Mod1 + p 
     
     
