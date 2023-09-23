@@ -14,7 +14,7 @@
     Mod4 + n    
   
  
-"rofi -show run -font 'Cascadia Code 11' -theme gruvbox-dark"
+"rofi -show run -font 'Cascadia Code 11' -theme glue_pro_blue"
     Mod1 + p 
     
     
