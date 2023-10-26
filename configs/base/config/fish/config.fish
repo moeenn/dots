@@ -12,9 +12,13 @@ set fish_greeting
 set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin {$HOME}/.bin {$HOME}/.local/bin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set NODEBIN {$HOME}/.npm/bin
-set RUBYBIN {$HOME}/.gem/ruby/3.0.0/bin
+set GOPATH {$HOME}/.go
+set GOBIN {$GOPATH}/bin
+set RUSTBIN {$HOME}/.cargo/bin
+set GEM_HOME {$HOME}/.config/gem/ruby/3.0.0
+set RUBYBIN {$GEM_HOME}/bin
 
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$RUBYBIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$GOBIN} {$RUSTBIN} {$RUBYBIN}
 
 # --------------------------------------------------------------------
 #
@@ -91,8 +95,5 @@ alias bright "sudo brightnessctl -d 'intel_backlight' -set"
 # programming
 alias py "python3"
 alias venv "python3 -m venv"
+alias inv "invoke"
 alias dc "docker-compose"
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
