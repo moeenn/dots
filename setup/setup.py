@@ -49,16 +49,12 @@ def install_flatpak_packages(config: FlatpakConfig) -> None:
     subprocess.run(["sudo", "flatpak", "install", "flathub", "-y"] + config.packages)
 
 
-def configure_docker() -> None:
+def configure_docker(user: str) -> None:
     """
     install and configure docker for the current user
     """
     log("adding docker support")
     subprocess.run(["sudo", "apt-get", "install", "-y", "docker", "docker.io"])
-
-    user: str | None = os.getenv("USER")
-    if not user:
-        raise Exception("failed to get $USER from env")
 
     log("creating docker group")
     subprocess.run(["sudo", "groupadd", "docker"])
@@ -67,15 +63,31 @@ def configure_docker() -> None:
     subprocess.run(["sudo", "usermod", "-aG", "docker", user])
 
 
+def configure_fish(user: str) -> None:
+    """
+    install and configure fish shell
+    """
+    log("installing fish shell")
+    subprocess.run(["sudo", "apt-get", "install", "-y", "fish"])
+
+    log("setting fish as default shell")
+    subprocess.run(["sudo", "usermod", "-s", "/usr/bin/fish", user])
+
+
 def main() -> None:
     """
     main program logic sequence
     """
+    user: str | None = os.getenv("USER")
+    if not user:
+        raise Exception("failed to get $USER from env")
+
     config = load_config()
     install_apt_packages(config.apt.packages)
-    # install_python_packages(config.python.packages)
-    # install_flatpak_packages(config.flatpak)
-    # configure_docker()
+    install_python_packages(config.python.packages)
+    install_flatpak_packages(config.flatpak)
+    configure_docker(user)
+    configure_fish(user)
 
 
 """

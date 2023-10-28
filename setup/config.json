@@ -15,6 +15,7 @@
 			"docker",
 			"docker.io",
 			"docker-compose",
+            "python3-pylsp",
     	    "htop",
 			"dfc",
 			"tmux",
@@ -53,7 +54,7 @@
 			"evince",
             "gcolor3",
 			"remmina",
-			"filezilla",
+			"filezilla"
 		]
 	},
 	"flatpak": {
@@ -68,7 +69,8 @@
 	},
 	"python": {
 		"packages": [
-			"black"
+			"black",
+            "pylsp"
 		]
 	}
 }
