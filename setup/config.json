@@ -23,6 +23,7 @@
 			"p7zip-full",
 			"p7zip-rar",
 			"lxrandr",
+            "xfce4-terminal",
 			"libnotify-bin",
 			"notify-osd",
 			"pavucontrol",
