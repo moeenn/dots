@@ -23,22 +23,11 @@ class FlatpakConfig:
         self.packages = packages
 
 
-class PythonConfig:
-    packages: list[str]
-
-    def __init__(self, packages: list[str] | None) -> None:
-        if not packages:
-            raise Exception("invalid config, python.packages missing")
-
-        self.packages = packages
-
-
 class Config:
     apt: AptConfig
     flatpak: FlatpakConfig
-    python: PythonConfig
 
-    def __init__(self, apt: dict, flatpak: dict, python: dict) -> None:
+    def __init__(self, apt: dict, flatpak: dict) -> None:
         self.apt = AptConfig(**apt)
         self.flatpak = FlatpakConfig(**flatpak)
-        self.python = PythonConfig(**python)
+
