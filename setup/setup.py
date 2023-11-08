@@ -85,6 +85,9 @@ def main() -> None:
     - [ ] Install latest nodejs & npm
     - [ ] Install helix editor
     - [ ] Link dots to home folders
+    - [ ] Zsh 
+    	- Ohmyzsh: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    	- zsh-autocomplete: git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 """
 
 if __name__ == "__main__":
