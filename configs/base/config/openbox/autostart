@@ -1,7 +1,8 @@
 xrdb ~/.Xresources &
-xrandr --dpi 112 &
+# xrandr --dpi 112 &
 ~/.fehbg &
 compton &
 redshift -O 5500 &
 xbindkeys &
-polybar default --config=~/.config/polybar/config.ini &
+bar &
+
