@@ -7,15 +7,12 @@
 			"libxinerama-dev",
 			"make",
 			"net-tools",
-			"python3-venv",
-			"python3-pip",
 			"bwm-ng",
 			"git",
 			"fish",
 			"docker",
 			"docker.io",
 			"docker-compose",
-            "python3-pylsp",
     	    "htop",
 			"dfc",
 			"tmux",
@@ -26,6 +23,7 @@
 			"p7zip-full",
 			"p7zip-rar",
 			"lxrandr",
+            "xfce4-terminal",
 			"libnotify-bin",
 			"notify-osd",
 			"pavucontrol",
@@ -47,6 +45,7 @@
 		    "xbindkeys",
 			"openbox",
 			"obconf",
+            "polybar",
 			"rofi",
 			"gnome-screenshot",
 			"engrampa",
@@ -64,12 +63,6 @@
 			"com.bitwarden.desktop",
 			"md.obsidian.Obsidian",
 			"io.beekeeperstudio.Studio"
-		]
-	},
-	"python": {
-		"packages": [
-			"black",
-            "pylsp"
 		]
 	}
 }

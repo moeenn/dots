@@ -93,7 +93,5 @@ alias wifi-delete "nmcli con delete"
 alias bright "sudo brightnessctl -d 'intel_backlight' -set"
 
 # programming
-alias py "python3"
-alias venv "python3 -m venv"
-alias inv "invoke"
 alias dc "docker-compose"
+alias denv "docker run --rm -it -v (pwd):/code"

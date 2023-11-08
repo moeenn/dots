@@ -8,10 +8,6 @@
     
 "pavucontrol"
     Mod4 + v
-    
-
-"nm-connection-editor"
-    Mod4 + n    
   
  
 "rofi -show run -font 'Cascadia Code 11' -theme Monokai"
