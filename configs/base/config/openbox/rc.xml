@@ -223,6 +223,7 @@
         <to>6</to>
       </action>
     </keybind>
+
     <!-- send window to desktop -->
     <keybind key="A-S-1">
       <action name="SendToDesktop">
@@ -254,6 +255,31 @@
         <to>6</to>
       </action>
     </keybind>
+
+    <!-- go to previous / next desktop -->
+    <!-- <keybind key="A-C-Left">
+      <action name="GoToDesktop">
+        <to>previous</to>
+      </action>
+    </keybind>
+    <keybind key="A-C-Right">
+      <action name="GoToDesktop">
+        <to>next</to>
+      </action>
+    </keybind> -->
+
+    <!-- send window to previous / next desktop -->
+    <!-- <keybind key="A-S-Left">
+      <action name="SendToDesktop">
+        <to>previous</to>
+      </action>
+    </keybind>
+    <keybind key="A-S-Right">
+      <action name="SendToDesktop">
+        <to>next</to>
+      </action>
+    </keybind>   -->
+
     <!--
      *
      *  Window management related shortcuts
