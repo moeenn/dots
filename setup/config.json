@@ -1,11 +1,16 @@
 {
 	"apt": {
 		"packages": [
+            "vim",
+            "clang",
+            "clangd",
+            "bear",
+            "g++-12",
+			"make",
 			"libx11-dev",
 			"libfontconfig1-dev",
 			"libxft-dev",
 			"libxinerama-dev",
-			"make",
 			"net-tools",
 			"bwm-ng",
 			"git",
@@ -30,8 +35,6 @@
 			"fonts-roboto",
 			"fonts-cascadia-code",
 			"fonts-jetbrains-mono",
-			"pop-icon-theme",
-			"pop-gtk-theme",
 			"yaru-theme-gtk",
 			"yaru-theme-icon",
 			"mpv",
@@ -50,9 +53,7 @@
 			"gnome-screenshot",
 			"engrampa",
 			"evince",
-            "gcolor3",
-			"remmina",
-			"filezilla"
+            "gcolor3"
 		]
 	},
 	"flatpak": {

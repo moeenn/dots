@@ -15,10 +15,8 @@ set NODEBIN {$HOME}/.npm/bin
 set GOPATH {$HOME}/.go
 set GOBIN {$GOPATH}/bin
 set RUSTBIN {$HOME}/.cargo/bin
-set GEM_HOME {$HOME}/.config/gem/ruby/3.0.0
-set RUBYBIN {$GEM_HOME}/bin
 
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$GOBIN} {$RUSTBIN} {$RUBYBIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$GOBIN} {$RUSTBIN}
 
 # --------------------------------------------------------------------
 #
