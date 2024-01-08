@@ -9,7 +9,7 @@ declare -a files=(
   ".gitconfig"
   ".npmrc"
   ".profile"
-  ".tmux"
+  ".tmux.conf"
   ".vimrc"
 )
 
