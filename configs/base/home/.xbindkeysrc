@@ -4,10 +4,6 @@
 
 "alacritty"
     Mod4 + t
-    
-    
-"pavucontrol"
-    Mod4 + v
   
  
 "rofi -show run -font 'Cascadia Code 11' -theme Monokai"

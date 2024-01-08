@@ -3,7 +3,6 @@
 declare -a files=(
   ".bin"
   ".ssh"
-  ".themes"
   ".axelrc"
   ".bashrc"
   ".gitconfig"

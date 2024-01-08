@@ -9,6 +9,7 @@ declare -a packages=(
   "pavucontrol"
   "feh"
   "lxappearance"
+  "lxappearance-obconf"
   "thunar"
   "thunar-archive-plugin"
   "i3lock"
@@ -25,4 +26,4 @@ for pkg in ${packages[@]}; do
   install_cmd="${install_cmd} ${pkg} "
 done
 
-eval $cmd
+eval $install_cmd

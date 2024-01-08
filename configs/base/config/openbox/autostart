@@ -1,8 +1,0 @@
-xrdb ~/.Xresources &
-# xrandr --dpi 112 &
-~/.fehbg &
-compton &
-redshift -O 5500 &
-xbindkeys &
-bar &
-

@@ -10,7 +10,7 @@ declare -a packages=(
 	"net-tools"
 	"bwm-ng"
 	"git"
-    "htop"
+  "htop"
 	"dfc"
 	"tmux"
 	"acpi"
@@ -21,12 +21,13 @@ declare -a packages=(
 	"fonts-jetbrains-mono"
 	"yaru-theme-gtk"
 	"yaru-theme-icon"
+	"paper-icon-theme"
 	"mpv"
 	"viewnior"
 	"thunar-archive-plugin"
 	"gnome-screenshot"
 	"evince"
-    "gcolor3"
+  "gcolor3"
 )
 
 install_cmd="sudo apt-get install -y "
