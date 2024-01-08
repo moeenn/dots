@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =7
-let g:netrw_dirhist_7='/media/moeenn/ab1c5d72-5b52-4cad-983b-3583a8810486/sandbox/rust/sandbox/src'
-let g:netrw_dirhist_6='/media/moeenn/ab1c5d72-5b52-4cad-983b-3583a8810486/sandbox/rust/sandbox'
-let g:netrw_dirhist_5='/media/moeenn/ab1c5d72-5b52-4cad-983b-3583a8810486/sandbox/python/numpy'
-let g:netrw_dirhist_4='/media/moeenn/ab1c5d72-5b52-4cad-983b-3583a8810486/side-projects/js-project-template/src'
-let g:netrw_dirhist_3='/media/moeenn/ab1c5d72-5b52-4cad-983b-3583a8810486/side-projects/js-project-template'
-let g:netrw_dirhist_2='/media/moeenn/ab1c5d72-5b52-4cad-983b-3583a8810486/projects/dms/backend'
-let g:netrw_dirhist_1='/home/moeenn/.dots'
