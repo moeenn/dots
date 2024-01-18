@@ -91,14 +91,11 @@ alias c="code ."
 alias patch="patch -p1 <"
 alias v="vim"
 alias m="mpv"
+alias t="tmux"
 
 # Super User Tasks
 alias kill="killall -v --ignore-case"
 alias full_access="sudo chmod -R a+rw ./"
-
-# tmux
-alias t="tmux"
-alias att="tmux attach -t default"
 
 # git
 alias :s="git status"
@@ -116,7 +113,6 @@ alias wifi-on="nmcli radio wifi on"
 alias wifi-off="nmcli radio wifi off"
 alias wifi-disconnect="nmcli con down"
 alias wifi-connect="sudo nmcli con up"
-
 # usage: wifi-connect <ssid> password <password>
 alias wifi-add="sudo nmcli dev wifi connect"
 alias wifi-delete="nmcli con delete"
@@ -126,7 +122,6 @@ alias bright="sudo brightnessctl -d 'intel_backlight' -set"
 
 # programming
 alias dc="docker-compose"
-alias denv="docker run --rm -it -v $(pwd):/code"
 
 
 # --------------------------------------------------------------------
