@@ -1,25 +1,19 @@
 [[language]]
 name = "python"
 roots = ["pyproject.toml", "setup.py", "Poetry.lock", ".git"]
-language-server = { command = "pyright-langserver", args = ["--stdio"] }
+#language-server = { command = "pyright-langserver", args = ["--stdio"] }
 auto-format = true
 formatter = {command = 'black', args = ["--quiet", "-"]}
-config = {}
+#config = {}
 shebangs = ["python"]
 indent = { tab-width = 4, unit = "    " }
 
 [[language]]
 name = "cpp"
 auto-format = true
-scope = "source.cpp"
-file-types = ["cpp", "hpp", "c", "h"]
-language-server = { command = "clangd" }
-
+file-types = ["cpp", "hpp", "c", "h", "cc"]
 
 [[language]]
-name = "rust"
-
-[language.config]
-cachePriming.enable = false
-diagnostics.experimental.enable = true
-
+name = "javascript"
+auto-format = true
+formatter = { command = "npx", args = ["prettier", "--parser", "typescript"]}

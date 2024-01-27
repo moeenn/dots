@@ -12,12 +12,14 @@ set fish_greeting
 set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin {$HOME}/.bin {$HOME}/.local/bin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set NODEBIN {$HOME}/.npm/bin
+set BUNBIN {$HOME}/.bun/bin
 set -Ux GOPATH {$HOME}/go
 set -Ux GOROOT /usr/local/go
 set GOBIN {$GOPATH}/bin
 set GOROOTBIN {$GOROOT}/bin
+set ZIGBIN {$HOME}/.zig
 
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$GOROOTBIN} {$GOBIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$BUNBIN} {$GOROOTBIN} {$GOBIN} {$ZIGBIN}
 
 # --------------------------------------------------------------------
 #
@@ -94,3 +96,7 @@ alias bright "sudo brightnessctl -d 'intel_backlight' -set"
 # programming
 alias dc "docker-compose"
 alias denv "docker run --rm -it -v (pwd):/code"
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
