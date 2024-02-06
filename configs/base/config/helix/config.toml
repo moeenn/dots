@@ -1,4 +1,4 @@
-theme = "kanagawa"
+theme = "monokai"
 
 [editor]
 line-number = "absolute"
