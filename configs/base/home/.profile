@@ -5,9 +5,10 @@ FLATPAKBIN=/var/lib/flatpak/exports/bin
 NODEBIN=${HOME}/.npm/bin
 GOPATH=${HOME}/go
 GOBIN=${GOPATH}/bin
+RUSTBIN=${HOME}/.cargo/bin
 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 PATH=${PATH}:${FLATPAKBIN}:${PATH}:${HOME}/.bin:${HOME}/.local/bin
-PATH=${PATH}:${NODEBIN}:${GOBIN}
+PATH=${PATH}:${NODEBIN}:${GOBIN}:${RUSTBIN}
 
 export LC_CTYPE XDG_DATA_HOME XDG_DATA_DIRS PATH GOPATH

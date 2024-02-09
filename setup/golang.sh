@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GO_VERSION="1.21.0"
+GO_VERSION="1.22.0"
 CURRENT_DIR=$(pwd)
 
 cd /tmp/
