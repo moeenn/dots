@@ -1,7 +1,7 @@
 #! /bin/bash
 
 declare -a packages=(
-    "vim"
+  "vim"
 	"make"
 	"libx11-dev"
 	"libfontconfig1-dev"
@@ -18,6 +18,7 @@ declare -a packages=(
 	"p7zip-full"
 	"p7zip-rar"
 	"fonts-roboto"
+	"fonts-cascadia-code"
 	"fonts-jetbrains-mono"
 	"yaru-theme-gtk"
 	"yaru-theme-icon"

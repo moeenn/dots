@@ -130,7 +130,7 @@
       <name>5</name>
       <name>6</name>
     </names>
-    <popupTime>875</popupTime>
+    <popupTime>0</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
        desktops.  Set this to 0 to disable the popup. -->
   </desktops>
@@ -206,7 +206,6 @@
       </action>
     </keybind>
     -->
-    
     <keybind key="S-A-1">
       <action name="SendToDesktop">
         <to>1</to>
@@ -237,7 +236,6 @@
         <to>6</to>
       </action>
     </keybind>
-
     <!--
     <keybind key="S-A-Right">
       <action name="SendToDesktop">
@@ -286,7 +284,6 @@
         <to>6</to>
       </action>
     </keybind>
-
     <!-- Keybindings for windows -->
     <keybind key="A-F4">
       <action name="Close"/>
@@ -299,7 +296,6 @@
         <menu>client-menu</menu>
       </action>
     </keybind>
-
     <!-- application shortcuts -->
     <keybind key="A-p">
       <action name="Execute">
@@ -326,7 +322,6 @@
         <command>gnome-screenshot -i</command>
       </action>
     </keybind>
-
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">
       <action name="NextWindow">
