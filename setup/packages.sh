@@ -17,7 +17,6 @@ declare -a packages=(
 	"p7zip"
 	"p7zip-full"
 	"p7zip-rar"
-	"fonts-roboto"
 	"fonts-go"
 	"fonts-jetbrains-mono"
 	"yaru-theme-gtk"

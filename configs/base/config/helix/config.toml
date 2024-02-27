@@ -1,4 +1,4 @@
-theme = "gruvbox_dark_hard"
+theme = "monokai"
 
 [editor]
 line-number = "absolute"

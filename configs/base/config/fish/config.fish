@@ -16,10 +16,9 @@ set -Ux GOPATH {$HOME}/go
 set -Ux GOROOT /usr/local/go
 set GOBIN {$GOPATH}/bin
 set GOROOTBIN {$GOROOT}/bin
-set SCALABIN {$HOME}/.config/coursier/bin
 set RUSTBIN {$HOME}/.cargo/bin
 
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$GOROOTBIN} {$GOBIN} {$SCALABIN} {$RUSTBIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$GOROOTBIN} {$GOBIN} {$RUSTBIN}
 
 
 # --------------------------------------------------------------------
