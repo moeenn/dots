@@ -7,6 +7,7 @@
     "breadcrumbs.enabled": false,
     "workbench.editor.enablePreview": false,
     "editor.bracketPairColorization.enabled": true,
+    "workbench.sideBar.location": "right",
     "editor.tabSize": 4,
     "editor.lineHeight": 1.75,
     "editor.rulers": [

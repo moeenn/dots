@@ -57,7 +57,7 @@ alias extract "dtrx -v"
 alias net "bwm-ng -t 1000"
 alias speed "speedtest-rs"
 alias lsblk "lsblk -e 7"
-alias c "code ."
+alias c "codium ."
 alias patch "patch -p1 <"
 alias v "vim"
 alias m "mpv"
@@ -96,3 +96,12 @@ alias bright "sudo brightnessctl -d 'intel_backlight' -set"
 
 # programming
 alias dc "docker-compose"
+
+# >>> JVM installed by coursier >>>
+set -gx JAVA_HOME "/home/moeenn/.cache/coursier/arc/https/github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.22%252B7/OpenJDK11U-jdk_x64_linux_hotspot_11.0.22_7.tar.gz/jdk-11.0.22+7"
+set -gx PATH "$PATH:/home/moeenn/.cache/coursier/arc/https/github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.22%252B7/OpenJDK11U-jdk_x64_linux_hotspot_11.0.22_7.tar.gz/jdk-11.0.22+7/bin"
+# <<< JVM installed by coursier <<<
+
+# >>> coursier install directory >>>
+set -gx PATH "$PATH:/home/moeenn/.config/coursier/bin"
+# <<< coursier install directory <<<
