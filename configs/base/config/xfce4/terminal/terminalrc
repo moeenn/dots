@@ -33,9 +33,10 @@ ScrollingLines=10000
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
 CellHeightScale=1.250000
 TextBlinkMode=TERMINAL_TEXT_BLINK_MODE_NEVER
-ColorForeground=#f2f2e5e5bcbc
+ColorForeground=#f8f8f8f8f2f2
 FontAllowBold=FALSE
-ColorBackground=#323230302f2f
-ColorCursor=#d65bc4cd8ca1
-ColorPalette=#323230302f2f;#cccc24241d1d;#989897971a1a;#d7d799992121;#454585858888;#b1b162628686;#68689d9d6a6a;#929283837474;#1d1d20202121;#fbfb49493434;#b8b8bbbb2626;#fafabdbd2f2f;#8383a5a59898;#d3d386869b9b;#8e8ec0c07c7c;#b9b9a6a69393
+ColorBackground=#272728282222
+ColorCursor=#f8f8f8f8f2f2
+ColorPalette=#3C3D34;#f9f926267272;#a6a6e2e22e2e;#f4f4bfbf7575;#6666d9d9efef;#aeae8181ffff;#a1a1efefe4e4;#f8f8f8f8f2f2;#5E6152;#f9f926267272;#a6a6e2e22e2e;#f4f4bfbf7575;#6666d9d9efef;#aeae8181ffff;#a1a1efefe4e4;#f9f9f8f8f5f5
+TabActivityColor=#a6a6e2e22e2e
 
