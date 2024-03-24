@@ -123,12 +123,3 @@ alias bright="sudo brightnessctl -d 'intel_backlight' -set"
 # programming
 alias dc="docker-compose"
 
-
-# --------------------------------------------------------------------
-#
-#   java sdkman linking
-#   Note: THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-#
-# --------------------------------------------------------------------
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
