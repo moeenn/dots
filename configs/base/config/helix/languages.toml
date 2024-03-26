@@ -1,12 +1,20 @@
 [[language]]
 name = "python"
-roots = ["pyproject.toml", "setup.py", "Poetry.lock", ".git"]
-#language-server = { command = "pyright-langserver", args = ["--stdio"] }
 auto-format = true
-formatter = {command = 'black', args = ["--quiet", "-"]}
-#config = {}
-shebangs = ["python"]
-indent = { tab-width = 4, unit = "    " }
+language-servers = [
+    {name = "pyright"},
+    {name = "ruff-lsp"},
+]
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+config = {}
+
+[language-server.ruff-lsp]
+command = "ruff-lsp"
+args = []
+config = {}
 
 [[language]]
 name = "cpp"
