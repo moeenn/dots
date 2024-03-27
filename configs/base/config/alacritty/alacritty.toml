@@ -28,11 +28,11 @@ white   = "#F8F8F2"
 shape = "Underline"
 
 [font]
-size = 8.0
+size = 7.0
 
 [font.bold]
 family = "JetBrains Mono"
-style = "Medium"
+style = "Regular"
 
 [font.glyph_offset]
 x = 0

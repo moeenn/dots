@@ -122,3 +122,4 @@ alias bright="sudo brightnessctl -d 'intel_backlight' -set"
 
 # programming
 alias dc="docker-compose"
+alias py="python3"
