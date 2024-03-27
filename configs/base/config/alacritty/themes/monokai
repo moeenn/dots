@@ -24,28 +24,3 @@ magenta = "#AE81FF"
 cyan    = "#A1EFE4"
 white   = "#F8F8F2"
 
-[cursor.style]
-shape = "Underline"
-
-[font]
-size = 8.0
-
-[font.bold]
-family = "JetBrains Mono"
-style = "Medium"
-
-[font.glyph_offset]
-x = 0
-y = 5
-
-[font.normal]
-family = "JetBrains Mono"
-style = "Regular"
-
-[font.offset]
-x = 0
-y = 10
-
-[window.padding]
-x = 10
-y = 10
