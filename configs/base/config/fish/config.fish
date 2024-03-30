@@ -17,9 +17,8 @@ set -Ux GOROOT /usr/local/go
 set GOBIN {$GOPATH}/bin
 set GOROOTBIN {$GOROOT}/bin
 set RUSTBIN {$HOME}/.cargo/bin
-set ZIGBIN {$HOME}/.zig
 
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$GOROOTBIN} {$GOBIN} {$RUSTBIN} {$ZIGBIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$GOROOTBIN} {$GOBIN} {$RUSTBIN}
 
 
 # --------------------------------------------------------------------
@@ -60,7 +59,6 @@ alias lsblk "lsblk -e 7"
 alias c "codium ."
 alias patch "patch -p1 <"
 alias v "vim"
-alias m "mpv"
 alias clock "tty-clock -cD"
 
 # Super User Tasks
@@ -98,3 +96,4 @@ alias bright "sudo brightnessctl -d 'intel_backlight' -set"
 # programming
 alias dc "docker-compose"
 alias py "python3"
+alias m "make"

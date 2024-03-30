@@ -28,10 +28,10 @@ white   = "#F8F8F2"
 shape = "Underline"
 
 [font]
-size = 7.0
+size = 9.0
 
 [font.bold]
-family = "JetBrains Mono"
+family = "Ubuntu Mono"
 style = "Regular"
 
 [font.glyph_offset]
@@ -39,7 +39,7 @@ x = 0
 y = 5
 
 [font.normal]
-family = "JetBrains Mono"
+family = "Ubuntu Mono"
 style = "Regular"
 
 [font.offset]
