@@ -19,6 +19,7 @@ declare -a packages=(
 	"p7zip-rar"
 	"fonts-go"
 	"fonts-jetbrains-mono"
+  "fonts-firacode",
 	"yaru-theme-gtk"
 	"yaru-theme-icon"
 	"paper-icon-theme"
