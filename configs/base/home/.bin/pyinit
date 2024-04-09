@@ -2,6 +2,7 @@
 
 import sys
 import os
+import subprocess
 
 
 def readme_content(project_name: str) -> str:
@@ -169,7 +170,7 @@ class TestApp(TestCase):
     def test_random_number(self) -> None:
         result = self.app.random_number()
         self.assertEqual(result, 42)    
-    """.strip()    
+    """.strip()
 
 
 def create_directory_structure(root: str, project_name: str) -> None:
@@ -180,9 +181,9 @@ def create_directory_structure(root: str, project_name: str) -> None:
         f.write(gitignore_content())
 
     with open(os.path.join(root, "README.md"), "wt") as f:
-        f.write(readme_content(project_name)) 
+        f.write(readme_content(project_name))
 
-    with open(os.path.join(root, "requirements.txt"), "wt") as f:       
+    with open(os.path.join(root, "requirements.txt"), "wt") as f:
         f.write(requirements_txt_content())
 
     with open(os.path.join(root, "tasks.py"), "wt") as f:
@@ -199,7 +200,6 @@ def create_directory_structure(root: str, project_name: str) -> None:
 
     with open(os.path.join(root, "app", "app_test.py"), "wt") as f:
         f.write(app_test_content())
-    
 
 
 def main(args: list[str]) -> None:
@@ -208,7 +208,23 @@ def main(args: list[str]) -> None:
 
     project_name = args[1]
     root_path = os.path.join(os.getcwd(), project_name)
+
+    print("Creating directory structure")
     create_directory_structure(root_path, project_name)
+
+    initGit = input("\nInitialize a Git repo? [Y/n] ")
+    if initGit == "Y" or initGit == "y":
+        # message is automatically printed by git command
+        subprocess.run(["git", "init", root_path])
+    else:
+        print("Skipping Git repository initialization")
+
+    initVenv = input("\nInitialize virtual environment (venv)? [Y/n] ")
+    if initVenv == "Y" or initVenv == "y":
+        subprocess.run(["python3", "-m", "venv", os.path.join(root_path, ".venv")])
+        print("Virtual environment initialized")
+    else:
+        print("Skipping virtual environment initialization")
 
 
 if __name__ == "__main__":
