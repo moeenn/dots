@@ -1,0 +1,95 @@
+#!/usr/bin/python3
+
+import sys
+import os
+import subprocess
+
+
+def gitignore_content() -> str:
+    return """ 
+bin/*
+*.o
+.DS_Store    
+    """.strip()
+
+
+def makefile_content(project_name: str) -> str:
+    return f"""
+PROJECT = {project_name}
+
+CC = clang
+SRC_DIR =./src
+SRC = $(wildcard ${{SRC_DIR}}/*.c)
+OUT_DIR = bin
+OBJ = ${{SRC:.c=.o}}
+LIBS =
+CFLAGS = -std=c99 -pipe -Wno-unused -Wall -Wno-deprecated-declarations
+BINARY = ${{OUT_DIR}}/${{PROJECT}}
+
+main: ${{OBJ}}
+	${{CC}} -o ${{BINARY}} ${{OUT_DIR}}/*.o ${{LIBS}}
+
+.c.o:
+	${{CC}} -c ${{CFLAGS}} $<
+	@mkdir -p ${{OUT_DIR}}
+	@mv ./*.o ${{OUT_DIR}}/
+
+run:
+	@${{BINARY}}
+
+clean:
+	@rm -v ${{OUT_DIR}}/*.o ${{BINARY}}
+    """.strip()
+
+
+def main_content() -> str:
+    return """	
+#include <stdio.h>
+
+int main() {
+  printf("Hello world");
+  return 0;
+}
+    """.strip()
+
+
+def create_directory_structure(root: str, project_name: str) -> None:
+    os.mkdir(root)
+    os.mkdir(os.path.join(root, "src"))
+    os.mkdir(os.path.join(root, "bin"))
+
+    with open(os.path.join(root, ".gitignore"), "wt") as f:
+        f.write(gitignore_content())
+
+    with open(os.path.join(root, "Makefile"), "wt") as f:
+        f.write(makefile_content(project_name))
+
+    with open(os.path.join(root, "src", "main.c"), "wt") as f:
+        f.write(main_content())
+
+
+def main(args: list[str]) -> None:
+    if len(args) < 2:
+        raise Exception("please provide a valid project name")
+
+    project_name = args[1]
+    root_path = os.path.join(os.getcwd(), project_name)
+
+    print("Creating directory structure")
+    create_directory_structure(root_path, project_name)
+
+    initGit = input("\nInitialize a Git repo? [Y/n] ")
+    if initGit == "Y" or initGit == "y":
+        # message is automatically printed by git command
+        subprocess.run(["git", "init", root_path])
+    else:
+        print("Skipping Git repository initialization")
+
+
+if __name__ == "__main__":
+    try:
+        main(sys.argv)
+    except KeyboardInterrupt:
+        print("ctrl+c: exiting...")
+    except Exception as err:
+        print("error: ", err)
