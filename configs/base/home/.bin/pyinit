@@ -7,7 +7,7 @@ import subprocess
 
 def readme_content(project_name: str) -> str:
     return f"""
-## sandbox
+## {project_name}
 
 ### Setup
 
@@ -104,7 +104,7 @@ def fmt(c, docs=False) -> None:
 @task
 def check(c, docs=False) -> None:
     c.run(f"{PI} -m ruff check {APP}")
-    c.run("mypy .")
+    c.run(f"mypy {APP}")
 
 
 @task
@@ -143,8 +143,7 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("ctrl+c: shutting down...")
     except Exception as err:
-        print("error: ", err)
-		
+        print("error: ", err)		
     """.strip()
 
 

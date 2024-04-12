@@ -25,14 +25,3 @@ file-types = ["cpp", "hpp", "c", "h", "cc"]
 name = "javascript"
 auto-format = true
 formatter = { command = "npx", args = ["prettier", "--parser", "typescript"]}
-
-[[language]]
-name = "elixir"
-scope = "source.elixir"
-injection-regex = "(elixir|ex)"
-shebangs = ["elixir"]
-roots = ["mix.exs", "mix.lock"]
-comment-token = "#"
-language-servers = [ "elixir-ls" ]
-indent = { tab-width = 2, unit = "  " }
-auto-format = true
