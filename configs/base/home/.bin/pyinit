@@ -34,14 +34,14 @@ $ invoke test
 
 # format and lint code
 $ invoke fmt 
-$ invoke check
+$ invoke lint
 
 # compile to stand-alone executable
 $ invoke build
 
 # perform temporary files cleanup
 $ invoke clean
-```
+```        
     """.strip()
 
 
@@ -55,7 +55,7 @@ build/
 *.egg-info
 .*_cache
 dist/
-.DS_Store
+.DS_Store    
     """.strip()
 
 
@@ -63,8 +63,7 @@ def requirements_txt_content() -> str:
     return """
 invoke==2.2.0
 ruff==0.3.4
-mypy==1.9.0
-pyinstaller==6.5.0
+pyinstaller==6.5.0        
     """.strip()
 
 
@@ -93,7 +92,7 @@ def start(c, docs=False) -> None:
 
 @task
 def test(c, docs=False) -> None:
-    c.run(f"{PI} -m unittest discover -p '*_test.py'")
+    c.run(f"{PI} -m unittest discover -s {APP} -p '*_test.py'")
 
 
 @task
@@ -104,32 +103,32 @@ def fmt(c, docs=False) -> None:
 @task
 def check(c, docs=False) -> None:
     c.run(f"{PI} -m ruff check {APP}")
-    c.run(f"mypy {APP}")
 
 
 @task
 def build(c, docs=False) -> None:
     c.run(f"pyinstaller --onefile --specpath={BUILD_DIR} {MAIN}")
+    
 
-
-@task
+@task 
 def clean(c, docs=False) -> None:
     # recursively remove __pycache__ directories from project
     print("Removing cache files...")
     c.run("find . -type d -name  '__pycache__' -exec rm -r {} +")
 
-    dist_dir = os.path.join(os.getcwd(), "dist")
+    dist_dir = os.path.join(os.getcwd(), "dist")        
     if os.path.exists(dist_dir):
         c.run(f"rm -rf {dist_dir}")
 
     if os.path.exists(BUILD_DIR):
-        c.run(f"rm -r {BUILD_DIR}")    
+        c.run(f"rm -r {BUILD_DIR}")
+    
     """.strip()
 
 
 def main_content() -> str:
     return """
-from app.entrypoint import Application
+from app.app import Application
 
 
 def main() -> None:
@@ -143,25 +142,26 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("ctrl+c: shutting down...")
     except Exception as err:
-        print("error: ", err)		
+        print("error: ", err)
+		
     """.strip()
 
 
-def entrypoint_content() -> str:
+def app_content() -> str:
     return """
 class Application:
-    def run(self) -> None:
-        print("Hello from application")
+    def run(self):
+        print("Hello world from application")
 
     def random_number(self) -> int:
-        return 42
+        return 42    
     """.strip()
 
 
-def entrypoint_test_content() -> str:
+def app_test_content() -> str:
     return """
 from unittest import TestCase
-from .entrypoint import Application
+from app import Application
 
 
 class TestApp(TestCase):
@@ -169,7 +169,7 @@ class TestApp(TestCase):
 
     def test_random_number(self) -> None:
         result = self.app.random_number()
-        self.assertEqual(result, 42)
+        self.assertEqual(result, 42)    
     """.strip()
 
 
@@ -195,11 +195,11 @@ def create_directory_structure(root: str, project_name: str) -> None:
     with open(os.path.join(root, "app", "__init__.py"), "wt") as f:
         f.write("")
 
-    with open(os.path.join(root, "app", "entrypoint.py"), "wt") as f:
-        f.write(entrypoint_content())
+    with open(os.path.join(root, "app", "app.py"), "wt") as f:
+        f.write(app_content())
 
-    with open(os.path.join(root, "app", "entrypoint_test.py"), "wt") as f:
-        f.write(entrypoint_test_content())
+    with open(os.path.join(root, "app", "app_test.py"), "wt") as f:
+        f.write(app_test_content())
 
 
 def main(args: list[str]) -> None:
@@ -212,15 +212,15 @@ def main(args: list[str]) -> None:
     print("Creating directory structure")
     create_directory_structure(root_path, project_name)
 
-    initGit = input("\nInitialize a Git repo? [Y/n] ")
-    if initGit == "Y" or initGit == "y":
+    init_git = input("\nInitialize a Git repo? [Y/n] ")
+    if init_git == "Y" or init_git == "y":
         # message is automatically printed by git command
         subprocess.run(["git", "init", root_path])
     else:
         print("Skipping Git repository initialization")
 
-    initVenv = input("\nInitialize virtual environment (venv)? [Y/n] ")
-    if initVenv == "Y" or initVenv == "y":
+    init_venv = input("\nInitialize virtual environment (venv)? [Y/n] ")
+    if init_venv == "Y" or init_venv == "y":
         subprocess.run(["python3", "-m", "venv", os.path.join(root_path, ".venv")])
         print("Virtual environment initialized")
     else:
