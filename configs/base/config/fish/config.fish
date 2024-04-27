@@ -12,13 +12,14 @@ set fish_greeting
 set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin {$HOME}/.bin {$HOME}/.local/bin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set NODEBIN {$HOME}/.npm/bin
+set BUNBIN {$HOME}/.bun/bin
 set -Ux GOPATH {$HOME}/go
 set -Ux GOROOT /usr/local/go
 set GOBIN {$GOPATH}/bin
 set GOROOTBIN {$GOROOT}/bin
 set RUSTBIN {$HOME}/.cargo/bin
 
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$GOROOTBIN} {$GOBIN} {$RUSTBIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$BUNBIN} {$GOROOTBIN} {$GOBIN} {$RUSTBIN}
 
 
 # --------------------------------------------------------------------
@@ -45,8 +46,8 @@ alias rm "rm -iv"
 alias link "ln -sr"
 alias ls "ls -ap --color=always"
 alias lsa "ls -alp"
-alias :q "exit"
-alias :Q "exit"
+alias :q exit
+alias :Q exit
 
 # Programs
 alias load "htop -u moeenn"
@@ -54,11 +55,11 @@ alias df "dfc -f -s"
 alias uptime "uptime -p"
 alias extract "dtrx -v"
 alias net "bwm-ng -t 1000"
-alias speed "speedtest-rs"
+alias speed speedtest-rs
 alias lsblk "lsblk -e 7"
 alias c "codium ."
 alias patch "patch -p1 <"
-alias v "vim"
+alias v vim
 alias clock "tty-clock -cD"
 
 # Super User Tasks
@@ -66,7 +67,7 @@ alias kill "killall -v --ignore-case"
 alias full_access "sudo chmod -R a+rw ./"
 
 # tmux
-alias t "tmux"
+alias t tmux
 alias att "tmux attach -t default"
 
 # git
@@ -94,6 +95,10 @@ alias wifi-delete "nmcli con delete"
 alias bright "sudo brightnessctl -d 'intel_backlight' -set"
 
 # programming
-alias dc "docker-compose"
-alias py "python3"
-alias m "make"
+alias dc docker-compose
+alias py python3
+alias m make
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
