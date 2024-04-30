@@ -78,8 +78,8 @@ def main(args: list[str]) -> None:
     print("Creating directory structure")
     create_directory_structure(root_path, project_name)
 
-    initGit = input("\nInitialize a Git repo? [Y/n] ")
-    if initGit == "Y" or initGit == "y":
+    init_git = input("\nInitialize a Git repo? [Y/n] ")
+    if init_git == "Y" or init_git == "y":
         # message is automatically printed by git command
         subprocess.run(["git", "init", root_path])
     else:
