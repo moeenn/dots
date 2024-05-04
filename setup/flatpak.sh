@@ -1,8 +1,8 @@
 #! /bin/bash
 
 declare -a packages=(
-  "org.chromium.Chromium"
-	"com.github.tchx84.Flatseal"
+#	"org.chromium.Chromium"
+#	"com.github.tchx84.Flatseal"
 #	"rest.insomnia.Insomnia"
 	"com.bitwarden.desktop"
 	"md.obsidian.Obsidian"

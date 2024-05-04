@@ -1,13 +1,10 @@
 #! /bin/bash
 
 declare -a files=(
-  "alacritty"
   "fish"
   "helix"
   "htop"
   "mpv"
-  "viewnior"
-  "xed" 
 )
 
 PREFIX="../configs/base/config"

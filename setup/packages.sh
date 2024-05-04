@@ -1,16 +1,13 @@
 #! /bin/bash
 
 declare -a packages=(
-  "vim"
+  	"vim"
 	"make"
-	"libx11-dev"
-	"libfontconfig1-dev"
-	"libxft-dev"
-	"libxinerama-dev"
 	"net-tools"
 	"bwm-ng"
+	"gparted"
 	"git"
-  "htop"
+  	"htop"
 	"dfc"
 	"tmux"
 	"acpi"
@@ -19,7 +16,6 @@ declare -a packages=(
 	"p7zip-rar"
 	"fonts-go"
 	"fonts-jetbrains-mono"
-  "fonts-firacode",
 	"yaru-theme-gtk"
 	"yaru-theme-icon"
 	"paper-icon-theme"
@@ -28,7 +24,7 @@ declare -a packages=(
 	"thunar-archive-plugin"
 	"gnome-screenshot"
 	"evince"
-  "gcolor3"
+  	"gcolor3"
 )
 
 install_cmd="sudo apt-get install -y "
