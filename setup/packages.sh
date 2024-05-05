@@ -1,13 +1,15 @@
 #! /bin/bash
 
 declare -a packages=(
-  	"vim"
+  "vim"
 	"make"
 	"net-tools"
 	"bwm-ng"
+	"jq"
+	"axel"
 	"gparted"
 	"git"
-  	"htop"
+  "htop"
 	"dfc"
 	"tmux"
 	"acpi"
@@ -24,7 +26,7 @@ declare -a packages=(
 	"thunar-archive-plugin"
 	"gnome-screenshot"
 	"evince"
-  	"gcolor3"
+  "gcolor3"
 )
 
 install_cmd="sudo apt-get install -y "
