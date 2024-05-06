@@ -98,6 +98,7 @@ alias bright "sudo brightnessctl -d 'intel_backlight' -set"
 alias dc docker-compose
 alias py python3
 alias m make
+alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
