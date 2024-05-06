@@ -7,9 +7,10 @@ BUNBIN=${HOME}/.bun/bin
 GOPATH=${HOME}/go
 GOBIN=${GOPATH}/bin
 RUSTBIN=${HOME}/.cargo/bin
+IDEABIN=${HOME}/.idea/bin
 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 PATH=${PATH}:${FLATPAKBIN}:${PATH}:${HOME}/.bin:${HOME}/.local/bin
-PATH=${PATH}:${NODEBIN}:${BUNBIN}:${GOBIN}:${RUSTBIN}
+PATH=${PATH}:${NODEBIN}:${BUNBIN}:${GOBIN}:${RUSTBIN}:${IDEABIN}
 
 export LC_CTYPE XDG_DATA_HOME XDG_DATA_DIRS PATH GOPATH

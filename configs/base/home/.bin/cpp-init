@@ -1,0 +1,105 @@
+#!/usr/bin/python3
+
+import sys
+import os
+import subprocess
+
+
+def makefile_content(project_name: str) -> str:
+    return f"""
+PROJECT = {project_name}
+
+CC = clang++
+SRC_DIR =./src
+SRC = $(wildcard ${{SRC_DIR}}/*.cpp)
+OUT_DIR = bin
+OBJ = ${{SRC:.cpp=.o}}
+LIBS = -lm
+CFLAGS = -Wextra -Werror -Wall -Wpedantic -std=c++20 -O3
+BINARY = ${{OUT_DIR}}/${{PROJECT}}
+
+main: ${{OBJ}}
+	${{CC}} -o ${{BINARY}} ${{OUT_DIR}}/*.o ${{LIBS}}
+
+.cpp.o:
+	@mkdir -p ./${{OUT_DIR}}
+	${{CC}} -c ${{CFLAGS}} $<
+	@mv ./*.o ${{OUT_DIR}}/
+
+run:
+	@${{BINARY}}
+
+fmt:
+	@clang-format -i -style=Chromium ${{SRC_DIR}}/*.cpp
+	@if [ -z ${{SRC_DIR}}/*.hpp ]; then clang-format -i -style=Chromium ${{SRC_DIR}}/*.hpp; fi
+
+build:
+	@bear -- make main
+
+clean:
+	@rm -v ${{OUT_DIR}}/*.o 2> /dev/null
+	@rm -v ${{BINARY}} 2> /dev/null
+	@rm -vf ./compile_commands.json 2> /dev/null
+    """.strip()
+
+
+def gitignore_content() -> str:
+    return """
+bin/*
+*.o
+.cache
+compile_commands.json
+.DS_Store
+    """.strip()
+
+
+def main_content() -> str:
+    return """
+#include<iostream>
+
+int main() {
+  std::cout << "Hello world\\n";
+}
+    """.strip()
+
+
+def create_directory_structure(root: str, project_name: str) -> None:
+    os.mkdir(root)
+    os.mkdir(os.path.join(root, "src"))
+    os.mkdir(os.path.join(root, "bin"))
+
+    with open(os.path.join(root, ".gitignore"), "wt") as f:
+        f.write(gitignore_content())
+
+    with open(os.path.join(root, "Makefile"), "wt") as f:
+        f.write(makefile_content(project_name))
+
+    with open(os.path.join(root, "src", "main.cpp"), "wt") as f:
+        f.write(main_content())
+
+
+def main(args: list[str]) -> None:
+    if len(args) < 2:
+        raise Exception("please provide a valid project name")
+
+    project_name = args[1]
+    root_path = os.path.join(os.getcwd(), project_name)
+
+    print("Creating directory structure")
+    create_directory_structure(root_path, project_name)
+
+    init_git = input("\nInitialize a Git repo? [Y/n] ")
+    if init_git == "Y" or init_git == "y":
+        # message is automatically printed by git command
+        subprocess.run(["git", "init", root_path])
+    else:
+        print("Skipping Git repository initialization")
+
+
+if __name__ == "__main__":
+    try:
+        main(sys.argv)
+    except KeyboardInterrupt:
+        print("ctrl+c: exiting...")
+    except Exception as err:
+        print("error: ", err)
