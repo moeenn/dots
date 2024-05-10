@@ -1,14 +1,12 @@
 {
-    "workbench.colorTheme": "Monokai",
-    "editor.fontFamily": "'JetBrains Mono'",
+    "editor.fontFamily": "'Fira Code'",
     "window.menuBarVisibility": "toggle",
     "editor.fontLigatures": true,
     "editor.minimap.enabled": false,
     "breadcrumbs.enabled": false,
     "workbench.editor.enablePreview": false,
     "editor.bracketPairColorization.enabled": true,
-    "workbench.sideBar.location": "right",
-    "editor.tabSize": 4,
+    "editor.tabSize": 2,
     "editor.lineHeight": 1.75,
     "editor.rulers": [
         80
@@ -19,18 +17,9 @@
     "[typescript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
-    "[c]": {
-        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
-    },
-    "[cpp]": {
-        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
-    },
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
-    },
-    "python.analysis.enablePytestSupport": false,
-    "python.analysis.typeCheckingMode": "basic",
-    "files.exclude": {
-        "**/__pycache__": true
-    }
+    "workbench.startupEditor": "none",
+    "window.confirmSaveUntitledWorkspace": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.guides.bracketPairs": true,
+    "workbench.colorTheme": "Monokai"
 }
