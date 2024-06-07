@@ -14,11 +14,12 @@ sudo mv go /usr/local
 cd $CURRENT_DIR
 
 # install necessary tools
-sudo apt-get install -y delve golang-honnef-go-tools-dev
+sudo apt-get install -y golang-honnef-go-tools-dev
 
 # lsp tools
 go install golang.org/x/tools/gopls@latest
 go install github.com/nametake/golangci-lint-langserver@latest
+go install github.com/go-delve/delve/cmd/dlv@latest
 
 # linting tools
 go install honnef.co/go/tools/cmd/staticcheck@latest
