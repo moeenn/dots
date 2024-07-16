@@ -27,3 +27,6 @@ go install github.com/kisielk/errcheck@latest
 
 # optional listers
 go install github.com/jgautheron/goconst/cmd/goconst@latest
+
+# live reload tools
+go install github.com/air-verse/air@latest
