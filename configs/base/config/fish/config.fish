@@ -12,7 +12,10 @@ set fish_greeting
 set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin {$HOME}/.bin {$HOME}/.local/bin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set NODEBIN {$HOME}/.npm/bin
-set BUNBIN {$HOME}/.bun/bin
+
+set -Ux BUN_INSTALL {$HOME}/.bun
+set BUNBIN {$BUN_INSTALL}/bin
+
 set -Ux GOPATH {$HOME}/go
 set -Ux GOROOT /usr/local/go
 set GOBIN {$GOPATH}/bin
@@ -98,8 +101,6 @@ alias bright "sudo brightnessctl -d 'intel_backlight' -set"
 alias dc docker-compose
 alias py python3
 alias m make
+alias cr "composer run-script"
+alias sf symfony
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH

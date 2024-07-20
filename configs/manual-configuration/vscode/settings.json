@@ -1,12 +1,16 @@
 {
-    "editor.fontFamily": "'Fira Code'",
+    "editor.fontFamily": "'JetBrains Mono'",
     "window.menuBarVisibility": "toggle",
     "editor.fontLigatures": true,
     "editor.minimap.enabled": false,
     "breadcrumbs.enabled": false,
     "workbench.editor.enablePreview": false,
     "editor.bracketPairColorization.enabled": true,
-    "editor.tabSize": 2,
+    "workbench.colorTheme": "Solarized Light",
+    "redhat.telemetry.enabled": false,
+    "workbench.startupEditor": "none",
+    "window.confirmSaveUntitledWorkspace": false,
+    "editor.tabSize": 4,
     "editor.lineHeight": 1.75,
     "editor.rulers": [
         80
@@ -17,9 +21,13 @@
     "[typescript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
-    "workbench.startupEditor": "none",
-    "window.confirmSaveUntitledWorkspace": false,
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "editor.guides.bracketPairs": true,
-    "workbench.colorTheme": "Monokai"
+    "python.analysis.enablePytestSupport": false,
+    "python.analysis.typeCheckingMode": "basic",
+    "files.exclude": {
+        "**/__pycache__": true
+    },
+    "[php]": {
+        "editor.defaultFormatter": "kokororin.vscode-phpfmt",
+        "editor.formatOnSave": true
+    }
 }
