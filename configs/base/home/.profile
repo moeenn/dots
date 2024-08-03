@@ -3,9 +3,6 @@ XDG_DATA_HOME=${HOME}/.config
 XDG_DATA_DIRS=${XDG_DATA_DIRS}:${XDG_DATA_HOME}/flatpak/exports/share
 FLATPAKBIN=/var/lib/flatpak/exports/bin
 NODEBIN=${HOME}/.npm/bin
-BUNBIN=${HOME}/.bun/bin
-GOPATH=${HOME}/go
-GOBIN=${GOPATH}/bin
 RUSTBIN=${HOME}/.cargo/bin
 IDEABIN=${HOME}/.idea/bin
 
