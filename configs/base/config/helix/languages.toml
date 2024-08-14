@@ -29,3 +29,7 @@ formatter = { command = "npx", args = ["prettier", "--parser", "typescript"]}
 [[language]]
 name = "go"
 indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "rust"
+indent = { tab-width = 2, unit = "  " }
