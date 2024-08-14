@@ -13,8 +13,10 @@ set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin {$HOME}
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set NODEBIN {$HOME}/.npm/bin
 set RUSTBIN {$HOME}/.cargo/bin
+set GOINSTALL /usr/local/go/bin
+set GOBIN {$HOME}/go/bin
 
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$RUSTBIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$RUSTBIN} {$GOINSTALL} {$GOBIN}
 
 
 # --------------------------------------------------------------------
@@ -93,6 +95,4 @@ alias bright "sudo brightnessctl -d 'intel_backlight' -set"
 alias dc docker-compose
 alias py python3
 alias m make
-alias cr "composer run-script"
-alias sf symfony
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
