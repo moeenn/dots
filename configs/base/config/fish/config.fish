@@ -13,8 +13,9 @@ set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin {$HOME}
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set NODEBIN {$HOME}/.npm/bin
 set RUSTBIN {$HOME}/.cargo/bin
-
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$RUSTBIN}
+set GOINSTALL /usr/local/go/bin
+set GOBIN {$HOME}/go/bin
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$RUSTBIN} {$GOINSTALL} {$GOBIN}
 
 
 # --------------------------------------------------------------------
@@ -41,8 +42,8 @@ alias rm "rm -iv"
 alias link "ln -sr"
 alias ls "ls -ap --color=always"
 alias lsa "ls -alp"
-alias :q "exit"
-alias :Q "exit"
+alias :q exit
+alias :Q exit
 
 # Programs
 alias load "htop -u moeenn"
@@ -50,19 +51,19 @@ alias df "dfc -f -s"
 alias uptime "uptime -p"
 alias extract "dtrx -v"
 alias net "bwm-ng -t 1000"
-alias speed "speedtest-rs"
+alias speed speedtest-rs
 alias lsblk "lsblk -e 7"
-alias c "code ."
+alias c "codium ."
 alias patch "patch -p1 <"
-alias v "vim"
-alias m "mpv"
+alias v vim
+alias clock "tty-clock -cD"
 
 # Super User Tasks
 alias kill "killall -v --ignore-case"
 alias full_access "sudo chmod -R a+rw ./"
 
 # tmux
-alias t "tmux"
+alias t tmux
 alias att "tmux attach -t default"
 
 # git
@@ -73,6 +74,7 @@ alias :C "git commit -m"
 alias :b "git branch"
 alias :B "git branch"
 alias push "git push"
+alias pull "git pull"
 
 # wifi management
 alias wifi-scan "nmcli dev wifi list"
@@ -89,4 +91,7 @@ alias wifi-delete "nmcli con delete"
 alias bright "sudo brightnessctl -d 'intel_backlight' -set"
 
 # programming
-alias dc "docker-compose"
+alias dc docker-compose
+alias py python3
+alias m make
+alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"

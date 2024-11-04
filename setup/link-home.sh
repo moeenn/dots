@@ -5,11 +5,13 @@ declare -a files=(
   ".ssh"
   ".axelrc"
   ".bashrc"
+  ".compton.conf"
   ".gitconfig"
   ".npmrc"
   ".profile"
   ".tmux.conf"
   ".vimrc"
+  ".Xresources"
 )
 
 PREFIX="../configs/base/home"

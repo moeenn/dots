@@ -1,0 +1,151 @@
+#!/usr/bin/python3
+
+import os
+import sys
+import subprocess
+
+def gitignore_content() -> str:
+    return """
+.gradle
+.vscode
+bin
+build
+*.class
+.DS_Store
+    """
+
+
+def readme_content(project_name: str) -> str:
+    return f"""
+# {project_name}
+
+## Usage
+
+```bash
+# quickly run the project
+# use -q flag for quiet
+# use -t flag for live reload build 
+$ gradle run
+
+# run tests
+$ gradle test
+
+# check and compile project classes
+$ gradle build
+
+# generate output jar (in ./build/libs/)
+$ gradle jar
+
+# execute jar file 
+$ java -jar ./build/libs/{project_name}-0.0.1.jar
+
+# list gradle background daemon details
+$ gradle --status
+
+# kill gradle daemons
+$ gradle --stop
+```
+    """
+
+def build_gradle_content(project_name: str) -> str:
+    return f"""
+plugins {{
+    id 'java'
+    id 'application'
+}}
+
+application {{
+    mainClass = '{project_name}.Main'
+}}
+
+repositories {{ 
+    mavenCentral() 
+}}
+
+jar {{
+    archiveVersion =  '0.0.1'
+    archiveBaseName = '{project_name}'
+    manifest {{
+        attributes['Main-Class'] = '{project_name}.Main'
+    }}
+}}
+
+testing {{
+    suites {{
+        test {{
+            useJUnitJupiter('5.9.3')
+        }}
+    }}
+}}
+
+dependencies {{
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
+}}
+    """
+
+
+def main_java_content(project_name: str) -> str:
+    return f"""
+package {project_name};
+
+public class Main {{
+    public static void main(String[] args) {{
+        System.out.println("Hello world");
+    }}
+}}
+    """
+
+
+def main_test_content(project_name: str) -> str:
+    return f"""
+package {project_name};
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+
+public class MainTest {{
+  @Test
+  public void exampleTest() {{
+    assertTrue(true);
+  }}
+}}
+    """
+
+
+def create_file_with_content(path: str, filename: str, content: str) -> None:
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+    filepath = os.path.join(path, filename)
+    with open(filepath, "wt") as file:
+        file.write(content.strip())
+
+
+def main(args: list[str]) -> None:
+    project_name = args[0] if len(args) >= 1 else "sandbox"
+    current_dir = os.getcwd()
+    project_path = os.path.join(current_dir, project_name)
+    if os.path.exists(project_name):
+        raise Exception("Folder already exists: " + project_path)
+
+    src_dir = os.path.join(project_path, "src", "main", "java", project_name)
+    test_dir = os.path.join(project_path, "src", "test", "java", project_name)
+    os.makedirs(src_dir)
+    os.makedirs(test_dir)
+
+    create_file_with_content(project_path, "README.md", gitignore_content().strip())
+    create_file_with_content(project_path, "README.md", readme_content(project_name).strip())
+    create_file_with_content(project_path, "build.gradle", build_gradle_content(project_name).strip())
+    create_file_with_content(src_dir, "Main.java", main_java_content(project_name).strip())
+    create_file_with_content(test_dir, "MainTest.java", main_test_content(project_name).strip())
+
+
+if __name__ == "__main__":
+    try:
+        args = sys.argv[1:]
+        main(args)
+    except Exception as ex:
+        print("Error: " + str(ex))
+    except KeyboardInterrupt:
+        print("ctrl+c: exiting")

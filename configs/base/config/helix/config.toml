@@ -1,10 +1,11 @@
-theme = "monokai"
+theme = "solarized_light"
 
 [editor]
 line-number = "absolute"
 mouse = true
 auto-completion = true
 rulers = [80]
+color-modes = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -13,3 +14,8 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+
+[editor.statusline]
+mode.normal = "NORMAL"
+mode.insert = "--INSERT--"
+mode.select = "SELECT"

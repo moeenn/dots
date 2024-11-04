@@ -5,3 +5,4 @@ fish_history*
 __pycache__
 *.pyc
 .mypy_cache
+.DS_Store
