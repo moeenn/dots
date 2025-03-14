@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GO_VERSION="1.23.2"
+GO_VERSION="1.23.5"
 CURRENT_DIR=$(pwd)
 
 cd /tmp/
@@ -16,5 +16,3 @@ cd $CURRENT_DIR
 go install golang.org/x/tools/gopls@latest
 go install github.com/nametake/golangci-lint-langserver@latest
 go install github.com/go-delve/delve/cmd/dlv@latest
-go install honnef.co/go/tools/cmd/staticcheck@latest
-go install github.com/kisielk/errcheck@latest
