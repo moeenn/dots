@@ -14,8 +14,7 @@ set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set NODEBIN {$HOME}/.npm/bin
 set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
-set RUST_BIN {$HOME}/.cargo/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$RUST_BIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN}
 
 
 # --------------------------------------------------------------------
@@ -63,7 +62,6 @@ alias kill "killall -v --ignore-case"
 alias full_access "sudo chmod -R a+rw ./"
 
 # tmux
-alias t tmux
 alias att "tmux attach -t default"
 
 # git
@@ -93,7 +91,7 @@ alias bright "sudo brightnessctl -d 'intel_backlight' -set"
 # programming
 alias dc docker-compose
 alias py python3
-alias m make
+alias t task
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 
 

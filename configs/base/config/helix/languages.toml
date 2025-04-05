@@ -20,6 +20,7 @@ config = {}
 name = "cpp"
 auto-format = true
 file-types = ["cpp", "hpp", "c", "h", "cc"]
+formatter = { command = "clang-format", args = ["--style=Microsoft"]}
 
 [[language]]
 name = "javascript"
@@ -29,7 +30,5 @@ formatter = { command = "npx", args = ["prettier", "--parser", "typescript"]}
 [[language]]
 name = "go"
 indent = { tab-width = 2, unit = "  " }
-
-[[language]]
-name = "rust"
-indent = { tab-width = 2, unit = "  " }
+auto-format = true
+language-servers = [ "gopls", "golangci-lint-langserver" ]

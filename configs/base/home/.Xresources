@@ -9,27 +9,3 @@ Xft.hintstyle: hintslight
 xterm*font: xft:JetBrains Mono:style=Regular:size=10 
 XTerm*allowBoldFonts: false
 *.scaleHeight: 2.0
-
-!! Colorscheme
-*.background: #2F0923
-*.foreground: #D2D6CE
-*.cursorColor: #D2D6CE
-
-*color0:	#29081E
-*color1:	#CB0000
-*color2:	#4D9905
-*color3:	#C39F00
-*color4:	#3364A3
-*color5:	#744F7A
-*color6:	#059799
-*color7:	#D2D6CE
-
-*color8:	#858782
-*color9:	#CB0000
-*color10:	#4D9905
-*color11:	#C39F00
-*color12:	#3364A3
-*color13:	#744F7A
-*color14:	#059799
-*color15:	#D2D6CE
-
