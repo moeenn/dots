@@ -1,0 +1,457 @@
+#! /bin/python3
+
+from abc import ABC, abstractmethod
+import os
+import argparse
+import subprocess
+
+
+class BaseTemplate(ABC):
+	"""
+	abstract class which will be inherited by all template classes.
+	"""
+	project_name: str
+	project_dir: str
+	files_and_content: dict[str, str]
+
+	def __init__(self, project_name: str) -> None:
+		self.project_name = project_name
+		self.project_dir = os.path.join(os.getcwd(), project_name)
+
+	def execute(self) -> None:
+		self.create_dir(self.project_dir)
+		self.__write_gitignore()
+		self.__create_project_dirs()
+
+		for file_path, content in self.files_and_content.items():
+			self.write_file(os.path.join(self.project_dir, file_path), content)
+
+		# initialize git repo.
+		cmd = ["git", "init"]
+		subprocess.run(cmd, cwd=self.project_dir)
+
+	def create_dir(self, dir_path: str) -> None:
+		if os.path.exists(dir_path):
+			raise Exception(f"directory already exists: {dir_path}")
+		else:
+			os.makedirs(dir_path)
+
+	def write_file(self, file_path: str, content: str) -> None:
+		if os.path.exists(file_path):
+			raise Exception(f"file already exists: {file_path}")
+		else:
+			with open(file_path, "w") as f:
+				f.write(content)
+
+	@staticmethod
+	@abstractmethod
+	def template_name() -> str:
+		pass
+
+	@abstractmethod
+	def gitignore_entries(self) -> list[str]:
+		pass
+
+	@abstractmethod
+	def project_directories(self) -> list[str]:
+		pass
+
+	def __create_project_dirs(self) -> None:
+		for dir in self.project_directories():
+			self.create_dir(os.path.join(self.project_dir, dir))
+
+	def __write_gitignore(self) -> None:
+		entries = self.gitignore_entries()
+		content = "\n".join(entries)
+		self.write_file(os.path.join(self.project_dir, ".gitignore"), content)
+
+
+class GoTemplate(BaseTemplate):
+	"""
+	template class for go projects.
+	"""
+	def __init__(self, project_name: str) -> None:
+		super().__init__(project_name)
+
+		main_go_path = os.path.join("cmd", self.project_name, f"{self.project_name}.go")
+		tools_path = os.path.join(self.project_dir, "scripts", "tools.sh")
+
+		self.files_and_content = {
+			main_go_path: self.main_go_content(),
+			"Taskfile.yml": self.task_file_yaml_content(),
+			".golangci.yml": self.golangci_lint_content(),
+			tools_path: self.tools_script_content(),
+		}
+
+	@staticmethod
+	def template_name() -> str:
+		return "go"
+
+	def gitignore_entries(self) -> list[str]:
+		return ["bin"]
+
+	def project_directories(self) -> list[str]:
+		return [
+			os.path.join("cmd", self.project_name),
+			"scripts",
+		]
+	
+	def execute(self) -> None:
+		super().execute()
+
+		# init go module.
+		cmd = ["go", "mod", "init", self.project_name]
+		subprocess.run(cmd, cwd=self.project_dir)
+
+		# make tools script executable.
+		subprocess.run(["chmod", "+x", "scripts/tools.sh"], cwd=self.project_dir)
+
+
+	def main_go_content(self) -> str:
+		return """package main
+
+import (
+  "fmt"
+)
+
+func main() {
+  fmt.Println("hello world")
+}
+""".strip()
+
+	def golangci_lint_content(self) -> str:
+		return """
+linters:
+  enable:
+    - exhaustive
+    - exhaustruct
+    - gosec
+    - nilnil
+    - nilerr
+    - contextcheck
+    # - err113
+    - gochecknoinits
+    # - godox
+    - misspell
+""".strip()
+
+	def tools_script_content(self) -> str:
+		return """
+#! /bin/bash
+
+# install external tools.
+go install -v github.com/go-task/task/v3/cmd/task@latest;
+go install -v github.com/nametake/golangci-lint-langserver@latest;
+go install -v github.com/golangci/golangci-lint/cmd/golangci-lint@latest;
+
+# install dependencies.
+go mod tidy
+""".strip()
+
+	def task_file_yaml_content(self) -> str:
+		return f"""
+version: '3'
+
+vars:
+  MAIN: ./cmd/{self.project_name}/{self.project_name}.go
+
+tasks:
+  lint:
+    cmds:
+      - golangci-lint run ./...
+
+  test:
+    cmds:
+      - go test ./...
+
+  # usage: FILTER=^TestSomething$ task test:filter
+  "test:filter":
+    cmds:
+      - go test -run $FILTER -v ./...
+
+  run:
+    cmds:
+      - task: lint
+      - go run {{{{.MAIN}}}}
+
+  build:
+    cmds:
+      - task: lint
+      - task: test
+      - go build -o ./bin/{self.project_name} {{{{.MAIN}}}}      
+  """.strip()
+
+
+class CppTemplate(BaseTemplate):
+	"""
+	template class for cpp projects.
+	"""
+	def __init__(self, project_name: str) -> None:
+		super().__init__(project_name)
+
+		main_cpp_path = os.path.join("src", "main.cpp")
+		self.files_and_content = {
+			main_cpp_path: self.main_content(),
+			"CMakeLists.txt": self.cmakelists_content(),
+			"README.md": self.readme_content(),
+		}
+
+	@staticmethod
+	def template_name() -> str:
+		return "cpp"
+
+	def gitignore_entries(self) -> list[str]:
+		return [".cache", "compile_commands.json", "build", ".DS_Store"]
+
+	def project_directories(self) -> list[str]:
+		return ["src", "include", "lib", "build"]
+	
+	def readme_content(self) -> str:
+		return f"""
+## {self.project_name}
+
+#### Build from source
+
+```bash
+$ mkdir build
+$ cd ./build
+$ cmake .. -D CMAKE_BUILD_TYPE=Debug && make
+```
+
+**Note**: The compiled binary will be placed in `./build/` directory.
+""".strip()
+	
+	def main_content(self) -> str:
+		return """
+#include <iostream>
+
+int main() { 
+  std::cout << "hello world\\n"; 
+}
+""".strip()
+
+	def cmakelists_content(self) -> str:
+		return f"""
+cmake_minimum_required(VERSION 3.10)
+project({self.project_name} VERSION 1.0.0 LANGUAGES CXX)
+
+# generate the compile_commands.json file.
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+if (PROJECT_IS_TOP_LEVEL AND UNIX)
+    execute_process(
+        COMMAND ${{CMAKE_COMMAND}} -E create_symlink
+            ${{CMAKE_BINARY_DIR}}/compile_commands.json
+            ${{CMAKE_CURRENT_SOURCE_DIR}}/compile_commands.json
+    )
+endif()
+
+file(GLOB_RECURSE SOURCES src/*.cpp)
+add_executable(${{PROJECT_NAME}} ${{SOURCES}})
+target_include_directories(${{PROJECT_NAME}} PRIVATE "include")
+target_link_directories(${{PROJECT_NAME}} PRIVATE "lib")
+
+set_property(TARGET ${{PROJECT_NAME}} PROPERTY CXX_STANDARD 23)
+target_compile_options(${{PROJECT_NAME}} PUBLIC -Wextra -Werror -Wall -Wpedantic)
+target_link_libraries(${{PROJECT_NAME}} m) # m means -lm (link math)
+		""".strip()
+
+
+class JsTemplate(BaseTemplate):
+	"""
+	template class for Javascript projects.
+	"""
+	def __init__(self, project_name: str) -> None:
+		super().__init__(project_name)
+
+		index_path = os.path.join("src", "index.mjs")
+		index_test_path = os.path.join("src", "index.test.mjs")
+
+		self.files_and_content = {
+			"README.md": self.readme_content(),
+			index_path: self.index_content(),
+			index_test_path: self.index_test_content(),
+			"jsconfig.json": self.jsconfig_content(),
+			"package.json": self.package_json_content(),
+			"eslint.config.js": self.eslint_config_content(),
+		}
+
+	@staticmethod
+	def template_name() -> str:
+		return "js"
+
+	def gitignore_entries(self) -> list[str]:
+		return ["node_modules/", ".DS_Store"]
+
+	def project_directories(self) -> list[str]:
+		return ["src"]
+	
+	def execute(self) -> None:
+		super().execute()
+
+		# install npm dependencies.
+		cmd = ["npm", "i"]
+		subprocess.run(cmd, cwd=self.project_dir)
+
+	def readme_content(self) -> str:
+		return f"""
+# {self.project_name}
+
+## Scripts
+
+```bash
+# start the application
+$ npm start
+
+# run the tests (using native NodeJS test runner)
+$ npm test
+
+# perform linting (using Eslint) and type checking (using TSC)
+$ npm run check
+
+# format code (using prettier)
+$ npm run fmt
+```
+		""".strip()
+
+	def index_content(self) -> str:
+		return """
+/** @returns {Promise<void>} */
+async function main() {
+  console.log("Hello world")
+}
+
+main().catch(console.error)
+		""".strip()
+
+	def index_test_content(self) -> str:
+		return """
+import test from "node:test"
+import assert from "node:assert/strict"
+
+test("simple test", async () => {
+  assert.equal(true, true)
+})
+		""".strip()
+
+	def jsconfig_content(self) -> str:
+		return """
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "alwaysStrict": true,
+    "target": "ES2015",
+    "moduleResolution": "node",
+    "noImplicitOverride": false,
+    "paths": {
+      "#src/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/node_modules/*"
+  ]
+}	
+		""".strip()
+
+	def package_json_content(self) -> str:
+		return """ 
+{
+  "name": "sandbox",
+  "version": "1.0.0",
+  "main": "src/index.mjs",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/index.mjs",
+    "type-check": "tsc --project jsconfig.json",
+    "test": "node --test",
+    "lint": "npx eslint ./src/ --ext .mjs",
+    "fmt": "npx prettier --write 'src/**/*.mjs'",
+    "check": "npm run type-check && npm run lint"
+  },
+  "imports": {
+    "#src/*": "./src/*"
+  },
+  "prettier": {
+    "singleQuote": false,
+    "semi": false,
+    "tabWidth": 2,
+    "trailingComma": "all"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@types/punycode": "^2.1.4",
+    "eslint": "^9.22.0",
+    "eslint-plugin-jsdoc": "^50.6.8",
+    "prettier": "^3.2.5",
+    "typescript": "^5.8.2"
+  }
+}
+	""".strip()
+	
+	def eslint_config_content(self) -> str:
+		return """ 
+import jsdoc from "eslint-plugin-jsdoc"
+
+export default [
+  {
+    plugins: {
+      jsdoc: jsdoc
+    },
+    rules: {
+      "jsdoc/check-values": "error",
+      "no-console": "warn",
+      "quotes": [
+        "warn",
+        "double",
+        {
+          "allowTemplateLiterals": true,
+          "avoidEscape": true
+        }
+      ],
+      "semi": ["warn", "never"],
+      "no-unused-vars": "warn"
+    }
+  }
+]
+	""".strip()
+
+def main() -> None:
+	parser = argparse.ArgumentParser()
+	parser.add_argument("-n", "--name", help="Project name", required=True)
+	parser.add_argument("-t", "--template", help="Project template", required=True)
+	args = parser.parse_args()
+
+	registered_templates: list[BaseTemplate] = [
+		GoTemplate(args.name),
+		CppTemplate(args.name),
+		JsTemplate(args.name)
+	]
+
+	found = False
+	for template in registered_templates:
+		if template.template_name() == args.template:
+			found = True
+			template.execute()
+			break
+
+	if not found:
+		raise Exception(f"invalid template name: {args.template}")
+	
+
+if __name__ == '__main__':
+	try:
+		main()
+	except KeyboardInterrupt:
+		print("ctrl+c: exiting...")
+	except Exception as e:
+		print('error:', e)
