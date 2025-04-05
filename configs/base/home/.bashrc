@@ -39,4 +39,3 @@ shopt -s checkwinsize
 shopt -s dotglob
 shopt -s expand_aliases
 shopt -s nocaseglob
-

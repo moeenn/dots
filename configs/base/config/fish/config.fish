@@ -91,7 +91,5 @@ alias bright "sudo brightnessctl -d 'intel_backlight' -set"
 # programming
 alias dc docker-compose
 alias py python3
-alias t task
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
-
-
+alias t task
