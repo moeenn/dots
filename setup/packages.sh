@@ -22,10 +22,6 @@ declare -a packages=(
 	"yaru-theme-icon"
 	"paper-icon-theme"
 	"mpv"
-	"viewnior"
-	"thunar-archive-plugin"
-	"gnome-screenshot"
-	"evince"
   "gcolor3"
 )
 

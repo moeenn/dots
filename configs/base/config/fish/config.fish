@@ -16,6 +16,7 @@ set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
 set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN}
 
+
 # --------------------------------------------------------------------
 #
 #   Shell Aliases
@@ -61,7 +62,6 @@ alias kill "killall -v --ignore-case"
 alias full_access "sudo chmod -R a+rw ./"
 
 # tmux
-alias t tmux
 alias att "tmux attach -t default"
 
 # git
