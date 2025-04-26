@@ -235,6 +235,10 @@ int main() {
 cmake_minimum_required(VERSION 3.10)
 project({self.project_name} VERSION 1.0.0 LANGUAGES CXX)
 
+# set default compiler
+SET (CMAKE_CXX_COMPILER clang++)
+SET (CMAKE_C_COMPILER clang)
+
 # generate the compile_commands.json file.
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 if (PROJECT_IS_TOP_LEVEL AND UNIX)
