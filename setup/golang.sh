@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GO_VERSION="1.24.2"
+GO_VERSION="1.24.3"
 CURRENT_DIR=$(pwd)
 INSTALL_PREFIX="/usr/local"
 
@@ -13,9 +13,4 @@ tar -xvf $FILENAME
 sudo mv go $INSTALL_PREFIX
 cd $CURRENT_DIR
 
-# install tools and lsp
-go install -v golang.org/x/tools/gopls@latest
-go install -v github.com/nametake/golangci-lint-langserver@latest
-go install -v github.com/go-delve/delve/cmd/dlv@latest
-go install -v github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-go install -v github.com/go-task/task/v3/cmd/task@latest
+
