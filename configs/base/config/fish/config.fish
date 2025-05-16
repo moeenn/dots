@@ -3,7 +3,6 @@
 # suppress welcome message
 set fish_greeting
 
-
 # --------------------------------------------------------------------
 #
 #   Environment and path config
@@ -15,7 +14,6 @@ set NODEBIN {$HOME}/.npm/bin
 set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
 set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN}
-
 
 # --------------------------------------------------------------------
 #
