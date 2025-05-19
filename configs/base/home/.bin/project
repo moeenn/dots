@@ -1,4 +1,4 @@
-#! /bin/python3
+#! /usr/bin/python3
 
 from abc import ABC, abstractmethod
 import os
@@ -7,120 +7,132 @@ import subprocess
 
 
 class BaseTemplate(ABC):
-	"""
-	abstract class which will be inherited by all template classes.
-	"""
-	project_name: str
-	project_dir: str
-	files_and_content: dict[str, str]
+    """
+    abstract class which will be inherited by all template classes.
+    """
 
-	def __init__(self, project_name: str) -> None:
-		self.project_name = project_name
-		self.project_dir = os.path.join(os.getcwd(), project_name)
+    project_name: str
+    project_dir: str
+    files_and_content: dict[str, str]
 
-	def execute(self) -> None:
-		self.create_dir(self.project_dir)
-		self.__write_gitignore()
-		self.__create_project_dirs()
+    def __init__(self, project_name: str) -> None:
+        self.project_name = project_name
+        self.project_dir = os.path.join(os.getcwd(), project_name)
 
-		for file_path, content in self.files_and_content.items():
-			self.write_file(os.path.join(self.project_dir, file_path), content)
+    def execute(self) -> None:
+        self.create_dir(self.project_dir)
+        self.__write_gitignore()
+        self.__create_project_dirs()
 
-		# initialize git repo.
-		cmd = ["git", "init"]
-		subprocess.run(cmd, cwd=self.project_dir)
+        for file_path, content in self.files_and_content.items():
+            self.write_file(os.path.join(self.project_dir, file_path), content)
 
-	def create_dir(self, dir_path: str) -> None:
-		if os.path.exists(dir_path):
-			raise Exception(f"directory already exists: {dir_path}")
-		else:
-			os.makedirs(dir_path)
+        # initialize git repo.
+        cmd = ["git", "init"]
+        subprocess.run(cmd, cwd=self.project_dir)
 
-	def write_file(self, file_path: str, content: str) -> None:
-		if os.path.exists(file_path):
-			raise Exception(f"file already exists: {file_path}")
-		else:
-			with open(file_path, "w") as f:
-				f.write(content)
+    def create_dir(self, dir_path: str) -> None:
+        if os.path.exists(dir_path):
+            raise Exception(f"directory already exists: {dir_path}")
+        else:
+            os.makedirs(dir_path)
 
-	@staticmethod
-	@abstractmethod
-	def template_name() -> str:
-		pass
+    def write_file(self, file_path: str, content: str) -> None:
+        if os.path.exists(file_path):
+            raise Exception(f"file already exists: {file_path}")
+        else:
+            with open(file_path, "w") as f:
+                f.write(content)
 
-	@abstractmethod
-	def gitignore_entries(self) -> list[str]:
-		pass
+    @staticmethod
+    @abstractmethod
+    def template_name() -> str:
+        pass
 
-	@abstractmethod
-	def project_directories(self) -> list[str]:
-		pass
+    @abstractmethod
+    def gitignore_entries(self) -> list[str]:
+        pass
 
-	def __create_project_dirs(self) -> None:
-		for dir in self.project_directories():
-			self.create_dir(os.path.join(self.project_dir, dir))
+    @abstractmethod
+    def project_directories(self) -> list[str]:
+        pass
 
-	def __write_gitignore(self) -> None:
-		entries = self.gitignore_entries()
-		content = "\n".join(entries)
-		self.write_file(os.path.join(self.project_dir, ".gitignore"), content)
+    def __create_project_dirs(self) -> None:
+        for dir in self.project_directories():
+            self.create_dir(os.path.join(self.project_dir, dir))
+
+    def __write_gitignore(self) -> None:
+        entries = self.gitignore_entries()
+        content = "\n".join(entries)
+        self.write_file(os.path.join(self.project_dir, ".gitignore"), content)
 
 
 class GoTemplate(BaseTemplate):
-	"""
-	template class for go projects.
-	"""
-	def __init__(self, project_name: str) -> None:
-		super().__init__(project_name)
+    """
+    template class for go projects.
+    """
 
-		main_go_path = os.path.join("cmd", self.project_name, f"{self.project_name}.go")
-		tools_path = os.path.join(self.project_dir, "scripts", "tools.sh")
+    def __init__(self, project_name: str) -> None:
+        super().__init__(project_name)
 
-		self.files_and_content = {
-			main_go_path: self.main_go_content(),
-			"Taskfile.yml": self.task_file_yaml_content(),
-			".golangci.yml": self.golangci_lint_content(),
-			tools_path: self.tools_script_content(),
-		}
+        main_go_path = os.path.join("cmd", self.project_name, f"{self.project_name}.go")
+        tools_path = os.path.join(self.project_dir, "scripts", "tools.sh")
 
-	@staticmethod
-	def template_name() -> str:
-		return "go"
+        self.files_and_content = {
+            main_go_path: self.main_go_content(),
+            "Taskfile.yml": self.task_file_yaml_content(),
+            ".golangci.yml": self.golangci_lint_content(),
+            tools_path: self.tools_script_content(),
+        }
 
-	def gitignore_entries(self) -> list[str]:
-		return ["bin"]
+    @staticmethod
+    def template_name() -> str:
+        return "go"
 
-	def project_directories(self) -> list[str]:
-		return [
-			os.path.join("cmd", self.project_name),
-			"scripts",
-		]
-	
-	def execute(self) -> None:
-		super().execute()
+    def gitignore_entries(self) -> list[str]:
+        return ["bin"]
 
-		# init go module.
-		cmd = ["go", "mod", "init", self.project_name]
-		subprocess.run(cmd, cwd=self.project_dir)
+    def project_directories(self) -> list[str]:
+        return [
+            os.path.join("cmd", self.project_name),
+            "scripts",
+        ]
 
-		# make tools script executable.
-		subprocess.run(["chmod", "+x", "scripts/tools.sh"], cwd=self.project_dir)
+    def execute(self) -> None:
+        super().execute()
 
+        # init go module.
+        cmd = ["go", "mod", "init", self.project_name]
+        subprocess.run(cmd, cwd=self.project_dir)
 
-	def main_go_content(self) -> str:
-		return """package main
+        # make tools script executable.
+        subprocess.run(["chmod", "+x", "scripts/tools.sh"], cwd=self.project_dir)
+
+    def main_go_content(self) -> str:
+        return """package main
 
 import (
   "fmt"
+  "context"
+  "os"
 )
 
-func main() {
+func run(ctx context.Context) error {
   fmt.Println("hello world")
+  return nil
+}
+
+func main() {
+  ctx := context.Background()
+  if err := run(ctx); err != nil {
+      fmt.Fprintf(os.Stderr, "error: %s\\n", err.Error())
+      os.Exit(1)
+  }  
 }
 """.strip()
 
-	def golangci_lint_content(self) -> str:
-		return """
+    def golangci_lint_content(self) -> str:
+        return """
 linters:
   enable:
     - exhaustive
@@ -135,8 +147,8 @@ linters:
     - misspell
 """.strip()
 
-	def tools_script_content(self) -> str:
-		return """
+    def tools_script_content(self) -> str:
+        return """
 #! /bin/bash
 
 # install external tools.
@@ -148,8 +160,8 @@ go install -v github.com/golangci/golangci-lint/cmd/golangci-lint@latest;
 go mod tidy
 """.strip()
 
-	def task_file_yaml_content(self) -> str:
-		return f"""
+    def task_file_yaml_content(self) -> str:
+        return f"""
 version: '3'
 
 vars:
@@ -183,31 +195,32 @@ tasks:
 
 
 class CppTemplate(BaseTemplate):
-	"""
-	template class for cpp projects.
-	"""
-	def __init__(self, project_name: str) -> None:
-		super().__init__(project_name)
+    """
+    template class for cpp projects.
+    """
 
-		main_cpp_path = os.path.join("src", "main.cpp")
-		self.files_and_content = {
-			main_cpp_path: self.main_content(),
-			"CMakeLists.txt": self.cmakelists_content(),
-			"README.md": self.readme_content(),
-		}
+    def __init__(self, project_name: str) -> None:
+        super().__init__(project_name)
 
-	@staticmethod
-	def template_name() -> str:
-		return "cpp"
+        main_cpp_path = os.path.join("src", "main.cpp")
+        self.files_and_content = {
+            main_cpp_path: self.main_content(),
+            "CMakeLists.txt": self.cmakelists_content(),
+            "README.md": self.readme_content(),
+        }
 
-	def gitignore_entries(self) -> list[str]:
-		return [".cache", "compile_commands.json", "build", ".DS_Store"]
+    @staticmethod
+    def template_name() -> str:
+        return "cpp"
 
-	def project_directories(self) -> list[str]:
-		return ["src", "include", "lib", "build"]
-	
-	def readme_content(self) -> str:
-		return f"""
+    def gitignore_entries(self) -> list[str]:
+        return [".cache", "compile_commands.json", "build", ".DS_Store"]
+
+    def project_directories(self) -> list[str]:
+        return ["src", "include", "lib", "build"]
+
+    def readme_content(self) -> str:
+        return f"""
 ## {self.project_name}
 
 #### Build from source
@@ -220,9 +233,9 @@ $ cmake .. -D CMAKE_BUILD_TYPE=Debug && make
 
 **Note**: The compiled binary will be placed in `./build/` directory.
 """.strip()
-	
-	def main_content(self) -> str:
-		return """
+
+    def main_content(self) -> str:
+        return """
 #include <iostream>
 
 int main() { 
@@ -230,8 +243,8 @@ int main() {
 }
 """.strip()
 
-	def cmakelists_content(self) -> str:
-		return f"""
+    def cmakelists_content(self) -> str:
+        return f"""
 cmake_minimum_required(VERSION 3.10)
 project({self.project_name} VERSION 1.0.0 LANGUAGES CXX)
 
@@ -257,43 +270,44 @@ target_link_libraries(${{PROJECT_NAME}} m) # m means -lm (link math)
 
 
 class JsTemplate(BaseTemplate):
-	"""
-	template class for Javascript projects.
-	"""
-	def __init__(self, project_name: str) -> None:
-		super().__init__(project_name)
+    """
+    template class for Javascript projects.
+    """
 
-		index_path = os.path.join("src", "index.mjs")
-		index_test_path = os.path.join("src", "index.test.mjs")
+    def __init__(self, project_name: str) -> None:
+        super().__init__(project_name)
 
-		self.files_and_content = {
-			"README.md": self.readme_content(),
-			index_path: self.index_content(),
-			index_test_path: self.index_test_content(),
-			"jsconfig.json": self.jsconfig_content(),
-			"package.json": self.package_json_content(),
-			"eslint.config.js": self.eslint_config_content(),
-		}
+        index_path = os.path.join("src", "index.mjs")
+        index_test_path = os.path.join("src", "index.test.mjs")
 
-	@staticmethod
-	def template_name() -> str:
-		return "js"
+        self.files_and_content = {
+            "README.md": self.readme_content(),
+            index_path: self.index_content(),
+            index_test_path: self.index_test_content(),
+            "jsconfig.json": self.jsconfig_content(),
+            "package.json": self.package_json_content(),
+            "eslint.config.js": self.eslint_config_content(),
+        }
 
-	def gitignore_entries(self) -> list[str]:
-		return ["node_modules/", ".DS_Store"]
+    @staticmethod
+    def template_name() -> str:
+        return "js"
 
-	def project_directories(self) -> list[str]:
-		return ["src"]
-	
-	def execute(self) -> None:
-		super().execute()
+    def gitignore_entries(self) -> list[str]:
+        return ["node_modules/", ".DS_Store"]
 
-		# install npm dependencies.
-		cmd = ["npm", "i"]
-		subprocess.run(cmd, cwd=self.project_dir)
+    def project_directories(self) -> list[str]:
+        return ["src"]
 
-	def readme_content(self) -> str:
-		return f"""
+    def execute(self) -> None:
+        super().execute()
+
+        # install npm dependencies.
+        cmd = ["npm", "i"]
+        subprocess.run(cmd, cwd=self.project_dir)
+
+    def readme_content(self) -> str:
+        return f"""
 # {self.project_name}
 
 ## Scripts
@@ -313,8 +327,8 @@ $ npm run fmt
 ```
 		""".strip()
 
-	def index_content(self) -> str:
-		return """
+    def index_content(self) -> str:
+        return """
 /** @returns {Promise<void>} */
 async function main() {
   console.log("Hello world")
@@ -323,8 +337,8 @@ async function main() {
 main().catch(console.error)
 		""".strip()
 
-	def index_test_content(self) -> str:
-		return """
+    def index_test_content(self) -> str:
+        return """
 import test from "node:test"
 import assert from "node:assert/strict"
 
@@ -333,8 +347,8 @@ test("simple test", async () => {
 })
 		""".strip()
 
-	def jsconfig_content(self) -> str:
-		return """
+    def jsconfig_content(self) -> str:
+        return """
 {
   "compilerOptions": {
     "checkJs": true,
@@ -362,8 +376,8 @@ test("simple test", async () => {
 }	
 		""".strip()
 
-	def package_json_content(self) -> str:
-		return """ 
+    def package_json_content(self) -> str:
+        return """ 
 {
   "name": "sandbox",
   "version": "1.0.0",
@@ -397,9 +411,9 @@ test("simple test", async () => {
   }
 }
 	""".strip()
-	
-	def eslint_config_content(self) -> str:
-		return """ 
+
+    def eslint_config_content(self) -> str:
+        return """ 
 import jsdoc from "eslint-plugin-jsdoc"
 
 export default [
@@ -425,33 +439,34 @@ export default [
 ]
 	""".strip()
 
+
 def main() -> None:
-	parser = argparse.ArgumentParser()
-	parser.add_argument("-n", "--name", help="Project name", required=True)
-	parser.add_argument("-t", "--template", help="Project template", required=True)
-	args = parser.parse_args()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-n", "--name", help="Project name", required=True)
+    parser.add_argument("-t", "--template", help="Project template", required=True)
+    args = parser.parse_args()
 
-	registered_templates: list[BaseTemplate] = [
-		GoTemplate(args.name),
-		CppTemplate(args.name),
-		JsTemplate(args.name)
-	]
+    registered_templates: list[BaseTemplate] = [
+        GoTemplate(args.name),
+        CppTemplate(args.name),
+        JsTemplate(args.name),
+    ]
 
-	found = False
-	for template in registered_templates:
-		if template.template_name() == args.template:
-			found = True
-			template.execute()
-			break
+    found = False
+    for template in registered_templates:
+        if template.template_name() == args.template:
+            found = True
+            template.execute()
+            break
 
-	if not found:
-		raise Exception(f"invalid template name: {args.template}")
-	
+    if not found:
+        raise Exception(f"invalid template name: {args.template}")
 
-if __name__ == '__main__':
-	try:
-		main()
-	except KeyboardInterrupt:
-		print("ctrl+c: exiting...")
-	except Exception as e:
-		print('error:', e)
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("ctrl+c: exiting...")
+    except Exception as e:
+        print("error:", e)
