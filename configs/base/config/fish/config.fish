@@ -3,7 +3,6 @@
 # suppress welcome message
 set fish_greeting
 
-
 # --------------------------------------------------------------------
 #
 #   Environment and path config
@@ -15,7 +14,6 @@ set NODEBIN {$HOME}/.npm/bin
 set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
 set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN}
-
 
 # --------------------------------------------------------------------
 #
@@ -93,3 +91,4 @@ alias dc docker-compose
 alias py python3
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 alias t task
+alias cfmt "find . -iname '*.hpp' -o -iname '*.cpp' | xargs clang-format --style='Microsoft' -i"
