@@ -12,3 +12,6 @@ sudo ./$SCRIPT_NAME
 cd $CURRENT_DIR
 
 sudo dnf install -y nodejs
+npm config set prefix=$HOME/.npm
+echo 'updating npm...'
+npm i -g npm
