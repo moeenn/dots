@@ -12,6 +12,14 @@ insert = "bar"
 normal = "block"
 select = "underline"
 
+[editor.indent-guides]
+character = "▏"
+render = true
+
+[editor.lsp]
+auto-signature-help = false
+display-messages = true
+
 [editor.file-picker]
 hidden = false
 
