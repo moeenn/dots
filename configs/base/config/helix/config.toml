@@ -1,4 +1,4 @@
-theme = "solarized_light"
+theme = "solarized_dark"
 
 [editor]
 line-number = "absolute"
@@ -27,3 +27,6 @@ hidden = false
 mode.normal = "NORMAL"
 mode.insert = "--INSERT--"
 mode.select = "SELECT"
+
+[keys.normal]
+";" = "command_mode"
