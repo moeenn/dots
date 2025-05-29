@@ -2,6 +2,11 @@
 # suppress welcome message
 set fish_greeting
 
+# disable right prompt
+function fish_right_prompt
+    #intentionally left blank
+end
+
 # --------------------------------------------------------------------
 #
 #   Environment and path config
