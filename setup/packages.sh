@@ -14,8 +14,8 @@ declare -a packages=(
 	"tmux"
 	"acpi"
 	"p7zip"
-	"google-go-fonts"
 	"jetbrains-mono-fonts"
+	"mozilla-fira-sans-fonts"
 	"mpv"
   "gcolor3"
 )
