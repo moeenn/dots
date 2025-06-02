@@ -3,18 +3,16 @@ name = "python"
 auto-format = true
 language-servers = [
     {name = "pyright"},
-    {name = "ruff-lsp"},
+    {name = "ruff"},
 ]
 
 [language-server.pyright]
 command = "pyright-langserver"
 args = ["--stdio"]
-config = {}
 
-[language-server.ruff-lsp]
-command = "ruff-lsp"
-args = []
-config = {}
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
 
 [[language]]
 name = "cpp"

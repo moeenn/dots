@@ -65,7 +65,7 @@ alias pull "git pull"
 
 # programming
 alias dc docker-compose
-alias py python3
+alias py python
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 alias t task
 alias cfmt "find . -iname '*.hpp' -o -iname '*.cpp' | xargs clang-format --style='Microsoft' -i"
