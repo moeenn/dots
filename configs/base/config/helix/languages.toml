@@ -4,6 +4,7 @@ auto-format = true
 language-servers = [
     {name = "pyright"},
     {name = "ruff"},
+    {name = "mypy"}
 ]
 
 [language-server.pyright]
