@@ -113,18 +113,16 @@ class GoTemplate(BaseTemplate):
 
 import (
   "fmt"
-  "context"
   "os"
 )
 
-func run(ctx context.Context) error {
+func run() error {
   fmt.Println("hello world")
   return nil
 }
 
 func main() {
-  ctx := context.Background()
-  if err := run(ctx); err != nil {
+  if err := run(); err != nil {
       fmt.Fprintf(os.Stderr, "error: %s\\n", err.Error())
       os.Exit(1)
   }  
@@ -143,7 +141,7 @@ linters:
     - contextcheck
     # - err113
     - gochecknoinits
-    # - godox
+    - godox
     - misspell
 """.strip()
 
