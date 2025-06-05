@@ -1,4 +1,4 @@
-theme = "solarized_light"
+theme = "gruvbox"
 
 [editor]
 line-number = "absolute"
@@ -6,6 +6,7 @@ mouse = true
 auto-completion = true
 rulers = [80]
 color-modes = true
+true-color = true
 
 [editor.cursor-shape]
 insert = "bar"
