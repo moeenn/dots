@@ -18,6 +18,7 @@ declare -a packages=(
 	"mozilla-fira-sans-fonts"
 	"mpv"
   "gcolor3"
+  "helix"
 )
 
 install_cmd="sudo dnf install -y "
