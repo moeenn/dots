@@ -18,7 +18,9 @@ set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
 set NODEBIN {$HOME}/.npm/bin
 set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN}
+set RUST_BIN {$HOME}/.cargo/bin
+set BUN_BIN {$HOME}/.bun/bin
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$RUST_BIN} {$BUN_BIN}
 
 # --------------------------------------------------------------------
 #
@@ -68,5 +70,5 @@ alias dc docker-compose
 alias py python
 alias pm "python -m"
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
-alias t task
+alias t tmux
 alias cfmt "find . -iname '*.hpp' -o -iname '*.cpp' | xargs clang-format --style='Microsoft' -i"
