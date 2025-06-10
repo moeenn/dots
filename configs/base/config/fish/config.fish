@@ -18,9 +18,10 @@ set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
 set NODEBIN {$HOME}/.npm/bin
 set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
+set NIM_BIN {$HOME}/.nimble/bin
 set RUST_BIN {$HOME}/.cargo/bin
 set BUN_BIN {$HOME}/.bun/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$RUST_BIN} {$BUN_BIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$NIM_BIN} {$RUST_BIN} {$BUN_BIN}
 
 # --------------------------------------------------------------------
 #

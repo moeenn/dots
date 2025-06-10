@@ -31,3 +31,8 @@ name = "go"
 indent = { tab-width = 2, unit = "  " }
 auto-format = true
 language-servers = [ "gopls", "golangci-lint-langserver" ]
+
+[[language]]
+name = "nim"
+auto-format = true
+formatter = { command = "nph", args = ["-"] }
