@@ -442,6 +442,95 @@ export default [
 	""".strip()
 
 
+class PythonTemplate(BaseTemplate):
+    """
+    template class for Python projects.
+    """
+
+    def __init__(self, project_name: str) -> None:
+        super().__init__(project_name)
+
+        app_path = os.path.join("app", "app.py")
+        app_test_path = os.path.join("app", "app_test.py")
+        init_app_path = os.path.join("app", "__init__.py")
+
+        self.files_and_content = {
+            "README.md": self.readme_content(),
+            app_path: self.app_content(),
+            app_test_path: self.app_test_content(),
+            init_app_path: self.init_app_content(),
+            "main.py": self.main_content(),
+            "pyproject.toml": self.pyproject_toml_content(),
+        }
+
+    @staticmethod
+    def template_name() -> str:
+        return "py"
+
+    def gitignore_entries(self) -> list[str]:
+      return [
+        "__pycache__",
+        "build",
+        ".mypy_cache",
+        "*.egg-info",
+        ".DS_Store",
+        ".vscode",
+        ".venv",
+      ]
+
+    def project_directories(self) -> list[str]:
+        return ["app"]        
+
+    def readme_content(self) -> str:
+        return f"""
+# {self.project_name}
+""".strip()
+
+    def init_app_content(self) -> str:
+      return """
+from .app import main
+      """.strip()
+
+    def app_content(self) -> str:
+        return """
+def main() -> None:
+    print("hello world")
+        """.strip()
+
+    def app_test_content(self) -> str:
+      return """
+from unittest import TestCase
+
+
+class TestMain(TestCase):
+    def test_main(self) -> None:
+        self.assertTrue(True)
+      """.strip()
+
+    def main_content(self) -> str:
+        return """
+from app import main
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as ex:
+        print("error: ", ex)
+        """.strip()
+
+    def pyproject_toml_content(self) -> str:
+        return f"""
+[project]
+name = "{self.project_name}"
+version = "1.0.0"
+dependencies = []
+
+[project.optional-dependencies]
+dev = []
+        """.strip()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("-n", "--name", help="Project name", required=True)
@@ -452,6 +541,7 @@ def main() -> None:
         GoTemplate(args.name),
         CppTemplate(args.name),
         JsTemplate(args.name),
+        PythonTemplate(args.name),
     ]
 
     found = False
