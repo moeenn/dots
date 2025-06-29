@@ -10,6 +10,8 @@ declare -a files=(
   ".tmux.conf"
   ".vimrc"
   ".Xresources"
+  ".compton.conf"
+  ".themes"
 )
 
 PREFIX="../configs/base/home"
