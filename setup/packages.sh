@@ -18,6 +18,7 @@ declare -a packages=(
 	"fonts-go"
 	"mpv"
   "gcolor3"
+  "i3lock"
 )
 
 install_cmd="sudo apt-get install -y "

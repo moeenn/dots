@@ -153,10 +153,10 @@
      Many programs reserve space automatically, but you can use this in other
      cases. -->
   <margins>
-    <top>20</top>
-    <bottom>20</bottom>
-    <left>20</left>
-    <right>20</right>
+    <top>0</top>
+    <bottom>0</bottom>
+    <left>0</left>
+    <right>0</right>
   </margins>
   <dock>
     <position>TopLeft</position>
@@ -270,6 +270,13 @@
         <command>scrot -s</command>
       </action>
     </keybind>
+
+    <keybind key="W-l">
+      <action name="Execute">
+        <command>i3lock -c 000000</command>
+      </action>
+    </keybind>
+  
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">
       <action name="NextWindow">
@@ -348,11 +355,11 @@
         </startupnotify>
         <command>dmenu_run</command>
       </action>
-    </keybind>
+    </keybind>    
     <!-- Launch scrot when Print is pressed -->
     <keybind key="Print">
       <action name="Execute">
-        <command>scrot</command>
+        <command>gnome-screenshot -i</command>
       </action>
     </keybind>
   </keyboard>

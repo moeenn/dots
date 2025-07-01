@@ -9,7 +9,7 @@ decorations_theme_variant = "Light" # "Dark"
 normal.family = "JetBrains Mono"
 size = 9.0
 offset.x = 0
-offset.y = 3
+offset.y = 5
 glyph_offset.y = 3
 
 [cursor]

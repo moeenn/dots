@@ -1,7 +1,7 @@
 #! /bin/bash
 
 declare -a packages=(
-	"org.chromium.Chromium"
+#	"org.chromium.Chromium"
 #	"com.github.tchx84.Flatseal"
 #	"rest.insomnia.Insomnia"
 	"com.bitwarden.desktop"
@@ -9,12 +9,11 @@ declare -a packages=(
 #	"io.beekeeperstudio.Studio"
 )
 
-
 install_cmd="sudo flatpak install flathub -y "
 for pkg in ${packages[@]}; do
   install_cmd="${install_cmd} ${pkg} "
 done
 
-sudo dnf install -y flatpak
+sudo apt-get install -y flatpak
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 eval $install_cmd

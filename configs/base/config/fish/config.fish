@@ -65,7 +65,7 @@ alias pull "git pull"
 
 # programming
 alias dc docker-compose
-alias py python
+alias py python3
 alias pm "python -m"
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 alias t tmux
