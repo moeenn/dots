@@ -123,10 +123,10 @@
     <number>4</number>
     <firstdesk>1</firstdesk>
     <names>
-      <!-- set names up here if you want to, like this:
-    <name>desktop 1</name>
-    <name>desktop 2</name>
-    -->
+      <name>Desktop 1</name>
+      <name>Desktop 2</name>
+      <name>Desktop 3</name>
+      <name>Desktop 4</name>
     </names>
     <popupTime>875</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -270,13 +270,11 @@
         <command>scrot -s</command>
       </action>
     </keybind>
-
     <keybind key="W-l">
       <action name="Execute">
         <command>i3lock -c 000000</command>
       </action>
     </keybind>
-  
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">
       <action name="NextWindow">
@@ -355,7 +353,7 @@
         </startupnotify>
         <command>dmenu_run</command>
       </action>
-    </keybind>    
+    </keybind>
     <!-- Launch scrot when Print is pressed -->
     <keybind key="Print">
       <action name="Execute">
