@@ -19,6 +19,7 @@ declare -a packages=(
 	"mpv"
   "gcolor3"
   "i3lock"
+  "volumeicon-alsa"
 )
 
 install_cmd="sudo apt-get install -y "

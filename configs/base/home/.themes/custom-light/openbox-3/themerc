@@ -1,18 +1,13 @@
-# Name: Numix Openbox theme
-# Author: Satyajit Sahoo <satyajit.happy@gmail.com>
-# License: GPL-3.0+
-
-
 # Menu
-menu.border.color: #e8e8e8
+menu.border.color: #c7c7c7
 
 menu.title.bg: flat solid
-menu.title.bg.color: #e8e8e8
+menu.title.bg.color: #ffffff
 menu.title.text.color: #222528
 menu.title.text.justify: center
 
 menu.items.bg: flat solid
-menu.items.bg.color: #e8e8e8
+menu.items.bg.color: #ffffff
 menu.items.text.color: #222528
 menu.items.disabled.text.color: #888888
 
@@ -20,7 +15,7 @@ menu.items.active.bg: flat solid
 menu.items.active.bg.color: #199ca8
 menu.items.active.text.color: #ffffff
 
-menu.separator.color: #c7c7c7
+menu.separator.color: #f5f5f5
 menu.separator.width: 1
 menu.separator.padding.width: 0
 menu.separator.padding.height: 4
@@ -96,7 +91,7 @@ window.inactive.button.hover.image.color: #199ca8
 
 # OSD
 osd.border.width: 1
-osd.border.color: #e8e8e8
+osd.border.color: #c7c7c7
 
 osd.bg: flat solid
 osd.bg.color: #e8e8e8

@@ -3,4 +3,5 @@ xset r rate 300 50 &
 tint2 &
 compton &
 # redshift -O 5000 &
+volumeicon &
 hsetroot -solid '#304050' &
