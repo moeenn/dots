@@ -326,6 +326,12 @@
         <direction>down</direction>
       </action>
     </keybind> -->
+
+    <!-- minimize window -->    
+    <keybind key="A-m">
+      <action name="Iconify"/>
+    </keybind>
+
     <!-- Keybindings for running applications -->
     <keybind key="W-e">
       <action name="Execute">
@@ -354,6 +360,16 @@
         <command>dmenu_run</command>
       </action>
     </keybind>
+    <keybind key="C-A-r">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>false</enabled>
+          <name>Reload</name>
+        </startupnotify>
+        <command>openbox --reconfigure</command>
+      </action>
+    </keybind>
+
     <!-- Launch scrot when Print is pressed -->
     <keybind key="Print">
       <action name="Execute">
