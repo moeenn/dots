@@ -2,11 +2,10 @@
 
 declare -a packages=(
 #	"org.chromium.Chromium"
-#	"com.github.tchx84.Flatseal"
-#	"rest.insomnia.Insomnia"
 	"com.bitwarden.desktop"
 	"md.obsidian.Obsidian"
-#	"io.beekeeperstudio.Studio"
+  "io.beekeeperstudio.Studio"
+  "com.usebruno.Bruno"
 )
 
 install_cmd="sudo flatpak install flathub -y "
