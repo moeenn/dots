@@ -192,85 +192,6 @@ tasks:
   """.strip()
 
 
-class CppTemplate(BaseTemplate):
-    """
-    template class for cpp projects.
-    """
-
-    def __init__(self, project_name: str) -> None:
-        super().__init__(project_name)
-
-        main_cpp_path = os.path.join("src", "main.cpp")
-        self.files_and_content = {
-            main_cpp_path: self.main_content(),
-            "CMakeLists.txt": self.cmakelists_content(),
-            "README.md": self.readme_content(),
-        }
-
-    @staticmethod
-    def template_name() -> str:
-        return "cpp"
-
-    def gitignore_entries(self) -> list[str]:
-        return [".cache", "compile_commands.json", "build", ".DS_Store"]
-
-    def project_directories(self) -> list[str]:
-        return ["src", "include", "lib", "build"]
-
-    def readme_content(self) -> str:
-        return f"""
-## {self.project_name}
-
-#### Build from source
-
-```bash
-$ mkdir build
-$ cd ./build
-$ cmake .. -D CMAKE_BUILD_TYPE=Debug && make
-```
-
-**Note**: The compiled binary will be placed in `./build/` directory.
-""".strip()
-
-    def main_content(self) -> str:
-        return """
-#include <iostream>
-
-int main() { 
-  std::cout << "hello world\\n"; 
-}
-""".strip()
-
-    def cmakelists_content(self) -> str:
-        return f"""
-cmake_minimum_required(VERSION 3.10)
-project({self.project_name} VERSION 1.0.0 LANGUAGES CXX)
-
-# set default compiler
-SET (CMAKE_CXX_COMPILER clang++)
-SET (CMAKE_C_COMPILER clang)
-
-# generate the compile_commands.json file.
-set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
-if (PROJECT_IS_TOP_LEVEL AND UNIX)
-    execute_process(
-        COMMAND ${{CMAKE_COMMAND}} -E create_symlink
-            ${{CMAKE_BINARY_DIR}}/compile_commands.json
-            ${{CMAKE_CURRENT_SOURCE_DIR}}/compile_commands.json
-    )
-endif()
-
-file(GLOB_RECURSE SOURCES src/*.cpp)
-add_executable(${{PROJECT_NAME}} ${{SOURCES}})
-target_include_directories(${{PROJECT_NAME}} PRIVATE "include")
-target_link_directories(${{PROJECT_NAME}} PRIVATE "lib")
-
-set_property(TARGET ${{PROJECT_NAME}} PROPERTY CXX_STANDARD 23)
-target_compile_options(${{PROJECT_NAME}} PUBLIC -Wextra -Werror -Wall -Wpedantic)
-target_link_libraries(${{PROJECT_NAME}} m) # m means -lm (link math)
-		""".strip()
-
-
 class JsTemplate(BaseTemplate):
     """
     template class for Javascript projects.
@@ -539,7 +460,6 @@ def main() -> None:
 
     registered_templates: list[BaseTemplate] = [
         GoTemplate(args.name),
-        CppTemplate(args.name),
         JsTemplate(args.name),
         PythonTemplate(args.name),
     ]
