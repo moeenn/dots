@@ -326,12 +326,10 @@
         <direction>down</direction>
       </action>
     </keybind> -->
-
-    <!-- minimize window -->    
+    <!-- minimize window -->
     <keybind key="A-m">
       <action name="Iconify"/>
     </keybind>
-
     <!-- Keybindings for running applications -->
     <keybind key="W-e">
       <action name="Execute">
@@ -369,7 +367,6 @@
         <command>openbox --reconfigure</command>
       </action>
     </keybind>
-
     <!-- Launch scrot when Print is pressed -->
     <keybind key="Print">
       <action name="Execute">

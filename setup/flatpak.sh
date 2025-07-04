@@ -1,7 +1,7 @@
 #! /bin/bash
 
 declare -a packages=(
-#	"org.chromium.Chromium"
+  "org.chromium.Chromium"
 	"com.bitwarden.desktop"
 	"md.obsidian.Obsidian"
   "io.beekeeperstudio.Studio"

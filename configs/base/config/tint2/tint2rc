@@ -8,15 +8,15 @@
 # Background 1: Active taskbar, Default task, Inactive taskbar, Panel, Systray, Tooltip
 rounded = 0
 border_width = 0
-border_sides = 
+border_sides = T
 border_content_tint_weight = 0
 background_content_tint_weight = 0
-background_color = #f5f5f5 100
-border_color = #f5f5f5 100
-background_color_hover = #f5f5f5 100
-border_color_hover = #f5f5f5 100
-background_color_pressed = #f5f5f5 100
-border_color_pressed = #f5f5f5 100
+background_color = #f6f5f4 100
+border_color = #f6f5f4 100
+background_color_hover = #f6f5f4 100
+border_color_hover = #f6f5f4 100
+background_color_pressed = #f6f5f4 100
+border_color_pressed = #f6f5f4 100
 
 # Background 2: Clock, Executor, Separator
 rounded = 0
@@ -24,12 +24,12 @@ border_width = 0
 border_sides = 
 border_content_tint_weight = 0
 background_content_tint_weight = 0
-background_color = #ededed 100
-border_color = #ededed 100
-background_color_hover = #ededed 100
-border_color_hover = #ededed 100
-background_color_pressed = #ededed 100
-border_color_pressed = #ededed 100
+background_color = #d6d1cd 100
+border_color = #d6d1cd 100
+background_color_hover = #d6d1cd 100
+border_color_hover = #d6d1cd 100
+background_color_pressed = #d6d1cd 100
+border_color_pressed = #d6d1cd 100
 
 # Background 3: Active task
 rounded = 0
@@ -37,12 +37,12 @@ border_width = 0
 border_sides = TBLR
 border_content_tint_weight = 0
 background_content_tint_weight = 0
-background_color = #e6e6e6 100
-border_color = #e6e6e6 100
-background_color_hover = #e6e6e6 100
-border_color_hover = #e6e6e6 100
-background_color_pressed = #e6e6e6 100
-border_color_pressed = #e6e6e6 100
+background_color = #d6d1cd 100
+border_color = #d6d1cd 100
+background_color_hover = #d6d1cd 100
+border_color_hover = #d6d1cd 100
+background_color_pressed = #d6d1cd 100
+border_color_pressed = #d6d1cd 100
 
 #-------------------------------------
 # Panel
@@ -119,8 +119,8 @@ mouse_scroll_down = none
 
 #-------------------------------------
 # System tray (notification area)
-systray_padding = 15 8 8
-systray_background_id = 2
+systray_padding = 4 8 8
+systray_background_id = 1
 systray_sort = ascending
 systray_icon_size = 0
 systray_icon_asb = 100 0 0
@@ -147,7 +147,7 @@ time1_timezone =
 time2_timezone = 
 clock_font_color = #202020 100
 clock_padding = 12 0
-clock_background_id = 2
+clock_background_id = 1
 clock_tooltip = 
 clock_tooltip_timezone = 
 clock_lclick_command = 
