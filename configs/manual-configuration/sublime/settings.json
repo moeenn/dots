@@ -1,24 +1,18 @@
 {
 	"always_show_minimap_viewport": true,
 	"bold_folder_labels": true,
-	"font_face": "DM Mono",
-	"font_size": 12,
+	"font_face": "Jetbrains Mono",
+	"font_size": 10,
 	"format_on_save": true,
 	"highlight_line": true,
-	"ignored_packages": [],
-	"line_padding_bottom": 4,
-	"line_padding_top": 4,
+	"ignored_packages": ["Vintage"],
+	"line_padding_bottom": 3,
+	"line_padding_top": 3,
 	"overlay_scroll_bars": "enabled",
-	"rulers":
-	[
-		80
-	],
+	"rulers": [80],
 	"scroll_past_end": true,
 	"tab_size": 2,
 	"trim_trailing_white_space_on_save": true,
-	"theme": "GitHub Adaptive.sublime-theme",
-	"color_scheme": "GitHub Dimmed.sublime-color-scheme",
-	"ignored_packages": [
-		"Vintage"
-	]
+	"color_scheme": "Monokai.sublime-color-scheme",
 }
+

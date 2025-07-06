@@ -4,4 +4,4 @@ tint2 &
 compton &
 # redshift -O 5000 &
 volumeicon &
-hsetroot -solid '#304050' &
+hsetroot -solid '#3d4646' &

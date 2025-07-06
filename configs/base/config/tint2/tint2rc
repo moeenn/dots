@@ -32,7 +32,7 @@ background_color_pressed = #d6d1cd 100
 border_color_pressed = #d6d1cd 100
 
 # Background 3: Active task
-rounded = 0
+rounded = 2
 border_width = 0
 border_sides = TBLR
 border_content_tint_weight = 0
