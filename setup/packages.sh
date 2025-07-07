@@ -6,7 +6,7 @@ declare -a packages=(
 	"net-tools"
 	"bwm-ng"
 	"jq"
-	"axel"
+	"aria2"
 	"gparted"
 	"git"
   "htop"

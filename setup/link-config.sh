@@ -2,9 +2,10 @@
 
 declare -a files=(
 #  "fish"
-#  "helix"
-#  "htop"
-#  "mpv"
+  "nushell"
+  "helix"
+  "htop"
+  "mpv"
   "alacritty"
   "openbox"
   "tint2"

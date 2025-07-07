@@ -75,7 +75,7 @@ class GoTemplate(BaseTemplate):
     def __init__(self, project_name: str) -> None:
         super().__init__(project_name)
 
-        main_go_path = os.path.join("cmd", self.project_name, f"{self.project_name}.go")
+        main_go_path = os.path.join("cmd", self.project_name, "main.go")
         tools_path = os.path.join(self.project_dir, "scripts", "tools.sh")
 
         self.files_and_content = {
