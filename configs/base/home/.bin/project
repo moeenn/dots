@@ -76,13 +76,10 @@ class GoTemplate(BaseTemplate):
         super().__init__(project_name)
 
         main_go_path = os.path.join("cmd", self.project_name, "main.go")
-        tools_path = os.path.join(self.project_dir, "scripts", "tools.sh")
-
         self.files_and_content = {
             main_go_path: self.main_go_content(),
-            "Taskfile.yml": self.task_file_yaml_content(),
+            "Makefile": self.makefile_content(),
             ".golangci.yml": self.golangci_lint_content(),
-            tools_path: self.tools_script_content(),
         }
 
     @staticmethod
@@ -95,7 +92,6 @@ class GoTemplate(BaseTemplate):
     def project_directories(self) -> list[str]:
         return [
             os.path.join("cmd", self.project_name),
-            "scripts",
         ]
 
     def execute(self) -> None:
@@ -155,50 +151,24 @@ linters-settings:
     args-on-sep-lines: true    
 """.strip()
 
-    def tools_script_content(self) -> str:
-        return """
-#! /bin/bash
-
-# install external tools.
-go install -v github.com/go-task/task/v3/cmd/task@latest;
-go install -v github.com/nametake/golangci-lint-langserver@latest;
-go install -v github.com/golangci/golangci-lint/cmd/golangci-lint@latest;
-
-# install dependencies.
-go mod tidy
-""".strip()
-
-    def task_file_yaml_content(self) -> str:
+    def makefile_content(self) -> str:
         return f"""
-version: '3'
+PROJECT = {self.project_name}
+MAIN_FILE = ./cmd/$(PROJECT)/main.go
 
-vars:
-  MAIN: ./cmd/{self.project_name}/{self.project_name}.go
+lint:
+	golangci-lint run ./...
 
-tasks:
-  lint:
-    cmds:
-      - golangci-lint run ./...
+test:
+	go test ./...
 
-  test:
-    cmds:
-      - go test ./...
+run: lint
+	go run $(MAIN_FILE)
 
-  # usage: FILTER=^TestSomething$ task test:filter
-  "test:filter":
-    cmds:
-      - go test -run $FILTER -v ./...
-
-  run:
-    cmds:
-      - task: lint
-      - go run {{{{.MAIN}}}}
-
-  build:
-    cmds:
-      - task: lint
-      - task: test
-      - go build -o ./bin/{self.project_name} {{{{.MAIN}}}}      
+build: lint test
+	go build -o ./bin/$(PROJECT) $(MAIN_FILE)
+	
+.PHONY: lint test run
   """.strip()
 
 

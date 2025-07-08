@@ -12,4 +12,4 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 PATH=${PATH}:${FLATPAKBIN}:${PATH}:${HOME}/.bin:${HOME}/.local/bin
 PATH=${PATH}:${GOINSTALL}:${NODEBIN}:${GOBIN}:${CARGO_BIN}
 
-export LC_CTYPE XDG_DATA_HOME XDG_DATA_DIRS PATH GOPATH
+export LC_CTYPE XDG_DATA_HOME XDG_DATA_DIRS PATH GOPATH 

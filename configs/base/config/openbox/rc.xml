@@ -179,49 +179,49 @@
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
     <!-- Keybindings for desktop switching -->
-    <keybind key="W-Left">
+    <keybind key="C-A-Left">
       <action name="GoToDesktop">
         <to>left</to>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="W-Right">
+    <keybind key="C-A-Right">
       <action name="GoToDesktop">
         <to>right</to>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="W-Up">
+    <keybind key="C-A-Up">
       <action name="GoToDesktop">
         <to>up</to>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="W-Down">
+    <keybind key="C-A-Down">
       <action name="GoToDesktop">
         <to>down</to>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="S-W-Left">
+    <keybind key="S-A-Left">
       <action name="SendToDesktop">
         <to>left</to>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="S-W-Right">
+    <keybind key="S-A-Right">
       <action name="SendToDesktop">
         <to>right</to>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="S-W-Up">
+    <keybind key="S-A-Up">
       <action name="SendToDesktop">
         <to>up</to>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="S-W-Down">
+    <keybind key="S-A-Down">
       <action name="SendToDesktop">
         <to>down</to>
         <wrap>no</wrap>
@@ -270,7 +270,7 @@
         <command>scrot -s</command>
       </action>
     </keybind>
-    <keybind key="W-l">
+    <keybind key="A-l">
       <action name="Execute">
         <command>i3lock -c 000000</command>
       </action>
@@ -331,7 +331,7 @@
       <action name="Iconify"/>
     </keybind>
     <!-- Keybindings for running applications -->
-    <keybind key="W-e">
+    <keybind key="A-e">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -340,7 +340,7 @@
         <command>thunar</command>
       </action>
     </keybind>
-    <keybind key="W-t">
+    <keybind key="A-t">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
