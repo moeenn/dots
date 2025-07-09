@@ -10,6 +10,7 @@
     "redhat.telemetry.enabled": false,
     "workbench.startupEditor": "none",
     "window.confirmSaveUntitledWorkspace": false,
+    "editor.formatOnSave": true,
     "editor.tabSize": 4,
     "editor.lineHeight": 1.75,
     "editor.rulers": [
@@ -25,9 +26,5 @@
     "python.analysis.typeCheckingMode": "basic",
     "files.exclude": {
         "**/__pycache__": true
-    },
-    "[php]": {
-        "editor.defaultFormatter": "kokororin.vscode-phpfmt",
-        "editor.formatOnSave": true
     }
 }

@@ -47,6 +47,7 @@ alias net "bwm-ng -t 1000"
 alias lsblk "lsblk -e 7"
 alias patch "patch -p1 <"
 alias clock "tty-clock -cD"
+alias m mpv
 
 # Super User Tasks
 alias kill "killall -v --ignore-case"
