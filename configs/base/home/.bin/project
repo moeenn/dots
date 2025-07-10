@@ -368,18 +368,18 @@ class PythonTemplate(BaseTemplate):
         return "py"
 
     def gitignore_entries(self) -> list[str]:
-      return [
-        "__pycache__",
-        "build",
-        ".mypy_cache",
-        "*.egg-info",
-        ".DS_Store",
-        ".vscode",
-        ".venv",
-      ]
+        return [
+            "__pycache__",
+            "build",
+            ".mypy_cache",
+            "*.egg-info",
+            ".DS_Store",
+            ".vscode",
+            ".venv",
+        ]
 
     def project_directories(self) -> list[str]:
-        return ["app"]        
+        return ["app"]
 
     def readme_content(self) -> str:
         return f"""
@@ -387,7 +387,7 @@ class PythonTemplate(BaseTemplate):
 """.strip()
 
     def init_app_content(self) -> str:
-      return """
+        return """
 from .app import main
       """.strip()
 
@@ -398,7 +398,7 @@ def main() -> None:
         """.strip()
 
     def app_test_content(self) -> str:
-      return """
+        return """
 from unittest import TestCase
 
 
