@@ -1,0 +1,13 @@
+{
+  "ui_font_size": 14,
+  "ui_font_family": "Roboto",
+  "buffer_font_size": 13,
+  "buffer_font_family": "JetBrains Mono",
+  "show_wrap_guides": true,
+  "wrap_guides": [80],
+  "theme": {
+    "mode": "system",
+    "light": "Gruvbox Dark Soft",
+    "dark": "One Dark"
+  }
+}

@@ -108,25 +108,27 @@ class GoTemplate(BaseTemplate):
         return """package main
 
 import (
-  "fmt"
-  "os"
+    "fmt"
+    "os"
 )
 
 func run() error {
-  fmt.Println("hello world")
-  return nil
+    fmt.Println("hello world")
+    return nil
 }
 
 func main() {
-  if err := run(); err != nil {
-      fmt.Fprintf(os.Stderr, "error: %s\\n", err.Error())
-      os.Exit(1)
-  }  
+    if err := run(); err != nil {
+        fmt.Fprintf(os.Stderr, "error: %s\\n", err.Error())
+        os.Exit(1)
+    }  
 }
 """.strip()
 
     def golangci_lint_content(self) -> str:
         return """
+version: "2"
+
 linters:
   enable:
     - exhaustive
@@ -138,17 +140,14 @@ linters:
     - gochecknoinits
     - godox
     - misspell
+    - sloglint
 
-linters-settings:
-  sloglint:
-    no-mixed-args: false
-    kv-only: true
-    attr-only: true
-    context: true
-    static-msg: true
-    no-raw-keys: true
-    key-naming-case: snake
-    args-on-sep-lines: true    
+  settings:
+    sloglint:
+      no-mixed-args: true
+      static-msg: true
+      key-naming-case: camel
+      args-on-sep-lines: true
 """.strip()
 
     def makefile_content(self) -> str:
