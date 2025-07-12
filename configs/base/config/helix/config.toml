@@ -1,4 +1,4 @@
-theme = "modus_operandi_tinted"
+theme = "solarized_light"
 
 [editor]
 line-number = "absolute"
