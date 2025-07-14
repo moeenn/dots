@@ -1,14 +1,11 @@
 #! /bin/bash
 
 declare -a files=(
-#  "fish"
+  "fish"
   "nushell"
   "helix"
   "htop"
   "mpv"
-  "alacritty"
-  "openbox"
-  "tint2"
 )
 
 PREFIX="../configs/base/config"

@@ -3,15 +3,12 @@
 declare -a files=(
   ".bin"
   ".ssh"
-  ".axelrc"
   ".bashrc"
   ".gitconfig"
   ".profile"
   ".tmux.conf"
   ".vimrc"
   ".Xresources"
-  ".compton.conf"
-  ".themes"
 )
 
 PREFIX="../configs/base/home"

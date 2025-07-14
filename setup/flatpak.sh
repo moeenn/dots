@@ -1,11 +1,11 @@
 #! /bin/bash
 
 declare -a packages=(
-  "org.chromium.Chromium"
-	"com.bitwarden.desktop"
-	"md.obsidian.Obsidian"
+#  "org.chromium.Chromium"
+#	"com.bitwarden.desktop"
+#	"md.obsidian.Obsidian"
   "io.beekeeperstudio.Studio"
-  "com.usebruno.Bruno"
+#  "com.usebruno.Bruno"
 )
 
 install_cmd="sudo flatpak install flathub -y "

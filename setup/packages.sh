@@ -1,7 +1,7 @@
 #! /bin/bash
 
 declare -a packages=(
-  "vim"
+	"vim"
 	"make"
 	"net-tools"
 	"bwm-ng"
@@ -9,7 +9,7 @@ declare -a packages=(
 	"aria2"
 	"gparted"
 	"git"
-  "htop"
+	"htop"
 	"dfc"
 	"tmux"
 	"acpi"
@@ -17,9 +17,6 @@ declare -a packages=(
 	"fonts-jetbrains-mono"
 	"fonts-go"
 	"mpv"
-  "gcolor3"
-  "i3lock"
-  "volumeicon-alsa"
 )
 
 install_cmd="sudo apt-get install -y "
