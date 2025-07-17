@@ -121,7 +121,7 @@ func main() {
     if err := run(); err != nil {
         fmt.Fprintf(os.Stderr, "error: %s\\n", err.Error())
         os.Exit(1)
-    }  
+    }
 }
 """.strip()
 
@@ -166,7 +166,7 @@ run: lint
 
 build: lint test
 	go build -o ./bin/$(PROJECT) $(MAIN_FILE)
-	
+
 .PHONY: lint test run
   """.strip()
 
@@ -275,11 +275,11 @@ test("simple test", async () => {
     "node_modules",
     "**/node_modules/*"
   ]
-}	
+}
 		""".strip()
 
     def package_json_content(self) -> str:
-        return """ 
+        return """
 {
   "name": "sandbox",
   "version": "1.0.0",
@@ -315,7 +315,7 @@ test("simple test", async () => {
 	""".strip()
 
     def eslint_config_content(self) -> str:
-        return """ 
+        return """
 import jsdoc from "eslint-plugin-jsdoc"
 
 export default [
@@ -384,6 +384,19 @@ class PythonTemplate(BaseTemplate):
     def readme_content(self) -> str:
         return f"""
 # {self.project_name}
+
+## Commands
+
+```bash
+# install run-time dependencies.
+$ pip install .
+
+# install dev dependencies.
+$ pip install .[dev]
+
+# run project.
+$ python -m main
+```
 """.strip()
 
     def init_app_content(self) -> str:
