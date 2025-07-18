@@ -2,7 +2,6 @@
 
 declare -a files=(
   "fish"
-  "nushell"
   "helix"
   "htop"
   "mpv"
