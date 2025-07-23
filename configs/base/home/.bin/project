@@ -179,13 +179,13 @@ class JsTemplate(BaseTemplate):
     def __init__(self, project_name: str) -> None:
         super().__init__(project_name)
 
-        index_path = os.path.join("src", "index.mjs")
-        index_test_path = os.path.join("src", "index.test.mjs")
+        main_path = os.path.join("src", "main.js")
+        main_test_path = os.path.join("src", "main.test.js")
 
         self.files_and_content = {
             "README.md": self.readme_content(),
-            index_path: self.index_content(),
-            index_test_path: self.index_test_content(),
+            main_path: self.main_content(),
+            main_test_path: self.main_test_content(),
             "jsconfig.json": self.jsconfig_content(),
             "package.json": self.package_json_content(),
             "eslint.config.js": self.eslint_config_content(),
@@ -229,7 +229,7 @@ $ npm run fmt
 ```
 		""".strip()
 
-    def index_content(self) -> str:
+    def main_content(self) -> str:
         return """
 /** @returns {Promise<void>} */
 async function main() {
@@ -239,7 +239,7 @@ async function main() {
 main().catch(console.error)
 		""".strip()
 
-    def index_test_content(self) -> str:
+    def main_test_content(self) -> str:
         return """
 import test from "node:test"
 import assert from "node:assert/strict"
@@ -283,15 +283,15 @@ test("simple test", async () => {
 {
   "name": "sandbox",
   "version": "1.0.0",
-  "main": "src/index.mjs",
+  "main": "src/main.js",
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "node ./src/index.mjs",
+    "start": "node ./src/main.js",
     "type-check": "tsc --project jsconfig.json",
     "test": "node --test",
-    "lint": "npx eslint ./src/ --ext .mjs",
-    "fmt": "npx prettier --write 'src/**/*.mjs'",
+    "lint": "npx eslint ./src/ --ext .js",
+    "fmt": "npx prettier --write 'src/**/*.js'",
     "check": "npm run type-check && npm run lint"
   },
   "imports": {
@@ -304,10 +304,10 @@ test("simple test", async () => {
     "trailingComma": "all"
   },
   "devDependencies": {
-    "@types/node": "^22.13.10",
+    "@types/node": "^24.0.15",
     "@types/punycode": "^2.1.4",
     "eslint": "^9.22.0",
-    "eslint-plugin-jsdoc": "^50.6.8",
+    "eslint-plugin-jsdoc": "^51.4.1",
     "prettier": "^3.2.5",
     "typescript": "^5.8.2"
   }
