@@ -30,7 +30,7 @@ set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOIN
 alias .. "cd .."
 alias cp "cp -v"
 alias mv "mv -iv"
-alias rsync "rsync -avP"
+alias rsync "rsync -av"
 alias rm "rm -iv"
 alias link "ln -sr"
 alias ls "ls -ap --color=always"
@@ -50,7 +50,6 @@ alias clock "tty-clock -cD"
 alias m mpv
 
 # Super User Tasks
-alias kill "killall -v --ignore-case"
 alias full_access "sudo chmod -R a+rw ./"
 
 # git

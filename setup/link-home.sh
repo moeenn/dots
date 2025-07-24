@@ -8,7 +8,6 @@ declare -a files=(
   ".profile"
   ".tmux.conf"
   ".vimrc"
-  ".Xresources"
 )
 
 PREFIX="../configs/base/home"
