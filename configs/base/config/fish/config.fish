@@ -12,13 +12,16 @@ end
 #   Environment and path config
 #
 # --------------------------------------------------------------------
+set -Ux JAR_PATH {$HOME}/.local/jar
 set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
 set NODEBIN {$HOME}/.npm/bin
 set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN}
+set JBANG_BIN {$HOME}/.jbang/bin
+set IDEA_BIN {$HOME}/.idea/bin
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$IDEA_BIN} {$JBANG_BIN}
 
 # --------------------------------------------------------------------
 #

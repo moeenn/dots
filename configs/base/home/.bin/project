@@ -171,6 +171,133 @@ build: lint test
   """.strip()
 
 
+class JavaTemplate(BaseTemplate):
+    """
+    template class for java+maven projects.
+    """
+
+    def __init__(self, project_name: str) -> None:
+        super().__init__(project_name)
+
+        main_path = os.path.join(
+            "src", "main", "java", "com", self.project_name, "Main.java"
+        )
+        test_path = os.path.join(
+            "src", "test", "java", "com", self.project_name, "MainTest.java"
+        )
+        self.files_and_content = {
+            "README.md": self.readme_md_content(),
+            main_path: self.main_content(),
+            test_path: self.test_content(),
+            "pom.xml": self.pom_xml_content(),
+        }
+
+    @staticmethod
+    def template_name() -> str:
+        return "java"
+
+    def gitignore_entries(self) -> list[str]:
+        return [".classpath", "target", ".project", ".settings"]
+
+    def project_directories(self) -> list[str]:
+        return [
+            os.path.join("src", "main", "java", "com", self.project_name),
+            os.path.join("src", "test", "java", "com", self.project_name),
+        ]
+
+    def main_content(self) -> str:
+        return f"""
+package com.{self.project_name};
+
+public class Main {{
+    public static void main(String[] args) {{
+        System.out.println("hello world");
+    }}
+}}           
+        """.strip()
+
+    def test_content(self) -> str:
+        return f"""
+package com.{self.project_name};
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class MainTest {{
+  @Test
+  public void testAssertion() {{
+    assertEquals(1, 1);
+  }}
+}}        
+        """.strip()
+
+    def pom_xml_content(self) -> str:
+        return f"""
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>${{mainClass}}</groupId>
+  <artifactId>{self.project_name}</artifactId>
+  <version>1.0</version>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>${{mainClass}}</mainClass>
+            </manifest>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <properties>
+    <java.version>21</java.version>
+    <mainClass>com.{self.project_name}.Main</mainClass>
+    <maven.compiler.source>${{java.version}}</maven.compiler.source>
+    <maven.compiler.target>${{java.version}}</maven.compiler.target>
+    <maven.compiler.release>${{java.version}}</maven.compiler.release>
+    <exec.mainClass>${{mainClass}}</exec.mainClass>
+  </properties>
+
+  <dependencies>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>5.10.3</version>
+        <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
+        """.strip()
+
+    def readme_md_content(self) -> str:
+        return f"""
+## {self.project_name}
+
+### Commands
+
+```bash
+# install dependencies.
+$ mvn install
+
+# compile.
+$ mvn clean compile assembly:single
+
+# run jar.
+$ java -jar ./target/{self.project_name}-1.0-jar-with-dependencies.jar
+```
+        """.strip()
+
+
 class JsTemplate(BaseTemplate):
     """
     template class for Javascript projects.
@@ -452,6 +579,7 @@ def main() -> None:
 
     registered_templates: list[BaseTemplate] = [
         GoTemplate(args.name),
+        JavaTemplate(args.name),
         JsTemplate(args.name),
         PythonTemplate(args.name),
     ]
