@@ -237,7 +237,7 @@ public class MainTest {{
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>${{mainClass}}</groupId>
+  <groupId>com.{self.project_name}.Main</groupId>
   <artifactId>{self.project_name}</artifactId>
   <version>1.0</version>
 
@@ -266,6 +266,8 @@ public class MainTest {{
     <maven.compiler.target>${{java.version}}</maven.compiler.target>
     <maven.compiler.release>${{java.version}}</maven.compiler.release>
     <exec.mainClass>${{mainClass}}</exec.mainClass>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>    
   </properties>
 
   <dependencies>
