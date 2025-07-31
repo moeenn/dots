@@ -161,7 +161,7 @@ lint:
 test:
 	go test ./...
 
-run: lint
+run:
 	go run $(MAIN_FILE)
 
 build: lint test

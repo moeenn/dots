@@ -1,4 +1,4 @@
-theme = "monokai"
+theme = "solarized_light"
 
 [editor]
 line-number = "absolute"
