@@ -1,22 +1,29 @@
 # update system path.
-$env.PATH = ($env.PATH | split row (char esep) | append "/var/lib/flatpak/exports/bin")
-$env.PATH = ($env.PATH | split row (char esep) | append "~/.bin")
-$env.PATH = ($env.PATH | split row (char esep) | append "~/.local/bin/")
-$env.PATH = ($env.PATH | split row (char esep) | append "~/.npm/bin")
-$env.PATH = ($env.PATH | split row (char esep) | append "/usr/local/go/bin")
-$env.PATH = ($env.PATH | split row (char esep) | append "~/go/bin")
+# $env.PATH = ($env.PATH | split row (char esep) | append "/var/lib/flatpak/exports/bin")
+# $env.PATH = ($env.PATH | split row (char esep) | append "~/.bin")
+# $env.PATH = ($env.PATH | split row (char esep) | append "~/.local/bin/")
+# $env.PATH = ($env.PATH | split row (char esep) | append "~/.npm/bin")
+# $env.PATH = ($env.PATH | split row (char esep) | append "/usr/local/go/bin")
+# $env.PATH = ($env.PATH | split row (char esep) | append "~/go/bin")
 
-# disable startup banner.
-$env.config.show_banner = false
-
-# disable right prompt.
+# set required env variables.
+$env.LS_COLORS = ""
 $env.PROMPT_COMMAND_RIGHT = ""
+$env.PROMPT_COMMAND = { $"(pwd | path basename)" }
+$env.PROMPT_INDICATOR = "$ "
 
-# st default text editor.
-$env.config.buffer_editor = "vim" 
+# disable ls colors.
+$env.config = {
+  show_banner: false
+  buffer_editor: 'vim'
+  use_ansi_coloring: true
+  table: {
+    mode: 'none'
+  }
+}
 
-# disable table rounded corners.
-$env.config.table.mode = 'none'
+# set the theme.
+source ./themes/gruvbox_light_hard.nu
 
 # set common aliases.
 alias .. = cd ..
