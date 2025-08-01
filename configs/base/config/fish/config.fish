@@ -19,9 +19,8 @@ set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
 set NODEBIN {$HOME}/.npm/bin
 set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
-set JBANG_BIN {$HOME}/.jbang/bin
 set IDEA_BIN {$HOME}/.idea/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$IDEA_BIN} {$JBANG_BIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$IDEA_BIN}
 
 # --------------------------------------------------------------------
 #
@@ -71,4 +70,3 @@ alias py python3
 alias pm "python -m"
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 alias t tmux
-alias cfmt "find . -iname '*.hpp' -o -iname '*.cpp' | xargs clang-format --style='Microsoft' -i"

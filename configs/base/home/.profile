@@ -6,7 +6,6 @@ NODEBIN=${HOME}/.npm/bin
 GOINSTALL=/usr/local/go/bin
 GOPATH=${HOME}/go
 GOBIN=${GOPATH}/bin
-CARGO_BIN=${HOME}/.cargo/bin
 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 PATH=${PATH}:${FLATPAKBIN}:${PATH}:${HOME}/.bin:${HOME}/.local/bin
