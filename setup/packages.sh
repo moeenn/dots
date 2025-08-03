@@ -15,8 +15,9 @@ declare -a packages=(
 	"acpi"
 	"p7zip"
 	"fonts-jetbrains-mono"
-	"fonts-go"
+	"fonts-roboto"
 	"mpv"
+	"zoxide"
 )
 
 install_cmd="sudo apt-get install -y "

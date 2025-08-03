@@ -7,6 +7,9 @@ function fish_right_prompt
     #intentionally left blank
 end
 
+# link zoxide.
+zoxide init fish | source
+
 # --------------------------------------------------------------------
 #
 #   Environment and path config
@@ -28,7 +31,8 @@ set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOIN
 #
 # --------------------------------------------------------------------
 # Operations
-alias .. "cd .."
+alias cd z
+alias .. "z .."
 alias cp "cp -v"
 alias mv "mv -iv"
 alias rsync "rsync -av"
