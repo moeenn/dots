@@ -14,4 +14,4 @@ cd $CURRENT_DIR
 sudo apt-get install -y nodejs
 npm config set prefix=$HOME/.npm
 echo 'updating npm...'
-npm i -g npm
+npm i -g npm typescript-language-server
