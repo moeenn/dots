@@ -1,0 +1,80 @@
+#!/usr/bin/python3
+import subprocess
+import sys
+from enum import Enum
+
+
+SCRIPT_NAME = "pkg"
+COLOR_YELLOW = "\33[33m"
+COLOR_RED = "\33[31m"
+COLOR_RESET = "\033[0m"
+
+
+class InstallerCommands(Enum):
+    search = "search"
+    install = "install"
+    remove = "remove"
+
+
+class DebianInstaller:
+    def perform_command(self, command: InstallerCommands, packages: list[str]) -> None:
+        match command:
+            case InstallerCommands.search:
+                self.search(packages)
+
+            case InstallerCommands.install:
+                self.install(packages)
+
+            case InstallerCommands.remove:
+                self.remove(packages)
+
+    def search(self, packages: list[str]) -> None:
+        package_name = packages[0]
+        if len(packages) > 1:
+            print(
+                f"{COLOR_YELLOW}warning: can only search for one package at a time.{COLOR_RESET}"
+            )
+
+        subprocess.run(["apt-cache", "search", package_name])
+
+    def install(self, packages: list[str]) -> None:
+        install_cmd = ["sudo", "apt-get", "install", "-y"]
+        subprocess.run(install_cmd + packages)
+
+    def remove(self, packages: list[str]) -> None:
+        remove_cmd = ["sudo", "apt-get", "remove", "-y", "--purge"]
+        autoremove_cmd = ["&&", "sudo", "apt-get", "autoremove"]
+        subprocess.run(remove_cmd + packages + autoremove_cmd)
+
+
+def print_help() -> None:
+    help_text = f"""
+usage: {SCRIPT_NAME} [COMMAND] [PACKAGES]
+
+commands:
+  search      search for packages.
+  install     install new packages.
+  remove      remove package.
+    """.strip()
+    print(help_text)
+
+
+def main(args: list[str]) -> None:
+    if len(args) < 2:
+        print_help()
+        sys.exit(1)
+
+    command = args[1]
+    packages = args[2:]
+
+    parsed_command = InstallerCommands(command)
+    debian_installer = DebianInstaller()
+    debian_installer.perform_command(parsed_command, packages)
+
+
+try:
+    main(sys.argv)
+except Exception as ex:
+    print(f"{COLOR_RED}error: {str(ex)}. {COLOR_RESET}")
+    print_help()
+    sys.exit(1)
