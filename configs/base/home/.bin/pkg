@@ -13,6 +13,7 @@ COLOR_RESET = "\033[0m"
 class InstallerCommands(Enum):
     search = "search"
     install = "install"
+    update = "update"
     remove = "remove"
 
 
@@ -24,6 +25,9 @@ class DebianInstaller:
 
             case InstallerCommands.install:
                 self.install(packages)
+
+            case InstallerCommands.update:
+                self.update()
 
             case InstallerCommands.remove:
                 self.remove(packages)
@@ -41,10 +45,14 @@ class DebianInstaller:
         install_cmd = ["sudo", "apt-get", "install", "-y"]
         subprocess.run(install_cmd + packages)
 
+    def update(self) -> None:
+        subprocess.run(["sudo", "apt-get", "update", "-y"])
+        subprocess.run(["sudo", "apt-get", "upgrade"])
+
     def remove(self, packages: list[str]) -> None:
         remove_cmd = ["sudo", "apt-get", "remove", "-y", "--purge"]
-        autoremove_cmd = ["&&", "sudo", "apt-get", "autoremove"]
-        subprocess.run(remove_cmd + packages + autoremove_cmd)
+        subprocess.run(remove_cmd + packages)
+        subprocess.run(["sudo", "apt-get", "autoremove"])
 
 
 def print_help() -> None:
@@ -54,6 +62,7 @@ usage: {SCRIPT_NAME} [COMMAND] [PACKAGES]
 commands:
   search      search for packages.
   install     install new packages.
+  update      fetch and install package updates.
   remove      remove package.
     """.strip()
     print(help_text)

@@ -23,7 +23,14 @@ formatter = { command = "clang-format", args = ["--style=Microsoft"]}
 
 [[language]]
 name = "javascript"
+indent = { tab-width = 4, unit = "\t" }
 auto-format = true
+formatter = { command = "npx", args = ["prettier", "--parser", "typescript"]}
+
+[[language]]
+name = "typescript"
+auto-format = true
+indent = { tab-width = 4, unit = "\t" }
 formatter = { command = "npx", args = ["prettier", "--parser", "typescript"]}
 
 [[language]]

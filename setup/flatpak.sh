@@ -3,7 +3,7 @@
 declare -a packages=(
   "org.chromium.Chromium"
   "com.bitwarden.desktop"
-#  "md.obsidian.Obsidian"
+  "md.obsidian.Obsidian"
 #  "io.beekeeperstudio.Studio"
 #  "com.usebruno.Bruno"
 )
