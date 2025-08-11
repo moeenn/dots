@@ -7,6 +7,7 @@ declare -a packages=(
 	"bwm-ng"
 	"jq"
 	"aria2"
+	"curl"
 	"gparted"
 	"git"
 	"htop"
@@ -16,6 +17,7 @@ declare -a packages=(
 	"p7zip"
 	"fonts-jetbrains-mono"
 	"fonts-roboto"
+	"fonts-agave"
 	"mpv"
 	"zoxide"
 )

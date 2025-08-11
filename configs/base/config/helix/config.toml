@@ -1,4 +1,4 @@
-theme = "gruvbox_light_hard"
+theme = "fleet_dark"
 
 [editor]
 line-number = "absolute"
