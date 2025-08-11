@@ -1,7 +1,8 @@
 {
-    "editor.fontFamily": "'JetBrains Mono'",
+    "editor.fontFamily": "'Agave'",
     "window.menuBarVisibility": "toggle",
     "editor.fontLigatures": true,
+    "editor.fontSize": 16,
     "editor.minimap.enabled": false,
     "breadcrumbs.enabled": false,
     "workbench.editor.enablePreview": false,
