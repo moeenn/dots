@@ -1,14 +1,14 @@
 {
-  "ui_font_size": 14,
-  "ui_font_family": "Go",
-  "buffer_font_size": 13,
-  "buffer_font_family": "JetBrains Mono",
-  "show_wrap_guides": true,
-  "tab_size": 4,
-  "wrap_guides": [80],
-  "theme": {
-    "mode": "system",
-    "light": "Gruvbox Dark",
-    "dark": "One Dark"
-  }
+    "ui_font_size": 14,
+    "ui_font_family": "Roboto",
+    "buffer_font_size": 14,
+    "buffer_font_family": "Agave",
+    "show_wrap_guides": true,
+    "tab_size": 4,
+    "wrap_guides": [80],
+    "theme": {
+        "mode": "system",
+        "light": "Gruvbox Dark",
+        "dark": "Gruvbox Dark"
+    }
 }
