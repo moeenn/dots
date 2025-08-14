@@ -52,7 +52,6 @@ alias net "bwm-ng -t 1000"
 alias lsblk "lsblk -e 7"
 alias patch "patch -p1 <"
 alias clock "tty-clock -cD"
-alias m mpv
 
 # Super User Tasks
 alias full_access "sudo chmod -R a+rw ./"
@@ -73,4 +72,4 @@ alias dc docker-compose
 alias py python3
 alias pm "python -m"
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
-alias t tmux
+alias m mvn
