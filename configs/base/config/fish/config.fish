@@ -15,7 +15,10 @@ zoxide init fish | source
 #   Environment and path config
 #
 # --------------------------------------------------------------------
+<<<<<<< HEAD
 set -Ux JAR_PATH {$HOME}/.bin/jar
+=======
+>>>>>>> c72d305417ee81dae89e4a0517559f7b2bae6cb1
 set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
