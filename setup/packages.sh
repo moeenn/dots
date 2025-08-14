@@ -6,7 +6,6 @@ declare -a packages=(
 	"net-tools"
 	"bwm-ng"
 	"jq"
-	"aria2"
 	"curl"
 	"gparted"
 	"git"
@@ -17,9 +16,9 @@ declare -a packages=(
 	"p7zip"
 	"fonts-jetbrains-mono"
 	"fonts-roboto"
-	"fonts-agave"
 	"mpv"
 	"zoxide"
+	"pkg-config"
 )
 
 install_cmd="sudo apt-get install -y "

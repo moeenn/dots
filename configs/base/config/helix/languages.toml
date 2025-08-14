@@ -38,3 +38,8 @@ name = "go"
 indent = { tab-width = 4, unit = "    " }
 auto-format = true
 language-servers = [ "gopls", "golangci-lint-langserver" ]
+
+[[language]]
+name = "scala"
+indent = { tab-width = 4, unit = "    " }
+auto-format = true
