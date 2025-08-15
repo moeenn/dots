@@ -10,7 +10,7 @@ true-color = true
 
 [editor.cursor-shape]
 insert = "block"
-normal = "underline"
+normal = "block"
 select = "bar"
 
 [editor.indent-guides]

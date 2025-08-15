@@ -19,9 +19,8 @@ set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
 set NODEBIN {$HOME}/.npm/bin
-set CARGO_BIN {$HOME}/.cargo/bin
 set IDEA_BIN {$HOME}/.idea/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$CARGO_BIN} {$IDEA_BIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$IDEA_BIN}
 
 # --------------------------------------------------------------------
 #
@@ -71,6 +70,6 @@ alias pull "git pull"
 # programming
 alias dc docker-compose
 alias py python3
-alias pm "python -m"
+alias pm "python3 -m"
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 alias m mvn

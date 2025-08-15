@@ -197,7 +197,7 @@ class JavaTemplate(BaseTemplate):
         return "java"
 
     def gitignore_entries(self) -> list[str]:
-        return [".classpath", "target", ".project", ".settings"]
+        return [".classpath", "target", ".project", ".settings", ".idea"]
 
     def project_directories(self) -> list[str]:
         return [
