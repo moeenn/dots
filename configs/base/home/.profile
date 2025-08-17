@@ -1,4 +1,4 @@
-# LC_CTYPE=en_US.UTF-8
+LC_CTYPE=en_US.UTF-8
 XDG_DATA_HOME=${HOME}/.config
 XDG_DATA_DIRS=${XDG_DATA_DIRS}:${XDG_DATA_HOME}/flatpak/exports/share
 FLATPAKBIN=/var/lib/flatpak/exports/bin

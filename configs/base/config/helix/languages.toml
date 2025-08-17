@@ -43,3 +43,4 @@ language-servers = [ "gopls", "golangci-lint-langserver" ]
 name = "scala"
 indent = { tab-width = 4, unit = "    " }
 auto-format = true
+# formatter = { command = "scalafmt", args = ["--async-format", "--stdout"]}

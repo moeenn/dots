@@ -19,6 +19,7 @@ declare -a packages=(
 	"mpv"
 	"zoxide"
 	"pkg-config"
+	"ccache"
 )
 
 install_cmd="sudo apt-get install -y "
