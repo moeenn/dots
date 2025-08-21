@@ -19,8 +19,10 @@ set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
 set NODEBIN {$HOME}/.npm/bin
+set GOINSTALL /usr/local/go/bin
+set GOBIN {$HOME}/go/bin
 set IDEA_BIN {$HOME}/.idea/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$IDEA_BIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$IDEA_BIN} {$GOINSTALL} {$GOBIN}
 
 # --------------------------------------------------------------------
 #

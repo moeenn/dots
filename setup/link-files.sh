@@ -49,5 +49,5 @@ function link_config_files() {
   done
 }
 
-link_home_files()
-link_config_files()
+link_home_files
+link_config_files
