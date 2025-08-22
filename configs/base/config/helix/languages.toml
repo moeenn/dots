@@ -19,6 +19,7 @@ args = ["server"]
 name = "cpp"
 auto-format = true
 file-types = ["cpp", "hpp", "c", "h", "cc"]
+indent = { tab-width = 4, unit = "\t" }
 formatter = { command = "clang-format", args = ["--style=Microsoft"]}
 
 [[language]]
@@ -32,15 +33,3 @@ name = "typescript"
 auto-format = true
 indent = { tab-width = 4, unit = "\t" }
 formatter = { command = "npx", args = ["prettier", "--parser", "typescript"]}
-
-[[language]]
-name = "go"
-indent = { tab-width = 4, unit = "    " }
-auto-format = true
-language-servers = [ "gopls", "golangci-lint-langserver" ]
-
-[[language]]
-name = "scala"
-indent = { tab-width = 4, unit = "    " }
-auto-format = true
-# formatter = { command = "scalafmt", args = ["--async-format", "--stdout"]}
