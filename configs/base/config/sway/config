@@ -3,15 +3,15 @@
 # look and feel.
 #
 # ------------------------------------------------------------------------
-font pango:Roboto Medium 	9
+font pango:Roboto Medium 	  9
 titlebar_border_thickness 	0
-titlebar_padding 			8
-default_border 				none
-client.unfocused   			#eee0b7 #eee0b7 #4b2f1d #4b2f1d
-client.focused           	#fbf1c7 #fbf1c7 #4b2f1d #4b2f1d
+titlebar_padding 			      8
+default_border 				      none
+client.unfocused   			    #eee0b7 #eee0b7 #4b2f1d #4b2f1d
+client.focused           	  #fbf1c7 #fbf1c7 #4b2f1d #4b2f1d
 
 # set background color.
-exec_always "swaybg -c 3c3836"
+exec "swaybg -c 3c3836"
 
 bar {
     position bottom
@@ -19,7 +19,7 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +' %B %d - %H:%M '; do sleep 1; done
+    status_command while date +' %B %d - %H:%M '; do sleep 5; done
 
     colors {
         statusline #4b2f1d
