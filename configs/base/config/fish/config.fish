@@ -2,6 +2,9 @@
 # suppress welcome message
 set fish_greeting
 
+# misc. adjustments.
+set fish_cursor_default block
+
 # disable right prompt
 function fish_right_prompt
     #intentionally left blank
