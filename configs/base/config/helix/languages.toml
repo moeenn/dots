@@ -19,7 +19,7 @@ args = ["server"]
 name = "cpp"
 auto-format = true
 file-types = ["cpp", "hpp", "c", "h", "cc"]
-indent = { tab-width = 4, unit = "\t" }
+indent = { tab-width = 4, unit = "    " }
 formatter = { command = "clang-format", args = ["--style=Microsoft"]}
 
 [[language]]
