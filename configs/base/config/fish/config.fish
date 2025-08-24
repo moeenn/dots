@@ -11,7 +11,7 @@ end
 zoxide init fish | source
 
 # link mise.
-mise activate fish | source
+# mise activate fish | source
 
 # --------------------------------------------------------------------
 #
