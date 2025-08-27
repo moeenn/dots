@@ -1,6 +1,6 @@
 #! /bin/bash
 
-sudo dnf install -y fish
+sudo apt-get install -y fish
 
 USER=$(whoami)
 LOCATION=$(which fish)

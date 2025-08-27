@@ -14,16 +14,17 @@ declare -a packages=(
 	"tmux"
 	"acpi"
 	"p7zip"
-	"jetbrains-mono-fonts"
-	"google-roboto-fonts"
+	"fonts-jetbrains-mono"
+	"fonts-go"
 	"mpv"
 	"zoxide"
 	"pkg-config"
 	"ccache"
-	"helix"
+	"aria2"
+	"axel"
 )
 
-install_cmd="sudo dnf install -y "
+install_cmd="sudo apt-get install -y "
 for pkg in ${packages[@]}; do
   install_cmd="${install_cmd} ${pkg} "
 done
