@@ -14,7 +14,7 @@ end
 zoxide init fish | source
 
 # link mise.
-mise activate fish | source
+# mise activate fish | source
 
 # --------------------------------------------------------------------
 #
@@ -35,9 +35,6 @@ set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$IDEA
 #   Shell Aliases
 #
 # --------------------------------------------------------------------
-# package management
-alias pkg "java -jar ~/.bin/jar/pkg.jar"
-
 # Operations
 alias cd z
 alias .. "z .."
@@ -65,6 +62,7 @@ alias clock "tty-clock -cD"
 alias full_access "sudo chmod -R a+rw ./"
 
 # git
+alias g git
 alias :s "git status"
 alias :S "git status"
 alias :c "git commit -m"
