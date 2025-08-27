@@ -4,7 +4,7 @@ declare -a packages=(
   "org.chromium.Chromium"
   "com.bitwarden.desktop"
   "md.obsidian.Obsidian"
-  "io.beekeeperstudio.Studio"
+#  "io.beekeeperstudio.Studio"
   "com.usebruno.Bruno"
 )
 
