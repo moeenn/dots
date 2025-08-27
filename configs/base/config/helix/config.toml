@@ -1,4 +1,4 @@
-theme = "solarized_light"
+theme = "gruvbox_light"
 
 [editor]
 line-number = "absolute"

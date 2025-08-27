@@ -22,10 +22,10 @@ bar {
     status_command while date +' %B %d - %H:%M '; do sleep 5; done
 
     colors {
-        statusline #4b2f1d
-        background #eee0b7
-        inactive_workspace #eee0b7 #eee0b7 #4b2f1d
-        focused_workspace  #6c782e #6c782e #eee0b7
+        statusline #3d3936
+        background #d5c4a1
+        inactive_workspace #d5c4a1 #d5c4a1 #3d3936
+        focused_workspace  #665c54 #665c54 #e7dbb2
     }
 }
 
