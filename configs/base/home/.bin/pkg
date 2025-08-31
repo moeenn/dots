@@ -1,0 +1,103 @@
+#! /usr/bin/python3
+
+from enum import Enum
+import sys
+import io
+import subprocess
+
+
+def print_help(program_name = "pkg") -> None:
+    builder = io.StringIO()
+    builder.write(f"usage: {program_name} [COMMAND] [PACKAGES]\n\n")
+    builder.write("commands:\n")
+    builder.write("  help        display this help message and exit.\n")
+    builder.write("  search      search for packages.\n")
+    builder.write("  install     install new packages.\n")
+    builder.write("  update      fetch and install package updates.\n")
+    builder.write("  remove      remove packages.\n")
+    print(builder.getvalue())
+
+
+class DebianPackageManager:
+    def search(self, packages: list[str]) -> None:
+        if len(packages) > 1:
+            raise Exception("can only search for one package at a time.")
+        subprocess.run(["apt-cache", "search", packages[0]])
+
+    def install(self, packages: list[str]) -> None:
+        subprocess.run(["sudo", "apt-get", "install", "-y"] + packages)
+
+    def update(self) -> None:
+        subprocess.run(["sudo", "apt-get", "update"])
+        subprocess.run(["sudo", "apt-get", "upgrade", "-y"])
+
+    def remove(self, packages: list[str]) -> None:
+        subprocess.run(["sudo", "apt-get", "remove", "-y"] + packages)
+        subprocess.run(["sudo", "apt-get", "autoremove", "--purge"])
+
+
+class Command(Enum):
+    Search = "search"
+    Install = "install"
+    Update = "update"
+    Remove = "remove"
+    Help = "help"
+
+    @staticmethod
+    def from_string(raw: str):
+        match raw:
+            case "search":
+                return Command.Search
+
+            case "install":
+                return Command.Install
+
+            case "update":
+                return Command.Update
+
+            case "remove":
+                return Command.Remove
+
+            case "help":
+                return Command.Help
+
+            case _:
+                raise Exception(f"invalid command: {raw}")
+
+
+def main(args: list[str]) -> None:
+    if len(args) < 2:
+        print_help()
+        sys.exit(1)
+
+
+    raw_cmd = args[1]
+    parsed_cmd = Command.from_string(raw_cmd)
+
+    packages = args[2:]
+    pm = DebianPackageManager()
+
+    match parsed_cmd:
+        case Command.Help:
+            print_help()
+
+        case Command.Search:
+            pm.search(packages)
+
+        case Command.Install:
+            pm.install(packages)
+
+        case Command.Update:
+            pm.update()
+
+        case Command.Remove:
+            pm.remove(packages)
+
+
+if __name__ == "__main__":
+    try:
+        main(sys.argv)
+    except KeyboardInterrupt:
+        print("exiting...")
+    except Exception as ex:
+        print("error: " + str(ex))
