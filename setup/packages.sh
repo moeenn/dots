@@ -22,6 +22,7 @@ declare -a packages=(
 	"ccache"
 	"aria2"
 	"axel"
+	"redshift"
 )
 
 install_cmd="sudo apt-get install -y "
