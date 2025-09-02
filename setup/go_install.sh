@@ -1,6 +1,6 @@
 #! /bin/bash
 
-GO_VERSION="1.24.6"
+GO_VERSION="1.25.0"
 CURRENT_DIR=$(pwd)
 INSTALL_PREFIX="/usr/local"
 
