@@ -33,3 +33,12 @@ name = "typescript"
 auto-format = true
 indent = { tab-width = 4, unit = "\t" }
 formatter = { command = "npx", args = ["prettier", "--parser", "typescript"]}
+
+[[language]]
+name = "ocaml"
+auto-format = true
+formatter = { command = "ocamlformat", args = [
+  "-",
+  "--impl",
+  "--enable-outside-detected-project",
+] }
