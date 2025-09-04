@@ -192,3 +192,5 @@ bindsym $mod+r mode "resize"
 #
 # ------------------------------------------------------------------------
 floating_modifier $mod normal
+exec redshift -O 5000
+exec systemctl --user import-environment DISPLAY

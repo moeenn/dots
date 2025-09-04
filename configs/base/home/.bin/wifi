@@ -1,0 +1,106 @@
+#! /usr/bin/python3
+
+import sys
+from enum import Enum, auto
+import subprocess
+import io
+
+
+class Command(Enum):
+    help = auto()
+    status = auto()
+    list = auto()
+    add = auto()
+    connect = auto()
+    disconnect = auto()
+    delete = auto()
+
+    @staticmethod
+    def from_string(raw: str):
+        try:
+            return Command[raw]
+        except Exception:
+            raise Exception(f"invalid command: {raw}")
+
+
+class NetworkManager:
+    def run_command(self, raw_cmd: str, args: list[str]) -> None:
+        try:
+            cmd = Command.from_string(raw_cmd)
+        except Exception as ex:
+            print("error: " + str(ex))
+            self.__print_help()
+            return
+
+        match cmd:
+            case Command.help:
+                self.__print_help()
+
+            case Command.status:
+                self.__status()
+
+            case Command.list:
+                self.__list()
+
+            case Command.add:
+                self.__add()
+
+            case Command.connect:
+                name = args[0]
+                self.__connect(name)
+
+            case Command.disconnect:
+                iface_name = args[0]
+                self.__disconnect(iface_name)
+
+            case Command.delete:
+                name = args[0]
+                self.__delete(name)
+
+    def __print_help(self, program_name="wifi") -> None:
+        builder = io.StringIO()
+        builder.write(f"usage: {program_name} [COMMAND] [PACKAGES]\n\n")
+        builder.write("commands:\n")
+        builder.write("  help        display this help message and exit.\n")
+        builder.write("  status      current network connection status.\n")
+        builder.write("  list        list devices and connection names.\n")
+        builder.write("  add         add a new wifi.")
+        builder.write("  connect     connect to an already added conncetion.\n")
+        builder.write("  disconnect  disconnect wifi using interface name.\n")
+        builder.write("  delete      delete a wifi connection.\n")
+        print(builder.getvalue())
+
+    def __status(self) -> None:
+        subprocess.run(["nmcli", "dev", "status"])
+
+    def __list(self) -> None:
+        subprocess.run(["nmcli", "con", "show"])
+
+    def __add(self) -> None:
+        name = input("Wifi name: ").strip()
+        password = input("Password: ").strip()
+        subprocess.run(
+            ["nmcli", "device", "wifi", "connect", name, "password", password]
+        )
+
+    def __connect(self, conn_name: str) -> None:
+        subprocess.run(["nmcli", "con", "up", conn_name])
+
+    def __disconnect(self, iface_name: str) -> None:
+        subprocess.run(["nmcli", "dis", iface_name])
+
+    def __delete(self, conn_name: str) -> None:
+        subprocess.run(["nmcli", "con", "del", conn_name])
+
+
+def main(args: list[str]) -> None:
+    raw_cmd = args[1]
+    nm = NetworkManager()
+    nm.run_command(raw_cmd, args[2:])
+
+
+if __name__ == "__main__":
+    try:
+        main(sys.argv)
+    except Exception as ex:
+        print(f"error: {str(ex)}")
