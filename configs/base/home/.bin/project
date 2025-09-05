@@ -299,7 +299,7 @@ $ java -jar ./target/{self.project_name}-1.0-jar-with-dependencies.jar
         """.strip()
 
 
-class JsTemplate(BaseTemplate):
+class TsTemplate(BaseTemplate):
     """
     template class for Javascript projects.
     """
@@ -307,24 +307,24 @@ class JsTemplate(BaseTemplate):
     def __init__(self, project_name: str) -> None:
         super().__init__(project_name)
 
-        main_path = os.path.join("src", "main.js")
-        main_test_path = os.path.join("src", "main.test.js")
+        main_path = os.path.join("src", "main.ts")
+        main_test_path = os.path.join("src", "main.test.ts")
 
         self.files_and_content = {
             "README.md": self.readme_content(),
             main_path: self.main_content(),
             main_test_path: self.main_test_content(),
-            "jsconfig.json": self.jsconfig_content(),
+            "tsconfig.json": self.tsconfig_content(),
             "package.json": self.package_json_content(),
             "eslint.config.js": self.eslint_config_content(),
         }
 
     @staticmethod
     def template_name() -> str:
-        return "js"
+        return "ts"
 
     def gitignore_entries(self) -> list[str]:
-        return ["node_modules/", ".DS_Store"]
+        return ["node_modules/", ".DS_Store", "dist/"]
 
     def project_directories(self) -> list[str]:
         return ["src"]
@@ -359,12 +359,11 @@ $ npm run fmt
 
     def main_content(self) -> str:
         return """
-/** @returns {Promise<void>} */
-async function main() {
-  console.log("Hello world")
+function main(): void {
+    console.log("Hello world")
 }
 
-main().catch(console.error)
+main()
 		""".strip()
 
     def main_test_content(self) -> str:
@@ -373,99 +372,94 @@ import test from "node:test"
 import assert from "node:assert/strict"
 
 test("simple test", async () => {
-  assert.equal(true, true)
+    assert.equal(true, true)
 })
 		""".strip()
 
-    def jsconfig_content(self) -> str:
+    def tsconfig_content(self) -> str:
         return """
 {
-  "compilerOptions": {
-    "checkJs": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictPropertyInitialization": true,
-    "alwaysStrict": true,
-    "target": "ES2015",
-    "moduleResolution": "node",
-    "noImplicitOverride": false,
-    "paths": {
-      "#src/*": [
-        "./src/*"
-      ]
-    }
-  },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/node_modules/*"
-  ]
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "NodeNext",
+		"strict": true,
+		"verbatimModuleSyntax": true,
+		"skipLibCheck": true,
+		"types": ["node"],
+		"outDir": "./dist",
+		"baseUrl": ".",
+		"paths": {
+			"#src/*": ["./src/*"]
+		}
+	},
+	"exclude": ["node_modules"]
 }
 		""".strip()
 
     def package_json_content(self) -> str:
         return """
 {
-  "name": "sandbox",
-  "version": "1.0.0",
-  "main": "src/main.js",
-  "license": "MIT",
-  "type": "module",
-  "scripts": {
-    "start": "node ./src/main.js",
-    "type-check": "tsc --project jsconfig.json",
-    "test": "node --test",
-    "lint": "npx eslint ./src/ --ext .js",
-    "fmt": "npx prettier --write 'src/**/*.js'",
-    "check": "npm run type-check && npm run lint"
-  },
-  "imports": {
-    "#src/*": "./src/*"
-  },
-  "prettier": {
-    "singleQuote": false,
-    "semi": false,
-    "tabWidth": 2,
-    "trailingComma": "all"
-  },
-  "devDependencies": {
-    "@types/node": "^24.0.15",
-    "@types/punycode": "^2.1.4",
-    "eslint": "^9.22.0",
-    "eslint-plugin-jsdoc": "^51.4.1",
-    "prettier": "^3.2.5",
-    "typescript": "^5.8.2"
-  }
+    "name": "sandbox",
+    "version": "0.0.1",
+    "type": "module",
+    "main": "main.js",
+    "scripts": {
+        "start": "tsx ./src/main.ts",
+        "fmt": "npx prettier --write ./src/",
+        "type-check": "npx tsc --noEmit",
+        "lint": "npx eslint --fix ./src/",
+        "check": "npm run type-check && npm run lint",
+        "build": "npx ncc build --minify --v8-cache --no-source-map-register ./src/main.ts -o ./dist",
+        "test": "node --import tsx --test"
+    },
+    "prettier": {
+        "singleQuote": false,
+        "semi": false,
+        "tabWidth": 4,
+        "trailingComma": "all",
+        "printWidth": 100
+    },
+    "imports": {
+        "#src/*": "./dist/*"
+    },
+    "devDependencies": {
+        "@types/node": "^24.2.0",
+        "@vercel/ncc": "^0.38.3",
+        "eslint": "^9.32.0",
+        "prettier": "^3.6.2",
+        "tsx": "^4.20.3",
+        "typescript": "^5.9.2",
+        "typescript-eslint": "^8.39.0"
+    }
 }
 	""".strip()
 
     def eslint_config_content(self) -> str:
         return """
-import jsdoc from "eslint-plugin-jsdoc"
+import tseslint from "typescript-eslint"
 
 export default [
-  {
-    plugins: {
-      jsdoc: jsdoc
+    { files: ["**/*.ts"] },
+    ...tseslint.configs.recommended,
+    {
+        rules: {
+            "no-console": "warn",
+            "no-warning-comments": [
+                "warn",
+                { terms: ["TODO", "FIXME"], location: "anywhere" },
+            ],
+            quotes: [
+                "warn",
+                "double",
+                {
+                    allowTemplateLiterals: true,
+                    avoidEscape: true,
+                },
+            ],
+            semi: ["warn", "never"],
+            "no-unused-vars": "warn",
+        },
     },
-    rules: {
-      "jsdoc/check-values": "error",
-      "no-console": "warn",
-      "quotes": [
-        "warn",
-        "double",
-        {
-          "allowTemplateLiterals": true,
-          "avoidEscape": true
-        }
-      ],
-      "semi": ["warn", "never"],
-      "no-unused-vars": "warn"
-    }
-  }
 ]
 	""".strip()
 
@@ -581,7 +575,7 @@ def main() -> None:
     registered_templates: list[BaseTemplate] = [
         GoTemplate(args.name),
         JavaTemplate(args.name),
-        JsTemplate(args.name),
+        TsTemplate(args.name),
         PythonTemplate(args.name),
     ]
 
