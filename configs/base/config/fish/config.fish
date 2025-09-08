@@ -27,8 +27,7 @@ set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
 set NODEBIN {$HOME}/.npm/bin
 set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
-set IDEA_BIN {$HOME}/.idea/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$IDEA_BIN} {$GOINSTALL} {$GOBIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN}
 
 # --------------------------------------------------------------------
 #
@@ -79,3 +78,11 @@ alias py python3
 alias pm "python3 -m"
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 alias m mvn
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+test -r '/home/moeenn/.opam/opam-init/init.fish' && source '/home/moeenn/.opam/opam-init/init.fish' >/dev/null 2>/dev/null; or true
+# END opam configuration
