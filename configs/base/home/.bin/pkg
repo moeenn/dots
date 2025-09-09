@@ -18,10 +18,29 @@ def print_help(program_name="pkg") -> None:
     print(builder.getvalue())
 
 
+class FlatpakPackageManager:
+    @staticmethod
+    def is_available() -> bool:
+        result = subprocess.run(
+            ["which", "flatpak"], capture_output=True, text=True, check=True
+        )
+        return result.returncode == 0
+
+    def search(self, package: str) -> None:
+        subprocess.run(["flatpak", "search", package])
+
+    def install(self, packages: list[str]) -> None:
+        subprocess.run(["flatpak", "install", "flathub"] + packages)
+
+    def update(self) -> None:
+        subprocess.run(["flatpak", "update", "-y"])
+
+    def remove(self, packages: list[str]) -> None:
+        subprocess.run(["flatpak", "remove", "-y"] + packages)
+
+
 class DebianPackageManager:
-    def search(self, packages: list[str]) -> None:
-        if len(packages) > 1:
-            raise Exception("can only search for one package at a time.")
+    def search(self, packages: str) -> None:
         subprocess.run(["apt-cache", "search", packages[0]])
 
     def install(self, packages: list[str]) -> None:
@@ -67,7 +86,9 @@ def main(args: list[str]) -> None:
             print_help()
 
         case Command.search:
-            pm.search(packages)
+            if len(packages) > 1:
+                raise Exception("can only search for one package at a time.")
+            pm.search(packages[0])
 
         case Command.install:
             pm.install(packages)
