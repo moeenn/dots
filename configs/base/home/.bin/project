@@ -333,6 +333,7 @@ class TsTemplate(BaseTemplate):
         super().execute()
 
         # install npm dependencies.
+        print("installing dependencies...")
         cmd = ["npm", "i"]
         subprocess.run(cmd, cwd=self.project_dir)
 
