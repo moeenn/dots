@@ -44,14 +44,3 @@ formatter = { command = "ocamlformat", args = [
   "--enable-outside-detected-project",
 ] }
 
-[[language]]
-name = "reason"
-auto-format = true
-comment-token = "//"
-file-types = ["re", "rei"]
-language-servers = ["ocamllsp"]
-roots = ["dune-project"]
-scope = "source.reason"
-
-[language.formatter]
-command = "refmt"
