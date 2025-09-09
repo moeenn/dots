@@ -9,7 +9,7 @@ decorations = "Full"
 decorations_theme_variant = "Light" # "Light"
 
 [font]
-normal.family = "Cascadia Code"
+normal.family = "JetBrains Mono"
 size = 10.0
 offset.x = 0
 offset.y = 5
