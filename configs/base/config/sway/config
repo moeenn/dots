@@ -7,8 +7,8 @@ font pango:Roboto Medium 	  9
 titlebar_border_thickness 	0
 titlebar_padding 			      8
 default_border 				      none
-client.unfocused   			    #eee0b7 #eee0b7 #4b2f1d #4b2f1d
-client.focused           	  #fbf1c7 #fbf1c7 #4b2f1d #4b2f1d
+client.unfocused   			    #d7d3cf #d7d3cf #483763 #483763
+client.focused           	  #f6f2ee #f6f2ee #4b2f1d #4b2f1d
 
 # set background color.
 exec "swaybg -c 3c3836"
@@ -22,10 +22,10 @@ bar {
     status_command while date +' %B %d - %H:%M '; do sleep 5; done
 
     colors {
-        statusline #3d3936
-        background #d5c4a1
-        inactive_workspace #d5c4a1 #d5c4a1 #3d3936
-        focused_workspace  #665c54 #665c54 #e7dbb2
+        statusline #483763
+        background #d7d3cf
+        inactive_workspace #d7d3cf #d7d3cf #3d3936
+        focused_workspace  #483763 #483763 #e7dbb2
     }
 }
 
