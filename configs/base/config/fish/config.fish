@@ -13,9 +13,6 @@ end
 # link zoxide.
 zoxide init fish | source
 
-# link mise.
-# mise activate fish | source
-
 # --------------------------------------------------------------------
 #
 #   Environment and path config
