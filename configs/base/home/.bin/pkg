@@ -40,8 +40,8 @@ class FlatpakPackageManager:
 
 
 class DebianPackageManager:
-    def search(self, packages: str) -> None:
-        subprocess.run(["apt-cache", "search", packages[0]])
+    def search(self, package: str) -> None:
+        subprocess.run(["apt-cache", "search", package])
 
     def install(self, packages: list[str]) -> None:
         subprocess.run(["sudo", "apt-get", "install", "-y"] + packages)
