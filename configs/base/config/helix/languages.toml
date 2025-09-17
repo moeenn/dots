@@ -38,3 +38,13 @@ formatter = { command = "npx", args = ["prettier", "--parser", "typescript"]}
 name = "elixir"
 auto-format = true
 indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "ocaml"
+auto-format = true
+indent = { tab-width = 4, unit = "    " }
+formatter = { command = "ocamlformat", args = [
+  "-",
+  "--impl",
+  "--enable-outside-detected-project",
+] }

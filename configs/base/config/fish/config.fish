@@ -26,6 +26,7 @@ set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
 set ELIXIR_LS_BIN {$HOME}/.local/elixirls
 set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$ELIXIR_LS_BIN}
+test -r '/home/moeenn/.opam/opam-init/init.fish' && source '/home/moeenn/.opam/opam-init/init.fish' >/dev/null 2>/dev/null; or true
 
 # --------------------------------------------------------------------
 #
