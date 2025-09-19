@@ -22,11 +22,11 @@ set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
 set NODEBIN {$HOME}/.npm/bin
+set BUN_BIN {$HOME}/.bun/bin
 set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
-set ELIXIR_LS_BIN {$HOME}/.local/elixirls
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$ELIXIR_LS_BIN}
-test -r '/home/moeenn/.opam/opam-init/init.fish' && source '/home/moeenn/.opam/opam-init/init.fish' >/dev/null 2>/dev/null; or true
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$BUN_BIN} {$GOINSTALL} {$GOBIN}
+set --export BUN_INSTALL "$HOME/.bun"
 
 # --------------------------------------------------------------------
 #
@@ -76,4 +76,3 @@ alias dc docker-compose
 alias py python3
 alias pm "python3 -m"
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
-alias m mvn
