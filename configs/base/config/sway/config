@@ -99,7 +99,7 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym Print exec grim
 
 # Start your launcher
-bindsym $winKey+p      exec $menu
+bindsym $mod+p      exec $menu
 bindsym $mod+Shift+r   reload
 bindsym $mod+Shift+q   exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
