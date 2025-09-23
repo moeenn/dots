@@ -3,3 +3,4 @@ completions
 functions
 fish_history
 fish_variables
+conf.d/

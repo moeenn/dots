@@ -27,7 +27,3 @@ shopt -s nocaseglob
 alias :q="exit"
 alias :Q="exit"
 alias ls="ls -a"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

@@ -1,0 +1,29 @@
+xterm*font: xft:Cascadia Mono:style=Regular:size=10 
+XTerm*allowBoldFonts: false
+*.scaleHeight: 2.0
+
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.antialias: true
+
+!! Color scheme
+XTerm*background: #272822
+XTerm*foreground: #F8F8F2
+XTerm*cursorColor: #F8F8F0
+
+XTerm*color0: #272822
+XTerm*color1: #F92672
+XTerm*color2: #A6E22E
+XTerm*color3: #FD971F
+XTerm*color4: #66D9EF
+XTerm*color5: #AE81FF
+XTerm*color6: #A1EFE4
+XTerm*color7: #F8F8F2
+XTerm*color8: #75715E
+XTerm*color9: #F92672
+XTerm*color10: #A6E22E
+XTerm*color11: #FD971F
+XTerm*color12: #66D9EF
+XTerm*color13: #AE81FF
+XTerm*color14: #A1EFE4
+XTerm*color15: #F8F8F2
