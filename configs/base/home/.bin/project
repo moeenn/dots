@@ -447,10 +447,25 @@ test("simple test", async () => {
     def tsconfig_content(self) -> str:
         return """
 {
+	"$schema": "https://json.schemastore.org/tsconfig",
+    "display": "Strictest",
 	"compilerOptions": {
+        "strict": true,
+        "allowUnusedLabels": false,
+        "allowUnreachableCode": false,
+        "exactOptionalPropertyTypes": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "noUncheckedIndexedAccess": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "isolatedModules": true,
+        "checkJs": true,
+        "esModuleInterop": true,
 		"target": "ESNext",
 		"module": "NodeNext",
-		"strict": true,
 		"verbatimModuleSyntax": true,
 		"skipLibCheck": true,
 		"types": ["node"],
@@ -461,7 +476,7 @@ test("simple test", async () => {
 		}
 	},
 	"exclude": ["node_modules"]
-}
+}        
 		""".strip()
 
     def package_json_content(self) -> str:
