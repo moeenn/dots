@@ -10,7 +10,7 @@ decorations_theme_variant = "Light" # "Light"
 
 [font]
 normal.family = "Cascadia Code"
-size = 10.0
+size = 8
 offset.x = 0
 offset.y = 5
 glyph_offset.y = 3
