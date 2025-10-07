@@ -25,9 +25,7 @@ set NODEBIN {$HOME}/.npm/bin
 set BUN_BIN {$HOME}/.bun/bin
 set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
-set CARGO_BIN {$HOME}/.cargo/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$BUN_BIN} {$GOINSTALL} {$GOBIN} {$CARGO_BIN}
-set --export BUN_INSTALL "$HOME/.bun"
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$BUN_BIN} {$GOINSTALL} {$GOBIN}
 
 # --------------------------------------------------------------------
 #
@@ -77,3 +75,4 @@ alias dc docker-compose
 alias py python3
 alias pm "python3 -m"
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
+alias m mvn
