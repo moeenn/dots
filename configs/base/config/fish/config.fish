@@ -25,8 +25,7 @@ set NODEBIN {$HOME}/.npm/bin
 set BUN_BIN {$HOME}/.bun/bin
 set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
-set CARGO_BIN {$HOME}/.cargo/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$BUN_BIN} {$GOINSTALL} {$GOBIN} {$CARGO_BIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$BUN_BIN} {$GOINSTALL} {$GOBIN}
 
 # --------------------------------------------------------------------
 #

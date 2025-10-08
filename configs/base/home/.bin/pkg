@@ -15,6 +15,7 @@ def print_help(program_name="pkg") -> None:
     builder.write("  install     install new packages.\n")
     builder.write("  update      fetch and install package updates.\n")
     builder.write("  remove      remove packages.\n")
+    builder.write("  clean       remove orphan packages.\n")
     print(builder.getvalue())
 
 
@@ -50,9 +51,12 @@ class DebianPackageManager:
         subprocess.run(["sudo", "apt-get", "update"])
         subprocess.run(["sudo", "apt-get", "upgrade", "-y"])
 
+    def clean(self) -> None:
+        subprocess.run(["sudo", "apt-get", "autoremove", "--purge"])
+
     def remove(self, packages: list[str]) -> None:
         subprocess.run(["sudo", "apt-get", "remove", "-y"] + packages)
-        subprocess.run(["sudo", "apt-get", "autoremove", "--purge"])
+        self.clean()
 
 
 class Command(Enum):
@@ -60,6 +64,7 @@ class Command(Enum):
     install = auto()
     update = auto()
     remove = auto()
+    clean = auto()
     help = auto()
 
     @staticmethod
@@ -95,6 +100,9 @@ def main(args: list[str]) -> None:
 
         case Command.update:
             pm.update()
+
+        case Command.clean:
+            pm.clean()
 
         case Command.remove:
             pm.remove(packages)

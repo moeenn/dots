@@ -1,5 +1,5 @@
-xterm*font: xft:Cascadia Mono:style=Regular:size=10
-XTerm*allowBoldFonts: true
+*font: xft:Cascadia Mono:style=Regular:size=10
+*allowBoldFonts: false
 *.scaleHeight: 1.4
 
 Xft.hinting: true
@@ -7,23 +7,23 @@ Xft.hintstyle: hintslight
 Xft.antialias: true
 
 !! Color scheme
-XTerm*background: #f6f2ee
-XTerm*foreground: #3d2b5a
-XTerm*cursorColor: #643f61
+*background: #f6f2ee
+*foreground: #3d2b5a
+*cursorColor: #643f61
 
-XTerm*color0: #352c24
-XTerm*color1: #a5222f
-XTerm*color2: #396847
-XTerm*color3: #ac5402
-XTerm*color4: #2848a9
-XTerm*color5: #6e33ce
-XTerm*color6: #287980
-XTerm*color7: #f2e9e1
-XTerm*color8: #534c45
-XTerm*color9: #b3434e
-XTerm*color10: #577f63
-XTerm*color11: #b86e28
-XTerm*color12: #4863b6
-XTerm*color13: #8452d5
-XTerm*color14: #488d93
-XTerm*color15: #f4ece6
+*color0: #352c24
+*color1: #a5222f
+*color2: #396847
+*color3: #ac5402
+*color4: #2848a9
+*color5: #6e33ce
+*color6: #287980
+*color7: #f2e9e1
+*color8: #534c45
+*color9: #b3434e
+*color10: #577f63
+*color11: #b86e28
+*color12: #4863b6
+*color13: #8452d5
+*color14: #488d93
+*color15: #f4ece6
