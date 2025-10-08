@@ -1,29 +1,29 @@
-xterm*font: xft:Cascadia Mono:style=Regular:size=10 
+xterm*font: xft:Cascadia Mono:style=Regular:size=10
 XTerm*allowBoldFonts: false
-*.scaleHeight: 2.0
+*.scaleHeight: 1.4
 
 Xft.hinting: true
 Xft.hintstyle: hintslight
 Xft.antialias: true
 
 !! Color scheme
-XTerm*background: #272822
-XTerm*foreground: #F8F8F2
-XTerm*cursorColor: #F8F8F0
+XTerm*background: #f6f2ee
+XTerm*foreground: #3d2b5a
+XTerm*cursorColor: #643f61
 
-XTerm*color0: #272822
-XTerm*color1: #F92672
-XTerm*color2: #A6E22E
-XTerm*color3: #FD971F
-XTerm*color4: #66D9EF
-XTerm*color5: #AE81FF
-XTerm*color6: #A1EFE4
-XTerm*color7: #F8F8F2
-XTerm*color8: #75715E
-XTerm*color9: #F92672
-XTerm*color10: #A6E22E
-XTerm*color11: #FD971F
-XTerm*color12: #66D9EF
-XTerm*color13: #AE81FF
-XTerm*color14: #A1EFE4
-XTerm*color15: #F8F8F2
+XTerm*color0: #352c24
+XTerm*color1: #a5222f
+XTerm*color2: #396847
+XTerm*color3: #ac5402
+XTerm*color4: #2848a9
+XTerm*color5: #6e33ce
+XTerm*color6: #287980
+XTerm*color7: #f2e9e1
+XTerm*color8: #534c45
+XTerm*color9: #b3434e
+XTerm*color10: #577f63
+XTerm*color11: #b86e28
+XTerm*color12: #4863b6
+XTerm*color13: #8452d5
+XTerm*color14: #488d93
+XTerm*color15: #f4ece6

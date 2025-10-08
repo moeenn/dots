@@ -12,7 +12,7 @@ client.focused           	  #f6f2ee #f6f2ee #4b2f1d #4b2f1d
 
 # set background color.
 # exec "swaybg -c 3c3836"
-exec "swaybg -i ~/Pictures/current.png --mode fill"
+exec "swaybg -i ~/Pictures/current.jpg --mode fill"
 
 bar {
     position bottom
