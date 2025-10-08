@@ -1,5 +1,5 @@
 xterm*font: xft:Cascadia Mono:style=Regular:size=10
-XTerm*allowBoldFonts: false
+XTerm*allowBoldFonts: true
 *.scaleHeight: 1.4
 
 Xft.hinting: true
