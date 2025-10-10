@@ -219,7 +219,7 @@ TARGET={self.project_name}
 FLAGS=-Wall -Wextra -std=c11
 
 ${{TARGET}}:
-	 ${{CC}} ${{SRC}} -o ./bin/${{TARGET}}
+	 @${{CC}} ${{SRC}} -o ./bin/${{TARGET}}
 
 .PHONY: clean
 clean:
