@@ -1,0 +1,113 @@
+## CWM config file
+ 
+# Sticky groups: uncomment to enable worskpace-like behavior
+sticky                  yes
+ 
+# Default font
+fontname                "Roboto:pixelsize=10:regular"
+ 
+# Appearance
+borderwidth             1
+color activeborder      "#d7d3cf"
+color inactiveborder    "#d7d3cf"
+color urgencyborder     "#d7d3cf"
+ 
+# Menu colors
+color font              "#483763"
+color selfont           "#d7d3cf"
+color menubg            "#d7d3cf"
+color menufg            "#483763"
+ 
+#Gaps (top, bottom, left, right)
+gap                     8 8 8 8
+ 
+# Size of manually tiled Windows in %
+htile                   50
+vtile                   50
+ 
+# How many pixels a window gets moved by
+moveamount              2
+ 
+# Key bindings
+ 
+## 4 = Super key
+## S = shift
+## M = meta key = alt
+ 
+# Remove all default keybindings
+unbind-key      all
+ 
+# Toggle visibility of group n, hiding all other groups
+bind-key M-1    group-only-1
+bind-key M-2    group-only-2
+bind-key M-3    group-only-3
+bind-key M-4    group-only-4
+bind-key M-5    group-only-5
+bind-key M-6    group-only-6
+ 
+# Toggle group n's visibility, without hiding active group
+# bind-key 4M-1   group-toggle-1
+# bind-key 4M-2   group-toggle-2
+# bind-key 4M-3   group-toggle-3
+# bind-key 4M-4   group-toggle-4
+# bind-key 4M-5   group-toggle-5
+# bind-key 4M-6   group-toggle-6
+ 
+# Move window to group n
+bind-key MS-1   window-movetogroup-1
+bind-key MS-2   window-movetogroup-2
+bind-key MS-3   window-movetogroup-3
+bind-key MS-4   window-movetogroup-4
+bind-key MS-5   window-movetogroup-5
+bind-key MS-6   window-movetogroup-6
+
+# Toggle visibility of all groups
+# bind-key 4-a    group-toggle-all
+ 
+# Add focused window to current group
+# bind-key 4-g    window-group
+ 
+# What follows is rather self-explanatory
+bind-key M-r    restart
+bind-key M-q    quit
+ 
+bind-key M-F4   window-close
+bind-key M-m    window-hide
+ 
+bind-key 4-Up   window-fullscreen
+# bind-key 4-m    window-maximize
+# bind-key 4-t    window-htile
+# bind-key 4S-t   window-vtile
+ 
+# Cycle/reverse cycle through windows
+bind-key M-Tab    window-cycle
+# bind-key 4-k    window-rcycle
+ 
+# Move windows
+# bind-key 4S-h   window-move-left
+# bind-key 4S-j   window-move-down
+# bind-key 4S-k   window-move-up
+# bind-key 4S-l   window-move-right
+ 
+# Snap windows
+# bind-key 4M-h   window-snap-left
+# bind-key 4M-j   window-snap-down
+# bind-key 4M-k   window-snap-up
+# bind-key 4M-l   window-snap-right
+ 
+# Open menus
+# bind-key 4M-m   menu-window
+# bind-key 4-g    menu-group
+# bind-key 4-a    menu-cmd
+# bind-key 4-e    menu-exec
+ 
+# Autogroup some apps
+# autogroup 1    "st,st"
+# autogroup 1    "xterm,XTerm"
+# autogroup 3    "Navigator,firefox-default"
+
+# Application commands.
+bind-key M-p gmrun
+bind-key 4-t xterm
+bind-key 4-e thunar
+bind-key M-l lock-screen
