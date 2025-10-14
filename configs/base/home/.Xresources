@@ -1,6 +1,6 @@
-*font: xft:Cascadia Mono:style=Regular:size=10
+*font: xft:JetBrains Mono:style=Medium:size=9
 *allowBoldFonts: false
-*.scaleHeight: 1.4
+*.scaleHeight: 1.2
 
 Xft.hinting: true
 Xft.hintstyle: hintslight
