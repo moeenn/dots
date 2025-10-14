@@ -1,6 +1,5 @@
 #! /usr/bin/python3
 
-from enum import Enum, auto
 import sys
 import io
 import subprocess
@@ -10,12 +9,12 @@ def print_help(program_name="pkg") -> None:
     builder = io.StringIO()
     builder.write(f"usage: {program_name} [COMMAND] [PACKAGES]\n\n")
     builder.write("commands:\n")
-    builder.write("  help        display this help message and exit.\n")
-    builder.write("  search      search for packages.\n")
-    builder.write("  install     install new packages.\n")
-    builder.write("  update      fetch and install package updates.\n")
-    builder.write("  remove      remove packages.\n")
-    builder.write("  clean       remove orphan packages.\n")
+    builder.write("  help    (h)    display this help message and exit.\n")
+    builder.write("  search  (s)    search for packages.\n")
+    builder.write("  install (i)    install new packages.\n")
+    builder.write("  update  (u)    fetch and install package updates.\n")
+    builder.write("  remove  (r)    remove packages.\n")
+    builder.write("  clean   (c)    remove orphan packages.\n")
     print(builder.getvalue())
 
 
@@ -59,53 +58,42 @@ class DebianPackageManager:
         self.clean()
 
 
-class Command(Enum):
-    search = auto()
-    install = auto()
-    update = auto()
-    remove = auto()
-    clean = auto()
-    help = auto()
-
-    @staticmethod
-    def from_string(raw: str):
-        try:
-            return Command[raw]
-        except Exception:
-            raise Exception(f"invalid command: {raw}")
-
-
 def main(args: list[str]) -> None:
     if len(args) < 2:
         print_help()
         sys.exit(1)
 
-    raw_cmd = args[1]
-    parsed_cmd = Command.from_string(raw_cmd)
-
+    cmd = args[1]
     packages = args[2:]
     pm = DebianPackageManager()
+    flatpak = FlatpakPackageManager()
+    is_flatpak_available = flatpak.is_available()
 
-    match parsed_cmd:
-        case Command.help:
+    match cmd:
+        case "help" | "h":
             print_help()
 
-        case Command.search:
+        case "search" | "s":
             if len(packages) > 1:
                 raise Exception("can only search for one package at a time.")
             pm.search(packages[0])
 
-        case Command.install:
+        case "install" | "i":
             pm.install(packages)
 
-        case Command.update:
+        case "update" | "u":
             pm.update()
+            if is_flatpak_available:
+                flatpak.update()
 
-        case Command.clean:
+        case "clean" | "c":
             pm.clean()
 
-        case Command.remove:
+        case "remove" | "r":
             pm.remove(packages)
+
+        case _:
+            print("invalid command: " + cmd)
 
 
 if __name__ == "__main__":
