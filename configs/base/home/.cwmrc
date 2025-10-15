@@ -30,9 +30,10 @@ moveamount              2
  
 # Key bindings
  
-## 4 = Super key
+## 4 = super key
 ## S = shift
 ## M = meta key = alt
+## C = control key
  
 # Remove all default keybindings
 unbind-key      all
@@ -84,10 +85,18 @@ bind-key M-Tab    window-cycle
 # bind-key 4-k    window-rcycle
  
 # Move windows
-# bind-key 4S-h   window-move-left
-# bind-key 4S-j   window-move-down
-# bind-key 4S-k   window-move-up
-# bind-key 4S-l   window-move-right
+moveamount 15
+bind-key CM-Left   window-move-left
+bind-key CM-Down   window-move-down
+bind-key CM-Up     window-move-up
+bind-key CM-Right  window-move-right
+
+# Resize windows
+resizeamount 15
+bind-key SM-Left   window-resize-left
+bind-key SM-Down   window-resize-down
+bind-key SM-Up     window-resize-up
+bind-key SM-Right  window-resize-right
  
 # Snap windows
 # bind-key 4M-h   window-snap-left

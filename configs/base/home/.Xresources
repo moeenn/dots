@@ -1,29 +1,47 @@
-*font: xft:JetBrains Mono:style=Medium:size=9
+*font: xft:Fira Code:style=Retina:size=9
 *allowBoldFonts: false
-*.scaleHeight: 1.2
+*.scaleHeight: 1.4
 
 Xft.hinting: true
 Xft.hintstyle: hintslight
 Xft.antialias: true
 
-!! Color scheme
-*background: #f6f2ee
-*foreground: #3d2b5a
-*cursorColor: #643f61
-
-*color0: #352c24
-*color1: #a5222f
-*color2: #396847
-*color3: #ac5402
-*color4: #2848a9
-*color5: #6e33ce
-*color6: #287980
-*color7: #f2e9e1
-*color8: #534c45
-*color9: #b3434e
-*color10: #577f63
-*color11: #b86e28
-*color12: #4863b6
-*color13: #8452d5
-*color14: #488d93
-*color15: #f4ece6
+!! Color scheme.
+*.foreground:  #2a2c33
+*.background:  #f9f9f9
+*.cursorColor: #bbbbbb
+!
+! Black
+*.color0:      #000000
+*.color8:      #000000
+!
+! Red
+*.color1:      #de3e35
+*.color9:      #de3e35
+!
+! Green
+*.color2:      #3f953a
+*.color10:     #3f953a
+!
+! Yellow
+*.color3:      #d2b67c
+*.color11:     #d2b67c
+!
+! Blue
+*.color4:      #2f5af3
+*.color12:     #2f5af3
+!
+! Magenta
+*.color5:      #950095
+*.color13:     #a00095
+!
+! Cyan
+*.color6:      #3f953a
+*.color14:     #3f953a
+!
+! White
+*.color7:      #bbbbbb
+*.color15:     #ffffff
+!
+! Bold, Italic, Underline
+*.colorBD:     #000000

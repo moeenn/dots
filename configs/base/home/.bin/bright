@@ -1,0 +1,28 @@
+#!/bin/python
+
+import math
+import subprocess
+
+DEFAULT_PERC: float = 80
+MIN_VALUE: int = 40000
+MAX_VALUE: int = 65535
+
+
+def get_value(perc: float) -> int:
+    value = MIN_VALUE + (MAX_VALUE - MIN_VALUE) * perc
+    return math.floor(value)    
+
+
+def set_brightness(perc: float) -> None:
+    value = get_value(perc)
+    print(value)
+    subprocess.run(["xbrightness", f"{value}"])
+
+
+def main() -> None:
+    set_brightness(0.8)
+    pass
+
+
+if __name__ == "__main__":
+    main()
