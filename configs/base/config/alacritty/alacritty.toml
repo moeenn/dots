@@ -6,9 +6,9 @@ decorations = "Full"
 decorations_theme_variant = "Light" # "Light"
 
 [font]
-normal.family = "JetBrains Mono"
-bold.family = "JetBrains Mono"
-size = 9
+normal.family = "Fira Code Retina"
+bold.family = "Fira Code Retina"
+size = 7
 offset.x = 0
 offset.y = 6
 glyph_offset.y = 3

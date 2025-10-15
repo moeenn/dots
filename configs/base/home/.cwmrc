@@ -117,6 +117,6 @@ bind-key SM-Right  window-resize-right
 
 # Application commands.
 bind-key M-p gmrun
-bind-key 4-t xterm
+bind-key 4-t alacritty
 bind-key 4-e thunar
 bind-key M-l lock-screen
