@@ -1,4 +1,4 @@
-theme = "github_light_high_contrast"
+theme = "term16_light"
 
 [editor]
 line-number = "absolute"

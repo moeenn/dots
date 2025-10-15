@@ -1,6 +1,3 @@
-[env]
-TERM = "alacritty"
-
 [window]
 opacity = 1.0
 padding.x = 4
@@ -9,80 +6,39 @@ decorations = "Full"
 decorations_theme_variant = "Light" # "Light"
 
 [font]
-normal.family = "Cascadia Code"
-size = 8
+normal.family = "JetBrains Mono"
+bold.family = "JetBrains Mono"
+size = 9
 offset.x = 0
-offset.y = 5
+offset.y = 6
 glyph_offset.y = 3
 
 [cursor]
 style = { shape = "block" }
 
-## name: dayfox
 [colors.primary]
-background = "#f6f2ee"
-foreground = "#3d2b5a"
-dim_foreground = "#302b5d"
-bright_foreground = "#643f61"
+background = "#f9f9f9"
+foreground = "#2a2c33"
 
 [colors.cursor]
-text = "#3d2b5a"
-cursor = "#643f61"
-
-[colors.vi_mode_cursor]
-text = "#3d2b5a"
-cursor = "#287980"
-
-[colors.search.matches]
-foreground = "#3d2b5a"
-background = "#a4c1c2"
-
-[colors.search.focused_match]
-foreground = "#3d2b5a"
-background = "#396847"
-
-[colors.footer_bar]
-foreground = "#3d2b5a"
-background = "#d3c7bb"
-
-[colors.hints.start]
-foreground = "#3d2b5a"
-background = "#955f61"
-
-[colors.hints.end]
-foreground = "#3d2b5a"
-background = "#d3c7bb"
-
-[colors.selection]
-text = "#3d2b5a"
-background = "#e7d2be"
+cursor = "#bbbbbb"
 
 [colors.normal]
-black = "#352c24"
-red = "#a5222f"
-green = "#396847"
-yellow = "#ac5402"
-blue = "#2848a9"
-magenta = "#6e33ce"
-cyan = "#287980"
-white = "#f2e9e1"
+black = "#000000"
+red = "#de3e35"
+green = "#3f953a"
+yellow = "#d2b67c"
+blue = "#2f5af3"
+magenta = "#950095"
+cyan = "#3f953a"
+white = "#bbbbbb"
 
 [colors.bright]
-black = "#534c45"
-red = "#b3434e"
-green = "#577f63"
-yellow = "#b86e28"
-blue = "#4863b6"
-magenta = "#8452d5"
-cyan = "#488d93"
-white = "#f4ece6"
-
-[colors.dim]
-black = "#2d251f"
-red = "#8c1d28"
-green = "#30583c"
-yellow = "#924702"
-blue = "#223d90"
-magenta = "#5e2baf"
-cyan = "#22676d"
-white = "#cec6bf"
+black = "#000000"
+red = "#de3e35"
+green = "#3f953a"
+yellow = "#d2b67c"
+blue = "#2f5af3"
+magenta = "#950095"
+cyan = "#3f953a"
+white = "#ededed"
