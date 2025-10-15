@@ -9,6 +9,10 @@ function link_home_files() {
     ".profile"
     ".tmux.conf"
     ".vimrc"
+    ".Xresources"
+    ".xinitrc"
+    ".cwmrc"
+    ".compton.conf"
   )
 
   PREFIX="../configs/base/home"
@@ -32,6 +36,7 @@ function link_config_files() {
     "helix"
     "htop"
     "mpv"
+    "alacritty"
   )
 
   PREFIX="../configs/base/config"
