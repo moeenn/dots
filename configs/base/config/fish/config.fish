@@ -24,7 +24,8 @@ set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
 set NODEBIN {$HOME}/.npm/bin
 set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN}
+set OPAMBIN {$HOME}/.opam/default/bin
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$OPAMBIN}
 
 # --------------------------------------------------------------------
 #
@@ -41,6 +42,7 @@ alias rm "rm -iv"
 alias link "ln -sr"
 alias ls "ls -ap --color=always"
 alias lsa "ls -alp"
+alias :w which
 alias :q exit
 alias :Q exit
 

@@ -6,9 +6,10 @@ FLATPAKBIN=/var/lib/flatpak/exports/bin
 NODEBIN=${HOME}/.npm/bin
 GOINSTALL=/usr/local/go/bin
 GOBIN=${HOME}/go/bin
+OPAMBIN=${HOME}/.opam/default/bin
 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 PATH=${PATH}:${FLATPAKBIN}:${PATH}:${HOME}/.bin:${HOME}/.local/bin
-PATH=${PATH}:${GOINSTALL}:${NODEBIN}:${GOINSTALL}:${GOBIN}
+PATH=${PATH}:${GOINSTALL}:${NODEBIN}:${GOINSTALL}:${GOBIN}:${OPAMBIN}
 
 export DISPLAY LC_CTYPE XDG_DATA_HOME XDG_DATA_DIRS PATH
