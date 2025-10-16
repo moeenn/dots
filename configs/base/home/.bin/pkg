@@ -19,9 +19,24 @@ def print_help(program_name="pkg") -> None:
     print(builder.getvalue())
 
 
-def PackageManager(Protocol):
-    def is_available() -> bool: ...
-    def search(self, package_name: str) -> None: ...
+def is_pm_available(command: str) -> bool:
+    try:
+        result = subprocess.run(["which", command], capture_output=True)
+        return result.returncode == 0
+    except Exception:
+        return False
+
+
+class Colors:
+    Blue = "\033[94m"
+    Red = "\033[93m"
+    Reset = "\033[0m"
+
+
+class PackageManager(Protocol):
+    def is_available(self) -> bool: ...
+    def get_name(self) -> str: ...
+    def search(self, package: str) -> None: ...
     def install(self, packages: list[str]) -> None: ...
     def update(self) -> None: ...
     def clean(self) -> None: ...
@@ -29,14 +44,11 @@ def PackageManager(Protocol):
 
 
 class FlatpakPackageManager(PackageManager):
-    def is_available() -> bool:
-        try:
-            result = subprocess.run(
-                ["which", "flatpak"], capture_output=True, text=True, check=True
-            )
-            return result.returncode == 0
-        except Exception:
-            return False
+    def get_name(self) -> str:
+        return "Flatpak"
+
+    def is_available(self) -> bool:
+        return is_pm_available(command="flatpak")
 
     def search(self, package: str) -> None:
         subprocess.run(["flatpak", "search", package])
@@ -47,17 +59,20 @@ class FlatpakPackageManager(PackageManager):
     def update(self) -> None:
         subprocess.run(["flatpak", "update", "-y"])
 
+    def clean(self) -> None:
+        subprocess.run(["flatpak", "uninstall", "--unused"])
+
     def remove(self, packages: list[str]) -> None:
         subprocess.run(["flatpak", "remove", "-y"] + packages)
+        self.clean()
 
 
 class DebianPackageManager(PackageManager):
+    def get_name(self) -> str:
+        return "Apt"
+
     def is_available(self) -> bool:
-        try:
-            result = subprocess.run(["which", "apt-get"])
-            return result.returncode == 0
-        except Exception:
-            return False
+        return is_pm_available(command="apt-get")
 
     def search(self, package: str) -> None:
         subprocess.run(["apt-cache", "search", package])
@@ -77,13 +92,12 @@ class DebianPackageManager(PackageManager):
         self.clean()
 
 
-def VoidPackageManager(PackageManager):
+class VoidPackageManager(PackageManager):
+    def get_name(self) -> str:
+        return "Xbps"
+
     def is_available(self) -> bool:
-        try:
-            result = subprocess.run(["which", "xbps-install"])
-            return result.returncode == 0
-        except Exception:
-            return False
+        return is_pm_available(command="xbps-install")
 
     def search(self, package: str) -> None:
         subprocess.run(["xbps-query", "-Rs", package])
@@ -100,8 +114,52 @@ def VoidPackageManager(PackageManager):
     def remove(self, packages: list[str]) -> None:
         subprocess.run(["sudo", "xbps-remove", "-R"] + packages)
         self.clean()
-    
-    
+
+
+class PackageManagerFactor(PackageManager):
+    available_pms: list[PackageManager]
+
+    def __init__(self, packageManagers: list[PackageManager]) -> None:
+        self.available_pms = []
+        for pm in packageManagers:
+            if pm.is_available():
+                self.available_pms.append(pm)
+
+        if len(self.available_pms) == 0:
+            raise Exception("no supported package manager found.")
+
+    def is_available(self) -> bool:
+        return True
+
+    def get_name(self) -> str:
+        return "PackageManagerFactory"
+
+    def install(self, packages: list[str]) -> None:
+        for pm in self.available_pms:
+            print(f"\n{Colors.Blue}Installing ({pm.get_name()}): {Colors.Reset}")
+            pm.install(packages)
+
+    def search(self, package: str) -> None:
+        for pm in self.available_pms:
+            print(f"\n{Colors.Blue}Searching ({pm.get_name()}): {Colors.Reset}")
+            pm.search(package)
+
+    def update(self) -> None:
+        for pm in self.available_pms:
+            print(f"\n{Colors.Blue}Updateing ({pm.get_name()}): {Colors.Reset}")
+            pm.update()
+
+    def remove(self, packages: list[str]) -> None:
+        for pm in self.available_pms:
+            print(f"\n{Colors.Blue}Removing ({pm.get_name()}): {Colors.Reset}")
+            pm.remove(packages)
+            pm.clean()
+
+    def clean(self) -> None:
+        for pm in self.available_pms:
+            print(f"\n{Colors.Blue}Cleaning ({pm.get_name()}): {Colors.Reset}")
+            pm.clean()
+
 
 def main(args: list[str]) -> None:
     if len(args) < 2:
@@ -110,9 +168,14 @@ def main(args: list[str]) -> None:
 
     cmd = args[1]
     packages = args[2:]
-    pm = DebianPackageManager()
-    flatpak = FlatpakPackageManager()
-    is_flatpak_available = flatpak.is_available()
+
+    pm_factory = PackageManagerFactor(
+        packageManagers=[
+            DebianPackageManager(),
+            VoidPackageManager(),
+            FlatpakPackageManager(),
+        ]
+    )
 
     match cmd:
         case "help" | "h":
@@ -121,24 +184,22 @@ def main(args: list[str]) -> None:
         case "search" | "s":
             if len(packages) > 1:
                 raise Exception("can only search for one package at a time.")
-            pm.search(packages[0])
+            pm_factory.search(packages[0])
 
         case "install" | "i":
-            pm.install(packages)
+            pm_factory.install(packages)
 
         case "update" | "u":
-            pm.update()
-            if is_flatpak_available:
-                flatpak.update()
+            pm_factory.update()
 
         case "clean" | "c":
-            pm.clean()
+            pm_factory.clean()
 
         case "remove" | "r":
-            pm.remove(packages)
+            pm_factory.remove(packages)
 
         case _:
-            print("invalid command: " + cmd)
+            raise Exception(f"invalid command: {cmd}")
 
 
 if __name__ == "__main__":
@@ -147,4 +208,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("exiting...")
     except Exception as ex:
-        print("error: " + str(ex))
+        print(f"{Colors.Red}error: {str(ex)}")
