@@ -82,21 +82,20 @@ bind-key 4-Up   window-fullscreen
  
 # Cycle/reverse cycle through windows
 bind-key M-Tab    window-cycle
-# bind-key 4-k    window-rcycle
  
 # Move windows
 moveamount 15
-bind-key CM-Left   window-move-left
-bind-key CM-Down   window-move-down
-bind-key CM-Up     window-move-up
-bind-key CM-Right  window-move-right
+bind-key 4-Left   window-move-left
+bind-key 4-Down   window-move-down
+bind-key 4-Up     window-move-up
+bind-key 4-Right  window-move-right
 
 # Resize windows
 resizeamount 15
-bind-key SM-Left   window-resize-left
-bind-key SM-Down   window-resize-down
-bind-key SM-Up     window-resize-up
-bind-key SM-Right  window-resize-right
+bind-key S4-Left   window-resize-left
+bind-key S4-Down   window-resize-down
+bind-key S4-Up     window-resize-up
+bind-key S4-Right  window-resize-right
  
 # Snap windows
 # bind-key 4M-h   window-snap-left
@@ -117,6 +116,6 @@ bind-key SM-Right  window-resize-right
 
 # Application commands.
 bind-key M-p gmrun
-bind-key 4-t xterm
+bind-key 4-t alacritty
 bind-key 4-e thunar
-bind-key M-l lock-screen
+bind-key 4-l lock-screen
