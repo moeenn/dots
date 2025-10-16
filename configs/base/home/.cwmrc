@@ -75,7 +75,7 @@ bind-key M-q    quit
 bind-key M-F4   window-close
 bind-key M-m    window-hide
  
-bind-key 4-Up   window-fullscreen
+bind-key 4-Return  window-fullscreen
 # bind-key 4-m    window-maximize
 # bind-key 4-t    window-htile
 # bind-key 4S-t   window-vtile
