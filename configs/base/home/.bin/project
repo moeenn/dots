@@ -199,31 +199,56 @@ class CTemplate(BaseTemplate):
         return """
 #include <stdio.h>
 
+#ifdef TEST
+#include <assert.h>
+#endif
+
 typedef enum {
     RESULT_OK = 0,
     RESULT_ERR = 1,    
 } result_e;
 
+#ifdef TEST
+void test_example()
+{
+    printf("[TEST] %s.\\n", __func__);
+    assert(1 == 1);    
+}
+#endif
+
+#ifdef TEST
+int main()
+{
+    test_example();
+}
+#endif
+
+#ifndef TEST
 int main()
 {
     printf("hello world\\n");
     return RESULT_OK;
 }
+#endif
     """.strip()
 
     def makefile_content(self) -> str:
         return f"""
-CC=clang
+CC=cc
 SRC := ./src/*.c
 TARGET={self.project_name}
-FLAGS=-Wall -Wextra -std=c11
+CFLAGS=-Wall -Wextra -std=c23
 
-${{TARGET}}:
+main:
 	 @${{CC}} ${{SRC}} -o ./bin/${{TARGET}}
 
-.PHONY: clean
+test:
+	@${{CC}} ${{CFLAGS}} -DTEST ${{SRC}} -o ./bin/${{TARGET}} && ./bin/${{TARGET}}
+
 clean:
 	rm -f ./bin/*
+
+.PHONY: clean
 """.strip()
 
 
