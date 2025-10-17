@@ -27,6 +27,14 @@ def is_pm_available(command: str) -> bool:
         return False
 
 
+def run_command(cmd: list[str]) -> bool:
+    try:
+        result = subprocess.run(cmd)
+        return result.returncode == 0
+    except Exception:
+        return False
+
+
 class Colors:
     Blue = "\033[94m"
     Red = "\033[93m"
@@ -36,11 +44,11 @@ class Colors:
 class PackageManager(Protocol):
     def is_available(self) -> bool: ...
     def get_name(self) -> str: ...
-    def search(self, package: str) -> None: ...
-    def install(self, packages: list[str]) -> None: ...
-    def update(self) -> None: ...
-    def clean(self) -> None: ...
-    def remove(self, packages: list[str]) -> None: ...
+    def search(self, package: str) -> bool: ...
+    def install(self, packages: list[str]) -> bool: ...
+    def update(self) -> bool: ...
+    def clean(self) -> bool: ...
+    def remove(self, packages: list[str]) -> bool: ...
 
 
 class FlatpakPackageManager(PackageManager):
@@ -50,21 +58,21 @@ class FlatpakPackageManager(PackageManager):
     def is_available(self) -> bool:
         return is_pm_available(command="flatpak")
 
-    def search(self, package: str) -> None:
-        subprocess.run(["flatpak", "search", package])
+    def search(self, package: str) -> bool:
+        return run_command(["flatpak", "search", package])
 
-    def install(self, packages: list[str]) -> None:
-        subprocess.run(["flatpak", "install", "flathub"] + packages)
+    def install(self, packages: list[str]) -> bool:
+        return run_command(["flatpak", "install", "flathub"] + packages)
 
-    def update(self) -> None:
-        subprocess.run(["flatpak", "update", "-y"])
+    def update(self) -> bool:
+        return run_command(["flatpak", "update", "-y"])
 
-    def clean(self) -> None:
-        subprocess.run(["flatpak", "uninstall", "--unused"])
+    def clean(self) -> bool:
+        return run_command(["flatpak", "uninstall", "--unused"])
 
-    def remove(self, packages: list[str]) -> None:
-        subprocess.run(["flatpak", "remove", "-y"] + packages)
-        self.clean()
+    def remove(self, packages: list[str]) -> bool:
+        is_success = run_command(["flatpak", "remove", "-y"] + packages)
+        return self.clean() and is_success
 
 
 class DebianPackageManager(PackageManager):
@@ -74,22 +82,23 @@ class DebianPackageManager(PackageManager):
     def is_available(self) -> bool:
         return is_pm_available(command="apt-get")
 
-    def search(self, package: str) -> None:
-        subprocess.run(["apt-cache", "search", package])
+    def search(self, package: str) -> bool:
+        return run_command(["apt-cache", "search", package])
 
-    def install(self, packages: list[str]) -> None:
-        subprocess.run(["sudo", "apt-get", "install", "-y"] + packages)
+    def install(self, packages: list[str]) -> bool:
+        return run_command(["sudo", "apt-get", "install", "-y"] + packages)
 
-    def update(self) -> None:
-        subprocess.run(["sudo", "apt-get", "update"])
-        subprocess.run(["sudo", "apt-get", "upgrade", "-y"])
+    def update(self) -> bool:
+        s_one = run_command(["sudo", "apt-get", "update"])
+        s_two = run_command(["sudo", "apt-get", "upgrade", "-y"])
+        return s_one and s_two
 
-    def clean(self) -> None:
-        subprocess.run(["sudo", "apt-get", "autoremove", "--purge"])
+    def clean(self) -> bool:
+        return run_command(["sudo", "apt-get", "autoremove", "--purge"])
 
-    def remove(self, packages: list[str]) -> None:
-        subprocess.run(["sudo", "apt-get", "remove", "-y"] + packages)
-        self.clean()
+    def remove(self, packages: list[str]) -> bool:
+        s_one = run_command(["sudo", "apt-get", "remove", "-y"] + packages)
+        return self.clean() and s_one
 
 
 class VoidPackageManager(PackageManager):
@@ -99,24 +108,24 @@ class VoidPackageManager(PackageManager):
     def is_available(self) -> bool:
         return is_pm_available(command="xbps-install")
 
-    def search(self, package: str) -> None:
-        subprocess.run(["xbps-query", "-Rs", package])
+    def search(self, package: str) -> bool:
+        return run_command(["xbps-query", "-Rs", package])
 
-    def install(self, packages: list[str]) -> None:
-        subprocess.run(["sudo", "xbps-install", "-Sy"] + packages)
+    def install(self, packages: list[str]) -> bool:
+        return run_command(["sudo", "xbps-install", "-Sy"] + packages)
 
-    def update(self) -> None:
-        subprocess.run(["sudo", "xbps-install", "-Syu"])
+    def update(self) -> bool:
+        return run_command(["sudo", "xbps-install", "-Syu"])
 
-    def clean(self) -> None:
-        subprocess.run(["sudo", "xbps-remove", "-Oo"])
+    def clean(self) -> bool:
+        return run_command(["sudo", "xbps-remove", "-Oo"])
 
-    def remove(self, packages: list[str]) -> None:
-        subprocess.run(["sudo", "xbps-remove", "-R"] + packages)
-        self.clean()
+    def remove(self, packages: list[str]) -> bool:
+        s_one = run_command(["sudo", "xbps-remove", "-R"] + packages)
+        return self.clean() and s_one
 
 
-class PackageManagerFactor(PackageManager):
+class PackageManagerFactor:
     available_pms: list[PackageManager]
 
     def __init__(self, packageManagers: list[PackageManager]) -> None:
@@ -128,16 +137,14 @@ class PackageManagerFactor(PackageManager):
         if len(self.available_pms) == 0:
             raise Exception("no supported package manager found.")
 
-    def is_available(self) -> bool:
-        return True
-
-    def get_name(self) -> str:
-        return "PackageManagerFactory"
-
     def install(self, packages: list[str]) -> None:
+        is_installed = False
         for pm in self.available_pms:
+            if is_installed:
+                break
+
             print(f"\n{Colors.Blue}Installing ({pm.get_name()}): {Colors.Reset}")
-            pm.install(packages)
+            is_installed = pm.install(packages)
 
     def search(self, package: str) -> None:
         for pm in self.available_pms:
@@ -150,7 +157,11 @@ class PackageManagerFactor(PackageManager):
             pm.update()
 
     def remove(self, packages: list[str]) -> None:
+        is_removed = False
         for pm in self.available_pms:
+            if is_removed:
+                break
+
             print(f"\n{Colors.Blue}Removing ({pm.get_name()}): {Colors.Reset}")
             pm.remove(packages)
             pm.clean()
