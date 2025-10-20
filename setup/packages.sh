@@ -16,7 +16,6 @@ declare -a packages=(
 	"acpi"
 	"p7zip"
 	"fonts-jetbrains-mono"
-	"fonts-go"
 	"fonts-roboto"
 	"mpv"
 	"zoxide"
