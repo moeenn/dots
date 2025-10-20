@@ -180,8 +180,12 @@ class CTemplate(BaseTemplate):
         super().__init__(project_name)
 
         main_c_path = os.path.join("src", "main.c")
+        main_test_c_path = os.path.join("src", "main_test.c")
+        common_h_path = os.path.join("include", "common.h")
         self.files_and_content = {
             main_c_path: self.main_c_content(),
+            main_test_c_path: self.main_test_c_content(),
+            common_h_path: self.common_h_content(),
             "Makefile": self.makefile_content(),
         }
 
@@ -193,35 +197,11 @@ class CTemplate(BaseTemplate):
         return ["bin/*", ".cache/", "compile_commands.json"]
 
     def project_directories(self) -> list[str]:
-        return ["src", "bin"]
+        return ["src", "bin", "include"]
 
     def main_c_content(self) -> str:
         return """
-#include <stdio.h>
-
-#ifdef TEST
-#include <assert.h>
-#endif
-
-typedef enum {
-    RESULT_OK = 0,
-    RESULT_ERR = 1,    
-} result_e;
-
-#ifdef TEST
-void test_example()
-{
-    printf("[TEST] %s.\\n", __func__);
-    assert(1 == 1);    
-}
-#endif
-
-#ifdef TEST
-int main()
-{
-    test_example();
-}
-#endif
+#include "common.h"
 
 #ifndef TEST
 int main()
@@ -232,18 +212,50 @@ int main()
 #endif
     """.strip()
 
+    def main_test_c_content(self) -> str:
+        return """
+#include "common.h"
+
+void test_example()
+{
+    TEST_HEADER;
+    assert(1 == 1);
+}
+
+#ifdef TEST
+int main()
+{
+    test_example();
+}
+#endif
+	""".strip()
+
+    def common_h_content(self) -> str:
+        return """
+#pragma once
+#include <assert.h>
+#include <stdio.h>
+#define TEST_HEADER printf("[TEST] %s.\\n", __func__)
+
+typedef enum {
+    RESULT_OK = 0,
+    RESULT_ERR = 1,
+} result_e;
+		""".strip()
+
     def makefile_content(self) -> str:
         return f"""
-CC=cc
+CC=gcc
 SRC := ./src/*.c
-TARGET={self.project_name}
+INC = -I./include
+TARGET=example
 CFLAGS=-Wall -Wextra -std=c23
 
 main:
-	 @${{CC}} ${{SRC}} -o ./bin/${{TARGET}}
+	 @${{CC}} ${{INC}} ${{SRC}} -o ./bin/${{TARGET}}
 
 test:
-	@${{CC}} ${{CFLAGS}} -DTEST ${{SRC}} -o ./bin/${{TARGET}} && ./bin/${{TARGET}}
+	@${{CC}} ${{INC}} ${{CFLAGS}} -DTEST ${{SRC}} -o ./bin/${{TARGET}} && ./bin/${{TARGET}}
 
 clean:
 	rm -f ./bin/*
