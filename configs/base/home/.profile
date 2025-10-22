@@ -6,9 +6,10 @@ FLATPAKBIN=/var/lib/flatpak/exports/bin
 NODEBIN=${HOME}/.npm/bin
 GOINSTALL=/usr/local/go/bin
 GOBIN=${HOME}/go/bin
+NIMBLEBIN=${HOME}/.nimble/bin
 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 PATH=${PATH}:${FLATPAKBIN}:${PATH}:${HOME}/.bin:${HOME}/.local/bin
-PATH=${PATH}:${NODEBIN}:${GOINSTALL}:${GOBIN}
+PATH=${PATH}:${NODEBIN}:${GOINSTALL}:${GOBIN}:${NIMBLEBIN}
 
 export DISPLAY LC_CTYPE XDG_DATA_HOME XDG_DATA_DIRS PATH
