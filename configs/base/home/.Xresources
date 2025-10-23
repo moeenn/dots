@@ -1,6 +1,6 @@
-*font: xft:Fira Code:style=Retina:size=9
+*font: xft:JetBrains Mono:style=Medium:size=9
 *allowBoldFonts: false
-*.scaleHeight: 1.4
+*.scaleHeight: 1.3
 
 Xft.hinting: true
 Xft.hintstyle: hintslight
