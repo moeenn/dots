@@ -49,8 +49,3 @@ formatter = { command = "ocamlformat", args = [
   "--enable-outside-detected-project",
 ] }
 
-[[language]]
-name = "nim"
-auto-format = true
-language-servers = [ "nimlangserver" ]
-formatter = { command = "nph", args = ["-"] }

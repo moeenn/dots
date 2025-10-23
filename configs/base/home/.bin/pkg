@@ -163,8 +163,7 @@ class PackageManagerFactor:
                 break
 
             print(f"\n{Colors.Blue}Removing ({pm.get_name()}): {Colors.Reset}")
-            pm.remove(packages)
-            pm.clean()
+            is_removed = pm.remove(packages)
 
     def clean(self) -> None:
         for pm in self.available_pms:
