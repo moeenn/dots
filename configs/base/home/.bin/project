@@ -245,17 +245,19 @@ typedef enum {
 
     def makefile_content(self) -> str:
         return f"""
-CC=gcc
+CC = gcc
+TARGET = {self.project_name}
 SRC := ./src/*.c
 INC = -I./include
-TARGET=example
-CFLAGS=-Wall -Wextra -std=c23
+LIBS = -lm
+CFLAGS = -Wall -Wextra -std=c23
 
 main:
-	 @${{CC}} ${{INC}} ${{SRC}} -o ./bin/${{TARGET}}
+	 @${{CC}} ${{INC}} ${{SRC}} -o ./bin/${{TARGET}} ${{LIBS}}
 
 test:
-	@${{CC}} ${{INC}} ${{CFLAGS}} -DTEST ${{SRC}} -o ./bin/${{TARGET}} && ./bin/${{TARGET}}
+	@${{CC}} ${{INC}} ${{CFLAGS}} -DTEST ${{SRC}} -o ./bin/${{TARGET}} ${{LIBS}} && \
+	./bin/${{TARGET}}
 
 clean:
 	rm -f ./bin/*
