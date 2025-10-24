@@ -300,6 +300,12 @@ class JavaTemplate(BaseTemplate):
             os.path.join("src", "test", "java", "com", self.project_name),
         ]
 
+    def execute(self) -> None:
+        super().execute()
+        print("Performing first compile...")
+        cmd = ["mvn", "compile"]
+        subprocess.run(cmd, cwd=self.project_dir)
+
     def main_content(self) -> str:
         return f"""
 package com.{self.project_name};
@@ -332,7 +338,7 @@ public class MainTest {{
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.{self.project_name}.Main</groupId>
+  <groupId>com.{self.project_name}</groupId>
   <artifactId>{self.project_name}</artifactId>
   <version>1.0</version>
 
@@ -392,6 +398,9 @@ public class MainTest {{
 ```bash
 # install dependencies.
 $ mvn install
+
+# first run.
+# mvn compile exec:java
 
 # run project.
 $ mvn exec:java
