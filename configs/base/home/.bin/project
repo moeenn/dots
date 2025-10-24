@@ -245,17 +245,19 @@ typedef enum {
 
     def makefile_content(self) -> str:
         return f"""
-CC=gcc
+CC = gcc
+TARGET = {self.project_name}
 SRC := ./src/*.c
 INC = -I./include
-TARGET=example
-CFLAGS=-Wall -Wextra -std=c23
+LIBS = -lm
+CFLAGS = -Wall -Wextra -std=c23
 
 main:
-	 @${{CC}} ${{INC}} ${{SRC}} -o ./bin/${{TARGET}}
+	 @${{CC}} ${{INC}} ${{SRC}} -o ./bin/${{TARGET}} ${{LIBS}}
 
 test:
-	@${{CC}} ${{INC}} ${{CFLAGS}} -DTEST ${{SRC}} -o ./bin/${{TARGET}} && ./bin/${{TARGET}}
+	@${{CC}} ${{INC}} ${{CFLAGS}} -DTEST ${{SRC}} -o ./bin/${{TARGET}} ${{LIBS}} && \
+	./bin/${{TARGET}}
 
 clean:
 	rm -f ./bin/*
@@ -298,6 +300,12 @@ class JavaTemplate(BaseTemplate):
             os.path.join("src", "test", "java", "com", self.project_name),
         ]
 
+    def execute(self) -> None:
+        super().execute()
+        print("Performing first compile...")
+        cmd = ["mvn", "compile"]
+        subprocess.run(cmd, cwd=self.project_dir)
+
     def main_content(self) -> str:
         return f"""
 package com.{self.project_name};
@@ -330,7 +338,7 @@ public class MainTest {{
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.{self.project_name}.Main</groupId>
+  <groupId>com.{self.project_name}</groupId>
   <artifactId>{self.project_name}</artifactId>
   <version>1.0</version>
 
@@ -348,6 +356,14 @@ public class MainTest {{
             <descriptorRef>jar-with-dependencies</descriptorRef>
           </descriptorRefs>
         </configuration>
+		<executions>
+		  <execution>
+		    <phase>package</phase>
+			  <goals>
+			  <goal>single</goal>
+			</goals>
+		  </execution>
+		</executions>
       </plugin>
     </plugins>
   </build>
@@ -383,13 +399,198 @@ public class MainTest {{
 # install dependencies.
 $ mvn install
 
+# first run.
+# mvn compile exec:java
+
+# run project.
+$ mvn exec:java
+
 # compile.
-$ mvn clean compile assembly:single
+$ mvn clean compile package
+$ mvn assembly:single
 
 # run jar.
 $ java -jar ./target/{self.project_name}-1.0-jar-with-dependencies.jar
 ```
         """.strip()
+
+
+class ScalaTemplate(BaseTemplate):
+    """
+    template class for scala+maven projects.
+    """
+
+    def __init__(self, project_name: str) -> None:
+        super().__init__(project_name)
+
+        main_path = os.path.join(
+            "src", "main", "scala", "com", self.project_name, "Main.scala"
+        )
+        self.files_and_content = {
+            "README.md": self.readme_md_content(),
+            main_path: self.main_content(),
+            "pom.xml": self.pom_xml_content(),
+            ".scalafmt.conf": self.scalafmt_content(),
+        }
+
+    @staticmethod
+    def template_name() -> str:
+        return "scala"
+
+    def gitignore_entries(self) -> list[str]:
+        return [
+            ".classpath",
+            "target",
+            ".project",
+            ".settings",
+            ".idea",
+            ".metals",
+            ".vscode",
+            ".bsp",
+            ".scala-build",
+            ".bloop",
+        ]
+
+    def project_directories(self) -> list[str]:
+        return [
+            os.path.join("src", "main", "scala", "com", self.project_name),
+        ]
+
+    def execute(self) -> None:
+        super().execute()
+        # setup bloop.
+        print("Running bloopInstall")
+        cmd = ["mvn", "ch.epfl.scala:bloop-maven-plugin:bloopInstall"]
+        subprocess.run(cmd, cwd=self.project_dir)
+
+    def main_content(self) -> str:
+        return f"""
+package com.{self.project_name}
+
+object Main {{
+    def main(args: Array[String]): Unit = {{
+        println("Hello, world!")
+    }}
+}}
+        """.strip()
+
+    def pom_xml_content(self) -> str:
+        return f"""
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.{self.project_name}</groupId>
+  <artifactId>{self.project_name}</artifactId>
+  <version>1.0</version>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>net.alchim31.maven</groupId>
+        <artifactId>scala-maven-plugin</artifactId>
+        <version>4.9.6</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <scalaVersion>${{scala.version}}</scalaVersion>
+          <mainClass>${{exec.mainClass}}</mainClass>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
+            <manifest>
+              <mainClass>${{exec.mainClass}}</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <properties>
+    <java.version>21</java.version>
+    <scala.version>3.7.3</scala.version>
+    <exec.mainClass>com.{self.project_name}.Main</exec.mainClass>
+    <maven.compiler.source>${{java.version}}</maven.compiler.source>
+    <maven.compiler.target>${{java.version}}</maven.compiler.target>
+    <maven.compiler.release>${{java.version}}</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala3-library_3</artifactId>
+      <version>${{scala.version}}</version>
+    </dependency>
+  </dependencies>
+</project>
+        """.strip()
+
+    def readme_md_content(self) -> str:
+        return f"""
+## {self.project_name}
+
+## scala
+
+### Commands
+
+```bash
+# install dependencies.
+$ mvn install
+
+# run project.
+$ mvn scala:run
+
+# compile.
+$ mvn clean package
+
+# run jar.
+$ java -jar ./target/{self.project_name}-1.0-jar-with-dependencies.jar
+```
+        """.strip()
+
+    def scalafmt_content(self) -> str:
+        return """
+version = "3.7.15"
+runner.dialect = scala3
+align.preset = more
+maxColumn = 100
+indent.main = 4
+indent.significant = 4
+indent.callSite = 4
+indent.callSite = 4
+indent.ctrlSite = 4
+indent.defnSite = 4
+indent.ctorSite = 4
+indent.matchSite = 4
+indent.caseSite = 4
+indent.extendSite = 4
+indent.withSiteRelativeToExtends = 4
+		""".strip()
 
 
 class TsTemplate(BaseTemplate):
@@ -685,6 +886,7 @@ def main() -> None:
         GoTemplate(args.name),
         CTemplate(args.name),
         JavaTemplate(args.name),
+        ScalaTemplate(args.name),
         TsTemplate(args.name),
         PythonTemplate(args.name),
     ]

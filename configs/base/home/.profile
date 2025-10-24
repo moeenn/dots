@@ -12,3 +12,5 @@ PATH=${PATH}:${FLATPAKBIN}:${PATH}:${HOME}/.bin:${HOME}/.local/bin
 PATH=${PATH}:${NODEBIN}:${GOINSTALL}:${GOBIN}
 
 export DISPLAY LC_CTYPE XDG_DATA_HOME XDG_DATA_DIRS PATH
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
