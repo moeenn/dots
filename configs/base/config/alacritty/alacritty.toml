@@ -10,7 +10,7 @@ normal.family = "JetBrains Mono"
 bold.family = "JetBrains Mono"
 size = 8
 offset.x = 0
-offset.y = 4
+offset.y = 8
 glyph_offset.y = 4
 
 [cursor]

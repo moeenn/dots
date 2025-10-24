@@ -4,8 +4,7 @@ xrdb ~/.Xresources &
 xset r rate 300 50 &
 
 # enable compositor
-compton &
-#xrandr --output DP1 --rotate left --left-of HDMI3 &
+picom &
 xset b off &
 #pulseaudio -D &
 
