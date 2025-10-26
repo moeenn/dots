@@ -55,6 +55,8 @@ alias net "bwm-ng -t 1000"
 alias lsblk "lsblk -e 7"
 alias patch "patch -p1 <"
 alias clock "tty-clock -cD"
+alias winclass "xprop WM_CLASS"
+alias keyname "xev | grep keysym"
 
 # Super User Tasks
 alias full_access "sudo chmod -R a+rw ./"
