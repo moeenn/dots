@@ -14,6 +14,9 @@ hsetroot -solid "#305065" &
 # set warn screen colors.
 redshift -O 5500 &
 
+# start bar script.
+cwmbar &
+
 # start wm.
 exec cwm
 

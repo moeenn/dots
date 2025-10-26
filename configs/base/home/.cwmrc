@@ -19,7 +19,7 @@ color menubg            "#d7d3cf"
 color menufg            "#483763"
  
 #Gaps (top, bottom, left, right)
-gap                     8 8 8 8
+gap                     10 60 10 10
  
 # Size of manually tiled Windows in %
 htile                   50

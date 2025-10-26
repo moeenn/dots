@@ -77,3 +77,4 @@ alias py python3
 alias pm "python3 -m"
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 alias m mvn
+alias ctest "ctest --output-on-failure"
