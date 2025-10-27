@@ -199,6 +199,11 @@ class CTemplate(BaseTemplate):
     def project_directories(self) -> list[str]:
         return ["src", "build", "include", "tests"]
 
+	def execute(self) -> None:
+        super().execute()
+        cmd = ["clang-format", "--style=WebKit", "-dump-config", ">", ".clang-format"]
+        subprocess.run(cmd, cwd=self.project_dir)
+
     def main_c_content(self) -> str:
         return """
 #include "common.h"
