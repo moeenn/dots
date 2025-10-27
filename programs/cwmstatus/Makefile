@@ -1,8 +1,8 @@
 CC=cc
 SRC := ./src/*.c
-TARGET=cwmstatus
-CFLAGS=-Wall -Wextra -std=c23
-BIN_DIR=~/.local/bin
+TARGET = cwmstatus
+CFLAGS = -Wall -Wextra -std=c23
+BIN_DIR = ~/.local/bin
 
 main:
 	 @${CC} ${SRC} -o ./bin/${TARGET}

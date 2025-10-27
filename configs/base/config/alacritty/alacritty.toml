@@ -3,7 +3,7 @@ opacity = 1.0
 padding.x = 4
 padding.y = 4
 decorations = "Full"
-decorations_theme_variant = "Light" # "Light"
+decorations_theme_variant = "Light"
 
 [font]
 normal.family = "JetBrains Mono"
@@ -41,4 +41,4 @@ yellow = "#d2b67c"
 blue = "#2f5af3"
 magenta = "#950095"
 cyan = "#3f953a"
-white = "#ededed"
+white = "#ffffff"

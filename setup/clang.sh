@@ -1,2 +1,8 @@
 #! /bin/bash
-sudo apt install -y clang-20 clangd-20 bear clang-format-20 cmake
+sudo apt-get install -y clang-20 \
+						clangd-20 \
+						bear \
+						clang-format-20 \
+						cmake \
+						gcc-15 \
+						valgrind;
