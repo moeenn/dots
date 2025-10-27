@@ -101,9 +101,6 @@ class GoTemplate(BaseTemplate):
         cmd = ["go", "mod", "init", self.project_name]
         subprocess.run(cmd, cwd=self.project_dir)
 
-        # make tools script executable.
-        subprocess.run(["chmod", "+x", "scripts/tools.sh"], cwd=self.project_dir)
-
     def main_go_content(self) -> str:
         return """package main
 
@@ -199,9 +196,9 @@ class CTemplate(BaseTemplate):
     def project_directories(self) -> list[str]:
         return ["src", "build", "include", "tests"]
 
-	def execute(self) -> None:
+    def execute(self) -> None:
         super().execute()
-        cmd = ["clang-format", "--style=WebKit", "-dump-config", ">", ".clang-format"]
+        cmd = ["clang-format", "--style=WebKit", "-dump-config", ">>", ".clang-format"]
         subprocess.run(cmd, cwd=self.project_dir)
 
     def main_c_content(self) -> str:

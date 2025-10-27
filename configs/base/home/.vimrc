@@ -28,4 +28,10 @@ set showmatch
 filetype off
 filetype plugin indent on
 
+let mapleader = " "
 nnoremap ; :
+:nnoremap <leader>f :Explore<CR>
+:nnoremap <leader>b :ls<CR>
+:nnoremap gn :bn<CR>
+:nnoremap gp :bp<CR>
+nnoremap bc :bd<CR>

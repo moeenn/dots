@@ -37,7 +37,7 @@ alias cd z
 alias .. "z .."
 alias cp "cp -v"
 alias mv "mv -iv"
-alias rsync "rsync -av"
+alias rsync "rsync -av --progress"
 alias rm "rm -iv"
 alias link "ln -sr"
 alias ls "ls -ap --color=always"
@@ -60,6 +60,7 @@ alias keyname "xev | grep keysym"
 
 # Super User Tasks
 alias full_access "sudo chmod -R a+rw ./"
+alias mount "sudo mount -o rw"
 
 # git
 alias g git
@@ -80,3 +81,4 @@ alias pm "python3 -m"
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 alias m mvn
 alias ctest "ctest --output-on-failure"
+alias valgrind "valgrind -s --leak-check=full --show-leak-kinds=all"

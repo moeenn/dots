@@ -16,6 +16,7 @@ PS1="\n$HC$FCYN\W $FBLE\$ $RS "
 #
 # --------------------------------------------------------------------
 test -s ${HOME}/.profile && . ${HOME}/.profile || true
+eval "$(fzf --bash)"
 
 shopt -s autocd
 shopt -s cdspell
@@ -28,6 +29,12 @@ alias :q="exit"
 alias :Q="exit"
 alias ls="ls -a"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+alias g="git"
+alias :s="git status"
+alias :S="git status"
+alias :c="git commit -m"
+alias :C="git commit -m"
+alias :b="git branch"
+alias :B="git branch"
+alias push="git push"
+alias pull="git pull"

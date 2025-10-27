@@ -112,4 +112,4 @@ bind-key S4-Right  window-resize-right
 bind-key M-p gmrun
 bind-key 4-t xterm
 bind-key 4-e thunar
-bind-key 4-l lock-screen
+bind-key 4-l lockscreen

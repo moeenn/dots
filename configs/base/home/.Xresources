@@ -6,9 +6,9 @@
 Xft.hinting: true
 Xft.hintstyle: hintslight
 Xft.antialias: true
-xterm*geometry: 80x18
+xterm*geometry: 100x20
 xterm*selectToClipboard: true
-XTerm*internalBorder: 30
+XTerm*internalBorder: 4
 
 !! Color scheme.
 *.foreground:  #2a2c33
