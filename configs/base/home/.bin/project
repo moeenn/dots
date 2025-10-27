@@ -180,13 +180,13 @@ class CTemplate(BaseTemplate):
         super().__init__(project_name)
 
         main_c_path = os.path.join("src", "main.c")
-        main_test_c_path = os.path.join("src", "main_test.c")
+        main_test_c_path = os.path.join("tests", "main_test.c")
         common_h_path = os.path.join("include", "common.h")
         self.files_and_content = {
             main_c_path: self.main_c_content(),
             main_test_c_path: self.main_test_c_content(),
             common_h_path: self.common_h_content(),
-            "Makefile": self.makefile_content(),
+            "CMakeLists.txt": self.cmakelists_content(),
         }
 
     @staticmethod
@@ -194,48 +194,41 @@ class CTemplate(BaseTemplate):
         return "c"
 
     def gitignore_entries(self) -> list[str]:
-        return ["bin/*", ".cache/", "compile_commands.json"]
+        return ["build/*", ".cache/", "compile_commands.json"]
 
     def project_directories(self) -> list[str]:
-        return ["src", "bin", "include"]
+        return ["src", "build", "include", "tests"]
 
     def main_c_content(self) -> str:
         return """
 #include "common.h"
+#include <stdio.h>
 
-#ifndef TEST
 int main()
 {
     printf("hello world\\n");
     return RESULT_OK;
 }
-#endif
     """.strip()
 
     def main_test_c_content(self) -> str:
         return """
-#include "common.h"
+#include <assert.h>
 
 void test_example()
 {
-    TEST_HEADER;
     assert(1 == 1);
 }
 
-#ifdef TEST
 int main()
 {
     test_example();
 }
-#endif
 	""".strip()
 
     def common_h_content(self) -> str:
         return """
 #pragma once
-#include <assert.h>
-#include <stdio.h>
-#define TEST_HEADER printf("[TEST] %s.\\n", __func__)
 
 typedef enum {
     RESULT_OK = 0,
@@ -243,26 +236,25 @@ typedef enum {
 } result_e;
 		""".strip()
 
-    def makefile_content(self) -> str:
+    def cmakelists_content(self) -> str:
         return f"""
-CC = gcc
-TARGET = {self.project_name}
-SRC := ./src/*.c
-INC = -I./include
-LIBS = -lm
-CFLAGS = -Wall -Wextra -std=c23
+cmake_minimum_required(VERSION 3.10) 
+project({self.project_name} VERSION 1.0 LANGUAGES C)
+set(CMAKE_C_COMPILER "gcc")
+set(CMAKE_C_STANDARD 23) 
+set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+add_compile_options(-Wall -Wextra -pedantic -Werror)
 
-main:
-	 @${{CC}} ${{INC}} ${{SRC}} -o ./bin/${{TARGET}} ${{LIBS}}
+add_executable({self.project_name} src/main.c)
+target_include_directories({self.project_name} PUBLIC "include")
 
-test:
-	@${{CC}} ${{INC}} ${{CFLAGS}} -DTEST ${{SRC}} -o ./bin/${{TARGET}} ${{LIBS}} && \
-	./bin/${{TARGET}}
+include(CTest)
+enable_testing()
 
-clean:
-	rm -f ./bin/*
-
-.PHONY: clean
+add_executable(tests tests/main_test.c)
+target_include_directories(tests PUBLIC "include")
+add_test(NAME tests COMMAND tests)
 """.strip()
 
 

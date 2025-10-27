@@ -27,5 +27,5 @@ sudo apt-get install -y vim \
 						mpv \
 						zoxide \
 						pkg-config \
-						ccache;
-
+						ccache \
+						rsync;

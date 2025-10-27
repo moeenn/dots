@@ -11,6 +11,9 @@ sudo apt-get install -y cwm \
 						picom \
 						yaru-theme-icon \
 						yaru-theme-gtk \
-						dzen2;
+						dzen2 \
+						mousepad \
+						geany \
+						geany-plugins;
 
 
