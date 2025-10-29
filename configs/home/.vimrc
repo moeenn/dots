@@ -1,4 +1,4 @@
-colorscheme retrobox
+" colorschem unokai
 
 set number
 syntax on

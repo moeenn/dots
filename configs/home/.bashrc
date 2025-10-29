@@ -47,7 +47,7 @@ alias ls="ls -aC --color=auto"
 alias reload="source ~/.bashrc"
 
 # programs.
-alias v="nvim"
+alias v="vim"
 alias rsync="rsync -av --progress"
 alias load="htop -u $(whoami)"
 alias df="dfc -f -s"
