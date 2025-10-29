@@ -45,9 +45,11 @@ alias lsa "ls -alp"
 alias :w which
 alias :q exit
 alias :Q exit
+alias reload "source ~/.config/fish/config.fish"
 
 # Programs
 alias load "htop -u moeenn"
+alias v nvim
 alias df "dfc -f -s"
 alias uptime "uptime -p"
 alias extract "dtrx -v"
@@ -75,7 +77,7 @@ alias push "git push"
 alias pull "git pull"
 
 # programming
-alias dc docker-compose
+alias dc "docker compose"
 alias py python3
 alias pm "python3 -m"
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"

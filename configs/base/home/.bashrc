@@ -47,6 +47,7 @@ alias ls="ls -aC --color=auto"
 alias reload="source ~/.bashrc"
 
 # programs.
+alias v="nvim"
 alias rsync="rsync -av --progress"
 alias load="htop -u $(whoami)"
 alias df="dfc -f -s"
@@ -73,7 +74,7 @@ alias push="git push"
 alias pull="git pull"
 
 # programming.
-alias dc=docker-compose
+alias dc="docker compose"
 alias py="python3"
 alias delete_dstore="find . -name '.DS_Store' -type f -delete -print"
 alias m=mvn
