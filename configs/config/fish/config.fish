@@ -62,6 +62,7 @@ alias winclass "xprop WM_CLASS"
 alias keyname "xev | grep keysym"
 
 # Super User Tasks
+alias _ "sudo"
 alias full_access "sudo chmod -R a+rw ./"
 alias mount "sudo mount -o rw"
 
