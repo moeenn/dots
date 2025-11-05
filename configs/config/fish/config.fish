@@ -24,8 +24,9 @@ set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
 set NODEBIN {$HOME}/.npm/bin
 set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
+set CARGOBIN {$HOME}/.cargo/bin
 set COURSIERBIN {$HOME}/.config/coursier/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$COURSIERBIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$COURSIERBIN} {$CARGOBIN}
 
 # --------------------------------------------------------------------
 #
@@ -62,7 +63,6 @@ alias winclass "xprop WM_CLASS"
 alias keyname "xev | grep keysym"
 
 # Super User Tasks
-alias _ "sudo"
 alias full_access "sudo chmod -R a+rw ./"
 alias mount "sudo mount -o rw"
 
