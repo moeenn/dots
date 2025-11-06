@@ -49,7 +49,3 @@ formatter = { command = "ocamlformat", args = [
   "--enable-outside-detected-project",
 ] }
 
-[[language]]
-name = "lua"
-auto-format = true
-indent = { tab-width = 4, unit = "\t" }

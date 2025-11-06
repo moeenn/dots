@@ -1,6 +1,7 @@
 #! /bin/bash
 
-sudo apt-get install -y cwm \
+sudo apt-get install -y xdg-desktop-portal-gnome \
+                        cwm \
 						lxappearance \
 						alacritty \
 						thunar \

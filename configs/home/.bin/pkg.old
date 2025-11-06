@@ -1,0 +1,221 @@
+#! /usr/bin/python3
+
+import sys
+import io
+import subprocess
+from typing import Protocol
+
+
+def print_help(program_name="pkg") -> None:
+    builder = io.StringIO()
+    builder.write(f"usage: {program_name} [COMMAND] [PACKAGES]\n\n")
+    builder.write("commands:\n")
+    builder.write("  help    (h)    display this help message and exit.\n")
+    builder.write("  search  (s)    search for packages.\n")
+    builder.write("  install (i)    install new packages.\n")
+    builder.write("  update  (u)    fetch and install package updates.\n")
+    builder.write("  remove  (r)    remove packages.\n")
+    builder.write("  clean   (c)    remove orphan packages.\n")
+    print(builder.getvalue())
+
+
+def is_pm_available(command: str) -> bool:
+    try:
+        result = subprocess.run(["which", command], capture_output=True)
+        return result.returncode == 0
+    except Exception:
+        return False
+
+
+def run_command(cmd: list[str]) -> bool:
+    try:
+        result = subprocess.run(cmd)
+        return result.returncode == 0
+    except Exception:
+        return False
+
+
+class Colors:
+    Blue = "\033[94m"
+    Red = "\033[93m"
+    Reset = "\033[0m"
+
+
+class PackageManager(Protocol):
+    def is_available(self) -> bool: ...
+    def get_name(self) -> str: ...
+    def search(self, package: str) -> bool: ...
+    def install(self, packages: list[str]) -> bool: ...
+    def update(self) -> bool: ...
+    def clean(self) -> bool: ...
+    def remove(self, packages: list[str]) -> bool: ...
+
+
+class FlatpakPackageManager(PackageManager):
+    def get_name(self) -> str:
+        return "Flatpak"
+
+    def is_available(self) -> bool:
+        return is_pm_available(command="flatpak")
+
+    def search(self, package: str) -> bool:
+        return run_command(["flatpak", "search", package])
+
+    def install(self, packages: list[str]) -> bool:
+        return run_command(["flatpak", "install", "flathub"] + packages)
+
+    def update(self) -> bool:
+        return run_command(["flatpak", "update", "-y"])
+
+    def clean(self) -> bool:
+        return run_command(["flatpak", "uninstall", "--unused"])
+
+    def remove(self, packages: list[str]) -> bool:
+        is_success = run_command(["flatpak", "remove", "-y"] + packages)
+        return self.clean() and is_success
+
+
+class DebianPackageManager(PackageManager):
+    def get_name(self) -> str:
+        return "Apt"
+
+    def is_available(self) -> bool:
+        return is_pm_available(command="apt-get")
+
+    def search(self, package: str) -> bool:
+        return run_command(["apt-cache", "search", package])
+
+    def install(self, packages: list[str]) -> bool:
+        return run_command(["sudo", "apt-get", "install", "-y"] + packages)
+
+    def update(self) -> bool:
+        s_one = run_command(["sudo", "apt-get", "update"])
+        s_two = run_command(["sudo", "apt-get", "upgrade", "-y"])
+        return s_one and s_two
+
+    def clean(self) -> bool:
+        return run_command(["sudo", "apt-get", "autoremove", "--purge"])
+
+    def remove(self, packages: list[str]) -> bool:
+        s_one = run_command(["sudo", "apt-get", "remove", "-y"] + packages)
+        return self.clean() and s_one
+
+
+class VoidPackageManager(PackageManager):
+    def get_name(self) -> str:
+        return "Xbps"
+
+    def is_available(self) -> bool:
+        return is_pm_available(command="xbps-install")
+
+    def search(self, package: str) -> bool:
+        return run_command(["xbps-query", "-Rs", package])
+
+    def install(self, packages: list[str]) -> bool:
+        return run_command(["sudo", "xbps-install", "-Sy"] + packages)
+
+    def update(self) -> bool:
+        return run_command(["sudo", "xbps-install", "-Syu"])
+
+    def clean(self) -> bool:
+        return run_command(["sudo", "xbps-remove", "-Oo"])
+
+    def remove(self, packages: list[str]) -> bool:
+        s_one = run_command(["sudo", "xbps-remove", "-R"] + packages)
+        return self.clean() and s_one
+
+
+class PackageManagerFactor:
+    available_pms: list[PackageManager]
+
+    def __init__(self, packageManagers: list[PackageManager]) -> None:
+        self.available_pms = []
+        for pm in packageManagers:
+            if pm.is_available():
+                self.available_pms.append(pm)
+
+        if len(self.available_pms) == 0:
+            raise Exception("no supported package manager found.")
+
+    def install(self, packages: list[str]) -> None:
+        is_installed = False
+        for pm in self.available_pms:
+            if is_installed:
+                break
+
+            print(f"\n{Colors.Blue}Installing ({pm.get_name()}): {Colors.Reset}")
+            is_installed = pm.install(packages)
+
+    def search(self, package: str) -> None:
+        for pm in self.available_pms:
+            print(f"\n{Colors.Blue}Searching ({pm.get_name()}): {Colors.Reset}")
+            pm.search(package)
+
+    def update(self) -> None:
+        for pm in self.available_pms:
+            print(f"\n{Colors.Blue}Updateing ({pm.get_name()}): {Colors.Reset}")
+            pm.update()
+
+    def remove(self, packages: list[str]) -> None:
+        is_removed = False
+        for pm in self.available_pms:
+            if is_removed:
+                break
+
+            print(f"\n{Colors.Blue}Removing ({pm.get_name()}): {Colors.Reset}")
+            is_removed = pm.remove(packages)
+
+    def clean(self) -> None:
+        for pm in self.available_pms:
+            print(f"\n{Colors.Blue}Cleaning ({pm.get_name()}): {Colors.Reset}")
+            pm.clean()
+
+
+def main(args: list[str]) -> None:
+    if len(args) < 2:
+        print_help()
+        sys.exit(1)
+
+    cmd = args[1]
+    packages = args[2:]
+
+    pm_factory = PackageManagerFactor(
+        packageManagers=[
+            DebianPackageManager(),
+            VoidPackageManager(),
+            FlatpakPackageManager(),
+        ]
+    )
+
+    match cmd:
+        case "help" | "h":
+            print_help()
+
+        case "search" | "s":
+            if len(packages) > 1:
+                raise Exception("can only search for one package at a time.")
+            pm_factory.search(packages[0])
+
+        case "install" | "i":
+            pm_factory.install(packages)
+
+        case "update" | "u":
+            pm_factory.update()
+
+        case "clean" | "c":
+            pm_factory.clean()
+
+        case "remove" | "r":
+            pm_factory.remove(packages)
+
+        case _:
+            raise Exception(f"invalid command: {cmd}")
+
+
+if __name__ == "__main__":
+    try:
+        main(sys.argv)
+    except KeyboardInterrupt:
+        print("exiting...")
+    except Exception as ex:
+        print(f"{Colors.Red}error: {str(ex)}")
