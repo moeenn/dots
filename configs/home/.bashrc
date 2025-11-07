@@ -16,7 +16,6 @@ PS1='[${debian_chroot:+($debian_chroot)}\W$(parse_git_branch)] \$  '
 #
 # --------------------------------------------------------------------
 test -s ${HOME}/.profile && . ${HOME}/.profile || true
-eval "$(fzf --bash)"
 eval "$(zoxide init bash)"
 
 

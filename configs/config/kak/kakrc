@@ -1,0 +1,27 @@
+# User preferences
+set-option global startup_info_version 20221031 # Suppress startup info after an update
+set-option global scrolloff 1,3 # Keep one line and three columns displayed around the cursor
+set global tabstop 4
+set global indentwidth 4
+add-highlighter global/number-lines number-lines
+
+# Define custom faces to keep them organized
+set-face global PrimaryCursorNormal +r
+set-face global PrimaryCursorInsert bright-magenta+r
+set-face global PrimaryCursor PrimaryCursorNormal
+
+# EOL cursor
+set-face global PrimaryCursorEolNormal default,bright-cyan
+set-face global PrimaryCursorEolInsert PrimaryCursorInsert
+set-face global PrimaryCursorEol PrimaryCursorEolNormal
+
+hook global ModeChange (push|pop):.*insert %{
+	set-face window PrimaryCursor PrimaryCursorInsert
+	set-face window PrimaryCursorEol PrimaryCursorEolInsert
+}
+
+hook global ModeChange (push|pop):insert:.* %{
+	set-face window PrimaryCursor PrimaryCursorNormal
+	set-face window PrimaryCursorEol PrimaryCursorEolNormal
+}
+

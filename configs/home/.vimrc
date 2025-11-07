@@ -29,6 +29,7 @@ set showmatch
 
 filetype off
 filetype plugin indent on
+let g:loaded_matchparen=1
 
 let mapleader = " "
 nnoremap ; :
