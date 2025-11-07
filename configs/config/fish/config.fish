@@ -18,6 +18,7 @@ zoxide init fish | source
 #   Environment and path config
 #
 # --------------------------------------------------------------------
+set -gx XDG_RUNTIME_DIR "/run/user/$(id -u)"
 set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set USER_PATH {$HOME}/.bin {$HOME}/.local/bin

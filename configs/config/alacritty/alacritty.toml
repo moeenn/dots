@@ -8,10 +8,10 @@ decorations_theme_variant = "Light"
 [font]
 normal.family = "JetBrains Mono"
 bold.family = "JetBrains Mono"
-size = 8
+size = 10
 offset.x = 0
-offset.y = 8
-glyph_offset.y = 4
+offset.y = 10
+glyph_offset.y = 5
 
 [cursor]
 style = { shape = "block" }

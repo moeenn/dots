@@ -3,33 +3,43 @@
 # look and feel.
 #
 # ------------------------------------------------------------------------
-font pango:Roboto Medium 	  9
-titlebar_border_thickness 	0
-titlebar_padding 			      8
-default_border 				      none
-client.unfocused   			    #d7d3cf #d7d3cf #483763 #483763
-client.focused           	  #f6f2ee #f6f2ee #4b2f1d #4b2f1d
+font                            pango:Roboto Medium 9
+gaps                            inner 10
+titlebar_border_thickness 	    0
+titlebar_padding 			    10 8
+# default_border 				pixel 5 # pixel 1
+# default_floating_border       pixel 5
+smart_borders                   on
+
+#                               border   bg       text   
+client.unfocused   			    #d7d3cf  #f9f9f9  #2a2c33 
+client.focused           	    #d7d3cf  #f9f9f9  #2a2c33 
 
 # set background color.
-# exec "swaybg -c 3c3836"
-exec "swaybg -i ~/Pictures/current.jpg --mode fill"
+exec "swaybg -c 305065"
+
+shadows                         enable
+shadow_blur_radius              8
+shadow_offset                   0 0
+shadow_color                    #3030301A
+corner_radius                   6
 
 bar {
-    position bottom
-    height 32
+    position  bottom
+    height    32
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
     status_command while date +' %B %d - %H:%M '; do sleep 5; done
-
     colors {
-        statusline #483763
-        background #d7d3cf
-        inactive_workspace #d7d3cf #d7d3cf #3d3936
-        focused_workspace  #483763 #483763 #e7dbb2
+        #                  border    bg        text
+        statusline         #303030
+        background         #f9f9f9
+        inactive_workspace #f9f9f9   #f9f9f9   #000000
+        focused_workspace  #dbdbdb   #dbdbdb   #000000
     }
 }
 
+for_window [app_id=".*"] floating enable
+for_window [app_id=".*"] border normal
 
 # ------------------------------------------------------------------------
 #
@@ -47,10 +57,9 @@ set $right Right
 
 # set application commands.
 set $term alacritty
-set $menu "wofi --show=drun"
+set $menu "gmrun"
 set $lock "swaylock -c 000000"
 set $fm thunar
-
 
 # ------------------------------------------------------------------------
 #
@@ -68,7 +77,6 @@ input type:keyboard {
     repeat_delay 300
     repeat_rate 50
 }
-
 
 # ------------------------------------------------------------------------
 #
@@ -99,22 +107,34 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym Print exec grim
 
 # Start your launcher
-bindsym $mod+p      exec $menu
+bindsym $mod+p         exec $menu
 bindsym $mod+Shift+r   reload
 bindsym $mod+Shift+q   exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
+# move windows
+set     $step_size     "10 px"
+bindsym $winKey+right  move right
+bindsym $winKey+left   move left
+bindsym $winKey+up     move up
+bindsym $winKey+down   move down
+
+# resize windows
+bindsym $winKey+Shift+right "resize set width $step_size"
+bindsym $winKey+Shift+left  "resize set width $step_size"
+bindsym $winKey+Shift+up    "resize set width $step_size"
+bindsym $winKey+Shift+down  "resize set width $step_size"
 
 # ------------------------------------------------------------------------
 #
 # workspaces.
 #
 # ------------------------------------------------------------------------
-set $ws1 "  1: web  "
-set $ws2 "  2: code  "
-set $ws3 "  3: term  "
-set $ws4 "  4: files  "
-set $ws5 "  5: tools  "
-set $ws6 "  6: misc  "
+set $ws1 "  web  "
+set $ws2 "  code  "
+set $ws3 "  term  "
+set $ws4 "  files  "
+set $ws5 "  tools  "
+set $ws6 "  misc  "
 
 # Switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -138,54 +158,11 @@ bindsym $mod+Shift+6 move container to workspace $ws6
 # layout and containers
 #
 # ------------------------------------------------------------------------
-# You can "split" the current object of your focus with
-# $mod+b or $mod+v, for horizontal and vertical splits
-# respectively.
-#bindsym $mod+b splith
-bindsym $mod+v splitv
-
-# Switch the current container between different layout styles
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
 # Make the current focus fullscreen
 bindsym $mod+f fullscreen
 
 # Toggle the current focus between tiling and floating mode
-bindsym $mod+Shift+space floating toggle
-
-# Swap focus between the tiling area and the floating area
-bindsym $mod+space focus mode_toggle
-
-# Move focus to the parent container
-bindsym $mod+a focus parent
-
-#
-# Resizing containers:
-#
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    #bindsym $left resize shrink width 10px
-    #bindsym $down resize grow height 10px
-    #bindsym $up resize shrink height 10px
-    #bindsym $right resize grow width 10px
-
-    # Ditto, with arrow keys
-    #bindsym Left resize shrink width 10px
-    #bindsym Down resize grow height 10px
-    #bindsym Up resize shrink height 10px
-    #bindsym Right resize grow width 10px
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
-
+bindsym $winKey+space floating toggle
 
 # ------------------------------------------------------------------------
 #
