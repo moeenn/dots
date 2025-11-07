@@ -55,6 +55,7 @@ alias uptime="uptime -p"
 alias net="bwm-ng -t 1000"
 alias lsblk="lsblk -e 7"
 alias clock="tty-clock -cD"
+alias cf="cfiles"
 alias winclass="xprop WM_CLASS"
 alias keyname="xev | grep keysym"
 
