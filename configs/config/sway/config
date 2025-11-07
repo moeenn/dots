@@ -4,15 +4,14 @@
 #
 # ------------------------------------------------------------------------
 font                            pango:Roboto Medium 9
-gaps                            inner 10
+# gaps                            inner 10
 titlebar_border_thickness 	    0
-titlebar_padding 			    10 8
+titlebar_padding 			    8 8
 # default_border 				pixel 5 # pixel 1
 # default_floating_border       pixel 5
-smart_borders                   on
 
 #                               border   bg       text   
-client.unfocused   			    #d7d3cf  #f9f9f9  #2a2c33 
+client.unfocused   			    #d7d3cf  #e6e6e6  #2a2c33 
 client.focused           	    #d7d3cf  #f9f9f9  #2a2c33 
 
 # set background color.
@@ -22,7 +21,7 @@ shadows                         enable
 shadow_blur_radius              8
 shadow_offset                   0 0
 shadow_color                    #3030301A
-corner_radius                   6
+corner_radius                   0
 
 bar {
     position  bottom
@@ -38,8 +37,9 @@ bar {
     }
 }
 
-for_window [app_id=".*"] floating enable
-for_window [app_id=".*"] border normal
+# make all windows floating.
+# for_window [app_id=".*"] floating enable
+# for_window [app_id=".*"] border normal
 
 # ------------------------------------------------------------------------
 #
@@ -111,30 +111,29 @@ bindsym $mod+p         exec $menu
 bindsym $mod+Shift+r   reload
 bindsym $mod+Shift+q   exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-# move windows
-set     $step_size     "10 px"
-bindsym $winKey+right  move right
-bindsym $winKey+left   move left
-bindsym $winKey+up     move up
-bindsym $winKey+down   move down
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 
-# resize windows
-bindsym $winKey+Shift+right "resize set width $step_size"
-bindsym $winKey+Shift+left  "resize set width $step_size"
-bindsym $winKey+Shift+up    "resize set width $step_size"
-bindsym $winKey+Shift+down  "resize set width $step_size"
+# move windows
+# set     $step_size     "10 px"
+# bindsym $winKey+right  move right
+# bindsym $winKey+left   move left
+# bindsym $winKey+up     move up
+# bindsym $winKey+down   move down
+
 
 # ------------------------------------------------------------------------
 #
 # workspaces.
 #
 # ------------------------------------------------------------------------
-set $ws1 "  web  "
-set $ws2 "  code  "
-set $ws3 "  term  "
-set $ws4 "  files  "
-set $ws5 "  tools  "
-set $ws6 "  misc  "
+set $ws1 "  1: web  "
+set $ws2 "  2: code  "
+set $ws3 "  3: term  "
+set $ws4 "  4: files  "
+set $ws5 "  5: tools  "
+set $ws6 "  6: misc  "
 
 # Switch to workspace
 bindsym $mod+1 workspace $ws1
