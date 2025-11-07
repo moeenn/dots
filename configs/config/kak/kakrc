@@ -25,3 +25,9 @@ hook global ModeChange (push|pop):insert:.* %{
 	set-face window PrimaryCursorEol PrimaryCursorEolNormal
 }
 
+# LSP
+eval %sh{kak-lsp} lsp-enable
+
+# map global normal gd ': enter-user-mode lsp-go-to-definition<ret>' -docstring 'Go to definition'
+# map global normal gr ': enter-user-mode lsp-find-references<ret>' -docstring 'Find references'
+
