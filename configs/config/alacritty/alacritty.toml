@@ -6,8 +6,8 @@ decorations = "Full"
 decorations_theme_variant = "Light"
 
 [font]
-normal.family = "JetBrains Mono"
-bold.family = "JetBrains Mono"
+normal.family = "Fira Code Retina"
+bold.family = "Fira Code Retina"
 size = 10
 offset.x = 0
 offset.y = 10
@@ -17,7 +17,7 @@ glyph_offset.y = 5
 style = { shape = "block" }
 
 [colors.primary]
-background = "#f9f9f9"
+background = "#edeeeb"
 foreground = "#2a2c33"
 
 [colors.cursor]
@@ -31,7 +31,7 @@ yellow = "#d2b67c"
 blue = "#2f5af3"
 magenta = "#950095"
 cyan = "#3f953a"
-white = "#bbbbbb"
+white = "#dfe1dc"
 
 [colors.bright]
 black = "#000000"

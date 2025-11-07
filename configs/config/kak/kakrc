@@ -1,4 +1,5 @@
 # User preferences
+colorscheme lucius
 set-option global startup_info_version 20221031 # Suppress startup info after an update
 set-option global scrolloff 1,3 # Keep one line and three columns displayed around the cursor
 set global tabstop 4
@@ -26,8 +27,7 @@ hook global ModeChange (push|pop):insert:.* %{
 }
 
 # LSP
-eval %sh{kak-lsp} lsp-enable
-
+# eval %sh{kak-lsp} lsp-enable
 # map global normal gd ': enter-user-mode lsp-go-to-definition<ret>' -docstring 'Go to definition'
 # map global normal gr ': enter-user-mode lsp-find-references<ret>' -docstring 'Find references'
 

@@ -1,6 +1,9 @@
 #! /bin/bash
 
-sudo apt-get install -y vim \
+pkg i vim \
+						kakoune \
+						kak-lsp \
+						polkit \
 						make \
 						cmake \
 						net-tools \
@@ -19,13 +22,17 @@ sudo apt-get install -y vim \
 						tmux \
 						xterm \
 						acpi \
+						lm_sensors \
 						p7zip \
 						fonts-jetbrains-mono \
+						fonts-firacode \
 						fonts-roboto \
-						yaru-theme-gtk \
-						yaru-theme-icon \
+						gnome-themes-standard \
+						gnome-themes-extra \
 						mpv \
 						zoxide \
 						pkg-config \
-						ccache \
-						rsync;
+						rsync \
+						imv \
+						nwg-look \
+						gimp;
