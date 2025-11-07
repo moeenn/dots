@@ -25,8 +25,8 @@ set NODEBIN {$HOME}/.npm/bin
 set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
 set CARGOBIN {$HOME}/.cargo/bin
-set COURSIERBIN {$HOME}/.config/coursier/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$COURSIERBIN} {$CARGOBIN}
+set LUABIN {$HOME}/.luarocks/bin
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$CARGOBIN} {$LUABIN}
 
 # --------------------------------------------------------------------
 #
