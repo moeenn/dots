@@ -50,7 +50,6 @@ alias reload "source ~/.config/fish/config.fish"
 
 # Programs
 alias load "htop -u moeenn"
-alias v nvim
 alias df "dfc -f -s"
 alias uptime "uptime -p"
 alias extract "dtrx -v"
@@ -59,6 +58,7 @@ alias axel "axel -n 4"
 alias lsblk "lsblk -e 7"
 alias patch "patch -p1 <"
 alias clock "tty-clock -cD"
+alias k "kak"
 alias winclass "xprop WM_CLASS"
 alias keyname "xev | grep keysym"
 
