@@ -7,12 +7,13 @@ font                            pango:Roboto Medium 9
 # gaps                            inner 10
 titlebar_border_thickness 	    0
 titlebar_padding 			    8 8
-# default_border 				pixel 5 # pixel 1
-# default_floating_border       pixel 5
+default_border 				    none
+default_floating_border         none
 
-#                               border   bg       text   
-client.unfocused   			    #d7d3cf  #e6e6e6  #2a2c33 
-client.focused           	    #d7d3cf  #f9f9f9  #2a2c33 
+set $clear #ffffff00
+# class                         border   bg       text     indicator 
+client.unfocused   			    #d7d3cf  #e6e6e6  #2a2c33  $clear    
+client.focused           	    #d7d3cf  #f9f9f9  #2a2c33  $clear   
 
 # set background color.
 exec "swaybg -c 305065"
@@ -29,17 +30,20 @@ bar {
 
     status_command while date +' %B %d - %H:%M '; do sleep 5; done
     colors {
-        #                  border    bg        text
+        #                  border    bg        text    
         statusline         #303030
         background         #f9f9f9
-        inactive_workspace #f9f9f9   #f9f9f9   #000000
-        focused_workspace  #dbdbdb   #dbdbdb   #000000
+        inactive_workspace #f9f9f9   #f9f9f9   #000000 
+        focused_workspace  #dbdbdb   #dbdbdb   #000000 
     }
 }
 
 # make all windows floating.
 # for_window [app_id=".*"] floating enable
 # for_window [app_id=".*"] border normal
+
+for_window [app_id="gmrun"] floating enable
+for_window [app_id="nwg-look"] floating enable
 
 # ------------------------------------------------------------------------
 #
