@@ -23,11 +23,12 @@ set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
 set NODEBIN {$HOME}/.npm/bin
+set BUNBIN {$HOME}/.bun/bin
 set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
 set CARGOBIN {$HOME}/.cargo/bin
 set LUABIN {$HOME}/.luarocks/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$CARGOBIN} {$LUABIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$BUNBIN} {$GOINSTALL} {$GOBIN} {$CARGOBIN} {$LUABIN}
 
 # --------------------------------------------------------------------
 #
@@ -88,3 +89,7 @@ alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 alias m mvn
 alias ctest "ctest --output-on-failure"
 alias valgrind "valgrind -s --leak-check=full --show-leak-kinds=all"
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
