@@ -1,0 +1,50 @@
+#! /bin/lua
+
+function exec(cmd)
+	local s = os.execute(cmd)
+	return s == true
+end
+
+
+function exit(message)
+	print("error: " .. message .. ".")
+	os.exit(1)
+end
+
+
+function update_packages()
+	local success = exec("sudo apt-get update")
+	if not success then
+		return false
+	end
+
+	return exec("sudo apt-get upgrade -y")
+end
+
+
+function is_flatpak_installed()
+	return exec("which flatpak > /dev/null")
+end
+
+
+function update_flatpak()
+	return exec("flatpak update -y")
+end
+
+function main()
+	local success = update_packages()
+	if not success then
+		exit("failed to update system packages")
+	end
+
+	local is_installed = is_flatpak_installed()
+	if is_installed then
+		success = update_flatpak()
+		if not success then
+			exit("failed to update flatpaks")
+		end
+	end
+end
+
+
+main()

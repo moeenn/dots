@@ -6,12 +6,12 @@ decorations = "Full"
 decorations_theme_variant = "Light"
 
 [font]
-normal.family = "Fira Code Retina"
-bold.family = "Fira Code Retina"
-size = 10
+normal.family = "JetBrains Mono"
+bold.family = "JetBrains Mono"
+size = 9
 offset.x = 0
-offset.y = 10
-glyph_offset.y = 5
+offset.y = 4
+glyph_offset.y = 4
 
 [cursor]
 style = { shape = "block" }
