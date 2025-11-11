@@ -5,14 +5,9 @@ function link_home_files() {
     ".bin"
     ".ssh"
     ".bashrc"
-    ".compton.conf"     
-    ".cwmrc"
     ".gitconfig"
     ".profile"
     ".tmux.conf"
-    ".vimrc"
-    ".Xresources"
-    ".xinitrc"
   )
 
   PREFIX="../configs/home"
@@ -32,13 +27,11 @@ function link_home_files() {
 
 function link_config_files() {
   declare -a files=(
-  	"alacritty"
+    "alacritty"
     "fish"
     "helix"
     "htop"
     "mpv"
-    "sway"
-    "xdg-desktop-portal"
   )
 
   PREFIX="../configs/config"
