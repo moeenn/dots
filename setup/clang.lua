@@ -19,24 +19,24 @@ function collect_packages(pkgs)
 end
 
 function pkgs_install(pkgs)
-	local cmd = "pkg install" .. collect_packages(pkgs)
+	local cmd = "sudo apt-get install -y" .. collect_packages(pkgs)
 	return exec(cmd)
 end
 
 function pkgs_uninstall(pkgs)
-    local cmd = "pkg remove" .. collect_packages(pkgs)
+    local cmd = "sudo apt-get remove" .. collect_packages(pkgs)
     return exec(cmd)
 end
 
 function process_cmd(cmd, pkgs)
 	if cmd == nil then
-    	cmd = "install"
+    		cmd = "install"
 	end
 
 	if cmd == "install" then
-    	return pkgs_install(pkgs)
+	    	return pkgs_install(pkgs)
 	elseif cmd == "uninstall" then
-    	return pkgs_uninstall(pkgs)
+    		return pkgs_uninstall(pkgs)
 	else
 		exit("invalid command")
 	end
@@ -44,11 +44,11 @@ end
 
 function main()
 	local cmd = arg[1]
-	local version = "19"
-	local gcc_version = "14"
+	local version = "20"
+	local gcc_version = "15"
 	
 	local pkgs = {
-    	"llvm" .. version,
+    	"llvm-" .. version,
 		"clang",
 		"clangd",
 		"clang-format",

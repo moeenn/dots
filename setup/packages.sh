@@ -6,6 +6,7 @@ sudo apt-get install -y openssh-server \
         				cmake \
         				net-tools \
         				bwm-ng \
+        				tty-clock \
         				jq \
         				curl \
         				axel \
