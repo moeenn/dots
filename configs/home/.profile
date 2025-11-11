@@ -14,4 +14,3 @@ PATH=${PATH}:${NODEBIN}:${GOINSTALL}:${GOBIN}
 export DISPLAY GSETTINGS_SCHEMA_DIR LC_CTYPE XDG_DATA_HOME XDG_DATA_DIRS PATH
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-. "$HOME/.cargo/env"

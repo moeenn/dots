@@ -11,7 +11,7 @@ chmod +x ./$SCRIPT_NAME
 sudo ./$SCRIPT_NAME
 cd $CURRENT_DIR
 
-sudo apt-get install nodejs
+sudo apt-get install -y nodejs
 npm config set prefix=$HOME/.npm
 echo 'updating npm...'
 npm i -g npm typescript-language-server

@@ -81,7 +81,7 @@ alias push "git push"
 alias pull "git pull"
 
 # programming
-alias dc "docker compose"
+alias dc "docker-compose"
 alias py python3
 alias pm "python3 -m"
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
@@ -89,6 +89,3 @@ alias m mvn
 alias ctest "ctest --output-on-failure"
 alias valgrind "valgrind -s --leak-check=full --show-leak-kinds=all"
 
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH

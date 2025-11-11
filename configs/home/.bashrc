@@ -82,4 +82,3 @@ alias delete_dstore="find . -name '.DS_Store' -type f -delete -print"
 alias m=mvn
 alias ctest="ctest --output-on-failure"
 alias valgrind="valgrind -s --leak-check=full --show-leak-kinds=all"
-. "$HOME/.cargo/env"
