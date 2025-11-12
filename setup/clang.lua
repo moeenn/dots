@@ -56,6 +56,7 @@ function main()
 		"clangd-" .. version,
 		"clang-format-" .. version,
 		"gcc-" .. gcc_version,
+		"g++-" .. gcc_version,
 		"bear",
 		"cmake",
 		"valgrind"
