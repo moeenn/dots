@@ -1,6 +1,7 @@
 #! /bin/python3
 
 import sys
+import os
 import tomllib
 import subprocess
 from dataclasses import dataclass 
@@ -38,33 +39,78 @@ def install_flatpaks(pkgs: list[str]) -> None:
     subprocess.run(cmd)
 
 
+def get_username() -> str:
+    username = os.environ.get("USER")
+    if username is None or username == "":
+        raise Exception("failed to identify current user")
+
+    return username
+
+
+def setup_docker(pkgs: list[str]) -> None:
+    install_packages(pkgs)
+    subprocess.run(["sudo", "groupadd", "docker"])
+    subprocess.run(["sudo", "usermod", "-aG", "docker", get_username()])
+
+
+def whereis_fish() -> str:
+    output = subprocess.run(["which", "fish"], capture_output=True)
+    return output.stdout.decode("utf-8").strip()
+
+
+def setup_fish() -> None:
+    subprocess.run(["sudo", "apt-get", "install", "-y", "fish"])
+    user = get_username()
+    fish_location = whereis_fish()
+    subprocess.run(["sudo", "usermod", "-s", fish_location, user])
+
+
+@dataclass
+class ConfigPackages:
+    base: list[str]
+    flatpak: list[str]
+    cpp: list[str]
+    java: list[str]
+    docker: list[str]
+    cwm: list[str]
+
 @dataclass
 class Config:
-    base_packages: list[str]
-    flatpak_packages: list[str]
+    packages: ConfigPackages
 
     @staticmethod
     def parse():
         with open("config.toml", "rb") as f:
-            return Config(**tomllib.load(f))
+            root_config = tomllib.load(f)
+            return Config(
+                packages=ConfigPackages(**root_config["packages"])
+            )
 
 
 def main() -> None:
     config = Config.parse()
-    if confirm("Update repo lists?"):
-        update_repos()
+    steps = {
+        "Update repo lists?": lambda: update_repos(),
+        "Install base packages?": lambda: install_packages(config.packages.base),
+        "Install flatpaks?": lambda: install_flatpaks(config.packages.flatpak),
+        "Install fish shell?": lambda: setup_fish(),
+        "Install and configure docker?": lambda: setup_docker(config.packages.docker),
+        "Install cwm?": lambda: install_packages(config.packages.cwm),
+        "Setup C++?": lambda: install_packages(config.packages.cpp),
+        "Install java?": lambda: install_packages(config.packages.java),
+    }
 
-    if confirm("Install base packages?"):
-        install_packages(config.base_packages)
+    for step_name, action in steps.items():
+        if confirm(step_name):
+            action()
 
-    if confirm("Install flatpaks?"):
-        install_flatpaks(config.flatpak_packages)
+    print(f"{COLOR_BLUE}Setup complete!{COLOR_RESET}\n")
 
 
 if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("ctrl+c: exiting...")
+        print("\nctrl+c: exiting...")
     except Exception as ex:
         exit(str(ex))

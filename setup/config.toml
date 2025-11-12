@@ -1,4 +1,5 @@
-base_packages = [
+[packages]
+base = [
     "openssh-server",
     "kakoune",
     "flatpak",
@@ -35,11 +36,53 @@ base_packages = [
     "gimp"
 ]
 
-flatpak_packages = [
+flatpak = [
     "org.chromium.Chromium",
     "com.bitwarden.desktop",
     "md.obsidian.Obsidian",
     "io.beekeeperstudio.Studio",
     "com.usebruno.Bruno",
     "com.simplenote.Simplenote",
+]
+
+docker = [
+    "docker.io",
+    "docker-compose",
+]
+
+cpp = [
+    "llvm-20",
+    "clang",
+    "clangd",
+    "clang-format",
+    "clang-20",
+    "clangd-20",
+    "clang-format-20",
+    "gcc-15",
+    "g++-15",
+    "bear",
+    "cmake",
+    "valgrind"    
+]
+
+java = [
+    "openjdk-21-jdk",
+    "maven",
+]
+
+cwm = [
+    "yaru-theme-icon",
+    "yaru-theme-gtk",
+    "cwm",
+    "lxappearance",
+    "alacritty",
+    "thunar",
+    "feh",
+    "viewnior",
+    "i3lock",
+    "gmrun",
+    "picom",
+    "dzen2",
+    "mousepad",
+    "nwg-look",
 ]
