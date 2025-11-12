@@ -12,13 +12,20 @@ COLOR_BLUE = "\x1b[34m"
 COLOR_RESET = "\x1b[0m"
 
 
-def exit(message: str) -> None:
-    print(f"{COLOR_RED}error: {message}.{COLOR_RESET}")
-    sys.exit(1)
+def exit(message: str, status=1) -> None:
+    if status == 1:
+        print(f"\n{COLOR_RED}error: {message}.{COLOR_RESET}")
+    else:
+        print(f"\n{message}.\n")        
+    
+    sys.exit(status)
 
 
 def confirm(msg: str) -> bool:
-    raw_input = input(f"\n{COLOR_BLUE}{msg} (Y/n): {COLOR_RESET}")
+    raw_input = input(f"\n{COLOR_BLUE}{msg} (Y/n/q): {COLOR_RESET}")
+    if raw_input == "Q" or raw_input == "q":
+        exit("exiting...", status=0)
+
     return raw_input == "Y" or raw_input == "y"
 
 
@@ -65,11 +72,18 @@ def setup_fish() -> None:
     subprocess.run(["sudo", "usermod", "-s", fish_location, user])
 
 
+def setup_python(pkgs: list[str], pip_pkgs: list[str]) -> None:
+    subprocess.run(["sudo", "apt-get", "install", "-y"] + pkgs)
+    subprocess.run(["pipx", "install"] + pip_pkgs)
+
+
 @dataclass
 class ConfigPackages:
     base: list[str]
     flatpak: list[str]
     cpp: list[str]
+    python: list[str]
+    pip: list[str]
     java: list[str]
     docker: list[str]
     cwm: list[str]
@@ -96,6 +110,7 @@ def main() -> None:
         "Install fish shell?": lambda: setup_fish(),
         "Install and configure docker?": lambda: setup_docker(config.packages.docker),
         "Install cwm?": lambda: install_packages(config.packages.cwm),
+        "Configure python?": lambda: setup_python(config.packages.python, config.packages.pip),
         "Setup C++?": lambda: install_packages(config.packages.cpp),
         "Install java?": lambda: install_packages(config.packages.java),
     }
@@ -104,13 +119,13 @@ def main() -> None:
         if confirm(step_name):
             action()
 
-    print(f"{COLOR_BLUE}Setup complete!{COLOR_RESET}\n")
+    exit("Setup complete", status=0)
 
 
 if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("\nctrl+c: exiting...")
+        exit("ctrl+c: exiting...", status=0)
     except Exception as ex:
         exit(str(ex))

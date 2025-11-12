@@ -65,6 +65,18 @@ cpp = [
     "valgrind"    
 ]
 
+python = [
+    "python3-pip",
+    "python3-venv",
+    "pipx",
+]
+
+pip = [
+    "pyright",
+    "ruff",
+    "mypy",
+]
+
 java = [
     "openjdk-21-jdk",
     "maven",

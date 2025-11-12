@@ -103,5 +103,7 @@ if __name__ == "__main__":
     argc = len(argv)
     try:
         main(argc, argv)
+    except KeyboardInterrupt:
+        print("ctrl_c: exiting...")
     except Exception as ex:
         exit(str(ex))
