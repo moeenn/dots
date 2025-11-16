@@ -83,7 +83,7 @@ def process_cmd(cmd: str, argc: int, argv: list[str]) -> None:
             if argc < 1:
                 exit("please provide at-least one package name to remove")
 
-            pkg = argv[1:]
+            pkgs = argv[1:]
             pkgs_remove(pkgs)
 
         case _:
