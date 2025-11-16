@@ -1,0 +1,99 @@
+[packages]
+base = [
+    "openssh-server",
+    "kakoune",
+    "flatpak",
+    "make",
+    "cmake",
+    "net-tools",
+    "bwm-ng",
+    "tty-clock",
+    "jq",
+    "curl",
+    "axel",
+    "wget",
+    "zip",
+    "dtrx",
+    "gparted",
+    "git",
+    "htop",
+    "redshift",
+    "dfc",
+    "tmux",
+    "xterm",
+    "acpi",
+    "lm-sensors",
+    "p7zip",
+    "fonts-jetbrains-mono",
+    "fonts-roboto",
+    "gnome-themes-extra",
+    "mpv",
+    "zoxide",
+    "pkg-config",
+    "rsync",
+    "imv",
+    "nwg-look",
+    "gimp"
+]
+
+flatpak = [
+    "org.chromium.Chromium",
+    "com.bitwarden.desktop",
+    "md.obsidian.Obsidian",
+    "io.beekeeperstudio.Studio",
+    "com.usebruno.Bruno",
+    "com.simplenote.Simplenote",
+]
+
+docker = [
+    "docker.io",
+    "docker-compose",
+]
+
+cpp = [
+    "llvm-20",
+    "clang",
+    "clangd",
+    "clang-format",
+    "clang-20",
+    "clangd-20",
+    "clang-format-20",
+    "gcc-15",
+    "g++-15",
+    "bear",
+    "cmake",
+    "valgrind"    
+]
+
+python = [
+    "python3-pip",
+    "python3-venv",
+    "pipx",
+]
+
+pip = [
+    "pyright",
+    "ruff",
+    "mypy",
+]
+
+java = [
+    "openjdk-21-jdk",
+    "maven",
+]
+
+cwm = [
+    "yaru-theme-icon",
+    "yaru-theme-gtk",
+    "cwm",
+    "lxappearance",
+    "alacritty",
+    "thunar",
+    "viewnior",
+    "i3lock",
+    "gmrun",
+    "picom",
+    "dzen2",
+    "mousepad",
+    "nwg-look",
+]

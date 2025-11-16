@@ -25,9 +25,7 @@ set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
 set NODEBIN {$HOME}/.npm/bin
 set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
-set CARGOBIN {$HOME}/.cargo/bin
-set LUABIN {$HOME}/.luarocks/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$CARGOBIN} {$LUABIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN}
 
 # --------------------------------------------------------------------
 #
@@ -86,6 +84,5 @@ alias py python3
 alias pm "python3 -m"
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 alias m mvn
-alias ctest "ctest --output-on-failure"
 alias valgrind "valgrind -s --leak-check=full --show-leak-kinds=all"
-
+alias cfmt "clang-format -style=Microsoft -i"
