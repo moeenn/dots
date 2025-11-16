@@ -15,7 +15,7 @@ hsetroot -solid "#305065" &
 # redshift -O 5500 &
 
 # start bar script.
-cwmbar &
+# cwmbar &
 
 # start wm.
 exec cwm

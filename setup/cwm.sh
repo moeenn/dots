@@ -6,15 +6,13 @@ sudo apt-get install -y xdg-desktop-portal-gnome \
 						alacritty \
 						thunar \
 						feh \
-						viewnior \
+						imv \
 						i3lock \
 						gmrun \
 						picom \
 						yaru-theme-icon \
 						yaru-theme-gtk \
 						dzen2 \
-						mousepad \
-						geany \
-						geany-plugins;
+						mousepad;
 
 
