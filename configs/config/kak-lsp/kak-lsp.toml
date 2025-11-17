@@ -1,4 +1,0 @@
-[language.c_cpp]
-filetypes = ["c", "cpp"]
-roots = [".clangd", "compile_commands.json"] 
-command = "clangd"

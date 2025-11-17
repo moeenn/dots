@@ -2,14 +2,14 @@
     "editor.fontFamily": "'JetBrains Mono'",
     "window.menuBarVisibility": "toggle",
     "editor.fontLigatures": true,
-    "editor.fontSize": 14,
+    "editor.fontSize": 12,
     "editor.minimap.enabled": false,
     "breadcrumbs.enabled": false,
     "workbench.editor.enablePreview": false,
     "editor.bracketPairColorization.enabled": true,
-    "workbench.colorTheme": "Default Light Modern",
     "redhat.telemetry.enabled": false,
     "workbench.startupEditor": "none",
+    "window.zoomLevel": 0.8,
     "window.confirmSaveUntitledWorkspace": false,
     "editor.formatOnSave": true,
     "editor.tabSize": 4,
@@ -23,10 +23,9 @@
     "[typescript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
-    "python.analysis.enablePytestSupport": false,
-    "python.analysis.typeCheckingMode": "basic",
     "files.exclude": {
         "**/__pycache__": true
     },
-    "codeium.enableCodeLens": false
+    "codeium.enableCodeLens": false,
+    "workbench.colorTheme": "Default Dark+"
 }

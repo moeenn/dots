@@ -12,10 +12,10 @@ xset b off &
 hsetroot -solid "#305065" &		 	
 
 # set warn screen colors.
-# redshift -O 5500 &
+redshift -O 5000 &
 
 # start bar script.
-cwmbar &
+# cwmbar &
 
 # start wm.
 exec cwm

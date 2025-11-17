@@ -46,7 +46,7 @@ def pkgs_install(pkgs: list[str]) -> None:
 
 
 def pkgs_clean() -> None:
-    exec(["sudo", "apt-get", "autoremove", "--purge"])
+    exec(["sudo", "apt-get", "autoremove", "--purge", "-y"])
 
 
 def pkgs_remove(pkgs: list[str]) -> None:
@@ -83,7 +83,7 @@ def process_cmd(cmd: str, argc: int, argv: list[str]) -> None:
             if argc < 1:
                 exit("please provide at-least one package name to remove")
 
-            pkg = argv[1:]
+            pkgs = argv[1:]
             pkgs_remove(pkgs)
 
         case _:

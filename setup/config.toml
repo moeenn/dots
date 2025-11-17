@@ -23,6 +23,7 @@ base = [
     "xterm",
     "acpi",
     "lm-sensors",
+    "hsetroot",
     "p7zip",
     "fonts-jetbrains-mono",
     "fonts-roboto",
