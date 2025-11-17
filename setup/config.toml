@@ -90,7 +90,6 @@ cwm = [
     "lxappearance",
     "alacritty",
     "thunar",
-    "feh",
     "viewnior",
     "i3lock",
     "gmrun",
