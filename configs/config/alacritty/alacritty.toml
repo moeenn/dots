@@ -17,28 +17,28 @@ glyph_offset.y = 4
 style = { shape = "block" }
 
 [colors.primary]
-background = "#0f111a"
-foreground = "#8f93a2"
+background = "#232627"
+foreground = "#b3b1ad"
 
 [colors.cursor]
-cursor = "#8f93a2"
+cursor = "#b3b1ad"
 
 [colors.normal]
-black = "#2e3436"
-red = "#ff5370"
-green = "#c3e88d"
-yellow = "#ffcb6b"
-blue = "#82aaff"
-magenta = "#c792ea"
-cyan = "#89ddff"
-white = "#dcdfe4"
+black = "#232627"
+red = "#ed1515"
+green = "#11d116"
+yellow = "#f67400"
+blue = "#1d99f3"
+magenta = "#9b59b6"
+cyan = "#1abc9c"
+white = "#fcfcfc"
 
 [colors.bright]
-black = "#2e3436"
-red = "#ff5370"
-green = "#c3e88d"
-yellow = "#ffcb6b"
-blue = "#82aaff"
-magenta = "#c792ea"
-cyan = "#89ddff"
-white = "#dcdfe4"
+black = "#565a5b"
+red = "#ed1515"
+green = "#11d116"
+yellow = "#f67400"
+blue = "#1d99f3"
+magenta = "#9b59b6"
+cyan = "#1abc9c"
+white = "#fcfcfc"
