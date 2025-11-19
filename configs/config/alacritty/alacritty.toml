@@ -8,7 +8,7 @@ decorations_theme_variant = "Light"
 [font]
 normal.family = "JetBrains Mono"
 bold.family = "JetBrains Mono"
-size = 9
+size = 12
 offset.x = 0
 offset.y = 4
 glyph_offset.y = 4
