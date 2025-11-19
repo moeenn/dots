@@ -3,7 +3,7 @@ opacity = 1.0
 padding.x = 4
 padding.y = 4
 decorations = "Full"
-decorations_theme_variant = "Light"
+decorations_theme_variant = "Dark"
 
 [font]
 normal.family = "JetBrains Mono"
@@ -17,28 +17,28 @@ glyph_offset.y = 4
 style = { shape = "block" }
 
 [colors.primary]
-background = "#edeeeb"
-foreground = "#2a2c33"
+background = "#0f111a"
+foreground = "#8f93a2"
 
 [colors.cursor]
-cursor = "#bbbbbb"
+cursor = "#8f93a2"
 
 [colors.normal]
-black = "#000000"
-red = "#de3e35"
-green = "#3f953a"
-yellow = "#d2b67c"
-blue = "#2f5af3"
-magenta = "#950095"
-cyan = "#3f953a"
-white = "#dfe1dc"
+black = "#2e3436"
+red = "#ff5370"
+green = "#c3e88d"
+yellow = "#ffcb6b"
+blue = "#82aaff"
+magenta = "#c792ea"
+cyan = "#89ddff"
+white = "#dcdfe4"
 
 [colors.bright]
-black = "#000000"
-red = "#de3e35"
-green = "#3f953a"
-yellow = "#d2b67c"
-blue = "#2f5af3"
-magenta = "#950095"
-cyan = "#3f953a"
-white = "#ffffff"
+black = "#2e3436"
+red = "#ff5370"
+green = "#c3e88d"
+yellow = "#ffcb6b"
+blue = "#82aaff"
+magenta = "#c792ea"
+cyan = "#89ddff"
+white = "#dcdfe4"
