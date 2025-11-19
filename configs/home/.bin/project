@@ -706,15 +706,14 @@ test("simple test", async () => {
     "name": "sandbox",
     "version": "0.0.1",
     "type": "module",
-    "main": "main.js",
     "scripts": {
-        "start": "tsx ./src/main.ts",
+        "start": "node ./src/main.ts",
         "fmt": "npx prettier --write ./src/",
         "type-check": "npx tsc --noEmit",
         "lint": "npx eslint --fix ./src/",
         "check": "npm run type-check && npm run lint",
-        "build": "npx ncc build --minify --v8-cache --no-source-map-register ./src/main.ts -o ./dist",
-        "test": "node --import tsx --test"
+        "build": "npx esbuild src/main.ts --bundle --outfile=dist/index.js --platform=node --format=esm --packages=external --minify",
+        "test": "node --test"
     },
     "prettier": {
         "singleQuote": false,
@@ -728,12 +727,11 @@ test("simple test", async () => {
     },
     "devDependencies": {
         "@types/node": "^24.2.0",
-        "@vercel/ncc": "^0.38.3",
+        "esbuild": "^0.27.0",
         "eslint": "^9.32.0",
         "prettier": "^3.6.2",
-        "tsx": "^4.20.3",
         "typescript": "^5.9.2",
-        "typescript-eslint": "^8.39.0"
+        "typescript-eslint": "^8.47.0"
     }
 }
 	""".strip()
