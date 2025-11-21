@@ -8,7 +8,7 @@ decorations_theme_variant = "Dark"
 [font]
 normal.family = "JetBrains Mono"
 bold.family = "JetBrains Mono"
-size = 12
+size = 9
 offset.x = 0
 offset.y = 4
 glyph_offset.y = 4
@@ -16,29 +16,3 @@ glyph_offset.y = 4
 [cursor]
 style = { shape = "block" }
 
-[colors.primary]
-background = "#232627"
-foreground = "#b3b1ad"
-
-[colors.cursor]
-cursor = "#b3b1ad"
-
-[colors.normal]
-black = "#232627"
-red = "#ed1515"
-green = "#11d116"
-yellow = "#f67400"
-blue = "#1d99f3"
-magenta = "#9b59b6"
-cyan = "#1abc9c"
-white = "#fcfcfc"
-
-[colors.bright]
-black = "#565a5b"
-red = "#ed1515"
-green = "#11d116"
-yellow = "#f67400"
-blue = "#1d99f3"
-magenta = "#9b59b6"
-cyan = "#1abc9c"
-white = "#fcfcfc"

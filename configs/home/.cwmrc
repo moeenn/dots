@@ -7,16 +7,16 @@ sticky                  yes
 fontname                "Roboto:pixelsize=10:regular"
  
 # Appearance
-borderwidth             1
-color activeborder      "#d7d3cf"
-color inactiveborder    "#d7d3cf"
-color urgencyborder     "#d7d3cf"
+#borderwidth             1
+#color activeborder      "#d7d3cf"
+#color inactiveborder    "#d7d3cf"
+#color urgencyborder     "#d7d3cf"
  
 # Menu colors
-color font              "#483763"
-color selfont           "#d7d3cf"
-color menubg            "#d7d3cf"
-color menufg            "#483763"
+#color font              "#483763"
+#color selfont           "#d7d3cf"
+#color menubg            "#d7d3cf"
+#color menufg            "#483763"
  
 #Gaps (top, bottom, left, right)
 gap                     10 10 10 10
@@ -109,7 +109,7 @@ bind-key S4-Right  window-resize-right
 # autogroup 3    "Navigator,firefox-default"
 
 # Application commands.
-bind-key M-p gmrun
-bind-key 4-t xterm
-bind-key 4-e thunar
-bind-key 4-l lockscreen
+bind-key M-p dmenu_run
+bind-key 4-t alacritty
+# bind-key 4-e thunar
+# bind-key 4-l lockscreen
