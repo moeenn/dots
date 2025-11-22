@@ -10,7 +10,7 @@ main:
 clean:
 	rm -f ./bin/*
 
-install:
+install: main
 	mv -v ./bin/${TARGET} ${BIN_DIR}/
 
 uninstall:
