@@ -110,4 +110,4 @@ bind-key S4-Right  window-resize-right
 bind-key M-p dmenu_run
 bind-key 4-t alacritty
 # bind-key 4-e thunar
-# bind-key 4-l lockscreen
+bind-key 4-l "i3lock -c 000000"

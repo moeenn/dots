@@ -11,6 +11,7 @@ base = [
     "bwm-ng",
     "tty-clock",
     "jq",
+    "dzen2",
     "curl",
     "axel",
     "wget",
@@ -37,7 +38,8 @@ base = [
     "rsync",
     "imv",
     "nwg-look",
-    "gimp"
+    "gimp",
+    "transmission-gtk"
 ]
 
 flatpak = [
