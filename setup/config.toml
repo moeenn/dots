@@ -6,6 +6,7 @@ base = [
     "make",
     "cmake",
     "net-tools",
+    "libgdk-pixbuf-2.0-dev",
     "bwm-ng",
     "tty-clock",
     "jq",
