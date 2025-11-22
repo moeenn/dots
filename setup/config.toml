@@ -5,6 +5,7 @@ base = [
     "flatpak",
     "make",
     "cmake",
+    "network-manager",
     "net-tools",
     "libgdk-pixbuf-2.0-dev",
     "bwm-ng",
@@ -28,6 +29,7 @@ base = [
     "p7zip",
     "fonts-jetbrains-mono",
     "fonts-roboto",
+    "fonts-cascadia-code",
     "gnome-themes-extra",
     "mpv",
     "zoxide",
@@ -54,15 +56,15 @@ docker = [
 ]
 
 cpp = [
-    "llvm-20",
+    "llvm-19",
     "clang",
     "clangd",
     "clang-format",
-    "clang-20",
-    "clangd-20",
-    "clang-format-20",
-    "gcc-15",
-    "g++-15",
+    "clang-19",
+    "clangd-19",
+    "clang-format-19",
+    "gcc-14",
+    "g++-14",
     "bear",
     "cmake",
     "valgrind"    

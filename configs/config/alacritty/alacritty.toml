@@ -6,12 +6,12 @@ decorations = "Full"
 decorations_theme_variant = "Dark"
 
 [font]
-normal.family = "JetBrains Mono"
-bold.family = "JetBrains Mono"
-size = 9
+normal.family = "Cascadia Code"
+bold.family = "Cascadia Code"
+size = 8
 offset.x = 0
-offset.y = 4
-glyph_offset.y = 4
+offset.y = 5
+glyph_offset.y = 5
 
 [cursor]
 style = { shape = "block" }
