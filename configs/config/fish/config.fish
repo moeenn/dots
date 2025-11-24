@@ -25,7 +25,8 @@ set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
 set NODEBIN {$HOME}/.npm/bin
 set GOINSTALL /usr/local/go/bin
 set GOBIN {$HOME}/go/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN}
+set SCALABIN {$HOME}/.coursier/bin
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$SCALABIN}
 
 # --------------------------------------------------------------------
 #
@@ -86,3 +87,7 @@ alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 alias m mvn
 alias valgrind "valgrind -s --leak-check=full --show-leak-kinds=all"
 alias cfmt "clang-format -style=Microsoft -i"
+
+# >>> coursier install directory >>>
+set -gx PATH "$PATH:/home/moeenn/.config/coursier/bin"
+# <<< coursier install directory <<<
