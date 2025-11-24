@@ -60,7 +60,6 @@ alias winclass="xprop WM_CLASS"
 alias keyname="xev | grep keysym"
 
 # super-user tasks.
-alias _="sudo"
 alias full_access="sudo chmod -R a+rw ./"
 alias mount="sudo mount -o rw"
 
@@ -79,7 +78,6 @@ alias pull="git pull"
 alias dc="docker-compose"
 alias py="python3"
 alias delete_dstore="find . -name '.DS_Store' -type f -delete -print"
-alias m=mvn
 alias ctest="ctest --output-on-failure"
 alias valgrind="valgrind -s --leak-check=full --show-leak-kinds=all"
 
