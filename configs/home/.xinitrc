@@ -7,7 +7,7 @@ xset r rate 300 50 &
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY &
 
 # start status bar.
-cwmbar &
+# cwmbar &
 
 # start wm.
 exec cwm

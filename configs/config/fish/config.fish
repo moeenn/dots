@@ -86,3 +86,4 @@ alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 alias m mvn
 alias valgrind "valgrind -s --leak-check=full --show-leak-kinds=all"
 alias cfmt "clang-format -style=Microsoft -i"
+
