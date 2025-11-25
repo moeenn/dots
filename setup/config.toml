@@ -55,6 +55,7 @@ flatpak = [
 docker = [
     "docker.io",
     "docker-compose",
+    "docker-buildx"
 ]
 
 cpp = [
@@ -90,17 +91,14 @@ java = [
 ]
 
 cwm = [
-    "yaru-theme-icon",
-    "yaru-theme-gtk",
     "cwm",
     "lxappearance",
     "alacritty",
     "thunar",
     "viewnior",
     "i3lock",
-    "gmrun",
     "picom",
     "dzen2",
-    "mousepad",
-    "nwg-look",
+    "dmenu",
+    "mousepad"
 ]
