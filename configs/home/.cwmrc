@@ -5,9 +5,9 @@ sticky                  yes
 fontname                "Roboto:pixelsize=10:regular"
  
 # Appearance
-#borderwidth             1
-#color activeborder      "#d7d3cf"
-#color inactiveborder    "#d7d3cf"
+borderwidth             1
+color activeborder      "#8c8c8c"
+color inactiveborder    "#404040"
 #color urgencyborder     "#d7d3cf"
  
 # Menu colors
@@ -108,6 +108,6 @@ bind-key S4-Right  window-resize-right
 
 # Application commands.
 bind-key M-p dmenu_run
-bind-key 4-t st
+bind-key 4-t xterm
 # bind-key 4-e thunar
 bind-key 4-l "i3lock -c 000000"
