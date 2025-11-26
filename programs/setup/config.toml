@@ -1,13 +1,10 @@
-[packages]
-base = [
-    "openssh-server",
+[system_packages]
+base_packages = [
     "kakoune",
-    "flatpak",
     "make",
     "cmake",
     "network-manager",
     "net-tools",
-    "libgdk-pixbuf-2.0-dev",
     "bwm-ng",
     "tty-clock",
     "jq",
@@ -17,7 +14,6 @@ base = [
     "wget",
     "zip",
     "dtrx",
-    "gparted",
     "git",
     "htop",
     "redshift",
@@ -26,23 +22,44 @@ base = [
     "xterm",
     "acpi",
     "lm-sensors",
-    "hsetroot",
     "p7zip",
     "fonts-jetbrains-mono",
     "fonts-roboto",
     "fonts-cascadia-code",
     "gnome-themes-extra",
-    "mpv",
+    "tango-icon-theme",
+    "tango-icon-theme-common",
+    "tango-icon-theme-extras",
     "zoxide",
     "pkg-config",
     "rsync",
-    "imv",
-    "nwg-look",
-    "gimp",
-    "transmission-gtk"
+    "scrot",
 ]
 
-flatpak = [
+common_apps = [
+    "gimp",
+    "transmission-gtk",
+    "mpv",
+    "gparted",
+    "bleachbit",
+]
+
+
+[docker]
+system_packages = [
+    "docker.io",
+    "docker-compose",
+    "docker-buildx"
+]
+
+
+[java]
+system_packages = ["openjdk-21-jdk", "maven"]
+
+
+[flatpak]
+system_packages = ["flatpak"]
+packages = [
     "org.chromium.Chromium",
     "com.bitwarden.desktop",
     "md.obsidian.Obsidian",
@@ -52,49 +69,44 @@ flatpak = [
     "com.simplenote.Simplenote",
 ]
 
-docker = [
-    "docker.io",
-    "docker-compose",
-    "docker-buildx"
-]
 
-cpp = [
-    "llvm-19",
+[nodejs]
+version = 25
+global_deps = ["npm", "typescript-language-server"]
+
+
+[cpp]
+llvm_version = 19
+gcc_version = 14
+packages = [
+    "llvm-[llvm_version]",
     "clang",
     "clangd",
     "clang-format",
-    "clang-19",
-    "clangd-19",
-    "clang-format-19",
-    "gcc-14",
-    "g++-14",
+    "clang-[llvm_version]",
+    "clangd-[llvm_version]",
+    "clang-format-[llvm_version]",
+    "gcc-[gcc_version]",
+    "g++-[gcc_version]",
     "bear",
     "cmake",
-    "valgrind"    
+    "valgrind"
 ]
 
-python = [
-    "python3-pip",
-    "python3-venv",
-    "pipx",
-]
 
-pip = [
-    "pyright",
-    "ruff",
-    "mypy",
-]
+[python]
+system_packages = ["python3-pip", "python3-venv", "pipx"]
+pip_packages = ["pyright", "ruff", "mypy"]
 
-java = [
-    "openjdk-21-jdk",
-    "maven",
-]
 
-cwm = [
+[xorg]
+system_packages = [
     "cwm",
+    "hsetroot",
     "lxappearance",
     "alacritty",
     "thunar",
+    "imv",
     "viewnior",
     "i3lock",
     "picom",
