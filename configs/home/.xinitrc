@@ -12,6 +12,9 @@ picom &
 # set warn colors.
 redshift -O 5000 &
 
+# set background color.
+hsetroot -solid '#102030' &
+
 # start status bar.
 # cwmbar &
 
