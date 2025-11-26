@@ -1,4 +1,4 @@
-theme = "kaolin-light"
+theme = "gruvbox_light_hard"
 
 [editor]
 line-number = "absolute"
