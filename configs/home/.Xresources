@@ -12,38 +12,38 @@ xterm*geometry: 100x20
 xterm*selectToClipboard: true
 XTerm*internalBorder: 4
 
-*.background:  #181818
-*.foreground:  #d8d8d8
-*.cursorColor: #d8d8d8
+*.background:  #f9f5d7
+*.foreground:  #657b83
+*.cursorColor: #657b83
 
 ! black
-*.color0:      #000000
-*.color8:      #777777
+*.color0:      #eee0b7
+*.color8:      #654735
 
 ! red
-*.color1:      #ac4242
-*.color9:      #ac4242
+*.color1:      #c14a4a
+*.color9:      #c14a4a
 
 ! green
-*.color2:      #90a959
-*.color10:     #90a959
+*.color2:      #6c782e
+*.color10:     #6c782e
 
 ! yellow
-*.color3:      #f4bf75
-*.color11:     #f4bf75
+*.color3:      #b47109
+*.color11:     #b47109
 
 ! blue
-*.color4:      #6a9fb5
-*.color12:     #6a9fb5
+*.color4:      #45707a
+*.color12:     #45707a
 
 ! magenta
-*.color5:      #aa759f
-*.color13:     #aa759f
+*.color5:      #945e80
+*.color13:     #945e80
 
 ! cyan
-*.color6:      #75b5aa
-*.color14:     #75b5aa
+*.color6:      #4c7a5d
+*.color14:     #4c7a5d
 
 ! white
-*.color7:      #d8d8d8
-*.color15:     #d8d8d8
+*.color7:      #eee0b7
+*.color15:     #eee0b7
