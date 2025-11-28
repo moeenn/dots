@@ -44,6 +44,14 @@ common_apps = [
     "bleachbit",
 ]
 
+[flatpak]
+packages = [
+    "org.chromium.Chromium",
+    "com.bitwarden.desktop",
+    "md.obsidian.Obsidian",
+    "io.beekeeperstudio.Studio",
+    "com.usebruno.Bruno"
+]
 
 [docker]
 system_packages = [
@@ -52,28 +60,9 @@ system_packages = [
     "docker-buildx"
 ]
 
-
-[java]
-system_packages = ["openjdk-21-jdk", "maven"]
-
-
-[flatpak]
-system_packages = ["flatpak"]
-packages = [
-    "org.chromium.Chromium",
-    "com.bitwarden.desktop",
-    "md.obsidian.Obsidian",
-    "io.beekeeperstudio.Studio",
-    "com.github.alecaddd.sequeler",
-    "com.usebruno.Bruno",
-    "com.simplenote.Simplenote",
-]
-
-
 [nodejs]
 version = 25
 global_deps = ["npm", "typescript-language-server"]
-
 
 [cpp]
 llvm_version = 19
@@ -93,11 +82,12 @@ packages = [
     "valgrind"
 ]
 
-
 [python]
 system_packages = ["python3-pip", "python3-venv", "pipx"]
 pip_packages = ["pyright", "ruff", "mypy"]
 
+[java]
+system_packages = ["openjdk-21-jdk", "maven"]
 
 [xorg]
 system_packages = [
