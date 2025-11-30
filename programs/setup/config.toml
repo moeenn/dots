@@ -63,6 +63,12 @@ system_packages = [
 
 [go]
 version = "1.25.4"
+packages = [
+    "golang.org/x/tools/gopls@latest",
+    "github.com/go-delve/delve/cmd/dlv@latest",
+    "github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest",
+    "github.com/nametake/golangci-lint-langserver@latest",
+]
 
 [nodejs]
 version = 25

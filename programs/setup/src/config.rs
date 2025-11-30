@@ -254,6 +254,7 @@ impl Executable for ConfigFish {
 #[derive(Deserialize)]
 pub struct ConfigGo {
     version: String,
+    packages: Vec<String>,
 }
 
 impl ConfigGo {
@@ -342,6 +343,27 @@ impl ConfigGo {
             }
         }
     }
+
+    fn install_go_package(&self, pkg: &String) -> Result<(), ExecutionError> {
+        let mut cmd = Command::new("go");
+        cmd.arg("install").arg("-v").arg(pkg);
+
+        match cmd.status().is_ok() {
+            true => Ok(()),
+            false => Err(ExecutionError::GoPackageInstallationFailed),
+        }
+    }
+
+    fn install_go_packages(&self) -> Result<(), ExecutionError> {
+        for pkg in self.packages.iter() {
+            match self.install_go_package(pkg) {
+                Ok(_) => continue,
+                Err(e) => return Err(e),
+            };
+        }
+
+        Ok(())
+    }
 }
 
 impl Executable for ConfigGo {
@@ -353,7 +375,10 @@ impl Executable for ConfigGo {
         let extract_path = self.extract_installer(&download_path)?;
 
         log::info("placing go files in path");
-        self.place_in_path(&extract_path)
+        self.place_in_path(&extract_path)?;
+
+        log::info("installing go packages");
+        self.install_go_packages()
     }
 }
 

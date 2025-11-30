@@ -21,6 +21,7 @@ pub enum ExecutionError {
     GoInstallerExtractFailed,
     GoPrevVersionCleanupFailed,
     GoInstallerMoveFailed,
+    GoPackageInstallationFailed,
     PythonInstallationFailed,
     PythonPipPackagesInstallationFailed,
     JavaInstallationFailed,
@@ -98,6 +99,9 @@ impl std::fmt::Display for ExecutionError {
             }
             ExecutionError::GoInstallerMoveFailed => {
                 write!(f, "failed to move install go files")
+            }
+            ExecutionError::GoPackageInstallationFailed => {
+                write!(f, "failed to install go package")
             }
             ExecutionError::PythonInstallationFailed => {
                 write!(f, "failed to install python")
