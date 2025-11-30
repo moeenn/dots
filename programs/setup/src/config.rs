@@ -1,15 +1,26 @@
 mod executable;
-use executable::{Executable, ExecutionError};
 
 use crate::log;
+use executable::{Executable, ExecutionError};
+use flate2::read::GzDecoder;
+use reqwest::blocking::Client;
 use serde::Deserialize;
 use std::{fs, process::Command};
+use std::{fs::File, path::PathBuf};
+use tar::Archive;
 use toml;
 
 fn get_username() -> Result<String, ExecutionError> {
     match std::env::var("USER") {
         Ok(user) => Ok(user),
         Err(_) => Err(ExecutionError::UsernameReadFailed),
+    }
+}
+
+fn get_home() -> Result<String, ExecutionError> {
+    match std::env::var("HOME") {
+        Ok(home) => Ok(home),
+        Err(_) => Err(ExecutionError::HomePathReadFailed),
     }
 }
 
@@ -241,6 +252,112 @@ impl Executable for ConfigFish {
 }
 
 #[derive(Deserialize)]
+pub struct ConfigGo {
+    version: String,
+}
+
+impl ConfigGo {
+    fn get_filename(&self) -> String {
+        format!("go{}.linux-amd64.tar.gz", self.version)
+    }
+
+    fn download_installer(&self) -> Result<PathBuf, ExecutionError> {
+        let filename = self.get_filename();
+        let url = format!("https://go.dev/dl/{}", filename);
+
+        let mut download_path = std::env::temp_dir();
+        download_path.push(filename);
+
+        // if the file already exists, no need to re-download.
+        if download_path.exists() {
+            return Ok(download_path);
+        }
+
+        let client = Client::new();
+        let req = match client.get(url).send() {
+            Ok(r) => r,
+            Err(_) => return Err(ExecutionError::GoDownloadFailed),
+        };
+
+        let mut download_file = match File::create(&download_path) {
+            Ok(f) => f,
+            Err(_) => return Err(ExecutionError::GoDownloadFileCreateFailed),
+        };
+
+        let res = match req.bytes() {
+            Ok(b) => b,
+            Err(_) => return Err(ExecutionError::GoDownloadInvalidResponse),
+        };
+
+        match std::io::copy(&mut res.as_ref(), &mut download_file) {
+            Ok(_) => {}
+            Err(_) => return Err(ExecutionError::GoDownloadCopyError),
+        };
+
+        Ok(download_path)
+    }
+
+    fn extract_installer(&self, download_path: &PathBuf) -> Result<PathBuf, ExecutionError> {
+        let downloaded_file = match File::open(download_path) {
+            Ok(f) => f,
+            Err(_) => return Err(ExecutionError::GoDownloadFileReadFailed),
+        };
+
+        let gz_decoder = GzDecoder::new(downloaded_file);
+        let mut archive = Archive::new(gz_decoder);
+
+        let mut extract_folder = std::env::temp_dir();
+        match archive.unpack(&extract_folder) {
+            Ok(_) => {
+                extract_folder.push("go");
+                return Ok(extract_folder);
+            }
+            Err(_) => return Err(ExecutionError::GoInstallerExtractFailed),
+        }
+    }
+
+    fn place_in_path(&self, source_folder: &PathBuf) -> Result<(), ExecutionError> {
+        let homepath = match get_home() {
+            Ok(p) => p,
+            Err(e) => return Err(e),
+        };
+
+        let mut target_path = PathBuf::new();
+        target_path.push(homepath);
+        target_path.push(".local");
+        target_path.push("go");
+
+        if target_path.exists() {
+            match std::fs::remove_dir_all(&target_path) {
+                Ok(_) => {}
+                Err(_) => return Err(ExecutionError::GoPrevVersionCleanupFailed),
+            };
+        }
+
+        match dircpy::copy_dir(source_folder, target_path) {
+            Ok(_) => Ok(()),
+            Err(e) => {
+                println!("error: {:?}", e);
+                return Err(ExecutionError::GoInstallerMoveFailed);
+            }
+        }
+    }
+}
+
+impl Executable for ConfigGo {
+    fn execute(&self) -> Result<(), ExecutionError> {
+        log::info("downloading go installer");
+        let download_path = self.download_installer()?;
+
+        log::info("extracting installer");
+        let extract_path = self.extract_installer(&download_path)?;
+
+        log::info("placing go files in path");
+        self.place_in_path(&extract_path)
+    }
+}
+
+#[derive(Deserialize)]
 pub struct ConfigNodeJs {
     version: i32,
     global_deps: Vec<String>,
@@ -361,6 +478,7 @@ pub struct Config {
     system_packages: ConfigSystemPackages,
     flatpak: ConfigFlatpak,
     docker: ConfigDocker,
+    go: ConfigGo,
     nodejs: ConfigNodeJs,
     java: ConfigJava,
     cpp: ConfigCpp,
@@ -380,11 +498,7 @@ impl Config {
 
         self.python.execute()?;
         self.java.execute()?;
-
-        // TODO:
-        // - implement cpp.
-        // - implment nodejs.
-
+        self.go.execute()?;
         Ok(())
     }
 }

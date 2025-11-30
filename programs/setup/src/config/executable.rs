@@ -1,5 +1,6 @@
 pub enum ExecutionError {
     UsernameReadFailed,
+    HomePathReadFailed,
     MirrorsUpdateFailed,
     BasePackageInstallationFailed,
     CommonAppsInstallationFailed,
@@ -12,6 +13,14 @@ pub enum ExecutionError {
     FishInstallFailed,
     FishLocationDetectFailed,
     FishSetDefaultFailed,
+    GoDownloadFailed,
+    GoDownloadFileCreateFailed,
+    GoDownloadInvalidResponse,
+    GoDownloadCopyError,
+    GoDownloadFileReadFailed,
+    GoInstallerExtractFailed,
+    GoPrevVersionCleanupFailed,
+    GoInstallerMoveFailed,
     PythonInstallationFailed,
     PythonPipPackagesInstallationFailed,
     JavaInstallationFailed,
@@ -23,6 +32,9 @@ impl std::fmt::Display for ExecutionError {
         match self {
             ExecutionError::UsernameReadFailed => {
                 write!(f, "failed to read $USER variable")
+            }
+            ExecutionError::HomePathReadFailed => {
+                write!(f, "failed to read $HOME variable")
             }
             ExecutionError::MirrorsUpdateFailed => {
                 write!(f, "failed to update packae manager mirrors")
@@ -59,6 +71,33 @@ impl std::fmt::Display for ExecutionError {
             }
             ExecutionError::FishSetDefaultFailed => {
                 write!(f, "failed to set fish shell as default")
+            }
+            ExecutionError::GoDownloadFailed => {
+                write!(f, "failed to download go installer")
+            }
+            ExecutionError::GoDownloadFileCreateFailed => {
+                write!(f, "failed to create download file on disk")
+            }
+            ExecutionError::GoDownloadInvalidResponse => {
+                write!(
+                    f,
+                    "unexpected response received when downloading go installer"
+                )
+            }
+            ExecutionError::GoDownloadCopyError => {
+                write!(f, "failed to write go installer archive into download file")
+            }
+            ExecutionError::GoDownloadFileReadFailed => {
+                write!(f, "failed to read go installer")
+            }
+            ExecutionError::GoInstallerExtractFailed => {
+                write!(f, "failed to extract go installer")
+            }
+            ExecutionError::GoPrevVersionCleanupFailed => {
+                write!(f, "failed to remove previous go installation files")
+            }
+            ExecutionError::GoInstallerMoveFailed => {
+                write!(f, "failed to move install go files")
             }
             ExecutionError::PythonInstallationFailed => {
                 write!(f, "failed to install python")

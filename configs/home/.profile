@@ -3,7 +3,7 @@ XDG_DATA_HOME=${HOME}/.config
 XDG_DATA_DIRS=${XDG_DATA_DIRS}:${XDG_DATA_HOME}/flatpak/exports/share
 FLATPAKBIN=/var/lib/flatpak/exports/bin
 NODEBIN=${HOME}/.npm/bin
-GOINSTALL=/usr/local/go/bin
+GOINSTALL=$HOME/.local/go/bin
 GOBIN=${HOME}/go/bin
 CARGOBIN=${HOME}/.cargo/bin
 
@@ -13,3 +13,4 @@ PATH=${PATH}:${NODEBIN}:${GOINSTALL}:${GOBIN}:${CARGOBIN}
 
 export DISPLAY GSETTINGS_SCHEMA_DIR LC_CTYPE XDG_DATA_HOME XDG_DATA_DIRS PATH
 
+. "/home/moeenn/.deno/env"

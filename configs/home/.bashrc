@@ -81,3 +81,4 @@ alias delete_dstore="find . -name '.DS_Store' -type f -delete -print"
 alias ctest="ctest --output-on-failure"
 alias valgrind="valgrind -s --leak-check=full --show-leak-kinds=all"
 
+. "/home/moeenn/.deno/env"
