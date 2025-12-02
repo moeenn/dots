@@ -1,6 +1,8 @@
+mod confirm;
 mod executable;
 
 use crate::log;
+use confirm::confirm;
 use executable::{Executable, ExecutionError};
 use flate2::read::GzDecoder;
 use reqwest::blocking::Client;
@@ -69,14 +71,21 @@ impl ConfigSystemPackages {
 
 impl Executable for ConfigSystemPackages {
     fn execute(&self) -> Result<(), ExecutionError> {
-        log::info("\nupdating mirrors");
-        self.update_pm_mirrors()?;
+        if confirm("Update mirrors?") {
+            log::info("updating mirrors");
+            self.update_pm_mirrors()?;
+        }
 
-        log::info("\ninstalling base packages");
-        self.install_base_packages()?;
+        if confirm("Install base packages?") {
+            log::info("installing base packages");
+            self.install_base_packages()?;
+        }
 
-        log::info("\ninstalling common apps");
-        self.install_common_apps()?;
+        if confirm("Install common apps?") {
+            log::info("installing common apps");
+            self.install_common_apps()?;
+        }
+
         Ok(())
     }
 }
@@ -127,14 +136,19 @@ impl ConfigFlatpak {
 
 impl Executable for ConfigFlatpak {
     fn execute(&self) -> Result<(), ExecutionError> {
-        log::info("\ninstalling flatpak support");
-        self.install_flatpak_support()?;
+        if confirm("Add flatpak support?") {
+            log::info("installing flatpak support");
+            self.install_flatpak_support()?;
 
-        log::info("\nconfiguring flatpak repositories");
-        self.configrure_flatpaks()?;
+            log::info("configuring flatpak repositories");
+            self.configrure_flatpaks()?;
+        }
 
-        log::info("\ninstalling flatpaks");
-        self.install_flatpaks()?;
+        if confirm("Install flatpaks?") {
+            log::info("installing flatpaks");
+            self.install_flatpaks()?;
+        }
+
         Ok(())
     }
 }
@@ -181,15 +195,17 @@ impl ConfigDocker {
 
 impl Executable for ConfigDocker {
     fn execute(&self) -> Result<(), ExecutionError> {
-        log::info("\ninstalling docker support");
-        self.install_support()?;
+        if confirm("Install and configure docker?") {
+            log::info("installing docker support");
+            self.install_support()?;
 
-        log::info("\nadding docker group to the system");
-        self.add_docker_group()?;
+            log::info("adding docker group to the system");
+            self.add_docker_group()?;
 
-        let user = get_username()?;
-        log::info("\nadding current user to the docker group");
-        self.add_user_to_docker_group(user)?;
+            let user = get_username()?;
+            log::info("adding current user to the docker group");
+            self.add_user_to_docker_group(user)?;
+        }
 
         Ok(())
     }
@@ -238,13 +254,13 @@ impl ConfigFish {
 
 impl Executable for ConfigFish {
     fn execute(&self) -> Result<(), ExecutionError> {
-        log::info("\ninstalling fish shell");
+        log::info("installing fish shell");
         self.install_fish()?;
 
         let username = get_username()?;
         let fish_location = self.whereis_fish()?;
 
-        log::info("\nsetting fish as default shell");
+        log::info("setting fish as default shell");
         self.set_fish_as_default(username, fish_location)?;
 
         Ok(())
@@ -368,17 +384,23 @@ impl ConfigGo {
 
 impl Executable for ConfigGo {
     fn execute(&self) -> Result<(), ExecutionError> {
-        log::info("downloading go installer");
-        let download_path = self.download_installer()?;
+        if confirm("Install golang?") {
+            log::info("downloading go installer");
+            let download_path = self.download_installer()?;
 
-        log::info("extracting installer");
-        let extract_path = self.extract_installer(&download_path)?;
+            log::info("extracting installer");
+            let extract_path = self.extract_installer(&download_path)?;
 
-        log::info("placing go files in path");
-        self.place_in_path(&extract_path)?;
+            log::info("placing go files in path");
+            self.place_in_path(&extract_path)?;
+        }
 
-        log::info("installing go packages");
-        self.install_go_packages()
+        if confirm("Install go packages?") {
+            log::info("installing go packages");
+            self.install_go_packages()?;
+        }
+
+        Ok(())
     }
 }
 
@@ -431,11 +453,13 @@ impl ConfigPython {
 
 impl Executable for ConfigPython {
     fn execute(&self) -> Result<(), ExecutionError> {
-        log::info("\ninstalling python");
-        self.install_packages()?;
+        if confirm("Install and configure python?") {
+            log::info("installing python");
+            self.install_packages()?;
 
-        log::info("\ninstalling pip packages");
-        self.install_pip_packages()?;
+            log::info("installing pip packages");
+            self.install_pip_packages()?;
+        }
 
         Ok(())
     }
@@ -464,8 +488,11 @@ impl ConfigJava {
 
 impl Executable for ConfigJava {
     fn execute(&self) -> Result<(), ExecutionError> {
-        log::info("\ninstalling java");
-        self.install_packages()?;
+        if confirm("Install java?") {
+            log::info("installing java");
+            self.install_packages()?;
+        }
+
         Ok(())
     }
 }
@@ -492,8 +519,11 @@ impl ConfigXorg {
 
 impl Executable for ConfigXorg {
     fn execute(&self) -> Result<(), ExecutionError> {
-        log::info("\ninstalling xorg packages");
-        self.install_packages()?;
+        if confirm("Install xorg packages?") {
+            log::info("installing xorg packages");
+            self.install_packages()?;
+        }
+
         Ok(())
     }
 }
@@ -518,8 +548,10 @@ impl Config {
         self.docker.execute()?;
         self.xorg.execute()?;
 
-        let fish = ConfigFish {};
-        fish.execute()?;
+        if confirm("Install fish?") {
+            let fish = ConfigFish {};
+            fish.execute()?;
+        }
 
         self.python.execute()?;
         self.java.execute()?;

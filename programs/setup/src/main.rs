@@ -21,7 +21,7 @@ fn main() {
     };
 
     match parsed_config.execute() {
-        Ok(_) => println!("Setup successfull."),
+        Ok(_) => println!("{}Setup completed.{}", log::COLOR_BLUE, log::COLOR_RESET),
         Err(err) => {
             eprintln!("{}error: {}.{}", log::COLOR_RED, err, log::COLOR_RESET);
             std::process::exit(1);
