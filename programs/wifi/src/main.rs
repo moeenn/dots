@@ -67,7 +67,7 @@ fn parse_action(args: Vec<String>) -> Result<Action, ParseActionError> {
 }
 
 fn print_help() -> bool {
-    let help = "usage: wifi [COMMAND] [PACKAGES]
+    let help = "usage: wifi [COMMAND]
 
 commands:
     help     (h)   display this help message and exit.
