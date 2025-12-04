@@ -77,7 +77,6 @@ packages = [
 ]
 
 [nodejs]
-version = 25
 global_deps = ["npm", "typescript-language-server"]
 
 [cpp]

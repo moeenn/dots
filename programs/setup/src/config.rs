@@ -406,8 +406,64 @@ impl Executable for ConfigGo {
 
 #[derive(Deserialize)]
 pub struct ConfigNodeJs {
-    version: i32,
     global_deps: Vec<String>,
+}
+
+impl ConfigNodeJs {
+    fn install_node(&self) -> Result<(), ExecutionError> {
+        let mut cmd = Command::new("sudo");
+        cmd.arg("apt-get").arg("install").arg("-y").arg("nodejs");
+
+        match cmd.status().is_ok() {
+            true => Ok(()),
+            false => Err(ExecutionError::NodeInstallationFailed),
+        }
+    }
+
+    fn set_prefix(&self, home_path: &String) -> Result<(), ExecutionError> {
+        let mut cmd = Command::new("npm");
+        let prefix = format!("prefix={home_path}/.npm");
+        cmd.arg("config").arg("set").arg(prefix);
+
+        match cmd.status().is_ok() {
+            true => Ok(()),
+            false => Err(ExecutionError::NodeSetPrefixFailed),
+        }
+    }
+
+    fn install_global_packages(&self) -> Result<(), ExecutionError> {
+        let mut cmd = Command::new("npm");
+        cmd.arg("i").arg("-g");
+
+        for pkg in self.global_deps.iter() {
+            cmd.arg(pkg);
+        }
+
+        match cmd.status().is_ok() {
+            true => Ok(()),
+            false => Err(ExecutionError::NodeGlobalPackagesInstallationFailed),
+        }
+    }
+}
+
+impl Executable for ConfigNodeJs {
+    fn execute(&self) -> Result<(), ExecutionError> {
+        if confirm("Install and configure NodeJS?") {
+            log::info("installing nodejs");
+            self.install_node()?;
+
+            let home_path = get_home()?;
+            log::info("setting npm prefix");
+            self.set_prefix(&home_path)?;
+        }
+
+        if confirm("Install global npm packages?") {
+            log::info("installing global npm packages");
+            self.install_global_packages()?;
+        }
+
+        Ok(())
+    }
 }
 
 #[derive(Deserialize)]
@@ -553,9 +609,11 @@ impl Config {
             fish.execute()?;
         }
 
+        self.go.execute()?;
+        self.nodejs.execute()?;
         self.python.execute()?;
         self.java.execute()?;
-        self.go.execute()?;
+
         Ok(())
     }
 }

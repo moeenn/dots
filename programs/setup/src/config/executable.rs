@@ -26,6 +26,9 @@ pub enum ExecutionError {
     PythonPipPackagesInstallationFailed,
     JavaInstallationFailed,
     XorgPackagesInstallationFailed,
+    NodeInstallationFailed,
+    NodeSetPrefixFailed,
+    NodeGlobalPackagesInstallationFailed,
 }
 
 impl std::fmt::Display for ExecutionError {
@@ -114,6 +117,15 @@ impl std::fmt::Display for ExecutionError {
             }
             ExecutionError::XorgPackagesInstallationFailed => {
                 write!(f, "failed to install xorg related packages")
+            }
+            ExecutionError::NodeInstallationFailed => {
+                write!(f, "failed to install nodejs")
+            }
+            ExecutionError::NodeSetPrefixFailed => {
+                write!(f, "failed to get prefix config")
+            }
+            ExecutionError::NodeGlobalPackagesInstallationFailed => {
+                write!(f, "failed to install global packages")
             }
         }
     }

@@ -5,7 +5,8 @@ CFLAGS = -Wall -Wextra -std=c23
 BIN_DIR = ~/.local/bin
 
 main:
-	 @${CC} ${SRC} -o ./bin/${TARGET}
+	@mkdir -p bin
+	@${CC} ${SRC} -o ./bin/${TARGET}
 
 clean:
 	rm -f ./bin/*
