@@ -13,7 +13,7 @@ picom &
 redshift -O 5000 &
 
 # set background color.
-hsetroot -solid '#000000' &
+hsetroot -solid '#aba7a7' &
 
 # start status bar.
 # cwmbar &

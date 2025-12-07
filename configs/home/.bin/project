@@ -178,7 +178,7 @@ class CTemplate(BaseTemplate):
         self.files_and_content = {
             main_c_path: self.main_c_content(),
             common_h_path: self.common_h_content(),
-            "CMakeLists.txt": self.cmakelists_content(),
+            "Makefile": self.makefile_content(),
         }
 
     @staticmethod
@@ -186,10 +186,10 @@ class CTemplate(BaseTemplate):
         return "c"
 
     def gitignore_entries(self) -> list[str]:
-        return ["build/*", ".cache/", "compile_commands.json"]
+        return ["bin/*", ".cache/", "compile_commands.json"]
 
     def project_directories(self) -> list[str]:
-        return ["src", "build", "include"]
+        return ["src", "bin", "include"]
 
     def execute(self) -> None:
         super().execute()
@@ -227,19 +227,23 @@ typedef enum {
     }
 		""".lstrip()
 
-    def cmakelists_content(self) -> str:
+    def makefile_content(self) -> str:
         return f"""
-cmake_minimum_required(VERSION 3.10) 
-project({self.project_name} VERSION 1.0 LANGUAGES C)
-set(CMAKE_C_COMPILER "gcc")
-set(CMAKE_C_STANDARD 23) 
-set(CMAKE_BUILD_TYPE Release)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-add_compile_options(-Wall -Wextra -pedantic -Werror)
+NAME={self.project_name}
+CC=cc
+STD=c23
+CFLAGS=-Wall -Wextra -pedantic -Werror -O3
+INC=-I./include
+LDDFLAGS=-lm
 
-add_executable({self.project_name} src/main.c)
-target_include_directories({self.project_name} PUBLIC "include")
-target_link_libraries({self.project_name} PUBLIC m)
+SRC=./src/main.c
+TARGET=./bin/${{NAME}}
+
+main:
+	${{CC}} ${{SRC}} -std=${{STD}} ${{INC}} ${{CFLAGS}} ${{LDDFLAGS}} -o ${{TARGET}}
+
+run: main
+	@${{TARGET}}
 """.lstrip()
 
 
