@@ -79,24 +79,6 @@ packages = [
 [nodejs]
 global_deps = ["npm", "typescript-language-server"]
 
-[cpp]
-llvm_version = 19
-gcc_version = 14
-packages = [
-    "llvm-[llvm_version]",
-    "clang",
-    "clangd",
-    "clang-format",
-    "clang-[llvm_version]",
-    "clangd-[llvm_version]",
-    "clang-format-[llvm_version]",
-    "gcc-[gcc_version]",
-    "g++-[gcc_version]",
-    "bear",
-    "cmake",
-    "valgrind"
-]
-
 [python]
 system_packages = ["python3-pip", "python3-venv", "pipx"]
 pip_packages = ["pyright", "ruff", "mypy"]

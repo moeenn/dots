@@ -467,13 +467,6 @@ impl Executable for ConfigNodeJs {
 }
 
 #[derive(Deserialize)]
-pub struct ConfigCpp {
-    llvm_version: i32,
-    gcc_version: i32,
-    packages: Vec<String>,
-}
-
-#[derive(Deserialize)]
 pub struct ConfigPython {
     system_packages: Vec<String>,
     pip_packages: Vec<String>,
@@ -592,7 +585,6 @@ pub struct Config {
     go: ConfigGo,
     nodejs: ConfigNodeJs,
     java: ConfigJava,
-    cpp: ConfigCpp,
     python: ConfigPython,
     xorg: ConfigXorg,
 }

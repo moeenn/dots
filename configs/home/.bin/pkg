@@ -1,0 +1,112 @@
+#! /bin/python3
+
+import sys
+import subprocess
+
+
+COLOR_RESET = "\033[0m"
+COLOR_RED = "\033[31m"
+COLOR_BLUE = "\033[34m"
+
+SEARCH_CMD = ["apt-cache", "search"]
+INSTALL_CMD = ["sudo", "apt-get", "install", "-y"]
+UPDATE_CMD = ["sudo", "apt-get", "update", "-y"]
+UPGRADE_CMD = ["sudo", "apt-get", "upgrade", "-y"]
+FLATPAK_UPDATE_CMD = ["sudo", "flatpak", "update", "-y"]
+REMOVE_CMD = ["sudo", "apt-get", "remove", "-y"]
+CLEAN_CMD = ["sudo", "apt-get", "autoremove", "--purge", "-y"]
+
+
+def execute(cmd: list[str]) -> None:
+    print(f"\n{COLOR_BLUE}running: {' '.join(cmd)}{COLOR_RESET}")
+    result = subprocess.run(cmd)
+    if result.returncode != 0:
+        sys.exit(1)
+
+
+def flatpak_exists() -> bool:
+    result = subprocess.run(["which", "flatpak"], capture_output=True, text=True)
+    return result.returncode == 0
+
+
+def print_help() -> None:
+    help = """
+usage: pkg [COMMAND] [PACKAGES]
+
+commands:
+    help     (h)   display this help message and exit.
+    search   (s)   search for a single package.
+    install  (i)   install new packages.
+    update   (u)   update installed packages.
+    remove   (r)   remove provided packages.
+    clean    (c)   remove orphan packages.
+    """.lstrip()
+    print(help)
+
+
+def pkg_search(pkg: str) -> None:
+    execute(SEARCH_CMD + [pkg])
+
+
+def pkg_install(pkgs: list[str]) -> None:
+    execute(INSTALL_CMD + pkgs)
+
+
+def pkg_update() -> None:
+    execute(UPDATE_CMD)
+    execute(UPGRADE_CMD)
+    if flatpak_exists():
+        execute(FLATPAK_UPDATE_CMD)
+
+
+def pkg_remove(pkgs: list[str]) -> None:
+    execute(REMOVE_CMD + pkgs)
+    execute(CLEAN_CMD)
+
+
+def pkg_clean() -> None:
+    execute(CLEAN_CMD)
+
+
+def main(args: list[str]) -> None:
+    if len(args) < 2:
+        raise Exception("please provide a command to continue")
+
+    cmd_raw = args[1]
+    match cmd_raw:
+        case "help" | "h":
+            return print_help()
+
+        case "search" | "s":
+            if len(args) > 3:
+                raise Exception("can only search for one package at a time")
+            pkg = args[2]
+            return pkg_search(pkg)
+
+        case "install" | "i":
+            if len(args) < 3:
+                raise Exception("please provide at least one package to install")
+            pkgs = args[2:]
+            return pkg_install(pkgs)
+
+        case "update" | "u":
+            return pkg_update()
+
+        case "remove" | "r":
+            if len(args) < 3:
+                raise Exception("please provide at least one package to remove")
+            pkgs = args[2:]
+            return pkg_remove(pkgs)
+
+        case "clean" | "c":
+            return pkg_clean()
+
+
+if __name__ == "__main__":
+    args = sys.argv[:]
+    try:
+        main(args)
+    except KeyboardInterrupt:
+        print("\nctrl+c: exiting...")
+    except Exception as ex:
+        print(f"{COLOR_RED}error: {str(ex)}.{COLOR_RESET}")
