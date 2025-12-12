@@ -1,4 +1,4 @@
-*font: xft:JetBrains Mono:style=Regular:size=10
+*font: xft:Cascadia Code:style=Regular:size=10
 *allowBoldFonts: false
 *.scaleHeight: 1.3
 

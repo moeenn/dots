@@ -10,8 +10,8 @@ normal.family = "Cascadia Code"
 bold.family = "Cascadia Code"
 size = 8
 offset.x = 0
-offset.y = 5
-glyph_offset.y = 5
+offset.y = 2
+glyph_offset.y = 2
 
 [cursor]
 style = { shape = "block" }

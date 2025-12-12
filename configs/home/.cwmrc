@@ -5,10 +5,10 @@ sticky                  yes
 fontname                "Roboto:pixelsize=10:regular"
  
 # Appearance
-borderwidth             1
-color activeborder      "#8c8c8c"
-color inactiveborder    "#404040"
-#color urgencyborder     "#d7d3cf"
+borderwidth             5
+color activeborder      "#fafafa"
+color inactiveborder    "#f1f1f1"
+#color urgencyborder    "#d7d3cf"
  
 # Menu colors
 #color font              "#483763"
