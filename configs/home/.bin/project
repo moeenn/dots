@@ -10,7 +10,6 @@ class BaseTemplate(ABC):
     """
     abstract class which will be inherited by all template classes.
     """
-
     project_name: str
     project_dir: str
     files_and_content: dict[str, str]
@@ -172,18 +171,14 @@ class CTemplate(BaseTemplate):
     """
     template class for c projects.
     """
-
     def __init__(self, project_name: str) -> None:
         super().__init__(project_name)
-
         main_c_path = os.path.join("src", "main.c")
-        main_test_c_path = os.path.join("tests", "main_test.c")
         common_h_path = os.path.join("include", "common.h")
         self.files_and_content = {
             main_c_path: self.main_c_content(),
-            main_test_c_path: self.main_test_c_content(),
             common_h_path: self.common_h_content(),
-            "CMakeLists.txt": self.cmakelists_content(),
+            "Makefile": self.makefile_content(),
         }
 
     @staticmethod
@@ -191,15 +186,17 @@ class CTemplate(BaseTemplate):
         return "c"
 
     def gitignore_entries(self) -> list[str]:
-        return ["build/*", ".cache/", "compile_commands.json"]
+        return ["bin/*", ".cache/", "compile_commands.json"]
 
     def project_directories(self) -> list[str]:
-        return ["src", "build", "include", "tests"]
+        return ["src", "bin", "include"]
 
     def execute(self) -> None:
         super().execute()
-        cmd = ["clang-format", "--style=WebKit", "-dump-config", ">>", ".clang-format"]
-        subprocess.run(cmd, cwd=self.project_dir)
+        cmd = ["clang-format", "-style=Microsoft", "--dump-config"]
+        output = subprocess.run(cmd, capture_output=True, text=True)
+        with open(os.path.join(self.project_dir, ".clang-format"), "wt") as file:
+            file.write(output.stdout)
 
     def main_c_content(self) -> str:
         return """
@@ -211,22 +208,7 @@ int main()
     printf("hello world\\n");
     return RESULT_OK;
 }
-    """.strip()
-
-    def main_test_c_content(self) -> str:
-        return """
-#include <assert.h>
-
-void test_example()
-{
-    assert(1 == 1);
-}
-
-int main()
-{
-    test_example();
-}
-	""".strip()
+    """.lstrip()
 
     def common_h_content(self) -> str:
         return """
@@ -236,28 +218,33 @@ typedef enum {
     RESULT_OK = 0,
     RESULT_ERR = 1,
 } result_e;
-		""".strip()
 
-    def cmakelists_content(self) -> str:
+#define passert(condition)                                                      \\
+    if (!(condition))                                                           \\
+    {                                                                           \\
+        fprintf(stderr, "%s:%d assertion failed\\n", __FILE_NAME__, __LINE__);   \\
+        exit(EXIT_FAILURE);                                                     \\
+    }
+		""".lstrip()
+
+    def makefile_content(self) -> str:
         return f"""
-cmake_minimum_required(VERSION 3.10) 
-project({self.project_name} VERSION 1.0 LANGUAGES C)
-set(CMAKE_C_COMPILER "gcc")
-set(CMAKE_C_STANDARD 23) 
-set(CMAKE_BUILD_TYPE Release)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-add_compile_options(-Wall -Wextra -pedantic -Werror)
+NAME={self.project_name}
+CC=cc
+STD=c23
+CFLAGS=-Wall -Wextra -pedantic -Werror -O3
+INC=-I./include
+LDDFLAGS=-lm
 
-add_executable({self.project_name} src/main.c)
-target_include_directories({self.project_name} PUBLIC "include")
+SRC=./src/main.c
+TARGET=./bin/${{NAME}}
 
-include(CTest)
-enable_testing()
+main:
+	${{CC}} ${{SRC}} -std=${{STD}} ${{INC}} ${{CFLAGS}} ${{LDDFLAGS}} -o ${{TARGET}}
 
-add_executable(tests tests/main_test.c)
-target_include_directories(tests PUBLIC "include")
-add_test(NAME tests COMMAND tests)
-""".strip()
+run: main
+	@${{TARGET}}
+""".lstrip()
 
 
 class JavaTemplate(BaseTemplate):

@@ -1,0 +1,103 @@
+[system_packages]
+base_packages = [
+    "kakoune",
+    "make",
+    "cmake",
+    "network-manager",
+    "net-tools",
+    "bwm-ng",
+    "tty-clock",
+    "jq",
+    "dzen2",
+    "curl",
+    "axel",
+    "wget",
+    "zip",
+    "dtrx",
+    "git",
+    "htop",
+    "redshift",
+    "dfc",
+    "tmux",
+    "xterm",
+    "acpi",
+    "lm-sensors",
+    "libssl-dev",
+    "libxrandr-dev",
+    "libxinerama-dev",
+    "libxcursor-dev",
+    "libxi-dev",
+    "libopengl-dev",
+    "libgl1-mesa-dev",
+    "p7zip",
+    "fonts-jetbrains-mono",
+    "fonts-roboto",
+    "fonts-cascadia-code",
+    "gnome-themes-extra",
+    "tango-icon-theme",
+    "tango-icon-theme-common",
+    "tango-icon-theme-extras",
+    "zoxide",
+    "pkg-config",
+    "rsync",
+    "scrot",
+]
+
+common_apps = [
+    "gimp",
+    "transmission-gtk",
+    "mpv",
+    "gparted",
+    "bleachbit",
+]
+
+[flatpak]
+packages = [
+    "org.chromium.Chromium",
+    "com.bitwarden.desktop",
+    "md.obsidian.Obsidian",
+    "io.beekeeperstudio.Studio",
+    "com.usebruno.Bruno"
+]
+
+[docker]
+system_packages = [
+    "docker.io",
+    "docker-compose",
+    "docker-buildx"
+]
+
+[go]
+version = "1.25.4"
+packages = [
+    "golang.org/x/tools/gopls@latest",
+    "github.com/go-delve/delve/cmd/dlv@latest",
+    "github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest",
+    "github.com/nametake/golangci-lint-langserver@latest",
+]
+
+[nodejs]
+global_deps = ["npm", "typescript-language-server"]
+
+[python]
+system_packages = ["python3-pip", "python3-venv", "pipx"]
+pip_packages = ["pyright", "ruff", "mypy"]
+
+[java]
+system_packages = ["openjdk-21-jdk", "maven"]
+
+[xorg]
+system_packages = [
+    "cwm",
+    "hsetroot",
+    "lxappearance",
+    "alacritty",
+    "thunar",
+    "imv",
+    "viewnior",
+    "i3lock",
+    "picom",
+    "dzen2",
+    "dmenu",
+    "mousepad"
+]
