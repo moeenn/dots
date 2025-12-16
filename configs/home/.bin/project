@@ -323,32 +323,6 @@ public class MainTest {{
   <artifactId>{self.project_name}</artifactId>
   <version>1.0</version>
 
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifest>
-              <mainClass>com.{self.project_name}.Main</mainClass>
-            </manifest>
-          </archive>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
-        </configuration>
-		<executions>
-		  <execution>
-		    <phase>package</phase>
-			  <goals>
-			  <goal>single</goal>
-			</goals>
-		  </execution>
-		</executions>
-      </plugin>
-    </plugins>
-  </build>
-
   <properties>
     <java.version>21</java.version>
     <exec.mainClass>com.{self.project_name}.Main</exec.mainClass>
@@ -358,6 +332,33 @@ public class MainTest {{
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>    
   </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
+            <manifest>
+              <mainClass>com.{self.project_name}.Main</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
   <dependencies>
     <dependency>
@@ -388,7 +389,6 @@ $ mvn exec:java
 
 # compile.
 $ mvn clean compile package
-$ mvn assembly:single
 
 # run jar.
 $ java -jar ./target/{self.project_name}-1.0-jar-with-dependencies.jar
@@ -700,7 +700,7 @@ test("simple test", async () => {
         "lint": "npx eslint --fix ./src/",
         "check": "npm run type-check && npm run lint",
         "build": "npx esbuild src/main.ts --bundle --outfile=dist/index.js --platform=node --format=esm --packages=external --minify",
-        "test": "node --test"
+        "test": "node --import tsx --test"
     },
     "prettier": {
         "singleQuote": false,
@@ -718,7 +718,8 @@ test("simple test", async () => {
         "eslint": "^9.32.0",
         "prettier": "^3.6.2",
         "typescript": "^5.9.2",
-        "typescript-eslint": "^8.47.0"
+        "typescript-eslint": "^8.47.0",
+        "tsx": "^4.21.0"
     }
 }
 	""".strip()

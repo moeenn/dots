@@ -1,0 +1,90 @@
+#! /bin/python3
+
+import sys
+import subprocess
+
+
+COLOR_RESET = "\033[0m"
+COLOR_RED = "\033[31m"
+COLOR_BLUE = "\033[34m"
+
+
+def execute(cmd: list[str]) -> None:
+    print(f"{COLOR_BLUE}running: {' '.join(cmd)}{COLOR_RESET}")
+    result = subprocess.run(cmd)
+    if result.returncode != 0:
+        sys.exit(1)
+
+def print_help() -> None:
+    help = """
+usage: wifi [COMMAND]
+
+commands:
+    help     (h)   display this help message and exit.
+    status   (s)   current network connection status.
+    list     (l)   list devices and connection names.
+    add      (a)   add a new wifi.
+    connect  (c)   connect to an already added conncection.
+    delete   (d)   delete a wifi connection.
+    """.lstrip()
+    print(help)
+
+
+def wifi_status() -> None:
+    execute(["nmcli", "dev", "status"])
+
+def wifi_list() -> None:
+    execute(["nmcli", "con", "show"])
+
+def wifi_add(ssid: str) -> None:
+    password = input("Password: ").trim()
+    execute(["nmcli", "dev", "wifi", "connect", ssid, "password", password])
+
+def wifi_connect(ssid: str) -> None:
+    execute(["nmcli", "con", "up", ssid, "--ask"])
+
+def wifi_delete(ssid: str) -> None:
+    execute(["nmcli", "con", "del", ssid])
+
+def main(args: list[str]) -> None:
+    if len(args) < 2:
+        raise Exception("please provide a command to continue")
+
+    cmd_raw = args[1]
+    match cmd_raw:
+        case "help" | "h":
+            return print_help()
+
+        case "status" | "s":
+            return wifi_status()
+
+        case "list" | "l":
+            return wifi_list()
+
+        case "add" | "a":
+            if len(args) > 3:
+                raise Exception("please provide only one SSID to add")
+            ssid = args[2].trim()
+            return wifi_add(ssid)
+
+        case "connect" | "c":
+            if len(args) > 3:
+                raise Exception("please provide only one SSID to connect")
+            ssid = args[2].trim()
+            return wifi_connect(ssid)
+
+        case "delete" | "d":
+            if len(args) > 3:
+                raise Exception("please provide only one SSID to delete")
+            ssid = args[2].trim()
+            return wifi_delete(ssid)
+
+
+if __name__ == "__main__":
+    args = sys.argv[:]
+    try:
+        main(args)
+    except KeyboardInterrupt:
+        print("\nctrl+c: exiting...")
+    except Exception as ex:
+        print(f"{COLOR_RED}error: {str(ex)}.{COLOR_RESET}")
