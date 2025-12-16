@@ -1,4 +1,4 @@
-*font: xft:JetBrains Mono:style=Regular:size=10
+*font: xft:JetBrains Mono:style=Regular:size=9
 *allowBoldFonts: false
 *.scaleHeight: 1.3
 
@@ -13,11 +13,11 @@ xterm*selectToClipboard: true
 XTerm*internalBorder: 4
 
 *.background:  #f9f5d7
-*.foreground:  #657b83
-*.cursorColor: #657b83
+*.foreground:  #674937
+*.cursorColor: #674937
 
 ! black
-*.color0:      #eee0b7
+*.color0:      #654735
 *.color8:      #654735
 
 ! red

@@ -24,12 +24,12 @@ typedef struct
 static const size_t TIME_BUF_SIZE = 100;
 static const char *TIME_FORMAT = "%b %d  -  %H:%M";
 static const char *BAR_TITLE = "Bar";
-static const char *FONT = "Roboto:size=12:antialias=true";
+static const char *FONT = "Roboto:size=10:antialias=true";
 static const int BAR_HEIGHT = 50;
-static const int BAR_WIDTH = 200;
+static const int BAR_WIDTH = 160;
 static const unsigned int DISPLAY_PADDING = 10;
-static const position_e POSITION = TOP_RIGHT;
-static const char *BG_COLOR = "#000000";
+static const position_e POSITION = BOTTOM_RIGHT;
+static const char *BG_COLOR = "#574f4f";
 static const char *FG_COLOR = "#ffffff";
 static const int UPDATE_DELAY = 1; // seconds.
 
