@@ -68,7 +68,7 @@ system_packages = [
 ]
 
 [go]
-version = "1.25.4"
+version = "1.25.5"
 packages = [
     "golang.org/x/tools/gopls@latest",
     "github.com/go-delve/delve/cmd/dlv@latest",

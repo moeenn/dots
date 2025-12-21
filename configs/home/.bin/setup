@@ -4,7 +4,8 @@ from dataclasses import dataclass
 import tomllib
 import subprocess
 import os
-
+import tempfile
+import shutil
 
 COLOR_RESET = "\033[0m"
 COLOR_RED = "\033[31m"
@@ -138,9 +139,39 @@ class GoConfig:
     version: str
     packages: list[str]
 
-    # TODO: implement.
+    def __download_tarball(self) -> (str, str):
+        filename = f"go{self.version}.linux-amd64.tar.gz"
+        url = f"https://go.dev/dl/{filename}"
+        download_path = os.path.join(tempfile.gettempdir(), filename)
+
+        if not os.path.exists(download_path):
+            cmd = ["wget", url, "-O", download_path]
+            exec(cmd)
+
+        return (download_path, filename)
+
+    def __extract_tarball(self, filepath: str, filename: str) -> None:
+        out_dir = os.path.join(get_home(), ".local")
+        out_fullpath = os.path.join(out_dir, "go")
+
+        if os.path.exists(out_fullpath):
+            shutil.rmtree(out_fullpath)
+
+        cmd = ["tar", "-xvzf", filepath, "-C", out_dir]
+        exec(cmd)
+
+    def __install_packages(self) -> None:
+        for pkg in self.packages:
+            cmd = ["go", "install", "-v", pkg]
+            exec(cmd)
+
     def apply(self) -> None:
-        pass
+        if confirm("Install go"):
+            download_path, filename = self.__download_tarball()
+            self.__extract_tarball(download_path, filename)
+
+        if confirm("Install go packages"):
+            self.__install_packages()
 
 
 @dataclass
