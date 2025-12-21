@@ -259,11 +259,12 @@ class SymlinksConfig:
             dst = os.path.join(target_path, entry)
 
             if os.path.exists(dst):
-                is_link = os.path.islink(dst)
-                if is_link:
+                if os.path.islink(dst):
                     os.remove(dst)
                 else:
                     backup = os.path.join(target_path, f"{entry}.old")
+                    if os.path.exists(backup):
+                        os.remove(backup)
                     os.rename(dst, backup)
 
             print(f"linking: {dst}")
@@ -272,12 +273,12 @@ class SymlinksConfig:
     def apply(self) -> None:
         """link $HOME files"""
         target_dir = get_home()
-        home_configs = os.path.join(os.getcwd(), "..", "configs", "home")
+        home_configs = os.path.join(os.getcwd(), "configs", "home")
         self.__link_files(home_configs, target_dir)
 
         """ link XDG_CONFIG files """
         target_dir = os.path.join(target_dir, ".config")
-        xdg_configs = os.path.join(os.getcwd(), "..", "configs", "config")
+        xdg_configs = os.path.join(os.getcwd(), "configs", "config")
         self.__link_files(xdg_configs, target_dir)
 
 
