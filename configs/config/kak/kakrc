@@ -1,5 +1,5 @@
 # User preferences
-colorscheme palenight
+colorscheme solarized-light
 set-option global startup_info_version 20221031
 set-option global scrolloff 1,3 
 set global tabstop 4
