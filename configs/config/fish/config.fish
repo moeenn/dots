@@ -57,8 +57,8 @@ alias axel "axel -n 4"
 alias lsblk "lsblk -e 7"
 alias patch "patch -p1 <"
 alias clock "tty-clock -cD"
-alias k "kak"
-alias cf "cfiles"
+alias k kak
+alias cf cfiles
 alias winclass "xprop WM_CLASS"
 alias keyname "xev | grep keysym"
 
@@ -79,10 +79,9 @@ alias push "git push"
 alias pull "git pull"
 
 # programming
-alias dc "docker-compose"
+alias dc "docker compose"
 alias py python3
 alias pm "python3 -m"
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 alias valgrind "valgrind -s --leak-check=full --show-leak-kinds=all"
 alias cfmt "clang-format -style=Microsoft -i"
-
