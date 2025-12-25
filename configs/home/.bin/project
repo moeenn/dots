@@ -655,12 +655,15 @@ test("simple test", async () => {
     def tsconfig_content(self) -> str:
         return """
 {
-	"$schema": "https://json.schemastore.org/tsconfig",
+    "$schema": "https://json.schemastore.org/tsconfig",
     "display": "Strictest",
-	"compilerOptions": {
+    "compilerOptions": {
         "strict": true,
         "allowUnusedLabels": false,
         "allowUnreachableCode": false,
+        "allowImportingTsExtensions": true,
+        "moduleResolution": "bundler",
+        "noEmit": true,
         "exactOptionalPropertyTypes": true,
         "noFallthroughCasesInSwitch": true,
         "noImplicitOverride": true,
@@ -672,19 +675,26 @@ test("simple test", async () => {
         "isolatedModules": true,
         "checkJs": true,
         "esModuleInterop": true,
-		"target": "ESNext",
-		"module": "NodeNext",
-		"verbatimModuleSyntax": true,
-		"skipLibCheck": true,
-		"types": ["node"],
-		"outDir": "./dist",
-		"baseUrl": ".",
-		"paths": {
-			"#src/*": ["./src/*"]
-		}
-	},
-	"exclude": ["node_modules"]
-}        
+        "target": "ESNext",
+        "module": "preserve",
+        "verbatimModuleSyntax": true,
+        "skipLibCheck": true,
+        "types": [
+            "node"
+        ],
+        "outDir": "./dist",
+        "baseUrl": ".",
+        "paths": {
+            "#src/*": [
+                "./src/*"
+            ]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}
 		""".strip()
 
     def package_json_content(self) -> str:
@@ -700,7 +710,7 @@ test("simple test", async () => {
         "lint": "npx eslint --fix ./src/",
         "check": "npm run type-check && npm run lint",
         "build": "npx esbuild src/main.ts --bundle --outfile=dist/index.js --platform=node --format=esm --packages=external --minify",
-        "test": "node --import tsx --test"
+        "test": "node --test"
     },
     "prettier": {
         "singleQuote": false,
@@ -710,7 +720,7 @@ test("simple test", async () => {
         "printWidth": 100
     },
     "imports": {
-        "#src/*": "./dist/*"
+        "#src/*": "./src/*"
     },
     "devDependencies": {
         "@types/node": "^24.2.0",
@@ -718,8 +728,7 @@ test("simple test", async () => {
         "eslint": "^9.32.0",
         "prettier": "^3.6.2",
         "typescript": "^5.9.2",
-        "typescript-eslint": "^8.47.0",
-        "tsx": "^4.21.0"
+        "typescript-eslint": "^8.47.0"
     }
 }
 	""".strip()
