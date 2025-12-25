@@ -1,4 +1,4 @@
-*font: xft:JetBrains Mono:style=Regular:size=9
+*font: xft:Fira Code:style=Regular:size=9
 *allowBoldFonts: false
 *.scaleHeight: 1.3
 
