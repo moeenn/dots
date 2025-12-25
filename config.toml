@@ -8,7 +8,6 @@ base_packages = [
     "bwm-ng",
     "tty-clock",
     "jq",
-    "dzen2",
     "curl",
     "axel",
     "wget",
@@ -22,21 +21,10 @@ base_packages = [
     "xterm",
     "acpi",
     "lm-sensors",
-    "libssl-dev",
-    "libxrandr-dev",
-    "libxinerama-dev",
-    "libxcursor-dev",
-    "libxi-dev",
-    "libopengl-dev",
-    "libgl1-mesa-dev",
     "p7zip",
     "fonts-jetbrains-mono",
     "fonts-roboto",
-    "fonts-cascadia-code",
-    "gnome-themes-extra",
-    "tango-icon-theme",
-    "tango-icon-theme-common",
-    "tango-icon-theme-extras",
+    "fonts-firacode",
     "zoxide",
     "pkg-config",
     "rsync",
@@ -68,7 +56,7 @@ system_packages = [
 ]
 
 [go]
-version = "1.25.4"
+version = "1.25.5"
 packages = [
     "golang.org/x/tools/gopls@latest",
     "github.com/go-delve/delve/cmd/dlv@latest",
@@ -99,5 +87,16 @@ system_packages = [
     "picom",
     "dzen2",
     "dmenu",
-    "mousepad"
+    "mousepad",
+    "gnome-themes-extra",
+    "tango-icon-theme",
+    "tango-icon-theme-common",
+    "tango-icon-theme-extras",
+    "libssl-dev",
+    "libxrandr-dev",
+    "libxinerama-dev",
+    "libxcursor-dev",
+    "libxi-dev",
+    "libopengl-dev",
+    "libgl1-mesa-dev",
 ]

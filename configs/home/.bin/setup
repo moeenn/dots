@@ -1,0 +1,336 @@
+#! /bin/python3
+
+from dataclasses import dataclass
+import tomllib
+import subprocess
+import os
+import tempfile
+import shutil
+
+COLOR_RESET = "\033[0m"
+COLOR_RED = "\033[31m"
+COLOR_BLUE = "\033[34m"
+
+
+def confirm(message: str) -> bool:
+    raw = input(f"\n{message}? [y/n] ")
+    return raw.lower().strip() == "y"
+
+
+def exec(cmd: list[str]) -> None:
+    print(f"{COLOR_BLUE}running: {' '.join(cmd)}{COLOR_RESET}")
+    subprocess.run(cmd)
+
+
+def current_user() -> str:
+    user = os.getenv("USER")
+    return user.strip()
+
+
+def get_home() -> str:
+    home = os.getenv("HOME")
+    return home.strip()
+
+
+@dataclass
+class SystemPackagesConfig:
+    base_packages: list[str]
+    common_apps: list[str]
+
+    def __update_pm_mirrors(self) -> None:
+        exec(["sudo", "apt-get", "update", "-y"])
+
+    def __install_packagse(self) -> None:
+        cmd = ["sudo", "apt-get", "install", "-y"] + self.base_packages
+        exec(cmd)
+
+    def __install_common_apps(self) -> None:
+        cmd = ["sudo", "apt-get", "install", "-y"] + self.common_apps
+        exec(cmd)
+
+    def apply(self) -> None:
+        if confirm("Update mirrors"):
+            self.__update_pm_mirrors()
+
+        if confirm("Install base packages"):
+            self.__install_packagse()
+
+        if confirm("Install common apps"):
+            self.__install_common_apps()
+
+
+@dataclass
+class FlatpakConfig:
+    packages: list[str]
+
+    def __install_support(self) -> None:
+        cmd = ["sudo", "apt-get", "install", "-y", "flatpak"]
+        exec(cmd)
+
+    def __add_default_repo(self) -> None:
+        cmd = [
+            "sudo",
+            "flatpak",
+            "remote-add",
+            "--if-not-exists",
+            "flathub",
+            "https://dl.flathub.org/repo/flathub.flatpakrepo",
+        ]
+        exec(cmd)
+
+    def __install_flatpaks(self) -> None:
+        cmd = ["sudo", "flatpak", "install", "flathub", "-y"] + self.packages
+        exec(cmd)
+
+    def apply(self) -> None:
+        if confirm("Install flatpak support"):
+            self.__install_support()
+            self.__add_default_repo()
+
+        if confirm("Install flatpaks"):
+            self.__install_flatpaks()
+
+
+@dataclass
+class DockerConfig:
+    system_packages: list[str]
+
+    def __install_support(self) -> None:
+        cmd = ["sudo", "apt-get", "install", "-y"] + self.system_packages
+        exec(cmd)
+
+    def __add_docker_group(self) -> None:
+        cmd = ["sudo", "groupadd", "docker"]
+        exec(cmd)
+
+    def __add_to_group(self) -> None:
+        user = current_user()
+        cmd = ["sudo", "usermod", "-aG", "docker", user]
+        exec(cmd)
+
+    def apply(self) -> None:
+        if confirm("Install docker support"):
+            self.__install_support()
+            self.__add_docker_group()
+            self.__add_to_group()
+
+
+@dataclass
+class FishConfig:
+    def __install_support(self) -> None:
+        cmd = ["sudo", "apt-get", "install", "-y", "fish"]
+        exec(cmd)
+
+    def __whereis_fish(self) -> str:
+        result = subprocess.run(["which", "fish"], capture_output=True)
+        return result.stdout.decode("utf-8").strip()
+
+    def apply(self) -> None:
+        if confirm("Install fish shell"):
+            self.__install_support()
+            fish_location = self.__whereis_fish()
+            user = current_user()
+            cmd = ["sudo", "usermod", "-s", fish_location, user]
+            exec(cmd)
+
+
+@dataclass
+class GoConfig:
+    version: str
+    packages: list[str]
+
+    def __download_tarball(self) -> (str, str):
+        filename = f"go{self.version}.linux-amd64.tar.gz"
+        url = f"https://go.dev/dl/{filename}"
+        download_path = os.path.join(tempfile.gettempdir(), filename)
+
+        if not os.path.exists(download_path):
+            cmd = ["wget", url, "-O", download_path]
+            exec(cmd)
+
+        return (download_path, filename)
+
+    def __extract_tarball(self, filepath: str, filename: str) -> None:
+        out_dir = os.path.join(get_home(), ".local")
+        out_fullpath = os.path.join(out_dir, "go")
+
+        if os.path.exists(out_fullpath):
+            shutil.rmtree(out_fullpath)
+
+        cmd = ["tar", "-xvzf", filepath, "-C", out_dir]
+        exec(cmd)
+
+    def __install_packages(self) -> None:
+        for pkg in self.packages:
+            cmd = ["go", "install", "-v", pkg]
+            exec(cmd)
+
+    def apply(self) -> None:
+        if confirm("Install go"):
+            download_path, filename = self.__download_tarball()
+            self.__extract_tarball(download_path, filename)
+
+        if confirm("Install go packages"):
+            self.__install_packages()
+
+
+@dataclass
+class NodeJsConfig:
+    global_deps: list[str]
+
+    def __install_support(self) -> None:
+        cmd = ["sudo", "apt-get", "install", "-y", "nodejs"]
+        exec(cmd)
+
+    def __set_prefix(self) -> None:
+        home = get_home()
+        cmd = ["npm", "config", "set", f"prefix={home}/.npm"]
+        exec(cmd)
+
+    def __install_global_packages(self) -> None:
+        cmd = ["npm", "i", "-g"] + self.global_deps
+        exec(cmd)
+
+    def apply(self) -> None:
+        if confirm("Install nodejs"):
+            self.__install_support()
+            self.__set_prefix()
+
+        if confirm("Install global dependencies"):
+            self.__install_global_packages()
+
+
+@dataclass
+class PythonConfig:
+    system_packages: list[str]
+    pip_packages: list[str]
+
+    def __install_support(self) -> None:
+        cmd = ["sudo", "apt-get", "install", "-y"] + self.system_packages
+        exec(cmd)
+
+    def __install_pip_packages(self) -> None:
+        cmd = ["pipx", "install"] + self.pip_packages
+        exec(cmd)
+
+    def apply(self) -> None:
+        if confirm("Install python support"):
+            self.__install_support()
+
+        if confirm("Install pip packages"):
+            self.__install_pip_packages()
+
+
+@dataclass
+class JavaConfig:
+    system_packages: list[str]
+
+    def __install_support(self) -> None:
+        cmd = ["sudo", "apt-get", "install", "-y"] + self.system_packages
+        exec(cmd)
+
+    def apply(self) -> None:
+        if confirm("Install java support"):
+            self.__install_support()
+
+
+@dataclass
+class XorgConfig:
+    system_packages: list[str]
+
+    def __install_packages(self) -> None:
+        cmd = ["sudo", "apt-get", "install", "-y"] + self.system_packages
+        exec(cmd)
+
+    def apply(self) -> None:
+        if confirm("Install xorg packages"):
+            self.__install_packages()
+
+
+@dataclass
+class SymlinksConfig:
+    def __link_files(self, src_path: str, target_path) -> None:
+        dir_entries = os.listdir(src_path)
+        if not os.path.exists(target_path):
+            os.mkdir(target_path)
+
+        for entry in dir_entries:
+            src = os.path.join(src_path, entry)
+            dst = os.path.join(target_path, entry)
+
+            if os.path.exists(dst):
+                if os.path.islink(dst):
+                    os.remove(dst)
+                else:
+                    backup = os.path.join(target_path, f"{entry}.old")
+                    if os.path.exists(backup):
+                        os.remove(backup)
+                    os.rename(dst, backup)
+
+            print(f"linking: {dst}")
+            os.symlink(src, dst)
+
+    def apply(self) -> None:
+        """link $HOME files"""
+        target_dir = get_home()
+        home_configs = os.path.join(os.getcwd(), "configs", "home")
+        self.__link_files(home_configs, target_dir)
+
+        """ link XDG_CONFIG files """
+        target_dir = os.path.join(target_dir, ".config")
+        xdg_configs = os.path.join(os.getcwd(), "configs", "config")
+        self.__link_files(xdg_configs, target_dir)
+
+
+class Config:
+    system_packages: SystemPackagesConfig
+    flatpak: FlatpakConfig
+    docker: DockerConfig
+    fish: FishConfig
+    go: GoConfig
+    nodejs: NodeJsConfig
+    python: PythonConfig
+    java: JavaConfig
+    xorg: XorgConfig
+    symlink: SymlinksConfig
+
+    def __init__(self) -> None:
+        with open("config.toml", "rb") as f:
+            parsed: dict[str, any] = tomllib.load(f)
+            self.system_packages = SystemPackagesConfig(**parsed["system_packages"])
+            self.flatpak = FlatpakConfig(**parsed["flatpak"])
+            self.docker = DockerConfig(**parsed["docker"])
+            self.fish = FishConfig()
+            self.go = GoConfig(**parsed["go"])
+            self.nodejs = NodeJsConfig(**parsed["nodejs"])
+            self.python = PythonConfig(**parsed["python"])
+            self.java = JavaConfig(**parsed["java"])
+            self.xorg = XorgConfig(**parsed["xorg"])
+            self.symlink = SymlinksConfig()
+
+    def apply_configs(self) -> None:
+        steps = [
+            self.system_packages,
+            self.flatpak,
+            self.docker,
+            self.fish,
+            self.go,
+            self.nodejs,
+            self.python,
+            self.java,
+            self.xorg,
+            self.symlink,
+        ]
+
+        for step in steps:
+            step.apply()
+
+
+if __name__ == "__main__":
+    try:
+        config = Config()
+        config.apply_configs()
+    except KeyboardInterrupt:
+        print(f"{COLOR_BLUE}\nctrl+c: exiting...")
+    except Exception as ex:
+        print(f"{COLOR_RED}error: {str(ex)}")

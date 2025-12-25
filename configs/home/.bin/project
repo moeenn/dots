@@ -45,7 +45,7 @@ class BaseTemplate(ABC):
 
     @staticmethod
     @abstractmethod
-    def template_name() -> str:
+    def template_names() -> list[str]:
         pass
 
     @abstractmethod
@@ -82,8 +82,8 @@ class GoTemplate(BaseTemplate):
         }
 
     @staticmethod
-    def template_name() -> str:
-        return "go"
+    def template_names() -> list[str]:
+        return ["go"]
 
     def gitignore_entries(self) -> list[str]:
         return ["bin"]
@@ -182,8 +182,8 @@ class CTemplate(BaseTemplate):
         }
 
     @staticmethod
-    def template_name() -> str:
-        return "c"
+    def template_names() -> list[str]:
+        return ["c"]
 
     def gitignore_entries(self) -> list[str]:
         return ["bin/*", ".cache/", "compile_commands.json"]
@@ -269,8 +269,8 @@ class JavaTemplate(BaseTemplate):
         }
 
     @staticmethod
-    def template_name() -> str:
-        return "java"
+    def template_names() -> list[str]:
+        return ["java"]
 
     def gitignore_entries(self) -> list[str]:
         return [".classpath", "target", ".project", ".settings", ".idea"]
@@ -415,8 +415,8 @@ class ScalaTemplate(BaseTemplate):
         }
 
     @staticmethod
-    def template_name() -> str:
-        return "scala"
+    def template_names() -> list[str]:
+        return ["scala"]
 
     def gitignore_entries(self) -> list[str]:
         return [
@@ -595,8 +595,8 @@ class TsTemplate(BaseTemplate):
         }
 
     @staticmethod
-    def template_name() -> str:
-        return "ts"
+    def template_names() -> list[str]:
+        return ["ts", "typescript"]
 
     def gitignore_entries(self) -> list[str]:
         return ["node_modules/", ".DS_Store", "dist/"]
@@ -776,8 +776,8 @@ class PythonTemplate(BaseTemplate):
         }
 
     @staticmethod
-    def template_name() -> str:
-        return "py"
+    def template_names() -> list[str]:
+        return ["py", "python"]
 
     def gitignore_entries(self) -> list[str]:
         return [
@@ -873,7 +873,7 @@ def main() -> None:
 
     found = False
     for template in registered_templates:
-        if template.template_name() == args.template:
+        if args.template in template.template_names():
             found = True
             template.execute()
             break
