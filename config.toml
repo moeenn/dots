@@ -44,15 +44,14 @@ packages = [
     "org.chromium.Chromium",
     "com.bitwarden.desktop",
     "md.obsidian.Obsidian",
-    "io.beekeeperstudio.Studio",
+    # "io.beekeeperstudio.Studio",
+    "com.github.alecaddd.sequeler",
     "com.usebruno.Bruno"
 ]
 
 [docker]
 system_packages = [
     "docker.io",
-    "docker-compose",
-    "docker-buildx"
 ]
 
 [go]
