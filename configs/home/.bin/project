@@ -10,6 +10,7 @@ class BaseTemplate(ABC):
     """
     abstract class which will be inherited by all template classes.
     """
+
     project_name: str
     project_dir: str
     files_and_content: dict[str, str]
@@ -171,6 +172,7 @@ class CTemplate(BaseTemplate):
     """
     template class for c projects.
     """
+
     def __init__(self, project_name: str) -> None:
         super().__init__(project_name)
         main_c_path = os.path.join("src", "main.c")

@@ -271,18 +271,42 @@ class SymlinksConfig:
             os.symlink(src, dst)
 
     def apply(self) -> None:
-        """link $HOME files"""
-        target_dir = get_home()
-        home_configs = os.path.join(os.getcwd(), "configs", "home")
-        self.__link_files(home_configs, target_dir)
+        if confirm("Link config files"):
+            """link $HOME files"""
+            target_dir = get_home()
+            home_configs = os.path.join(os.getcwd(), "configs", "home")
+            self.__link_files(home_configs, target_dir)
 
-        """ link XDG_CONFIG files """
-        target_dir = os.path.join(target_dir, ".config")
-        xdg_configs = os.path.join(os.getcwd(), "configs", "config")
-        self.__link_files(xdg_configs, target_dir)
+            """ link XDG_CONFIG files """
+            target_dir = os.path.join(target_dir, ".config")
+            xdg_configs = os.path.join(os.getcwd(), "configs", "config")
+            self.__link_files(xdg_configs, target_dir)
+
+
+@dataclass
+class VscodeConfig:
+    version: str
+
+    def __download(self) -> str:
+        filename = f"codium_{self.version}_amd64.deb"
+        url = f"https://github.com/VSCodium/vscodium/releases/download/{self.version}/{filename}"
+        download_path = os.path.join(tempfile.gettempdir(), filename)
+        cmd = ["wget", url, "-O", download_path]
+        exec(cmd)
+        return download_path
+
+    def __install(self, download_path: str) -> None:
+        cmd = ["sudo", "dpkg", "-i", download_path]
+        exec(cmd)
+
+    def apply(self) -> None:
+        if confirm("Install VSCodium"):
+            download_path = self.__download()
+            self.__install(download_path)
 
 
 class Config:
+    symlink: SymlinksConfig
     system_packages: SystemPackagesConfig
     flatpak: FlatpakConfig
     docker: DockerConfig
@@ -292,7 +316,6 @@ class Config:
     python: PythonConfig
     java: JavaConfig
     xorg: XorgConfig
-    symlink: SymlinksConfig
 
     def __init__(self) -> None:
         with open("config.toml", "rb") as f:
@@ -310,7 +333,9 @@ class Config:
 
     def apply_configs(self) -> None:
         steps = [
+            self.symlink,
             self.system_packages,
+            self.xorg,
             self.flatpak,
             self.docker,
             self.fish,
@@ -318,8 +343,6 @@ class Config:
             self.nodejs,
             self.python,
             self.java,
-            self.xorg,
-            self.symlink,
         ]
 
         for step in steps:

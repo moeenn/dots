@@ -17,6 +17,7 @@ base_packages = [
     "htop",
     "redshift",
     "dfc",
+    "mtr",
     "tmux",
     "xterm",
     "acpi",
@@ -37,6 +38,7 @@ common_apps = [
     "mpv",
     "gparted",
     "bleachbit",
+    "synaptic",
 ]
 
 [flatpak]
@@ -48,6 +50,9 @@ packages = [
     "com.github.alecaddd.sequeler",
     "com.usebruno.Bruno"
 ]
+
+[vscode]
+version = "1.107.18627"
 
 [docker]
 system_packages = [
@@ -84,13 +89,9 @@ system_packages = [
     "viewnior",
     "i3lock",
     "picom",
-    "dzen2",
     "dmenu",
     "mousepad",
     "gnome-themes-extra",
-    "tango-icon-theme",
-    "tango-icon-theme-common",
-    "tango-icon-theme-extras",
     "libssl-dev",
     "libxrandr-dev",
     "libxinerama-dev",
