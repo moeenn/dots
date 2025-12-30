@@ -1,0 +1,40 @@
+[Document 0]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=TOML
+Highlighting Set By User=false
+Indentation Mode=normal
+Mode=TOML
+Mode Set By User=false
+URL=file:///home/moeenn/.dots/config.toml
+
+[MainWindow0]
+1920x1080 screen: Window-Maximized=true
+1920x1080 screen: XPosition=711
+1920x1080 screen: YPosition=335
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAABIAAAAJvAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAHv/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+eDP=eDP
+
+[MainWindow0 Settings]
+1920x1080 screen: Window-Maximized=true
+1920x1080 screen: XPosition=711
+1920x1080 screen: YPosition=335
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAABIAAAAJvAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAHv/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+WindowState=8
+eDP=eDP
+
+[Open Documents]
+Count=1
+
+[Open MainWindows]
+Count=1
+
+[Recent Files]
+File1[$e]=$HOME/.dots/configs/home/.ssh/set_permissions.sh
+File2[$e]=$HOME/.dots/config.toml
+Name1[$e]=set_permissions.sh
+Name2[$e]=config.toml
