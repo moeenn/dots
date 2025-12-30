@@ -104,6 +104,9 @@ def main(args: list[str]) -> None:
         case "clean" | "c":
             return pkg_clean()
 
+        case _:
+            raise Exception(f"invalid command: '{cmd_raw}'")
+
 
 if __name__ == "__main__":
     args = sys.argv[:]

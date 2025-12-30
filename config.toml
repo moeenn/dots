@@ -33,8 +33,9 @@ base_packages = [
 ]
 
 common_apps = [
+    "chromium",
     "gimp",
-    "transmission-gtk",
+    "transmission-qt",
     "mpv",
     "gparted",
     "bleachbit",
@@ -43,12 +44,12 @@ common_apps = [
 
 [flatpak]
 packages = [
-    "org.chromium.Chromium",
+	"org.chromium.Chromium",
     "com.bitwarden.desktop",
-    "md.obsidian.Obsidian",
-    # "io.beekeeperstudio.Studio",
+    #"md.obsidian.Obsidian",
+    "io.beekeeperstudio.Studio",
     "com.github.alecaddd.sequeler",
-    "com.usebruno.Bruno"
+    #"com.usebruno.Bruno"
 ]
 
 [vscode]
@@ -69,6 +70,7 @@ packages = [
 ]
 
 [nodejs]
+version = "25"
 global_deps = ["npm", "typescript-language-server"]
 
 [python]

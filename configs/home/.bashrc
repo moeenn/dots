@@ -42,7 +42,7 @@ bind '"\e[Z":menu-complete' # use Shift-tab to select tab suggestion.
 alias cd="z"
 alias :q="exit"
 alias :Q="exit"
-alias ls="ls -aC --color=auto"
+alias ls="ls -aC --color=never"
 alias reload="source ~/.bashrc"
 
 # programs.

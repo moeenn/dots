@@ -40,7 +40,7 @@ alias mv "mv -iv"
 alias rsync "rsync -av --progress"
 alias rm "rm -iv"
 alias link "ln -sr"
-alias ls "ls -ap --color=always"
+alias ls "ls -ap --color=never"
 alias lsa "ls -alp"
 alias :w which
 alias :q exit
@@ -79,13 +79,10 @@ alias push "git push"
 alias pull "git pull"
 
 # programming
-alias dc "docker compose"
+alias dc "docker-compose"
 alias py python3
 alias pm "python3 -m"
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 alias valgrind "valgrind -s --leak-check=full --show-leak-kinds=all"
 alias cfmt "clang-format -style=Microsoft -i"
 
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH

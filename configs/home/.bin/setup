@@ -6,10 +6,16 @@ import subprocess
 import os
 import tempfile
 import shutil
+from typing import Protocol
 
 COLOR_RESET = "\033[0m"
 COLOR_RED = "\033[31m"
 COLOR_BLUE = "\033[34m"
+
+
+class IConfig(Protocol):
+    def name(self) -> str: ...
+    def apply(self) -> None: ...
 
 
 def confirm(message: str) -> bool:
@@ -33,9 +39,12 @@ def get_home() -> str:
 
 
 @dataclass
-class SystemPackagesConfig:
+class SystemPackagesConfig(IConfig):
     base_packages: list[str]
     common_apps: list[str]
+
+    def name(self) -> str:
+        return "System packages"
 
     def __update_pm_mirrors(self) -> None:
         exec(["sudo", "apt-get", "update", "-y"])
@@ -60,8 +69,11 @@ class SystemPackagesConfig:
 
 
 @dataclass
-class FlatpakConfig:
+class FlatpakConfig(IConfig):
     packages: list[str]
+
+    def name(self) -> str:
+        return "Flatpak"
 
     def __install_support(self) -> None:
         cmd = ["sudo", "apt-get", "install", "-y", "flatpak"]
@@ -92,8 +104,11 @@ class FlatpakConfig:
 
 
 @dataclass
-class DockerConfig:
+class DockerConfig(IConfig):
     system_packages: list[str]
+
+    def name(self) -> str:
+        return "Docker"
 
     def __install_support(self) -> None:
         cmd = ["sudo", "apt-get", "install", "-y"] + self.system_packages
@@ -116,7 +131,10 @@ class DockerConfig:
 
 
 @dataclass
-class FishConfig:
+class FishConfig(IConfig):
+    def name(self) -> str:
+        return "Fish (shell)"
+
     def __install_support(self) -> None:
         cmd = ["sudo", "apt-get", "install", "-y", "fish"]
         exec(cmd)
@@ -135,9 +153,12 @@ class FishConfig:
 
 
 @dataclass
-class GoConfig:
+class GoConfig(IConfig):
     version: str
     packages: list[str]
+
+    def name(self) -> str:
+        return "Golang"
 
     def __download_tarball(self) -> (str, str):
         filename = f"go{self.version}.linux-amd64.tar.gz"
@@ -175,8 +196,24 @@ class GoConfig:
 
 
 @dataclass
-class NodeJsConfig:
+class NodeJsConfig(IConfig):
+    version: str
     global_deps: list[str]
+
+    def name(self) -> str:
+        return "NodeJs"
+
+    def __download_installer(self) -> str:
+        out_filename = "nodesource_setup.sh"
+        out_filepath = os.path.join(tempfile.gettempdir(), out_filename)
+        if not os.path.exists(out_filepath):
+            cmd = ["curl", "-sL", f"https://deb.nodesource.com/setup_{self.version}.x", "-o", out_filepath]
+            exec(cmd)
+        return out_filepath
+
+    def __install_sources(self, installer_path: str) -> None:
+        cmd = ["sudo", "bash", installer_path]
+        exec(cmd)
 
     def __install_support(self) -> None:
         cmd = ["sudo", "apt-get", "install", "-y", "nodejs"]
@@ -193,6 +230,8 @@ class NodeJsConfig:
 
     def apply(self) -> None:
         if confirm("Install nodejs"):
+            installer_path = self.__download_installer()
+            self.__install_sources(installer_path)
             self.__install_support()
             self.__set_prefix()
 
@@ -201,9 +240,12 @@ class NodeJsConfig:
 
 
 @dataclass
-class PythonConfig:
+class PythonConfig(IConfig):
     system_packages: list[str]
     pip_packages: list[str]
+
+    def name(self) -> str:
+        return "Python"
 
     def __install_support(self) -> None:
         cmd = ["sudo", "apt-get", "install", "-y"] + self.system_packages
@@ -222,8 +264,11 @@ class PythonConfig:
 
 
 @dataclass
-class JavaConfig:
+class JavaConfig(IConfig):
     system_packages: list[str]
+
+    def name(self) -> str:
+        return "Java"
 
     def __install_support(self) -> None:
         cmd = ["sudo", "apt-get", "install", "-y"] + self.system_packages
@@ -235,8 +280,11 @@ class JavaConfig:
 
 
 @dataclass
-class XorgConfig:
+class XorgConfig(IConfig):
     system_packages: list[str]
+
+    def name(self) -> str:
+        return "Xorg"
 
     def __install_packages(self) -> None:
         cmd = ["sudo", "apt-get", "install", "-y"] + self.system_packages
@@ -248,7 +296,10 @@ class XorgConfig:
 
 
 @dataclass
-class SymlinksConfig:
+class SymlinksConfig(IConfig):
+    def name(self) -> str:
+        return "Symlinks"
+
     def __link_files(self, src_path: str, target_path) -> None:
         dir_entries = os.listdir(src_path)
         if not os.path.exists(target_path):
@@ -284,8 +335,11 @@ class SymlinksConfig:
 
 
 @dataclass
-class VscodeConfig:
+class VscodeConfig(IConfig):
     version: str
+
+    def name(self) -> str:
+        return "VSCode"
 
     def __download(self) -> str:
         filename = f"codium_{self.version}_amd64.deb"
@@ -311,11 +365,13 @@ class Config:
     flatpak: FlatpakConfig
     docker: DockerConfig
     fish: FishConfig
+    vscode: VscodeConfig
     go: GoConfig
     nodejs: NodeJsConfig
     python: PythonConfig
     java: JavaConfig
     xorg: XorgConfig
+    __steps: list[IConfig]
 
     def __init__(self) -> None:
         with open("config.toml", "rb") as f:
@@ -324,6 +380,7 @@ class Config:
             self.flatpak = FlatpakConfig(**parsed["flatpak"])
             self.docker = DockerConfig(**parsed["docker"])
             self.fish = FishConfig()
+            self.vscode = VscodeConfig(**parsed["vscode"])
             self.go = GoConfig(**parsed["go"])
             self.nodejs = NodeJsConfig(**parsed["nodejs"])
             self.python = PythonConfig(**parsed["python"])
@@ -331,22 +388,59 @@ class Config:
             self.xorg = XorgConfig(**parsed["xorg"])
             self.symlink = SymlinksConfig()
 
-    def apply_configs(self) -> None:
-        steps = [
+        self.__steps = [
             self.symlink,
             self.system_packages,
             self.xorg,
             self.flatpak,
             self.docker,
             self.fish,
+            self.vscode,
             self.go,
             self.nodejs,
             self.python,
             self.java,
         ]
 
+    def __parse_selection(self, selection: str) -> list[int]:
+        pieces = selection.split(",")
+        try:
+            return [int(piece.strip()) for piece in pieces]
+        except Exception:
+            raise Exception("invalid selection")
+
+    def __print_menu(self) -> list[int]:
+        print("Available options:\n")
+        idx = 1
+        for step in self.__steps:
+            print(f"{idx:2d}. {step.name()}")
+            idx += 1
+
+        selection = input("\nSelection (separate with commas): ").strip()
+        return self.__parse_selection(selection)
+
+    def __apply_selected(self, selection: list[int]) -> None:
+        for s in selection:
+            if s < 1 or s > len(self.__steps):
+                raise Exception("invalid selection")
+
+            target_step = self.__steps[s-1]
+            if not target_step:
+                raise Exception("invalid selection")
+            target_step.apply()
+
+    def __apply_all(self) -> None:
         for step in steps:
             step.apply()
+
+    def apply_configs(self) -> None:
+        selection = self.__print_menu()
+        if len(selection) == 0:
+            self.__apply_all()
+            return
+
+        self.__apply_selected(selection)
+
 
 
 if __name__ == "__main__":
