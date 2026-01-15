@@ -12,6 +12,7 @@ SEARCH_CMD = ["apt-cache", "search"]
 INSTALL_CMD = ["sudo", "apt-get", "install", "-y"]
 UPDATE_CMD = ["sudo", "apt-get", "update", "-y"]
 UPGRADE_CMD = ["sudo", "apt-get", "upgrade", "-y"]
+DIST_UPGRADE_CMD = ["sudo", "apt-get", "dist-upgrade", "-y"]
 FLATPAK_UPDATE_CMD = ["sudo", "flatpak", "update", "-y"]
 REMOVE_CMD = ["sudo", "apt-get", "remove", "-y"]
 CLEAN_CMD = ["sudo", "apt-get", "autoremove", "--purge", "-y"]
@@ -56,6 +57,7 @@ def pkg_install(pkgs: list[str]) -> None:
 def pkg_update() -> None:
     execute(UPDATE_CMD)
     execute(UPGRADE_CMD)
+    execute(DIST_UPGRADE_CMD)
     if flatpak_exists():
         execute(FLATPAK_UPDATE_CMD)
 

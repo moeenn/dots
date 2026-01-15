@@ -10,7 +10,6 @@ class BaseTemplate(ABC):
     """
     abstract class which will be inherited by all template classes.
     """
-
     project_name: str
     project_dir: str
     files_and_content: dict[str, str]
@@ -249,7 +248,7 @@ run: main
 """.lstrip()
 
 
-class JavaTemplate(BaseTemplate):
+class JavaTemplateMaven(BaseTemplate):
     """
     template class for java+maven projects.
     """
@@ -272,13 +271,14 @@ class JavaTemplate(BaseTemplate):
 
     @staticmethod
     def template_names() -> list[str]:
-        return ["java"]
+        return ["java-maven"]
 
     def gitignore_entries(self) -> list[str]:
         return [".classpath", "target", ".project", ".settings", ".idea"]
 
     def project_directories(self) -> list[str]:
         return [
+            os.path.join("src", "main", "resources"),
             os.path.join("src", "main", "java", "com", self.project_name),
             os.path.join("src", "test", "java", "com", self.project_name),
         ]
@@ -395,6 +395,137 @@ $ mvn clean compile package
 # run jar.
 $ java -jar ./target/{self.project_name}-1.0-jar-with-dependencies.jar
 ```
+        """.strip()
+
+
+class JavaTemplateGradle(BaseTemplate):
+    """
+    template class for java+gradle projects.
+    """
+
+    def __init__(self, project_name: str) -> None:
+        super().__init__(project_name)
+
+        main_path = os.path.join(
+            "src", "main", "java", "com", self.project_name, "Main.java"
+        )
+        test_path = os.path.join(
+            "src", "test", "java", "com", self.project_name, "MainTest.java"
+        )
+        self.files_and_content = {
+            "README.md": self.readme_md_content(),
+            main_path: self.main_content(),
+            test_path: self.test_content(),
+            "build.gradle": self.build_gradle_content(),
+            "gradle.properties": self.gradle_properties_content(),
+        }
+
+    @staticmethod
+    def template_names() -> list[str]:
+        return ["java-gradle"]
+
+    def gitignore_entries(self) -> list[str]:
+        return [".classpath", "target", ".project", ".settings", ".idea", ".gradle", "build", "bin"]
+
+    def project_directories(self) -> list[str]:
+        return [
+            os.path.join("src", "main", "resources"),
+            os.path.join("src", "main", "java", "com", self.project_name),
+            os.path.join("src", "test", "java", "com", self.project_name),
+        ]
+
+    def main_content(self) -> str:
+        return f"""
+package com.{self.project_name};
+
+public class Main {{
+    public static void main(String[] args) {{
+        System.out.println("hello world");
+    }}
+}}
+        """.strip()
+
+    def test_content(self) -> str:
+        return f"""
+package com.{self.project_name};
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class MainTest {{
+  @Test
+  public void testAssertion() {{
+    assertEquals(1, 1);
+  }}
+}}
+        """.strip()
+
+    def build_gradle_content(self) -> str:
+        return f"""
+plugins {{
+    id 'java'
+    id 'application'
+}}
+
+application {{
+    mainClass = 'com.{self.project_name}.Main'
+}}
+
+repositories {{
+    mavenCentral()
+}}
+
+jar {{
+    archiveVersion =  '0.0.1'
+    archiveBaseName = 'com.{self.project_name}'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    exclude 'META-INF/LICENSE'
+    exclude 'META-INF/NOTICE'
+
+    manifest {{
+        attributes['Main-Class'] = 'com.{self.project_name}.Main'
+    }}
+
+    from {{
+        configurations.runtimeClasspath.collect {{ it.isDirectory() ? it : zipTree(it) }}
+    }}
+}}
+
+testing {{
+    suites {{
+        test {{
+            useJUnitJupiter('5.9.3')
+        }}
+    }}
+}}
+
+dependencies {{
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
+}}
+        """.strip()
+
+    def readme_md_content(self) -> str:
+        return f"""
+## {self.project_name}
+
+### Commands
+
+```bash
+# run in development mode.
+$ gradle run
+
+# build for production.
+$ gradle build
+
+# run jar.
+$ java -jar ./build/libs/{self.project_name}-0.0.1.jar
+```
+        """.strip()
+
+    def gradle_properties_content(self) -> str:
+        return """
+org.gradle.configuration-cache=true
         """.strip()
 
 
@@ -876,7 +1007,8 @@ def main() -> None:
     registered_templates: list[BaseTemplate] = [
         GoTemplate(args.name),
         CTemplate(args.name),
-        JavaTemplate(args.name),
+        JavaTemplateMaven(args.name),
+        JavaTemplateGradle(args.name),
         ScalaTemplate(args.name),
         TsTemplate(args.name),
         PythonTemplate(args.name),

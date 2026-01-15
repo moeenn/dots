@@ -64,7 +64,6 @@ alias full_access="sudo chmod -R a+rw ./"
 alias mount="sudo mount -o rw"
 
 # git.
-alias g="git"
 alias :s="git status"
 alias :S="git status"
 alias :c="git commit -m"
@@ -78,5 +77,10 @@ alias pull="git pull"
 alias dc="docker-compose"
 alias py="python3"
 alias delete_dstore="find . -name '.DS_Store' -type f -delete -print"
-alias ctest="ctest --output-on-failure"
 alias valgrind="valgrind -s --leak-check=full --show-leak-kinds=all"
+alias g="gradle" 
+alias c="code"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

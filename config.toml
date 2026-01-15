@@ -48,7 +48,6 @@ packages = [
     "com.bitwarden.desktop",
     #"md.obsidian.Obsidian",
     "io.beekeeperstudio.Studio",
-    "com.github.alecaddd.sequeler",
     #"com.usebruno.Bruno"
 ]
 
