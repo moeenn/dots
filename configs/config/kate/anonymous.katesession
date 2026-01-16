@@ -1,12 +1,12 @@
 [Document 0]
 Bookmarks=
 Encoding=UTF-8
-Highlighting=None
+Highlighting=TypeScript
 Highlighting Set By User=false
-Indentation Mode=normal
-Mode=Normal
+Indentation Mode=cstyle
+Mode=TypeScript
 Mode Set By User=false
-URL=
+URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts
 
 [Kate Plugins]
 cmaketoolsplugin=false
@@ -48,7 +48,7 @@ Kate-MDI-H-Splitter=388,1531,0
 Kate-MDI-Sidebar-0-Bar-0-TvList=kate_private_plugin_katefiletreeplugin,lspclient_symbol_outline,kateproject,kateprojectgit
 Kate-MDI-Sidebar-0-LastSize=388
 Kate-MDI-Sidebar-0-SectSizes=0
-Kate-MDI-Sidebar-0-Splitter=979
+Kate-MDI-Sidebar-0-Splitter=971
 Kate-MDI-Sidebar-1-Bar-0-TvList=
 Kate-MDI-Sidebar-1-LastSize=200
 Kate-MDI-Sidebar-1-SectSizes=0
@@ -60,7 +60,7 @@ Kate-MDI-Sidebar-2-Splitter=251
 Kate-MDI-Sidebar-3-Bar-0-TvList=output,diagnostics,kate_plugin_katesearch,kateprojectinfo
 Kate-MDI-Sidebar-3-LastSize=193
 Kate-MDI-Sidebar-3-SectSizes=0
-Kate-MDI-Sidebar-3-Splitter=1759
+Kate-MDI-Sidebar-3-Splitter=1683
 Kate-MDI-Sidebar-Style=2
 Kate-MDI-Sidebar-Visible=true
 Kate-MDI-ToolView-diagnostics-Position=3
@@ -87,7 +87,7 @@ Kate-MDI-ToolView-lspclient_symbol_outline-Visible=false
 Kate-MDI-ToolView-output-Position=3
 Kate-MDI-ToolView-output-Show-Button-In-Sidebar=false
 Kate-MDI-ToolView-output-Visible=false
-Kate-MDI-V-Splitter=0,979,0
+Kate-MDI-V-Splitter=0,971,0
 MenuBar=Disabled
 State=AAAA/wAAAAD9AAAAAAAAB4AAAAPqAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
@@ -105,9 +105,18 @@ Orientation=1
 Sizes=1531
 
 [MainWindow0-ViewSpace 0]
-Active View=
+Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts
 Count=1
-Documents=\\0
+Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts
+View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts
+
+[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts]
+CursorColumn=0
+CursorLine=23
+Dynamic Word Wrap=true
+JumpList=
+TextFolding={"checksum":"069f1e5f934c3b78bf9c1bb524722e55d381516f","ranges":[]}
+ViMarks=
 
 [Open Documents]
 Count=1
@@ -142,5 +151,5 @@ SearchDiskFiless=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/s
 UseRegExp=false
 
 [Recent Files]
-File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox
-Name1[$e]=sandbox
+File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts
+Name1[$e]=main.ts

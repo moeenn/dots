@@ -1,22 +1,12 @@
 [Document 0]
 Bookmarks=
 Encoding=UTF-8
-Highlighting=None
+Highlighting=Python
 Highlighting Set By User=false
-Indentation Mode=normal
-Mode=Normal
+Indentation Mode=python
+Mode=Python
 Mode Set By User=false
-URL=
-
-[Document 1]
-Bookmarks=
-Encoding=UTF-8
-Highlighting=None
-Highlighting Set By User=false
-Indentation Mode=normal
-Mode=Normal
-Mode Set By User=false
-URL=
+URL=file:///home/moeenn/.dots/configs/home/.bin/project
 
 [MainWindow0]
 1920x1080 screen: XPosition=384
@@ -36,13 +26,13 @@ WindowState=8
 eDP=eDP
 
 [Open Documents]
-Count=2
+Count=1
 
 [Open MainWindows]
 Count=1
 
 [Recent Files]
-File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/handlebars/src/main.ts
-File2[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/handlebars/src/main.test.ts
-Name1[$e]=main.ts
-Name2[$e]=main.test.ts
+File1[$e]=$HOME/.config/okular/docdata/82212.resume.pdf.xml
+File2[$e]=$HOME/.dots/configs/home/.bin/project
+Name1[$e]=82212.resume.pdf.xml
+Name2[$e]=project

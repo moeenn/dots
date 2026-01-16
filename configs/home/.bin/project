@@ -366,7 +366,7 @@ public class MainTest {{
     <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter</artifactId>
-        <version>5.10.3</version>
+        <version>6.1.0-M1</version>
         <scope>test</scope>
     </dependency>
   </dependencies>
@@ -494,14 +494,14 @@ jar {{
 testing {{
     suites {{
         test {{
-            useJUnitJupiter('5.9.3')
+            useJUnitJupiter('6.1.0-M1')
         }}
     }}
 }}
 
 dependencies {{
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:6.1.0-M1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:6.1.0-M1'
 }}
         """.strip()
 
