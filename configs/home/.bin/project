@@ -274,7 +274,7 @@ class JavaTemplateMaven(BaseTemplate):
         return ["java-maven"]
 
     def gitignore_entries(self) -> list[str]:
-        return [".classpath", "target", ".project", ".settings", ".idea"]
+        return [".classpath", "target", ".project", ".settings", ".idea", ".vscode"]
 
     def project_directories(self) -> list[str]:
         return [
@@ -425,7 +425,7 @@ class JavaTemplateGradle(BaseTemplate):
         return ["java-gradle"]
 
     def gitignore_entries(self) -> list[str]:
-        return [".classpath", "target", ".project", ".settings", ".idea", ".gradle", "build", "bin"]
+        return [".classpath", "target", ".project", ".settings", ".idea", ".gradle", "build", "bin", ".vscode"]
 
     def project_directories(self) -> list[str]:
         return [
