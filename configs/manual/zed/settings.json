@@ -1,8 +1,9 @@
 {
-	"ui_font_size": 18,
+	"ui_font_size": 14,
 	"ui_font_family": "Roboto",
-	"buffer_font_size": 16,
-	"buffer_font_family": "JetBrains Mono",
+	"buffer_font_size": 13,
+	"buffer_font_family": "Cascadia Mono",
+	"buffer_line_height": { "custom": 1.7 },
 	"show_wrap_guides": true,
 	"tab_size": 4,
 	"hard_tabs": true,
@@ -10,7 +11,7 @@
 	"format_on_save": "on",
 	"theme": {
 		"mode": "system",
-		"light": "Github Light",
-		"dark": "Github Dark Dimmed"
-	}
+		"light": "Catppuccin Mocha",
+		"dark": "Catppuccin Mocha",
+	},
 }

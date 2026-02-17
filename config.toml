@@ -44,9 +44,8 @@ common_apps = [
 
 [flatpak]
 packages = [
-	"org.chromium.Chromium",
+	# "org.chromium.Chromium",
     "com.bitwarden.desktop",
-    #"md.obsidian.Obsidian",
     "io.beekeeperstudio.Studio",
     #"com.usebruno.Bruno"
 ]
@@ -60,7 +59,7 @@ system_packages = [
 ]
 
 [go]
-version = "1.25.5"
+version = "1.26.0"
 packages = [
     "golang.org/x/tools/gopls@latest",
     "github.com/go-delve/delve/cmd/dlv@latest",

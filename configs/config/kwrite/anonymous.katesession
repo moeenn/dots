@@ -1,27 +1,29 @@
 [Document 0]
 Bookmarks=
 Encoding=UTF-8
-Highlighting=Go
+Highlighting=TOML
 Highlighting Set By User=false
-Indentation Mode=cstyle
-Mode=Go
+Indentation Mode=normal
+Mode=TOML
 Mode Set By User=false
-URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main_test.go
+URL=file:///home/moeenn/.dots/config.toml
 
 [MainWindow0]
-1600x900 screen: Height=772
-1600x900 screen: Width=907
+1920x1080 screen: XPosition=587
+1920x1080 screen: YPosition=328
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAA4sAAAMEAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAABIAAAAJrAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
+eDP=eDP
 
 [MainWindow0 Settings]
-1600x900 screen: Height=772
-1600x900 screen: Width=907
+1920x1080 screen: XPosition=587
+1920x1080 screen: YPosition=328
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAA4sAAAMEAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAABIAAAAJrAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 WindowState=8
+eDP=eDP
 
 [Open Documents]
 Count=1
@@ -30,7 +32,7 @@ Count=1
 Count=1
 
 [Recent Files]
-File1[$e]=$HOME/.dots/configs/home/.bin/wifi
-File2[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main_test.go
-Name1[$e]=wifi
-Name2[$e]=main_test.go
+File1[$e]=$HOME/.dots/configs/config/fish/config.fish
+File2[$e]=$HOME/.dots/config.toml
+Name1[$e]=config.fish
+Name2[$e]=config.toml
