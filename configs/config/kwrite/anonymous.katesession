@@ -1,26 +1,30 @@
 [Document 0]
 Bookmarks=
 Encoding=UTF-8
-Highlighting=TOML
+Highlighting=CMake
 Highlighting Set By User=false
 Indentation Mode=normal
-Mode=TOML
+Mode=CMake
 Mode Set By User=false
-URL=file:///home/moeenn/.dots/config.toml
+URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/CMakeLists.txt
 
 [MainWindow0]
-1920x1080 screen: XPosition=587
-1920x1080 screen: YPosition=328
+1920x1080 screen: Height=806
+1920x1080 screen: Width=1052
+1920x1080 screen: XPosition=342
+1920x1080 screen: YPosition=200
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAABIAAAAJrAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAABBwAAAMmAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 eDP=eDP
 
 [MainWindow0 Settings]
-1920x1080 screen: XPosition=587
-1920x1080 screen: YPosition=328
+1920x1080 screen: Height=806
+1920x1080 screen: Width=1052
+1920x1080 screen: XPosition=342
+1920x1080 screen: YPosition=200
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAABIAAAAJrAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAABBwAAAMmAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 WindowState=8
 eDP=eDP
@@ -32,7 +36,7 @@ Count=1
 Count=1
 
 [Recent Files]
-File1[$e]=$HOME/.dots/configs/config/fish/config.fish
-File2[$e]=$HOME/.dots/config.toml
-Name1[$e]=config.fish
-Name2[$e]=config.toml
+File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/namedSQL/src/database.ts
+File2[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/CMakeLists.txt
+Name1[$e]=database.ts
+Name2[$e]=CMakeLists.txt
