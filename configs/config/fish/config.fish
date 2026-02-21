@@ -18,7 +18,6 @@ zoxide init fish | source
 #   Environment and path config
 #
 # --------------------------------------------------------------------
-set -gx XDG_RUNTIME_DIR "/run/user/$(id -u)"
 set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
@@ -53,13 +52,9 @@ alias df "dfc -f -s"
 alias uptime "uptime -p"
 alias extract "dtrx -v"
 alias net "bwm-ng -t 1000"
-alias axel "axel -n 4"
 alias lsblk "lsblk -e 7"
-alias patch "patch -p1 <"
 alias clock "tty-clock -cD"
-alias k kak
 alias c code
-alias cf cfiles
 alias winclass "xprop WM_CLASS"
 alias keyname "xev | grep keysym"
 
@@ -82,7 +77,6 @@ alias pull "git pull"
 # programming
 alias dc "docker-compose"
 alias py python3
-alias pm "python3 -m"
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 alias valgrind "valgrind -s --leak-check=full --show-leak-kinds=all"
 alias cfmt "clang-format -style=Microsoft -i"

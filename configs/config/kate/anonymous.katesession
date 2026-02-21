@@ -6,27 +6,7 @@ Highlighting Set By User=false
 Indentation Mode=cstyle
 Mode=Go
 Mode Set By User=false
-URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/report-genius/backend/internal/controller/reservation_controller.go
-
-[Document 1]
-Bookmarks=
-Encoding=UTF-8
-Highlighting=Go
-Highlighting Set By User=false
-Indentation Mode=cstyle
-Mode=Go
-Mode Set By User=false
-URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/report-genius/backend/internal/controller/reservation_controller_types.go
-
-[Document 2]
-Bookmarks=
-Encoding=UTF-8
-Highlighting=Go
-Highlighting Set By User=false
-Indentation Mode=cstyle
-Mode=Go
-Mode Set By User=false
-URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/report-genius/backend/internal/repo/reservation_repo.go
+URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
 
 [Kate Plugins]
 cmaketoolsplugin=false
@@ -128,39 +108,29 @@ Orientation=1
 Sizes=1573
 
 [MainWindow0-ViewSpace 0]
-Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/report-genius/backend/internal/repo/reservation_repo.go
-Count=3
-Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/report-genius/backend/internal/controller/reservation_controller.go,file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/report-genius/backend/internal/controller/reservation_controller_types.go,file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/report-genius/backend/internal/repo/reservation_repo.go
-View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/report-genius/backend/internal/controller/reservation_controller.go
-View 1=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/report-genius/backend/internal/controller/reservation_controller_types.go
-View 2=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/report-genius/backend/internal/repo/reservation_repo.go
+Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
+Count=1
+Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
+View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
 
-[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/report-genius/backend/internal/controller/reservation_controller.go]
-CursorColumn=8
-CursorLine=2
+[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/report-genius/backend/cmd/rg/main.go]
+CursorColumn=51
+CursorLine=79
 Dynamic Word Wrap=true
 JumpList=
-TextFolding={"checksum":"7593de51e2e0d4aa4c1b9c80e175f328b049b634","ranges":[]}
+TextFolding={"checksum":"9c6c1ded10b4e6779e57f6def632e64fe94ca8f4","ranges":[]}
 ViMarks=
 
-[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/report-genius/backend/internal/controller/reservation_controller_types.go]
-CursorColumn=44
-CursorLine=86
+[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go]
+CursorColumn=10
+CursorLine=57
 Dynamic Word Wrap=true
 JumpList=
-TextFolding={"checksum":"4aecf265f71ee645e68c810c79ae2af38be0c690","ranges":[]}
-ViMarks=
-
-[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/report-genius/backend/internal/repo/reservation_repo.go]
-CursorColumn=12
-CursorLine=305
-Dynamic Word Wrap=true
-JumpList=
-TextFolding={"checksum":"103f57b0c0d58d310e92df06ce0204f45fcb12dd","ranges":[]}
+TextFolding={"checksum":"1a65bcc890722d37999c69f35cec2252e89c67a7","ranges":[]}
 ViMarks=
 
 [Open Documents]
-Count=3
+Count=1
 
 [Open MainWindows]
 Count=1
@@ -192,5 +162,5 @@ SearchDiskFiless=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/lov
 UseRegExp=false
 
 [Recent Files]
-File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/report-genius/backend/internal/repo/reservation_repo.go
-Name1[$e]=reservation_repo.go
+File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
+Name1[$e]=main.go
