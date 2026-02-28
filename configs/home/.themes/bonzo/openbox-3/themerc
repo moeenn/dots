@@ -1,0 +1,79 @@
+!! Bonzo by Addy
+!! Inspired by Onyx by Dana Jansens
+
+!! Menu background
+menu.items.bg: flat
+menu.items.bg.color: #ffffff
+menu.overlap.x: -4
+
+!! Menu text
+menu.items.text.color: #2e3436
+menu.items.justify: left
+menu.items.disabled.text.color: #8a8a8a
+
+!! Menu separator
+menu.separator.padding.height: 6
+menu.separator.color: #ffffff
+
+!! Menu border
+menu.border.width: 10
+menu.border.color: #ffffff
+
+!! Menu headers
+menu.title.bg: flat
+menu.title.bg.color: #ffffff
+menu.title.text.color: #2e3436
+menu.title.text.justify: center
+
+!! Selected menu item
+menu.items.active.bg: flat
+menu.items.active.bg.color: #3584e4
+menu.items.active.text.color: #fffffe
+
+!! Titlebar
+window.active.title.bg: flat
+window.active.title.bg.color: #f6f5f4 
+window.inactive.title.bg: flat
+window.inactive.title.bg.color: #f6f5f4
+
+!! Titlebar text
+window.label.text.justify: center
+window.active.label.bg: parentrelative
+window.active.label.text.color: #2e3436
+window.inactive.label.bg: parentrelative
+window.inactive.label.text.color: #474d4f
+
+!! Window buttons
+window.*.button.*.bg: parentrelative
+window.active.button.*.hover.bg: flat
+window.inactive.button.*.hover.bg: parentrelative
+window.*.button.*.pressed.bg: flat
+
+window.active.button.*.hover.bg.color: #f6f5f4
+window.active.button.*.pressed.bg.color: #bc0030
+window.inactive.button.*.pressed.bg.color: #4ab5ff
+
+window.active.button.*.image.color: #2f343f
+window.active.button.disabled.image.color: #aaaaaa
+window.inactive.button.*.image.color: #8a8a8a
+window.inactive.button.disabled.image.color: #aaaaaa
+
+!! Borders
+window.active.border.color: #cdc7c2
+window.inactive.border.color: #cdc7c2
+border.width: 0
+padding.width: 8
+padding.height: 4
+window.handle.width: 0
+window.active.client.color:  #3584e4
+window.inactive.client.color:  #ffffff
+window.client.padding.width: 0
+window.client.padding.height: 0
+
+!! On-screen displays
+osd.bg: flat
+osd.border.width: 1
+osd.bg.color: #f6f5f4
+osd.border.color: #cdc7c2
+osd.label.text.color: #2e3436
+osd.hilight.bg: #3584e4
