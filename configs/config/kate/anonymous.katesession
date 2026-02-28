@@ -1,0 +1,166 @@
+[Document 0]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=Go
+Highlighting Set By User=false
+Indentation Mode=cstyle
+Mode=Go
+Mode Set By User=false
+URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
+
+[Kate Plugins]
+cmaketoolsplugin=false
+compilerexplorer=false
+eslintplugin=false
+externaltoolsplugin=true
+formatplugin=false
+katebacktracebrowserplugin=false
+katebuildplugin=false
+katecloseexceptplugin=false
+katecolorpickerplugin=false
+katectagsplugin=false
+katefilebrowserplugin=false
+katefiletreeplugin=true
+kategdbplugin=false
+kategitblameplugin=false
+katekonsoleplugin=true
+kateprojectplugin=true
+katereplicodeplugin=false
+katesearchplugin=true
+katesnippetsplugin=false
+katesqlplugin=false
+katesymbolviewerplugin=false
+katexmlcheckplugin=false
+katexmltoolsplugin=false
+keyboardmacrosplugin=false
+ktexteditorpreviewplugin=false
+latexcompletionplugin=false
+lspclientplugin=true
+openlinkplugin=false
+rainbowparens=false
+tabswitcherplugin=true
+textfilterplugin=true
+
+[MainWindow0]
+1920x1080 screen: Window-Maximized=true
+Active ViewSpace=0
+Kate-MDI-H-Splitter=346,1573,0
+Kate-MDI-Sidebar-0-Bar-0-TvList=kate_private_plugin_katefiletreeplugin,kateproject,kateprojectgit,lspclient_symbol_outline
+Kate-MDI-Sidebar-0-LastSize=346
+Kate-MDI-Sidebar-0-SectSizes=0
+Kate-MDI-Sidebar-0-Splitter=30
+Kate-MDI-Sidebar-1-Bar-0-TvList=
+Kate-MDI-Sidebar-1-LastSize=200
+Kate-MDI-Sidebar-1-SectSizes=0
+Kate-MDI-Sidebar-1-Splitter=30
+Kate-MDI-Sidebar-2-Bar-0-TvList=
+Kate-MDI-Sidebar-2-LastSize=200
+Kate-MDI-Sidebar-2-SectSizes=0
+Kate-MDI-Sidebar-2-Splitter=100
+Kate-MDI-Sidebar-3-Bar-0-TvList=output,diagnostics,kate_plugin_katesearch,kateprojectinfo,kate_private_plugin_katekonsoleplugin
+Kate-MDI-Sidebar-3-LastSize=200
+Kate-MDI-Sidebar-3-SectSizes=0
+Kate-MDI-Sidebar-3-Splitter=100
+Kate-MDI-Sidebar-Style=2
+Kate-MDI-Sidebar-Visible=false
+Kate-MDI-ToolView-diagnostics-Position=3
+Kate-MDI-ToolView-diagnostics-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-diagnostics-Visible=false
+Kate-MDI-ToolView-kate_plugin_katesearch-Position=3
+Kate-MDI-ToolView-kate_plugin_katesearch-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-kate_plugin_katesearch-Visible=false
+Kate-MDI-ToolView-kate_private_plugin_katefiletreeplugin-Position=0
+Kate-MDI-ToolView-kate_private_plugin_katefiletreeplugin-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-kate_private_plugin_katefiletreeplugin-Visible=false
+Kate-MDI-ToolView-kate_private_plugin_katekonsoleplugin-Position=3
+Kate-MDI-ToolView-kate_private_plugin_katekonsoleplugin-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-kate_private_plugin_katekonsoleplugin-Visible=false
+Kate-MDI-ToolView-kateproject-Position=0
+Kate-MDI-ToolView-kateproject-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-kateproject-Visible=true
+Kate-MDI-ToolView-kateprojectgit-Position=0
+Kate-MDI-ToolView-kateprojectgit-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-kateprojectgit-Visible=false
+Kate-MDI-ToolView-kateprojectinfo-Position=3
+Kate-MDI-ToolView-kateprojectinfo-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-kateprojectinfo-Visible=false
+Kate-MDI-ToolView-lspclient_symbol_outline-Position=0
+Kate-MDI-ToolView-lspclient_symbol_outline-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-lspclient_symbol_outline-Visible=false
+Kate-MDI-ToolView-output-Position=3
+Kate-MDI-ToolView-output-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-output-Visible=false
+Kate-MDI-V-Splitter=0,965,0
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAPkAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+
+[MainWindow0 Settings]
+1920x1080 screen: Window-Maximized=true
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAPkAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+WindowState=10
+
+[MainWindow0-Splitter 0]
+Children=MainWindow0-ViewSpace 0
+Orientation=1
+Sizes=1573
+
+[MainWindow0-ViewSpace 0]
+Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
+Count=1
+Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
+View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
+
+[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/report-genius/backend/cmd/rg/main.go]
+CursorColumn=51
+CursorLine=79
+Dynamic Word Wrap=true
+JumpList=
+TextFolding={"checksum":"9c6c1ded10b4e6779e57f6def632e64fe94ca8f4","ranges":[]}
+ViMarks=
+
+[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go]
+CursorColumn=10
+CursorLine=57
+Dynamic Word Wrap=true
+JumpList=
+TextFolding={"checksum":"1a65bcc890722d37999c69f35cec2252e89c67a7","ranges":[]}
+ViMarks=
+
+[Open Documents]
+Count=1
+
+[Open MainWindows]
+Count=1
+
+[Plugin:kateprojectplugin:]
+projects=
+
+[Plugin:katesearchplugin:MainWindow:0]
+BinaryFiles=false
+CurrentExcludeFilter=0
+CurrentFilter=0
+ExcludeFilters=\\0
+ExpandSearchResults=false
+Filters=\\0
+FollowSymLink=false
+HiddenFiles=false
+MatchCase=false
+Place=1
+Recursive=true
+Replaces=
+Search=main,SENDGRID_API_KEY,MAILTRAP_API_KEY
+SearchAsYouTypeAllProjects=true
+SearchAsYouTypeCurrentFile=true
+SearchAsYouTypeFolder=true
+SearchAsYouTypeOpenFiles=true
+SearchAsYouTypeProject=true
+SearchDiskFiles=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/lovu-app/backend
+SearchDiskFiless=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/lovu-app/backend
+UseRegExp=false
+
+[Recent Files]
+File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
+Name1[$e]=main.go

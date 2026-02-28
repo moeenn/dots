@@ -1,0 +1,42 @@
+[Document 0]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=Python
+Highlighting Set By User=false
+Indentation Mode=python
+Mode=Python
+Mode Set By User=false
+URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/vps-setup/setup.py
+
+[MainWindow0]
+1920x1080 screen: Height=902
+1920x1080 screen: Width=1120
+1920x1080 screen: XPosition=419
+1920x1080 screen: YPosition=114
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAABGAAAAOGAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+eDP=eDP
+
+[MainWindow0 Settings]
+1920x1080 screen: Height=902
+1920x1080 screen: Width=1120
+1920x1080 screen: XPosition=419
+1920x1080 screen: YPosition=114
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAABGAAAAOGAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+WindowState=8
+eDP=eDP
+
+[Open Documents]
+Count=1
+
+[Open MainWindows]
+Count=1
+
+[Recent Files]
+File1[$e]=$HOME/.dots/configs/home/.cwmrc
+File2[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/vps-setup/setup.py
+Name1[$e]=.cwmrc
+Name2[$e]=setup.py

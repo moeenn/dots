@@ -1,6 +1,6 @@
 NAME=colors
 CC=cc
-STD=c23
+STD=c99
 CFLAGS=-Wall -Wextra -pedantic -Werror -O3
 INC=
 LDDFLAGS=

@@ -12,9 +12,12 @@ SEARCH_CMD = ["apt-cache", "search"]
 INSTALL_CMD = ["sudo", "apt-get", "install", "-y"]
 UPDATE_CMD = ["sudo", "apt-get", "update", "-y"]
 UPGRADE_CMD = ["sudo", "apt-get", "upgrade", "-y"]
-FLATPAK_UPDATE_CMD = ["sudo", "flatpak", "update", "-y"]
+DIST_UPGRADE_CMD = ["sudo", "apt-get", "dist-upgrade", "-y"]
 REMOVE_CMD = ["sudo", "apt-get", "remove", "-y"]
 CLEAN_CMD = ["sudo", "apt-get", "autoremove", "--purge", "-y"]
+FLATPAK_INSTALL_CMD = ["sudo", "flatpak", "install", "flathub", "-y"]
+FLATPAK_UPDATE_CMD = ["sudo", "flatpak", "update", "-y"]
+FLATPAK_REMOVE_CMD = ["sudo", "flatpak", "uninstall", "--delete-data"]
 FLATPAK_CLEAN_CMD = ["sudo", "flatpak", "uninstall", "--unused"]
 
 
@@ -35,12 +38,14 @@ def print_help() -> None:
 usage: pkg [COMMAND] [PACKAGES]
 
 commands:
-    help     (h)   display this help message and exit.
-    search   (s)   search for a single package.
-    install  (i)   install new packages.
-    update   (u)   update installed packages.
-    remove   (r)   remove provided packages.
-    clean    (c)   remove orphan packages.
+    help             (h)   display this help message and exit.
+    search           (s)   search for a single package.
+    install          (i)   install new packages.
+    flatpak-install  (fi)  install flatpak packages.
+    update           (u)   update installed packages.
+    remove           (r)   remove provided packages.
+    flatpak-remove   (fr)  remove flatpak packages.
+    clean            (c)   remove orphan packages.
     """.lstrip()
     print(help)
 
@@ -53,9 +58,14 @@ def pkg_install(pkgs: list[str]) -> None:
     execute(INSTALL_CMD + pkgs)
 
 
+def flatpak_install(pkg: list[str]) -> None:
+    execute(FLATPAK_INSTALL_CMD + pkg)
+
+
 def pkg_update() -> None:
     execute(UPDATE_CMD)
     execute(UPGRADE_CMD)
+    execute(DIST_UPGRADE_CMD)
     if flatpak_exists():
         execute(FLATPAK_UPDATE_CMD)
 
@@ -63,6 +73,11 @@ def pkg_update() -> None:
 def pkg_remove(pkgs: list[str]) -> None:
     execute(REMOVE_CMD + pkgs)
     execute(CLEAN_CMD)
+
+
+def flatpak_remove(pkgs: list[str]) -> None:
+    execute(FLATPAK_REMOVE_CMD + pkgs)
+    execute(FLATPAK_CLEAN_CMD)
 
 
 def pkg_clean() -> None:
@@ -92,6 +107,15 @@ def main(args: list[str]) -> None:
             pkgs = args[2:]
             return pkg_install(pkgs)
 
+        case "flatpak-install" | "fi":
+            if not flatpak_exists():
+                raise Exception("flatpak support not available on this system")
+
+            if len(args) < 3:
+                raise Exception("please provide at least one package to install")
+            pkgs = args[2:]
+            return flatpak_install(pkgs)
+
         case "update" | "u":
             return pkg_update()
 
@@ -101,8 +125,20 @@ def main(args: list[str]) -> None:
             pkgs = args[2:]
             return pkg_remove(pkgs)
 
+        case "flatpak-remove" | "fr":
+            if not flatpak_exists():
+                raise Exception("flatpak support not available on this system")
+
+            if len(args) < 3:
+                raise Exception("please provide at least one package to remove")
+            pkgs = args[2:]
+            return flatpak_remove(pkgs)
+
         case "clean" | "c":
             return pkg_clean()
+
+        case _:
+            raise Exception(f"invalid command: '{cmd_raw}'")
 
 
 if __name__ == "__main__":
