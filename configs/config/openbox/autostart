@@ -13,7 +13,8 @@ picom &
 redshift -O 5000 &
 
 # set background color.
-hsetroot -solid '#574f4f' &
+#hsetroot -solid '#574f4f' &
+~/.fehbg &&
 
 # panel
 tint2 &
