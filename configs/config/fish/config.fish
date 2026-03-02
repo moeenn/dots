@@ -22,9 +22,10 @@ set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
 set NODEBIN {$HOME}/.npm/bin
+set BUNBIN {$HOME}/.bun/bin
 set GOINSTALL {$HOME}/.local/go/bin
 set GOBIN {$HOME}/go/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$BUNBIN} {$GOINSTALL} {$GOBIN}
 
 # --------------------------------------------------------------------
 #
@@ -80,3 +81,4 @@ alias py python3
 alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
 alias valgrind "valgrind -s --leak-check=full --show-leak-kinds=all"
 alias cfmt "clang-format -style=Microsoft -i"
+

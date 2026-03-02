@@ -24,14 +24,14 @@ formatter = { command = "clang-format", args = ["--style=WebKit"]}
 
 [[language]]
 name = "javascript"
-indent = { tab-width = 4, unit = "\t" }
+indent = { tab-width = 4, unit = "    " }
 auto-format = true
 formatter = { command = "npx", args = ["prettier", "--parser", "typescript"]}
 
 [[language]]
 name = "typescript"
 auto-format = true
-indent = { tab-width = 4, unit = "\t" }
+indent = { tab-width = 4, unit = "    " }
 formatter = { command = "npx", args = ["prettier", "--parser", "typescript"]}
 
 [[language]]

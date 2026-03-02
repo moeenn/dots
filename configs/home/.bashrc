@@ -8,7 +8,7 @@ parse_git_branch() {
 }
 
 # PS1='${debian_chroot:+($debian_chroot)}\W$(parse_git_branch) \$  '
-PS1='\W \[\e[0;$(($?==0?0:91))m\]$ \[\e[0m\]'
+PS1='[\u@\h] \W \[\e[0;$(($?==0?0:91))m\]$ \[\e[0m\]'
 
 # --------------------------------------------------------------------
 #
@@ -40,6 +40,7 @@ bind '"\e[Z":menu-complete' # use Shift-tab to select tab suggestion.
 # --------------------------------------------------------------------
 # general operations.
 alias cd="z"
+alias ls="ls -l --color=auto"
 alias :q="exit"
 alias :Q="exit"
 alias ls="ls -aC --color=never"

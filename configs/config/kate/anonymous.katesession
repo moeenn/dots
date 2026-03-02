@@ -1,12 +1,22 @@
 [Document 0]
 Bookmarks=
 Encoding=UTF-8
-Highlighting=Go
+Highlighting=None
+Highlighting Set By User=false
+Indentation Mode=normal
+Mode=Normal
+Mode Set By User=false
+URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/options.txt
+
+[Document 1]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=TypeScript
 Highlighting Set By User=false
 Indentation Mode=cstyle
-Mode=Go
+Mode=TypeScript
 Mode Set By User=false
-URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
+URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts
 
 [Kate Plugins]
 cmaketoolsplugin=false
@@ -44,7 +54,7 @@ textfilterplugin=true
 [MainWindow0]
 1920x1080 screen: Window-Maximized=true
 Active ViewSpace=0
-Kate-MDI-H-Splitter=346,1573,0
+Kate-MDI-H-Splitter=346,1519,0
 Kate-MDI-Sidebar-0-Bar-0-TvList=kate_private_plugin_katefiletreeplugin,kateproject,kateprojectgit,lspclient_symbol_outline
 Kate-MDI-Sidebar-0-LastSize=346
 Kate-MDI-Sidebar-0-SectSizes=0
@@ -58,7 +68,7 @@ Kate-MDI-Sidebar-2-LastSize=200
 Kate-MDI-Sidebar-2-SectSizes=0
 Kate-MDI-Sidebar-2-Splitter=100
 Kate-MDI-Sidebar-3-Bar-0-TvList=output,diagnostics,kate_plugin_katesearch,kateprojectinfo,kate_private_plugin_katekonsoleplugin
-Kate-MDI-Sidebar-3-LastSize=200
+Kate-MDI-Sidebar-3-LastSize=498
 Kate-MDI-Sidebar-3-SectSizes=0
 Kate-MDI-Sidebar-3-Splitter=100
 Kate-MDI-Sidebar-Style=2
@@ -90,47 +100,48 @@ Kate-MDI-ToolView-lspclient_symbol_outline-Visible=false
 Kate-MDI-ToolView-output-Position=3
 Kate-MDI-ToolView-output-Show-Button-In-Sidebar=true
 Kate-MDI-ToolView-output-Visible=false
-Kate-MDI-V-Splitter=0,965,0
+Kate-MDI-V-Splitter=0,1013,0
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAB4AAAAPkAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB0oAAAQUAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 
 [MainWindow0 Settings]
 1920x1080 screen: Window-Maximized=true
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAB4AAAAPkAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB0oAAAQUAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 WindowState=10
 
 [MainWindow0-Splitter 0]
 Children=MainWindow0-ViewSpace 0
 Orientation=1
-Sizes=1573
+Sizes=1519
 
 [MainWindow0-ViewSpace 0]
-Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
-Count=1
-Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
-View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
+Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts
+Count=2
+Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/options.txt,file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts
+View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/options.txt
+View 1=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts
 
-[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/report-genius/backend/cmd/rg/main.go]
-CursorColumn=51
-CursorLine=79
+[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/options.txt]
+CursorColumn=0
+CursorLine=114
 Dynamic Word Wrap=true
 JumpList=
-TextFolding={"checksum":"9c6c1ded10b4e6779e57f6def632e64fe94ca8f4","ranges":[]}
+TextFolding={"checksum":"dcae7c72aed10f37790e03920bf4144211988f55","ranges":[]}
 ViMarks=
 
-[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go]
-CursorColumn=10
-CursorLine=57
+[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts]
+CursorColumn=5
+CursorLine=16
 Dynamic Word Wrap=true
 JumpList=
-TextFolding={"checksum":"1a65bcc890722d37999c69f35cec2252e89c67a7","ranges":[]}
+TextFolding={"checksum":"b465cea033852fe39e8ee345278e16e8b30a3e5a","ranges":[]}
 ViMarks=
 
 [Open Documents]
-Count=1
+Count=2
 
 [Open MainWindows]
 Count=1
@@ -151,7 +162,7 @@ MatchCase=false
 Place=1
 Recursive=true
 Replaces=
-Search=main,SENDGRID_API_KEY,MAILTRAP_API_KEY
+Search=yield,yield*,main,SENDGRID_API_KEY,MAILTRAP_API_KEY
 SearchAsYouTypeAllProjects=true
 SearchAsYouTypeCurrentFile=true
 SearchAsYouTypeFolder=true
@@ -162,5 +173,5 @@ SearchDiskFiless=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/lov
 UseRegExp=false
 
 [Recent Files]
-File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
-Name1[$e]=main.go
+File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts
+Name1[$e]=main.ts
