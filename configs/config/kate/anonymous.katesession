@@ -1,29 +1,19 @@
 [Document 0]
 Bookmarks=
 Encoding=UTF-8
-Highlighting=None
-Highlighting Set By User=false
-Indentation Mode=normal
-Mode=Normal
-Mode Set By User=false
-URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/options.txt
-
-[Document 1]
-Bookmarks=
-Encoding=UTF-8
-Highlighting=TypeScript
+Highlighting=C++
 Highlighting Set By User=false
 Indentation Mode=cstyle
-Mode=TypeScript
+Mode=C++
 Mode Set By User=false
-URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts
+URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/sandbox/src/main.cpp
 
 [Kate Plugins]
 cmaketoolsplugin=false
 compilerexplorer=false
 eslintplugin=false
 externaltoolsplugin=true
-formatplugin=false
+formatplugin=true
 katebacktracebrowserplugin=false
 katebuildplugin=false
 katecloseexceptplugin=false
@@ -118,30 +108,21 @@ Orientation=1
 Sizes=1519
 
 [MainWindow0-ViewSpace 0]
-Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts
-Count=2
-Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/options.txt,file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts
-View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/options.txt
-View 1=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts
+Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/sandbox/src/main.cpp
+Count=1
+Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/sandbox/src/main.cpp
+View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/sandbox/src/main.cpp
 
-[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/options.txt]
+[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/sandbox/src/main.cpp]
 CursorColumn=0
-CursorLine=114
+CursorLine=32
 Dynamic Word Wrap=true
 JumpList=
-TextFolding={"checksum":"dcae7c72aed10f37790e03920bf4144211988f55","ranges":[]}
-ViMarks=
-
-[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts]
-CursorColumn=5
-CursorLine=16
-Dynamic Word Wrap=true
-JumpList=
-TextFolding={"checksum":"b465cea033852fe39e8ee345278e16e8b30a3e5a","ranges":[]}
+TextFolding={"checksum":"b9c552f5281bfd042e1e8ceab3dbfc20949bda8c","ranges":[]}
 ViMarks=
 
 [Open Documents]
-Count=2
+Count=1
 
 [Open MainWindows]
 Count=1
@@ -173,5 +154,5 @@ SearchDiskFiless=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/lov
 UseRegExp=false
 
 [Recent Files]
-File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/sandbox/src/main.ts
-Name1[$e]=main.ts
+File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/sandbox/src/main.cpp
+Name1[$e]=main.cpp

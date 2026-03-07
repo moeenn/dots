@@ -1,29 +1,25 @@
 [Document 0]
 Bookmarks=
 Encoding=UTF-8
-Highlighting=None
+Highlighting=Python
 Highlighting Set By User=false
-Indentation Mode=normal
-Mode=Normal
+Indentation Mode=python
+Mode=Python
 Mode Set By User=false
-URL=file:///home/moeenn/.dots/configs/home/.Xresources
+URL=file:///home/moeenn/.dots/configs/home/.bin/setup
 
 [MainWindow0]
-1920x1080 screen: XPosition=427
-1920x1080 screen: YPosition=232
+1920x1080 screen: Window-Maximized=true
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAABGAAAAKIAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB0oAAAQUAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
-eDP=eDP
 
 [MainWindow0 Settings]
-1920x1080 screen: XPosition=427
-1920x1080 screen: YPosition=232
+1920x1080 screen: Window-Maximized=true
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAABGAAAAKIAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB0oAAAQUAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
-WindowState=8
-eDP=eDP
+WindowState=10
 
 [Open Documents]
 Count=1
@@ -32,7 +28,7 @@ Count=1
 Count=1
 
 [Recent Files]
-File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/usaconvo/app/.env.example
-File2[$e]=$HOME/.dots/configs/home/.Xresources
-Name1[$e]=.env.example
-Name2[$e]=.Xresources
+File1[$e]=$HOME/.dots/config.toml
+File2[$e]=$HOME/.dots/configs/home/.bin/setup
+Name1[$e]=config.toml
+Name2[$e]=setup

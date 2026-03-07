@@ -1,15 +1,118 @@
 #! /bin/python3
 
 from dataclasses import dataclass
-import tomllib
 import subprocess
 import os
+import sys
 import tempfile
 import shutil
 from typing import Protocol
 
 
+# -------------------------------------------------------------------------------------------------------
+#
+#  configurations.
+#
+# -------------------------------------------------------------------------------------------------------
+BASE_PACKAGES: list[str] = [
+    "kakoune",
+    "make",
+    "cmake",
+    "network-manager",
+    "net-tools",
+    "bwm-ng",
+    "tty-clock",
+    "jq",
+    "curl",
+    "axel",
+    "wget",
+    "zip",
+    "dtrx",
+    "git",
+    "htop",
+    "redshift",
+    "dfc",
+    "mtr",
+    "tmux",
+    "xterm",
+    "acpi",
+    "lm-sensors",
+    "p7zip",
+    "fonts-jetbrains-mono",
+    "fonts-roboto",
+    "fonts-firacode",
+    "zoxide",
+    "pkg-config",
+    "rsync",
+    "scrot",
+]
+
+COMMON_APPS = [
+    "chromium",
+    "gimp",
+    "transmission-qt",
+    "mpv",
+    "gparted",
+    "bleachbit",
+    "synaptic",
+]
+
+FLATPAK_PACKAGES = [
+    # "org.chromium.Chromium",
+    "com.bitwarden.desktop",
+    "io.beekeeperstudio.Studio",
+    # "com.usebruno.Bruno"
+]
+
+VSCODE_VERSION = "1.107.18627"
+
+DOCKER_PACKAGES = ["docker.io"]
+
+GO_VERSION = "1.26.0"
+GO_PACKAGES = [
+    "golang.org/x/tools/gopls@latest",
+    "github.com/go-delve/delve/cmd/dlv@latest",
+    "github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest",
+    "github.com/nametake/golangci-lint-langserver@latest",
+]
+
+NODE_VERSION = "25"
+NODE_GLOBAL_DEPS = ["npm", "typescript-language-server"]
+
+PYTHON_SYS_PACKAGES = ["python3-pip", "python3-venv", "pipx"]
+PYTHON_PIP_PACKAGES = ["pyright", "ruff", "mypy"]
+
+XORG_PACKAGES = [
+    "xinit",
+    "cwm",
+    "hsetroot",
+    "lxappearance",
+    "alacritty",
+    "thunar",
+    "imv",
+    "viewnior",
+    "i3lock",
+    "picom",
+    "dmenu",
+    "mousepad",
+    "gnome-themes-extra",
+    "libssl-dev",
+    "libxrandr-dev",
+    "libxinerama-dev",
+    "libxcursor-dev",
+    "libxi-dev",
+    "libopengl-dev",
+    "libgl1-mesa-dev",
+]
+
+
+# -------------------------------------------------------------------------------------------------------
+#
+#  helper variables and functions.
+#
+# -------------------------------------------------------------------------------------------------------
 COLOR_RESET = "\033[0m"
+COLOR_BLACK = "\033[30m"
 COLOR_RED = "\033[31m"
 COLOR_BLUE = "\033[34m"
 
@@ -20,7 +123,7 @@ class IConfig(Protocol):
 
 
 def confirm(message: str) -> bool:
-    raw = input(f"\n{message}? [y/n] ")
+    raw = input(f"{COLOR_BLUE}{message}? [y/n] {COLOR_RESET}")
     return raw.lower().strip() == "y"
 
 
@@ -31,12 +134,23 @@ def exec(cmd: list[str]) -> None:
 
 def current_user() -> str:
     user = os.getenv("USER")
+    if user is None:
+        raise Exception("failed to read $USER from environment")
     return user.strip()
 
 
 def get_home() -> str:
     home = os.getenv("HOME")
+    if home is None:
+        raise Exception("failed to read $HOME from environment")
     return home.strip()
+
+
+# -------------------------------------------------------------------------------------------------------
+#
+#  configurations container classes.
+#
+# -------------------------------------------------------------------------------------------------------
 
 
 @dataclass
@@ -161,7 +275,7 @@ class GoConfig(IConfig):
     def name(self) -> str:
         return "Golang"
 
-    def __download_tarball(self) -> (str, str):
+    def __download_tarball(self) -> tuple[str, str]:
         filename = f"go{self.version}.linux-amd64.tar.gz"
         url = f"https://go.dev/dl/{filename}"
         download_path = os.path.join(tempfile.gettempdir(), filename)
@@ -183,8 +297,9 @@ class GoConfig(IConfig):
         exec(cmd)
 
     def __install_packages(self) -> None:
+        gopath = os.path.join(get_home(), ".local", "go", "bin", "go")
         for pkg in self.packages:
-            cmd = ["go", "install", "-v", pkg]
+            cmd = [gopath, "install", "-v", pkg]
             exec(cmd)
 
     def apply(self) -> None:
@@ -208,7 +323,13 @@ class NodeJsConfig(IConfig):
         out_filename = "nodesource_setup.sh"
         out_filepath = os.path.join(tempfile.gettempdir(), out_filename)
         if not os.path.exists(out_filepath):
-            cmd = ["curl", "-sL", f"https://deb.nodesource.com/setup_{self.version}.x", "-o", out_filepath]
+            cmd = [
+                "curl",
+                "-sL",
+                f"https://deb.nodesource.com/setup_{self.version}.x",
+                "-o",
+                out_filepath,
+            ]
             exec(cmd)
         return out_filepath
 
@@ -262,22 +383,6 @@ class PythonConfig(IConfig):
 
         if confirm("Install pip packages"):
             self.__install_pip_packages()
-
-
-@dataclass
-class JavaConfig(IConfig):
-    system_packages: list[str]
-
-    def name(self) -> str:
-        return "Java"
-
-    def __install_support(self) -> None:
-        cmd = ["sudo", "apt-get", "install", "-y"] + self.system_packages
-        exec(cmd)
-
-    def apply(self) -> None:
-        if confirm("Install java support"):
-            self.__install_support()
 
 
 @dataclass
@@ -360,6 +465,13 @@ class VscodeConfig(IConfig):
             self.__install(download_path)
 
 
+# -------------------------------------------------------------------------------------------------------
+#
+#  configuration driver class.
+#
+# -------------------------------------------------------------------------------------------------------
+
+
 class Config:
     symlink: SymlinksConfig
     system_packages: SystemPackagesConfig
@@ -370,24 +482,20 @@ class Config:
     go: GoConfig
     nodejs: NodeJsConfig
     python: PythonConfig
-    java: JavaConfig
     xorg: XorgConfig
     __steps: list[IConfig]
 
     def __init__(self) -> None:
-        with open("config.toml", "rb") as f:
-            parsed: dict[str, any] = tomllib.load(f)
-            self.system_packages = SystemPackagesConfig(**parsed["system_packages"])
-            self.flatpak = FlatpakConfig(**parsed["flatpak"])
-            self.docker = DockerConfig(**parsed["docker"])
-            self.fish = FishConfig()
-            self.vscode = VscodeConfig(**parsed["vscode"])
-            self.go = GoConfig(**parsed["go"])
-            self.nodejs = NodeJsConfig(**parsed["nodejs"])
-            self.python = PythonConfig(**parsed["python"])
-            self.java = JavaConfig(**parsed["java"])
-            self.xorg = XorgConfig(**parsed["xorg"])
-            self.symlink = SymlinksConfig()
+        self.system_packages = SystemPackagesConfig(BASE_PACKAGES, COMMON_APPS)
+        self.flatpak = FlatpakConfig(FLATPAK_PACKAGES)
+        self.docker = DockerConfig(DOCKER_PACKAGES)
+        self.fish = FishConfig()
+        self.vscode = VscodeConfig(VSCODE_VERSION)
+        self.go = GoConfig(GO_VERSION, GO_PACKAGES)
+        self.nodejs = NodeJsConfig(NODE_VERSION, NODE_GLOBAL_DEPS)
+        self.python = PythonConfig(PYTHON_SYS_PACKAGES, PYTHON_PIP_PACKAGES)
+        self.xorg = XorgConfig(XORG_PACKAGES)
+        self.symlink = SymlinksConfig()
 
         self.__steps = [
             self.symlink,
@@ -400,10 +508,13 @@ class Config:
             self.go,
             self.nodejs,
             self.python,
-            self.java,
         ]
 
     def __parse_selection(self, selection: str) -> list[int]:
+        if selection == "q" or selection == "Q":
+            print(f"{COLOR_BLACK}Exiting...{COLOR_RESET}")
+            sys.exit(0)
+
         pieces = selection.split(",")
         try:
             return [int(piece.strip()) for piece in pieces]
@@ -411,13 +522,16 @@ class Config:
             raise Exception("invalid selection")
 
     def __print_menu(self) -> list[int]:
-        print("Available options:\n")
+        print(f"{COLOR_BLUE}Please select an options:{COLOR_RESET}")
         idx = 1
         for step in self.__steps:
             print(f"{idx:2d}. {step.name()}")
             idx += 1
 
-        selection = input("\nSelection (separate with commas): ").strip()
+        print(" q: Quit")
+        selection = input(
+            f"{COLOR_BLUE}Selection (separate with commas): {COLOR_RESET}"
+        ).strip()
         return self.__parse_selection(selection)
 
     def __apply_selected(self, selection: list[int]) -> None:
@@ -425,30 +539,37 @@ class Config:
             if s < 1 or s > len(self.__steps):
                 raise Exception("invalid selection")
 
-            target_step = self.__steps[s-1]
+            target_step = self.__steps[s - 1]
             if not target_step:
                 raise Exception("invalid selection")
             target_step.apply()
 
     def __apply_all(self) -> None:
-        for step in steps:
+        for step in self.__steps:
             step.apply()
 
-    def apply_configs(self) -> None:
+    def __apply_configs(self) -> None:
         selection = self.__print_menu()
         if len(selection) == 0:
             self.__apply_all()
             return
-
         self.__apply_selected(selection)
 
+    def execute(self) -> None:
+        while True:
+            self.__apply_configs()
 
+
+# -------------------------------------------------------------------------------------------------------
+#
+#  script entrypoint.
+#
+# -------------------------------------------------------------------------------------------------------
 
 if __name__ == "__main__":
     try:
-        config = Config()
-        config.apply_configs()
+        Config().execute()
     except KeyboardInterrupt:
-        print(f"{COLOR_BLUE}\nctrl+c: exiting...")
+        print(f"{COLOR_BLACK}\nctrl+c: Exiting...{COLOR_RESET}")
     except Exception as ex:
-        print(f"{COLOR_RED}error: {str(ex)}")
+        print(f"{COLOR_RED}Error: {str(ex)}.{COLOR_RESET}")
