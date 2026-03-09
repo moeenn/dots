@@ -1,12 +1,12 @@
 [Document 0]
 Bookmarks=
 Encoding=UTF-8
-Highlighting=C++
+Highlighting=C
 Highlighting Set By User=false
 Indentation Mode=cstyle
-Mode=C++
+Mode=C
 Mode Set By User=false
-URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/sandbox/src/main.cpp
+URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/raytrace/src/main.c
 
 [Kate Plugins]
 cmaketoolsplugin=false
@@ -108,17 +108,17 @@ Orientation=1
 Sizes=1519
 
 [MainWindow0-ViewSpace 0]
-Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/sandbox/src/main.cpp
+Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/raytrace/src/main.c
 Count=1
-Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/sandbox/src/main.cpp
-View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/sandbox/src/main.cpp
+Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/raytrace/src/main.c
+View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/raytrace/src/main.c
 
-[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/sandbox/src/main.cpp]
+[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/raytrace/src/main.c]
 CursorColumn=0
-CursorLine=32
+CursorLine=0
 Dynamic Word Wrap=true
 JumpList=
-TextFolding={"checksum":"b9c552f5281bfd042e1e8ceab3dbfc20949bda8c","ranges":[]}
+TextFolding={"checksum":"552f57d7599a13c1f42a0078211662a8219b2beb","ranges":[]}
 ViMarks=
 
 [Open Documents]
@@ -154,5 +154,5 @@ SearchDiskFiless=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/lov
 UseRegExp=false
 
 [Recent Files]
-File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/sandbox/src/main.cpp
-Name1[$e]=main.cpp
+File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/raytrace/src/main.c
+Name1[$e]=main.c

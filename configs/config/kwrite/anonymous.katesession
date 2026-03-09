@@ -1,25 +1,33 @@
 [Document 0]
 Bookmarks=
 Encoding=UTF-8
-Highlighting=Python
+Highlighting=None
 Highlighting Set By User=false
-Indentation Mode=python
-Mode=Python
+Indentation Mode=normal
+Mode=Normal
 Mode Set By User=false
-URL=file:///home/moeenn/.dots/configs/home/.bin/setup
+URL=file:///home/moeenn/Downloads/.generated/prompt.txt
 
 [MainWindow0]
-1920x1080 screen: Window-Maximized=true
+1920x1080 screen: Height=648
+1920x1080 screen: Width=1322
+1920x1080 screen: XPosition=348
+1920x1080 screen: YPosition=285
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAB0oAAAQUAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAABSoAAAKIAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
+eDP=eDP
 
 [MainWindow0 Settings]
-1920x1080 screen: Window-Maximized=true
+1920x1080 screen: Height=648
+1920x1080 screen: Width=1322
+1920x1080 screen: XPosition=348
+1920x1080 screen: YPosition=285
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAB0oAAAQUAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAABSoAAAKIAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
-WindowState=10
+WindowState=8
+eDP=eDP
 
 [Open Documents]
 Count=1
@@ -28,7 +36,7 @@ Count=1
 Count=1
 
 [Recent Files]
-File1[$e]=$HOME/.dots/config.toml
-File2[$e]=$HOME/.dots/configs/home/.bin/setup
-Name1[$e]=config.toml
-Name2[$e]=setup
+File1[$e]=$HOME/.dots/configs/home/.bin/setup
+File2[$e]=$HOME/Downloads/.generated/prompt.txt
+Name1[$e]=setup
+Name2[$e]=prompt.txt
