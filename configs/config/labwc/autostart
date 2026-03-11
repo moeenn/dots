@@ -1,0 +1,13 @@
+# Set background.
+swaybg -i ~/Pictures/wall.png -m fill >/dev/null 2>&1 &
+
+# warm colors.
+redshift -O 5000 &
+
+# Launch a panel such as yambar or waybar.
+# waybar >/dev/null 2>&1 &
+
+# Enable notifications. Typically GNOME/KDE application notifications go
+# through the org.freedesktop.Notifications D-Bus API and require a client such
+# as mako to function correctly. Thunderbird is an example of this.
+#mako >/dev/null 2>&1 &

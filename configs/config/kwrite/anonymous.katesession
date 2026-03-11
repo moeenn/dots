@@ -1,25 +1,15 @@
-[Document 0]
-Bookmarks=
-Encoding=UTF-8
-Highlighting=C
-Highlighting Set By User=false
-Indentation Mode=cstyle
-Mode=C
-Mode Set By User=false
-URL=file:///home/moeenn/.dots/programs/cwmstatus/src/main.c
-
 [MainWindow0]
-1920x1080 screen: Height=648
-1920x1080 screen: Width=1322
+1920x1080 screen: Height=706
+1920x1080 screen: Width=1347
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAABSoAAAKIAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAABUMAAALCAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 
 [MainWindow0 Settings]
-1920x1080 screen: Height=648
-1920x1080 screen: Width=1322
+1920x1080 screen: Height=706
+1920x1080 screen: Width=1347
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAABSoAAAKIAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAABUMAAALCAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 WindowState=8
 
@@ -30,7 +20,7 @@ Count=1
 Count=1
 
 [Recent Files]
-File1[$e]=$HOME/.dots/programs/bar/src/main.c
-File2[$e]=$HOME/.dots/programs/cwmstatus/src/main.c
-Name1[$e]=main.c
-Name2[$e]=main.c
+File1[$e]=$HOME/.config/labwc/themerc
+File2[$e]=$HOME/Downloads/labwc.sh
+Name1[$e]=themerc
+Name2[$e]=labwc.sh

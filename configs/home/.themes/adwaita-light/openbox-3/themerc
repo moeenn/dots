@@ -1,6 +1,3 @@
-!! Bonzo by Addy
-!! Inspired by Onyx by Dana Jansens
-
 !! Menu background
 menu.items.bg: flat
 menu.items.bg.color: #ffffff
@@ -61,14 +58,20 @@ window.inactive.button.disabled.image.color: #aaaaaa
 !! Borders
 window.active.border.color: #cdc7c2
 window.inactive.border.color: #cdc7c2
-border.width: 0
-padding.width: 8
-padding.height: 4
+border.width: 1
+padding.width: 20
+padding.height: 10
 window.handle.width: 0
 window.active.client.color:  #3584e4
 window.inactive.client.color:  #ffffff
 window.client.padding.width: 0
 window.client.padding.height: 0
+
+!! shadows
+window.active.shadow.size: 60
+window.active.shadow.color: #00000060
+window.inactive.shadow.size: 40
+window.inactive.shadow.color: #00000040
 
 !! On-screen displays
 osd.bg: flat

@@ -1,0 +1,82 @@
+!! Menu background
+menu.items.bg: flat
+menu.items.bg.color: #1a1a1a
+menu.overlap.x: -4
+
+!! Menu text
+menu.items.text.color: #dfdfdf
+menu.items.justify: left
+menu.items.disabled.text.color: #8a8a8a
+
+!! Menu separator
+menu.separator.padding.height: 6
+menu.separator.color: #1a1a1a
+
+!! Menu border
+menu.border.width: 10
+menu.border.color: #1a1a1a
+
+!! Menu headers
+menu.title.bg: flat
+menu.title.bg.color: #262626
+menu.title.text.color: #dfdfdf
+menu.title.text.justify: center
+
+!! Selected menu item
+menu.items.active.bg: flat
+menu.items.active.bg.color: #4b4b4b
+menu.items.active.text.color: #fffffe
+
+!! Titlebar
+window.active.title.bg: flat
+window.active.title.bg.color: #353535 
+window.inactive.title.bg: flat
+window.inactive.title.bg.color: #353535
+
+!! Titlebar text
+window.label.text.justify: center
+window.active.label.bg: parentrelative
+window.active.label.text.color: #dfdfdf
+window.inactive.label.bg: parentrelative
+window.inactive.label.text.color: #474d4f
+
+!! Window buttons
+window.*.button.*.bg: parentrelative
+window.active.button.*.hover.bg: flat
+window.inactive.button.*.hover.bg: parentrelative
+window.*.button.*.pressed.bg: flat
+
+window.active.button.*.hover.bg.color: #353535
+window.active.button.*.pressed.bg.color: #bc0030
+window.inactive.button.*.pressed.bg.color: #4ab5ff
+
+window.active.button.*.image.color: #dfdfdf
+window.active.button.disabled.image.color: #aaaaaa
+window.inactive.button.*.image.color: #8a8a8a
+window.inactive.button.disabled.image.color: #aaaaaa
+
+!! Borders
+window.active.border.color: #1a1a1a
+window.inactive.border.color: #1a1a1a
+border.width: 1
+padding.width: 20
+padding.height: 10
+window.handle.width: 0
+window.active.client.color:  #4b4b4b
+window.inactive.client.color:  #1a1a1a
+window.client.padding.width: 0
+window.client.padding.height: 0
+
+!! shadows
+window.active.shadow.size: 60
+window.active.shadow.color: #00000060
+window.inactive.shadow.size: 40
+window.inactive.shadow.color: #00000040
+
+!! On-screen displays
+osd.bg: flat
+osd.border.width: 0
+osd.bg.color: #353535
+osd.border.color: #1a1a1a
+osd.label.text.color: #dfdfdf
+osd.hilight.bg: #262626

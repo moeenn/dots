@@ -37,7 +37,7 @@ def wifi_list() -> None:
     execute(["nmcli", "con", "show"])
 
 def wifi_add(ssid: str) -> None:
-    password = input("Password: ").trim()
+    password = input("Password: ").strip()
     execute(["nmcli", "dev", "wifi", "connect", ssid, "password", password])
 
 def wifi_connect(ssid: str) -> None:
@@ -64,19 +64,19 @@ def main(args: list[str]) -> None:
         case "add" | "a":
             if len(args) > 3:
                 raise Exception("please provide only one SSID to add")
-            ssid = args[2].trim()
+            ssid = args[2].strip()
             return wifi_add(ssid)
 
         case "connect" | "c":
             if len(args) > 3:
                 raise Exception("please provide only one SSID to connect")
-            ssid = args[2].trim()
+            ssid = args[2].strip()
             return wifi_connect(ssid)
 
         case "delete" | "d":
             if len(args) > 3:
                 raise Exception("please provide only one SSID to delete")
-            ssid = args[2].trim()
+            ssid = args[2].strip()
             return wifi_delete(ssid)
 
 
