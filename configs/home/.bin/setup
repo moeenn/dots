@@ -14,7 +14,7 @@ from typing import Protocol
 #  configurations.
 #
 # -------------------------------------------------------------------------------------------------------
-BASE_PACKAGES: list[str] = [
+BASE_PACKAGES = [
     "kakoune",
     "make",
     "cmake",
@@ -84,7 +84,6 @@ PYTHON_PIP_PACKAGES = ["pyright", "ruff", "mypy"]
 
 XORG_PACKAGES = [
     "xinit",
-    "cwm",
     "hsetroot",
     "lxappearance",
     "alacritty",
@@ -374,7 +373,7 @@ class PythonConfig(IConfig):
         exec(cmd)
 
     def __install_pip_packages(self) -> None:
-        cmd = ["pipx", "install"] + self.pip_packages
+        cmd = ["pipx", "install", "--force"] + self.pip_packages
         exec(cmd)
 
     def apply(self) -> None:
@@ -396,9 +395,26 @@ class XorgConfig(IConfig):
         cmd = ["sudo", "apt-get", "install", "-y"] + self.system_packages
         exec(cmd)
 
+    def __should_append(self) -> bool:
+        with open("/etc/environment", "wt") as file:
+            for line in file:
+                if line.startsWith("FREETYPE_PROPERTIES="):
+                    return False
+        return True
+
+    def __improve_font_rendering(self) -> None:
+        if self.__should_append():
+            target_file = "/etc/environment"
+            content = """FREETYPE_PROPERTIES="cff:no-stem-darkening=0 autofitter:no-stem-darkening=0" """
+            cmd = f"echo '{content}' | sudo tee -a {target_file} > /dev/null"
+            subprocess.run(cmd, shell=True, check=True)
+
     def apply(self) -> None:
         if confirm("Install xorg packages"):
             self.__install_packages()
+
+        if confirm("Improve font rendering"):
+            self.__improve_font_rendering()
 
 
 @dataclass
