@@ -1,3 +1,13 @@
+[Document 0]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=XML
+Highlighting Set By User=false
+Indentation Mode=xml
+Mode=XML
+Mode Set By User=false
+URL=file:///home/moeenn/.dots/configs/config/labwc/rc.xml
+
 [MainWindow0]
 1920x1080 screen: Height=706
 1920x1080 screen: Width=1347
@@ -20,7 +30,7 @@ Count=1
 Count=1
 
 [Recent Files]
-File1[$e]=$HOME/.config/labwc/themerc
-File2[$e]=$HOME/Downloads/labwc.sh
-Name1[$e]=themerc
-Name2[$e]=labwc.sh
+File1[$e]=$HOME/Downloads/setup/colors-setup
+File2[$e]=$HOME/.dots/configs/config/labwc/rc.xml
+Name1[$e]=colors-setup
+Name2[$e]=rc.xml

@@ -1,0 +1,82 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    border-radius: 8;
+    background: transparent;
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .3s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#clock {
+    background: rgba(26, 26, 26, 1.0);
+    padding: 0 20px;    
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;    
+    margin: 10px 10px 10px 0;
+}
+
+#network, #pulseaudio, #battery {
+    margin: 10px 0;
+    padding: 0 15px;
+    background: rgba(26, 26, 26, 1.0);
+    border-radius: 0px;
+}
+
+#network:hover, #pulseaudio:hover, #battery:hover, #clock:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transition: background 0.2s ease-in-out;
+}
+
+#network {
+    padding: 0px 20px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;        
+}
+
+#battery.low {
+    color: #ffaa00;
+}
+
+#battery.critical {
+    color: #ff5555;
+}
+
+#battery.warning {
+    color: #ffaa00;
+}
+
+#battery.charging {
+    color: #a6e3a1;
+}
+
+#tray {
+    margin: 10px 10px 10px 0;
+    padding: 0 20px;
+    background: rgba(26, 26, 26, 1.0);
+    border-radius: 8px;
+}
+
+#tray menu {
+    background: #1e1e2e;
+    color: #ffffff;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #ff5555;
+}

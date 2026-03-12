@@ -223,8 +223,8 @@ typedef enum {
 #define passert(condition)                                                      \\
     if (!(condition))                                                           \\
     {                                                                           \\
-        fprintf(stderr, "%s:%d assertion failed\\n", __FILE_NAME__, __LINE__);   \\
-        exit(EXIT_FAILURE);                                                     \\
+        fprintf(stderr, "%s:%d assertion failed\\n", __FILE_NAME__, __LINE__);  \\
+        exit(1);                                                                \\
     }
 		""".lstrip()
 
@@ -256,8 +256,10 @@ class CppTemplate(BaseTemplate):
     def __init__(self, project_name: str) -> None:
         super().__init__(project_name)
         main_cpp_path = os.path.join("src", "main.cpp")
+        common_hpp_path = os.path.join("include", "common.hpp")
         self.files_and_content = {
             main_cpp_path: self.main_cpp_content(),
+			common_hpp_path: self.common_hpp_content(),
             "CMakeLists.txt": self.cmakelists_content(),
         }
 
@@ -280,13 +282,25 @@ class CppTemplate(BaseTemplate):
 
     def main_cpp_content(self) -> str:
         return """
-#include <iostream>
+#include <cstdio>
 
 int main()
 {
-    std::cout << "hello world\\n";
+    puts("hello world");
 }
     """.lstrip()
+
+    def common_hpp_content(self) -> str:
+        return """
+#pragma once
+#include <cstdlib>
+
+#define passert(condition)                                                      \\
+    if (!(condition)) {                                                         \\
+        fprintf(stderr, "%s:%d assertion failed\\n", __FILE_NAME__, __LINE__);  \\
+        exit(1);                                                                \\
+    }
+        """.strip()
 
     def cmakelists_content(self) -> str:
         return f"""

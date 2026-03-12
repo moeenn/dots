@@ -1,0 +1,62 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "exclusive": false, // true means reserve space.    
+    "height": 70,
+    "spacing": 0,
+    "modules-left": [],
+    "modules-center": [],
+    "modules-right": ["tray", "network", "pulseaudio", "battery", "clock"],
+        
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%Y-%m-%d}",
+        "tooltip-format": "{:%Y-%m-%d | %H:%M}",
+        "calendar": {
+            "mode"          : "month",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "on-click-right": "mode",
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+    
+    "network": {
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "  connected",
+        "format-disconnected": "  Offline",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}",
+        "tooltip-format-disconnected": "Disconnected"
+    },
+    
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "  Muted",
+        "format-icons": ["", "", ""],
+        "on-click": "pavucontrol",
+        "scroll-step": 5
+    },
+    
+    "battery": {
+        "bat": "BAT0",
+        "format": "{icon}  {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "format-charging": "  {capacity}%",
+        "format-full": "  Full",
+        "tooltip-format": "{timeTo} remaining"
+    },
+    
+    "tray": {
+        "icon-size": 24,
+        "spacing": 8
+    }
+}
