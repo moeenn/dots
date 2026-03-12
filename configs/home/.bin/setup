@@ -84,24 +84,25 @@ PYTHON_PIP_PACKAGES = ["pyright", "ruff", "mypy"]
 
 XORG_PACKAGES = [
     "xinit",
-    #"hsetroot",
-    #"lxappearance",
-    "xfce4-terminal",
+    # "hsetroot",
+    # "lxappearance",
+    "foot",  # terminal.
     "thunar",
-    "imv",
-    # "viewnior",
+    # "imv",
+    "viewnior",
     # "i3lock",
     # "picom",
-    "dmenu",
-    "geany",
+    # "dmenu",
+    "mousepad",
     "gnome-themes-extra",
-    "libssl-dev",
-    "libxrandr-dev",
-    "libxinerama-dev",
-    "libxcursor-dev",
-    "libxi-dev",
-    "libopengl-dev",
-    "libgl1-mesa-dev",
+    "labwc",
+    "swaybg",
+    "swayidle",
+    "waybar",
+    "grim",  # screenshot.
+    "swaylock",
+    "brightnessctl",
+    # "nwg-look", # lxappearance alternative.
 ]
 
 
