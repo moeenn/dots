@@ -2,6 +2,7 @@
     "layer": "top",
     "position": "bottom",
     "exclusive": false, // true means reserve space.    
+    "passthrough": true, // true means bar is not clickable.
     "height": 70,
     "spacing": 0,
     "modules-left": [],
@@ -29,8 +30,8 @@
     },
     
     "network": {
-        "format-wifi": "  {signalStrength}%",
-        "format-ethernet": "  connected",
+        "format-wifi": "  {essid}",
+        "format-ethernet": "  connected",
         "format-disconnected": "  Offline",
         "tooltip-format": "{ifname} via {gwaddr}",
         "tooltip-format-wifi": "{essid} ({signalStrength}%)",
@@ -39,7 +40,7 @@
     },
     
     "pulseaudio": {
-        "format": "{icon} {volume}%",
+        "format": "{icon}  {volume}%",
         "format-muted": "  Muted",
         "format-icons": ["", "", ""],
         "on-click": "pavucontrol",
@@ -50,7 +51,7 @@
         "bat": "BAT0",
         "format": "{icon}  {capacity}%",
         "format-icons": ["", "", "", "", ""],
-        "format-charging": "  {capacity}%",
+        "format-charging": " {capacity}%",
         "format-full": "  Full",
         "tooltip-format": "{timeTo} remaining"
     },

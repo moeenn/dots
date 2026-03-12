@@ -1,13 +1,13 @@
 * {
     border: none;
-    border-radius: 0;
+    border-radius: 0px;
     font-family: "JetBrains Mono", monospace;
     font-size: 13px;
-    min-height: 0;
+    min-height: 0px;
 }
 
 window#waybar {
-    border-radius: 8;
+    border-radius: 8px;
     background: transparent;
     color: #ffffff;
     transition-property: background-color;
@@ -58,6 +58,10 @@ window#waybar.hidden {
 
 #battery.charging {
     color: #a6e3a1;
+}
+
+#pulseaudio.muted {
+    color: #bfbfbf;
 }
 
 #tray {
