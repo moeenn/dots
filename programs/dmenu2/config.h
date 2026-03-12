@@ -2,7 +2,7 @@ static int topbar = 1;
 static int fuzzy = 1;
 static int centered = 1;
 static int min_width = 550;
-static const char* fonts[] = { "JetBrains Mono:size=9" };
+static const char* fonts[] = { "JetBrains Mono:size=11" };
 static const char* prompt = NULL;
 static const char* colors[SchemeLast][2] = {
     /* fg       bg       */

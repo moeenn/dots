@@ -244,7 +244,7 @@
     </keybind>
 
     <keybind key="A-p">
-      <action name="Execute" command="dmenu_run -p 'Run '" />
+      <action name="Execute" command="dmenu_run" />
     </keybind>
     <keybind key="A-F4">
       <action name="Close" />
