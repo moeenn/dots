@@ -187,7 +187,7 @@ class CTemplate(BaseTemplate):
         return ["c"]
 
     def gitignore_entries(self) -> list[str]:
-        return ["bin/*", ".cache/", "compile_commands.json"]
+        return ["bin/*", ".cache/"]
 
     def project_directories(self) -> list[str]:
         return ["src", "bin", "include"]
@@ -272,13 +272,6 @@ class CppTemplate(BaseTemplate):
 
     def project_directories(self) -> list[str]:
         return ["src", "build", "include"]
-
-    def execute(self) -> None:
-        super().execute()
-        cmd = ["clang-format", "-style=Microsoft", "--dump-config"]
-        output = subprocess.run(cmd, capture_output=True, text=True)
-        with open(os.path.join(self.project_dir, ".clang-format"), "wt") as file:
-            file.write(output.stdout)
 
     def main_cpp_content(self) -> str:
         return """

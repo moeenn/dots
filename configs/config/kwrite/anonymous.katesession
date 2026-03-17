@@ -1,3 +1,13 @@
+[Document 0]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=YAML
+Highlighting Set By User=false
+Indentation Mode=normal
+Mode=YAML
+Mode Set By User=false
+URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/usaconvo/app/docker-compose.yml
+
 [MainWindow0]
 1920x1080 screen: Height=706
 1920x1080 screen: Width=1347
@@ -20,7 +30,7 @@ Count=1
 Count=1
 
 [Recent Files]
-File1[$e]=$HOME/Downloads/labwc.sh
-File2[$e]=$HOME/.dots/configs/config/labwc/rc.xml
-Name1[$e]=labwc.sh
-Name2[$e]=rc.xml
+File1[$e]=$HOME/Downloads/clean.py
+File2[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/usaconvo/app/docker-compose.yml
+Name1[$e]=clean.py
+Name2[$e]=docker-compose.yml

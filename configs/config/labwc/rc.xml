@@ -292,7 +292,7 @@
       <!-- <scrollMethod>twofinger</scrollMethod> -->
       <!-- <sendEventsMode>yes</sendEventsMode> -->
       <!-- <calibrationMatrix>1 0 0 0 1 0</calibrationMatrix> -->
-      <scrollFactor>1.0</scrollFactor>
+      <scrollFactor>1.4</scrollFactor>
     </device>
   </libinput>
 </labwc_config>
