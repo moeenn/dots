@@ -1,27 +1,33 @@
 [Document 0]
 Bookmarks=
 Encoding=UTF-8
-Highlighting=YAML
+Highlighting=None
 Highlighting Set By User=false
 Indentation Mode=normal
-Mode=YAML
+Mode=Normal
 Mode Set By User=false
-URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/usaconvo/app/docker-compose.yml
+URL=
 
 [MainWindow0]
-1920x1080 screen: Height=706
-1920x1080 screen: Width=1347
+1920x1080 screen: Height=619
+1920x1080 screen: Width=993
+1920x1080 screen: XPosition=140
+1920x1080 screen: YPosition=285
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAABUMAAALCAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAA+EAAAJrAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
+eDP=eDP
 
 [MainWindow0 Settings]
-1920x1080 screen: Height=706
-1920x1080 screen: Width=1347
+1920x1080 screen: Height=619
+1920x1080 screen: Width=993
+1920x1080 screen: XPosition=140
+1920x1080 screen: YPosition=285
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAABUMAAALCAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAA+EAAAJrAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 WindowState=8
+eDP=eDP
 
 [Open Documents]
 Count=1
@@ -30,7 +36,7 @@ Count=1
 Count=1
 
 [Recent Files]
-File1[$e]=$HOME/Downloads/clean.py
-File2[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/usaconvo/app/docker-compose.yml
-Name1[$e]=clean.py
-Name2[$e]=docker-compose.yml
+File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/hono/src/views/pages/IncomePage.tsx
+File2[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/hono/src/views/pages/ExpensesPage.tsx
+Name1[$e]=IncomePage.tsx
+Name2[$e]=ExpensesPage.tsx

@@ -1,12 +1,12 @@
 [Document 0]
 Bookmarks=
 Encoding=UTF-8
-Highlighting=C++
+Highlighting=Go
 Highlighting Set By User=false
 Indentation Mode=cstyle
-Mode=C++
+Mode=Go
 Mode Set By User=false
-URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/wbar/src/main.cpp
+URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sqlite/cmd/sqlite/main.go
 
 [Kate Plugins]
 cmaketoolsplugin=false
@@ -44,7 +44,7 @@ textfilterplugin=true
 [MainWindow0]
 1920x1080 screen: Window-Maximized=true
 Active ViewSpace=0
-Kate-MDI-H-Splitter=346,1519,0
+Kate-MDI-H-Splitter=346,1573,0
 Kate-MDI-Sidebar-0-Bar-0-TvList=kate_private_plugin_katefiletreeplugin,kateproject,kateprojectgit,lspclient_symbol_outline
 Kate-MDI-Sidebar-0-LastSize=346
 Kate-MDI-Sidebar-0-SectSizes=0
@@ -90,35 +90,33 @@ Kate-MDI-ToolView-lspclient_symbol_outline-Visible=false
 Kate-MDI-ToolView-output-Position=3
 Kate-MDI-ToolView-output-Show-Button-In-Sidebar=true
 Kate-MDI-ToolView-output-Visible=false
-Kate-MDI-V-Splitter=0,1013,0
-MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAB0oAAAQUAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+Kate-MDI-V-Splitter=0,934,0
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAPFAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 
 [MainWindow0 Settings]
 1920x1080 screen: Window-Maximized=true
-MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAB0oAAAQUAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAPFAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 WindowState=10
 
 [MainWindow0-Splitter 0]
 Children=MainWindow0-ViewSpace 0
 Orientation=1
-Sizes=1519
+Sizes=1573
 
 [MainWindow0-ViewSpace 0]
-Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/wbar/src/main.cpp
+Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sqlite/cmd/sqlite/main.go
 Count=1
-Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/wbar/src/main.cpp
-View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/wbar/src/main.cpp
+Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sqlite/cmd/sqlite/main.go
+View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sqlite/cmd/sqlite/main.go
 
-[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/wbar/src/main.cpp]
-CursorColumn=4
-CursorLine=6
+[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sqlite/cmd/sqlite/main.go]
+CursorColumn=0
+CursorLine=9
 Dynamic Word Wrap=true
 JumpList=
-TextFolding={"checksum":"14f3735e2cee87d64312678ce59160e68959fb86","ranges":[]}
+TextFolding={"checksum":"2a596da15b5fe846f73eac70e095fc88808b0d58","ranges":[]}
 ViMarks=
 
 [Open Documents]
@@ -154,5 +152,5 @@ SearchDiskFiless=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/lov
 UseRegExp=false
 
 [Recent Files]
-File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/cpp/wbar/src/main.cpp
-Name1[$e]=main.cpp
+File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sqlite/cmd/sqlite/main.go
+Name1[$e]=main.go

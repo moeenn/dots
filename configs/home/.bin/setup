@@ -83,16 +83,10 @@ PYTHON_SYS_PACKAGES = ["python3-pip", "python3-venv", "pipx"]
 PYTHON_PIP_PACKAGES = ["pyright", "ruff", "mypy"]
 
 XORG_PACKAGES = [
-    "xinit",
-    # "hsetroot",
-    # "lxappearance",
-    "foot",  # terminal.
+    "foot",  
     "thunar",
-    # "imv",
     "viewnior",
-    # "i3lock",
-    # "picom",
-    # "dmenu",
+	"pavucontrol",
     "mousepad",
     "gnome-themes-extra",
     "labwc",

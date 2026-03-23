@@ -152,18 +152,18 @@ PROJECT = {self.project_name}
 MAIN_FILE = ./cmd/$(PROJECT)/main.go
 
 lint:
-	golangci-lint run ./...
+	@golangci-lint run ./...
 
 test:
-	go test ./...
+	@go test ./...
 
-run:
-	go run $(MAIN_FILE)
+dev:
+	@go run $(MAIN_FILE)
 
 build: lint test
 	go build -o ./bin/$(PROJECT) $(MAIN_FILE)
 
-.PHONY: lint test run
+.PHONY: lint test dev
   """.strip()
 
 
