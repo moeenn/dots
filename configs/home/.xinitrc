@@ -1,3 +1,4 @@
+
 xrdb ~/.Xresources &
 
 # set typing repeat rate

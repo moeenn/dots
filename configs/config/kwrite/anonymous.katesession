@@ -6,28 +6,20 @@ Highlighting Set By User=false
 Indentation Mode=normal
 Mode=Normal
 Mode Set By User=false
-URL=
+URL=file:///home/moeenn/.config/sway/config
 
 [MainWindow0]
-1920x1080 screen: Height=619
-1920x1080 screen: Width=993
-1920x1080 screen: XPosition=140
-1920x1080 screen: YPosition=285
+1920x1080 screen: Window-Maximized=true
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAA+EAAAJrAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAA7wAAAP+AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
-eDP=eDP
 
 [MainWindow0 Settings]
-1920x1080 screen: Height=619
-1920x1080 screen: Width=993
-1920x1080 screen: XPosition=140
-1920x1080 screen: YPosition=285
+1920x1080 screen: Window-Maximized=true
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAA+EAAAJrAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAA7wAAAP+AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
-WindowState=8
-eDP=eDP
+WindowState=10
 
 [Open Documents]
 Count=1
@@ -36,7 +28,7 @@ Count=1
 Count=1
 
 [Recent Files]
-File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/hono/src/views/pages/IncomePage.tsx
-File2[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/js/hono/src/views/pages/ExpensesPage.tsx
-Name1[$e]=IncomePage.tsx
-Name2[$e]=ExpensesPage.tsx
+File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/rain/cmd/rain/main.go
+File2[$e]=$HOME/.config/sway/config
+Name1[$e]=main.go
+Name2[$e]=config

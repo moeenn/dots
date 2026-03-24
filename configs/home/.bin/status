@@ -1,0 +1,17 @@
+#! /bin/bash
+
+wifi_icon=' '
+battery_icon=' '
+vol_icon='"'
+
+UPOWER_DEVICE=$(upower -e | grep 'BAT')
+
+while true; do
+	time=$(date +'%Y-%m-%d %H:%M');
+	vol=$(pactl list sinks | grep 'Volume:' | head -n 1 | awk '{print $5}');
+	battery=$(upower -i $UPOWER_DEVICE | grep 'percentage' | awk '{print $2}');
+	wifi=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d: -f2);
+
+	echo "${wifi_icon} ${wifi}    ${battery_icon} ${battery}    ${vol_icon} ${vol}    ${time}";
+	sleep 1;
+done
