@@ -1,5 +1,5 @@
 {
-    "layer": "top",
+    "layer": "bottom",
     "position": "bottom",
     "exclusive": false, // true means reserve space.    
     "passthrough": true, // true means bar is not clickable.
