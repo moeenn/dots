@@ -1,4 +1,4 @@
-theme = "catppuccin_mocha"
+theme = "gruvbox_light"
 
 [editor]
 line-number = "absolute"

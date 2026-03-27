@@ -1,12 +1,12 @@
 [Document 0]
 Bookmarks=
 Encoding=UTF-8
-Highlighting=Go
+Highlighting=TypeScript
 Highlighting Set By User=false
 Indentation Mode=cstyle
-Mode=Go
+Mode=TypeScript
 Mode Set By User=false
-URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
+URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/namedSQL/src/database.ts
 
 [Kate Plugins]
 cmaketoolsplugin=false
@@ -108,17 +108,17 @@ Orientation=1
 Sizes=1573
 
 [MainWindow0-ViewSpace 0]
-Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
+Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/namedSQL/src/database.ts
 Count=1
-Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
-View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
+Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/namedSQL/src/database.ts
+View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/namedSQL/src/database.ts
 
-[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go]
-CursorColumn=11
-CursorLine=64
+[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/namedSQL/src/database.ts]
+CursorColumn=15
+CursorLine=176
 Dynamic Word Wrap=true
 JumpList=
-TextFolding={"checksum":"918600b1455c731b3386eac4ccaf463c3e0cfb9f","ranges":[]}
+TextFolding={"checksum":"b2fdc32bd6873eb9cb8106d7b59b465109d46d9a","ranges":[]}
 ViMarks=
 
 [Open Documents]
@@ -154,5 +154,5 @@ SearchDiskFiless=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/lov
 UseRegExp=false
 
 [Recent Files]
-File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
-Name1[$e]=main.go
+File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/namedSQL/src/database.ts
+Name1[$e]=database.ts
