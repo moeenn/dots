@@ -1,12 +1,22 @@
 [Document 0]
 Bookmarks=
 Encoding=UTF-8
-Highlighting=TypeScript
+Highlighting=Rust
 Highlighting Set By User=false
 Indentation Mode=cstyle
-Mode=TypeScript
+Mode=Rust
 Mode Set By User=false
-URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/namedSQL/src/database.ts
+URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/rust/pkg/src/apt.rs
+
+[Document 1]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=Rust
+Highlighting Set By User=false
+Indentation Mode=cstyle
+Mode=Rust
+Mode Set By User=false
+URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/rust/pkg/src/main.rs
 
 [Kate Plugins]
 cmaketoolsplugin=false
@@ -108,21 +118,30 @@ Orientation=1
 Sizes=1573
 
 [MainWindow0-ViewSpace 0]
-Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/namedSQL/src/database.ts
-Count=1
-Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/namedSQL/src/database.ts
-View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/namedSQL/src/database.ts
+Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/rust/pkg/src/apt.rs
+Count=2
+Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/rust/pkg/src/apt.rs,file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/rust/pkg/src/main.rs
+View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/rust/pkg/src/apt.rs
+View 1=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/rust/pkg/src/main.rs
 
-[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/namedSQL/src/database.ts]
+[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/rust/pkg/src/apt.rs]
 CursorColumn=15
-CursorLine=176
+CursorLine=12
 Dynamic Word Wrap=true
 JumpList=
-TextFolding={"checksum":"b2fdc32bd6873eb9cb8106d7b59b465109d46d9a","ranges":[]}
+TextFolding={"checksum":"e4d33d2103c00f2b90f89a75cbaf4a68e8512483","ranges":[]}
+ViMarks=
+
+[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/rust/pkg/src/main.rs]
+CursorColumn=40
+CursorLine=22
+Dynamic Word Wrap=true
+JumpList=
+TextFolding={"checksum":"859f47db65f3b98e4096392e9ae08c5307f7bb99","ranges":[]}
 ViMarks=
 
 [Open Documents]
-Count=1
+Count=2
 
 [Open MainWindows]
 Count=1
@@ -154,5 +173,5 @@ SearchDiskFiless=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/lov
 UseRegExp=false
 
 [Recent Files]
-File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/namedSQL/src/database.ts
-Name1[$e]=database.ts
+File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/rust/pkg/src/apt.rs
+Name1[$e]=apt.rs

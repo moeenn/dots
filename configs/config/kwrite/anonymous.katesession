@@ -1,17 +1,33 @@
+[Document 0]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=Fish
+Highlighting Set By User=false
+Indentation Mode=normal
+Mode=Fish
+Mode Set By User=false
+URL=file:///home/moeenn/.dots/configs/config/fish/config.fish
+
 [MainWindow0]
-1920x1080 screen: Height=620
-1920x1080 screen: Width=1080
+1920x1080 screen: Height=744
+1920x1080 screen: Width=1269
+1920x1080 screen: XPosition=577
+1920x1080 screen: YPosition=239
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAABDgAAAJsAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAABPUAAALoAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
+eDP=eDP
 
 [MainWindow0 Settings]
-1920x1080 screen: Height=620
-1920x1080 screen: Width=1080
+1920x1080 screen: Height=744
+1920x1080 screen: Width=1269
+1920x1080 screen: XPosition=577
+1920x1080 screen: YPosition=239
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAABDgAAAJsAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAABPUAAALoAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 WindowState=8
+eDP=eDP
 
 [Open Documents]
 Count=1
@@ -20,7 +36,7 @@ Count=1
 Count=1
 
 [Recent Files]
-File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/xptrack/.git/config
-File2[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/raytrace/README.md
-Name1[$e]=config
-Name2[$e]=README.md
+File1[$e]=$HOME/.dots/configs/config/fish/fish_variables
+File2[$e]=$HOME/.dots/configs/config/fish/config.fish
+Name1[$e]=fish_variables
+Name2[$e]=config.fish
