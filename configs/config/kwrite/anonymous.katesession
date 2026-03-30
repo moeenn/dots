@@ -1,33 +1,25 @@
 [Document 0]
 Bookmarks=
 Encoding=UTF-8
-Highlighting=Fish
+Highlighting=Scheme
 Highlighting Set By User=false
 Indentation Mode=normal
-Mode=Fish
+Mode=Scheme
 Mode Set By User=false
-URL=file:///home/moeenn/.dots/configs/config/fish/config.fish
+URL=file:///home/moeenn/.config/Thunar/accels.scm
 
 [MainWindow0]
-1920x1080 screen: Height=744
-1920x1080 screen: Width=1269
-1920x1080 screen: XPosition=577
-1920x1080 screen: YPosition=239
+1920x1080 screen: Window-Maximized=true
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAABPUAAALoAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAPkAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
-eDP=eDP
 
 [MainWindow0 Settings]
-1920x1080 screen: Height=744
-1920x1080 screen: Width=1269
-1920x1080 screen: XPosition=577
-1920x1080 screen: YPosition=239
+1920x1080 screen: Window-Maximized=true
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAABPUAAALoAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAPkAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
-WindowState=8
-eDP=eDP
+WindowState=10
 
 [Open Documents]
 Count=1
@@ -36,7 +28,7 @@ Count=1
 Count=1
 
 [Recent Files]
-File1[$e]=$HOME/.dots/configs/config/fish/fish_variables
-File2[$e]=$HOME/.dots/configs/config/fish/config.fish
-Name1[$e]=fish_variables
-Name2[$e]=config.fish
+File1[$e]=$HOME/.dots/configs/config/java/style.xml
+File2[$e]=$HOME/.config/Thunar/accels.scm
+Name1[$e]=style.xml
+Name2[$e]=accels.scm

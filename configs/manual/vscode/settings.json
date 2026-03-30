@@ -1,15 +1,14 @@
 {
-    "editor.fontFamily": "'JetBrains Mono'",
+    "editor.fontFamily": "JetBrains Mono",
     "window.menuBarVisibility": "toggle",
     "editor.fontLigatures": true,
-    "editor.fontSize": 12,
+    "editor.fontSize": 12.5,
     "editor.minimap.enabled": false,
     "breadcrumbs.enabled": false,
     "workbench.editor.enablePreview": false,
     "editor.bracketPairColorization.enabled": true,
-    "redhat.telemetry.enabled": false,
     "workbench.startupEditor": "none",
-    "window.zoomLevel": 0.8,
+    "window.zoomLevel": 0,
     "window.confirmSaveUntitledWorkspace": false,
     "editor.formatOnSave": true,
     "editor.tabSize": 4,
@@ -26,6 +25,15 @@
     "files.exclude": {
         "**/__pycache__": true
     },
-    "codeium.enableCodeLens": false,
-    "workbench.colorTheme": "Default Dark+"
+    "java.format.settings.url": "/home/moeenn/.config/java/style.xml",
+    "editor.codeLens": false,
+    "go.toolsManagement.autoUpdate": true,
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "workbench.colorTheme": "Solarized Light",
+    "workbench.activityBar.location": "bottom",
+    "workbench.navigationControl.enabled": false,
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.browser.showInTitleBar": false
 }

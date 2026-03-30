@@ -3,12 +3,15 @@
 #   shell colors and PS
 #
 # --------------------------------------------------------------------
-parse_git_branch() {
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
+# parse_git_branch() {
+# 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+# }
+# PS1='[\u@\h] \W \[\e[0;$(($?==0?0:91))m\]$ \[\e[0m\]'
 
-# PS1='${debian_chroot:+($debian_chroot)}\W$(parse_git_branch) \$  '
-PS1='[\u@\h] \W \[\e[0;$(($?==0?0:91))m\]$ \[\e[0m\]'
+BLACK='\[\e[1;30m\]'
+RESET='\[\e[0m\]'
+PS1="${BLACK}\W ${RESET}\$ "
+
 
 # --------------------------------------------------------------------
 #
@@ -43,12 +46,13 @@ alias cd="z"
 alias ls="ls -l --color=auto"
 alias :q="exit"
 alias :Q="exit"
+alias :w='which'
 alias ls="ls -aC --color=never"
 alias reload="source ~/.bashrc"
 
 # programs.
 alias k="kak"
-alias rsync="rsync -av --progress"
+alias rs="rsync -av --progress"
 alias load="htop -u $(whoami)"
 alias df="dfc -f -s"
 alias axel="axel -n 4"
@@ -56,7 +60,6 @@ alias uptime="uptime -p"
 alias net="bwm-ng -t 1000"
 alias lsblk="lsblk -e 7"
 alias clock="tty-clock -cD"
-alias cf="cfiles"
 alias winclass="xprop WM_CLASS"
 alias keyname="xev | grep keysym"
 
