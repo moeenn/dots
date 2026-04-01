@@ -1,22 +1,12 @@
 [Document 0]
 Bookmarks=
 Encoding=UTF-8
-Highlighting=Java
+Highlighting=Go
 Highlighting Set By User=false
-Indentation Mode=normal
-Mode=Java
+Indentation Mode=cstyle
+Mode=Go
 Mode Set By User=false
-URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/java/sandbox/src/main/java/com/sandbox/Main.java
-
-[Document 1]
-Bookmarks=
-Encoding=UTF-8
-Highlighting=Java
-Highlighting Set By User=false
-Indentation Mode=normal
-Mode=Java
-Mode Set By User=false
-URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/java/sandbox/src/main/java/com/sandbox/Timer.java
+URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
 
 [Kate Plugins]
 cmaketoolsplugin=false
@@ -118,30 +108,21 @@ Orientation=1
 Sizes=1573
 
 [MainWindow0-ViewSpace 0]
-Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/java/sandbox/src/main/java/com/sandbox/Timer.java
-Count=2
-Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/java/sandbox/src/main/java/com/sandbox/Main.java,file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/java/sandbox/src/main/java/com/sandbox/Timer.java
-View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/java/sandbox/src/main/java/com/sandbox/Main.java
-View 1=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/java/sandbox/src/main/java/com/sandbox/Timer.java
+Active View=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
+Count=1
+Documents=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
+View 0=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
 
-[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/java/sandbox/src/main/java/com/sandbox/Main.java]
+[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go]
 CursorColumn=0
-CursorLine=0
+CursorLine=64
 Dynamic Word Wrap=true
 JumpList=
-TextFolding={"checksum":"bfdf41361bb316aa1f56d13bf42aaa17561aa20c","ranges":[]}
-ViMarks=
-
-[MainWindow0-ViewSpace 0 file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/java/sandbox/src/main/java/com/sandbox/Timer.java]
-CursorColumn=0
-CursorLine=12
-Dynamic Word Wrap=true
-JumpList=
-TextFolding={"checksum":"411d1a25b1afceeffc34d8989ef65dc81e5e153c","ranges":[]}
+TextFolding={"checksum":"2d1d06f8e52a02f4ae35546715f3163bb2905473","ranges":[]}
 ViMarks=
 
 [Open Documents]
-Count=2
+Count=1
 
 [Open MainWindows]
 Count=1
@@ -173,5 +154,5 @@ SearchDiskFiless=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/projects/lov
 UseRegExp=false
 
 [Recent Files]
-File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/java/sandbox/src/main/java/com/sandbox/Timer.java
-Name1[$e]=Timer.java
+File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/sandbox/go/sandbox/main.go
+Name1[$e]=main.go

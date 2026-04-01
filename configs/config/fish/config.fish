@@ -36,7 +36,7 @@ alias cd z
 alias .. "z .."
 alias cp "cp -v"
 alias mv "mv -iv"
-alias rsync "rsync -av --progress"
+alias rs "rsync -av --progress"
 alias rm "rm -iv"
 alias link "ln -sr"
 alias ls "ls -ap --color=never"
@@ -54,7 +54,6 @@ alias extract "dtrx -v"
 alias net "bwm-ng -t 1000"
 alias lsblk "lsblk -e 7"
 alias clock "tty-clock -cD"
-alias c code
 alias winclass "xprop WM_CLASS"
 alias keyname "xev | grep keysym"
 
@@ -77,7 +76,4 @@ alias pull "git pull"
 # programming
 alias dc "docker-compose"
 alias py python3
-alias delete_dstore "find . -name ".DS_Store" -type f -delete -print"
-alias valgrind "valgrind -s --leak-check=full --show-leak-kinds=all"
-alias cfmt "clang-format -style=Microsoft -i"
 

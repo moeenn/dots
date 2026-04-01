@@ -335,10 +335,11 @@ class NodeJsConfig(IConfig):
         cmd = ["sudo", "apt-get", "install", "-y", "nodejs"]
         exec(cmd)
 
-    def __set_prefix(self) -> None:
+    def __set_configs(self) -> None:
         home = get_home()
-        cmd = ["npm", "config", "set", f"prefix={home}/.npm"]
-        exec(cmd)
+        exec(["npm", "config", "set", f"prefix={home}/.npm"])
+        exec(["npm", "config", "set", "min-release-age=7"])
+        exec(["npm", "config", "set", "ignore-scripts=true"])
 
     def __install_global_packages(self) -> None:
         cmd = ["npm", "i", "-g"] + self.global_deps
@@ -349,7 +350,7 @@ class NodeJsConfig(IConfig):
             installer_path = self.__download_installer()
             self.__install_sources(installer_path)
             self.__install_support()
-            self.__set_prefix()
+            self.__set_configs()
 
         if confirm("Install global dependencies"):
             self.__install_global_packages()
