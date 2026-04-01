@@ -80,11 +80,4 @@ alias pull="git pull"
 # programming.
 alias dc="docker-compose"
 alias py="python3"
-alias delete_dstore="find . -name '.DS_Store' -type f -delete -print"
-alias valgrind="valgrind -s --leak-check=full --show-leak-kinds=all"
-alias g="gradle" 
-alias c="code"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
