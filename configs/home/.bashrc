@@ -80,4 +80,8 @@ alias pull="git pull"
 # programming.
 alias dc="docker-compose"
 alias py="python3"
+alias g="gradle"
 
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
