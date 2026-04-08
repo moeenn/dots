@@ -48,7 +48,6 @@ BASE_PACKAGES = [
 ]
 
 COMMON_APPS = [
-    "chromium",
     "gimp",
     "transmission-qt",
     "mpv",
@@ -58,17 +57,16 @@ COMMON_APPS = [
 ]
 
 FLATPAK_PACKAGES = [
-    # "org.chromium.Chromium",
+    "com.brave.Browser",
     "com.bitwarden.desktop",
     "io.beekeeperstudio.Studio",
-    # "com.usebruno.Bruno"
 ]
 
 VSCODE_VERSION = "1.107.18627"
 
-DOCKER_PACKAGES = ["docker.io"]
+DOCKER_PACKAGES = ["docker.io", "docker-compose"]
 
-GO_VERSION = "1.26.0"
+GO_VERSION = "1.26.2"
 GO_PACKAGES = [
     "golang.org/x/tools/gopls@latest",
     "github.com/go-delve/delve/cmd/dlv@latest",
