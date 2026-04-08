@@ -1,30 +1,30 @@
 [Document 0]
 Bookmarks=
 Encoding=UTF-8
-Highlighting=Go
+Highlighting=Markdown
 Highlighting Set By User=false
-Indentation Mode=cstyle
-Mode=Go
+Indentation Mode=normal
+Mode=Markdown
 Mode Set By User=false
-URL=file:///media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/convey/internal/common/repo.go
+URL=file:///home/moeenn/Documents/progress.md
 
 [MainWindow0]
-1920x1080 screen: Height=666
-1920x1080 screen: Width=960
-1920x1080 screen: XPosition=295
-1920x1080 screen: YPosition=304
+1920x1080 screen: Height=619
+1920x1080 screen: Width=890
+1920x1080 screen: XPosition=855
+1920x1080 screen: YPosition=340
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAA8AAAAKaAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAA3oAAAJrAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 eDP=eDP
 
 [MainWindow0 Settings]
-1920x1080 screen: Height=666
-1920x1080 screen: Width=960
-1920x1080 screen: XPosition=295
-1920x1080 screen: YPosition=304
+1920x1080 screen: Height=619
+1920x1080 screen: Width=890
+1920x1080 screen: XPosition=855
+1920x1080 screen: YPosition=340
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAA8AAAAKaAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAA3oAAAJrAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABoAGEAbQBiAHUAcgBnAGUAcgBCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 WindowState=8
 eDP=eDP
@@ -36,7 +36,7 @@ Count=1
 Count=1
 
 [Recent Files]
-File1[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/convey/internal/repos/repo.go
-File2[$e]=/media/moeenn/cab2dd6e-3b4b-4b11-ae45-6b7fd5a1054b/side_projects/convey/internal/common/repo.go
-Name1[$e]=repo.go
-Name2[$e]=repo.go
+File1[$e]=$HOME/Documents/hostaway_reservations.json
+File2[$e]=$HOME/Documents/hospitable_reservations.json
+Name1[$e]=hostaway_reservations.json
+Name2[$e]=hospitable_reservations.json
