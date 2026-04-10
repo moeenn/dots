@@ -64,7 +64,7 @@ FLATPAK_PACKAGES = [
 
 VSCODE_VERSION = "1.107.18627"
 
-DOCKER_PACKAGES = ["docker.io", "docker-compose"]
+DOCKER_PACKAGES = ["python3-setuptools", "docker.io", "docker-compose"]
 
 GO_VERSION = "1.26.2"
 GO_PACKAGES = [
