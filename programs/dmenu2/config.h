@@ -6,7 +6,7 @@ static const char* fonts[] = { "JetBrains Mono:size=11" };
 static const char* prompt = NULL;
 static const char* colors[SchemeLast][2] = {
     /* fg       bg       */
-    [SchemeNorm] = { "#1", "#1a1a1a" },
+    [SchemeNorm] = { "#ffffff", "#1a1a1a" },
     [SchemeSel] = { "#ffffff", "#2b2b2b" },
     [SchemeOut] = { "#ffffff", "#1a1a1a" }, // border.
 };

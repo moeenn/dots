@@ -92,8 +92,9 @@ XORG_PACKAGES = [
     "waybar",
     "swaylock",
     "brightnessctl",
-    "mako-notifier"
-    "gammastep" # warm colors and brightness.
+    "mako-notifier",
+    "gammastep",  # warm colors.
+    "fuzzle",     # dmenu alternative. 
     # "nwg-look", # lxappearance alternative.
 ]
 
