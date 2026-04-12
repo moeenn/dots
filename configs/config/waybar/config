@@ -1,9 +1,9 @@
 {
-    "layer": "bottom",
+    "layer": "top",
     "position": "bottom",
-    "exclusive": false, // true means reserve space.    
-    "passthrough": true, // true means bar is not clickable.
-    "height": 70,
+    "exclusive": true, // true means reserve space.    
+    "passthrough": false, // true means bar is not clickable.
+    "height": 40,
     "spacing": 0,
     "modules-left": [],
     "modules-center": [],
