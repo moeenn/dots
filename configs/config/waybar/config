@@ -40,19 +40,19 @@
     },
     
     "pulseaudio": {
-        "format": "{icon}  {volume}%",
-        "format-muted": "V: Muted",
-        // "format-icons": ["", "", ""],
+        "format": "{icon} {volume}%",
+        "format-muted": "{icon} Muted",
+        "format-icons": ["V:", "V:", "V:"],
         "on-click": "pavucontrol",
         "scroll-step": 5
     },
     
     "battery": {
         "bat": "BAT0",
-        "format": "{icon}  {capacity}%",
-        // "format-icons": ["", "", "", "", ""],
-        "format-charging": "B: {capacity}%",
-        "format-full": "B: Full",
+        "format": "{icon} {capacity}%",
+        "format-icons": ["B:", "B:", "B:", "B:", "B:"],
+        "format-charging": "{icon} {capacity}%",
+        "format-full": "{icon} Full",
         "tooltip-format": "{timeTo} remaining"
     },
     
