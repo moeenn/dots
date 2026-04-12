@@ -51,7 +51,11 @@
         "format-icons": ["B:", "B:", "B:", "B:", "B:"],
         "format-charging": "{icon} {capacity}%",
         "format-full": "{icon} Full",
-        "tooltip-format": "{timeTo} remaining"
+        "tooltip-format": "{timeTo} remaining",
+        "states": {
+            "low": 20,
+            "critical": 10,
+        },
     },
     
     "tray": {
