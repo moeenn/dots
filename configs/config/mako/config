@@ -1,3 +1,7 @@
+anchor=bottom-right
+margin=10
+width=400
+
 font=JetBrains Mono 10
 background-color=#1a1a1a
 text-color=#ffffff
@@ -8,4 +12,4 @@ padding=20
 default-timeout=4000
 
 [urgency=high]
-border-color=#ff5555
+text-color=#ff5555

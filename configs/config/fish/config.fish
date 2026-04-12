@@ -56,8 +56,8 @@ alias extract "dtrx -v"
 alias net "bwm-ng -t 1000"
 alias lsblk "lsblk -e 7"
 alias clock "tty-clock -cD"
-alias winclass "xprop WM_CLASS"
 alias keyname "xev | grep keysym"
+alias k kak
 
 # Super User Tasks
 alias full_access "sudo chmod -R a+rw ./"
@@ -77,6 +77,5 @@ alias pull "git pull"
 
 # programming
 alias dc "docker-compose"
-alias py python3
 
 
