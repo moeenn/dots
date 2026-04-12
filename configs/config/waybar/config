@@ -10,9 +10,7 @@
     "modules-right": ["tray", "network", "pulseaudio", "battery", "clock"],
         
     "clock": {
-        "format": "{:%H:%M}",
-        "format-alt": "{:%Y-%m-%d}",
-        "tooltip-format": "{:%Y-%m-%d | %H:%M}",
+        "format": "{:%B %d - %H:%M}",
         "calendar": {
             "mode"          : "month",
             "mode-mon-col"  : 3,
