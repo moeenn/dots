@@ -89,11 +89,11 @@ XORG_PACKAGES = [
     "gnome-themes-extra",
     "labwc",
     "swaybg",
-    "swayidle",
     "waybar",
-    "grim",  # screenshot.
     "swaylock",
     "brightnessctl",
+    "mako-notifier"
+    "gammastep" # warm colors and brightness.
     # "nwg-look", # lxappearance alternative.
 ]
 

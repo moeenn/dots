@@ -1,0 +1,46 @@
+#! /bin/python3
+
+import os
+
+"""
+gsettings set org.gnome.desktop.interface gtk-theme 'Your-Theme-Name'
+gsettings set org.gnome.desktop.interface icon-theme 'Your-Icon-Theme'
+gsettings set org.gnome.desktop.interface cursor-theme 'Your-Cursor-Theme'
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' # For GTK4/libadwaita
+"""
+
+USER = "moeenn"
+THEME_LOCATIONS = [
+    ("Local", os.path.join("/", "home", USER, ".themes")),
+    ("Global", os.path.join("/", "usr", "share", "themes")),
+]
+
+ICON_LOCATIONS = [
+    ("Local", os.path.join("/", "home", USER, ".icons")),
+    ("Global", os.path.join("/", "usr", "share", "icons")),
+]
+
+def list_folders(locations) -> list[str]:
+    themes = []
+    for tl in locations:
+        id, l = tl
+        if os.path.exists(l):
+            folders = folders = [f"{id} - {f}" for f in os.listdir(l) if os.path.isdir(os.path.join(l, f))]
+            themes += folders
+
+    return themes
+
+
+def main() -> None:
+    themes = list_folders(ICON_LOCATIONS)
+    for t in themes:
+        print(t)
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("ctrl+c: exiting...")
+    except Exception as e:
+        print("error: {str(e)}")

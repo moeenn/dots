@@ -30,9 +30,9 @@
     },
     
     "network": {
-        "format-wifi": "  {essid}",
-        "format-ethernet": "  connected",
-        "format-disconnected": "  Offline",
+        "format-wifi": "W: {essid}",
+        "format-ethernet": "W: connected",
+        "format-disconnected": "W: Offline",
         "tooltip-format": "{ifname} via {gwaddr}",
         "tooltip-format-wifi": "{essid} ({signalStrength}%)",
         "tooltip-format-ethernet": "{ifname}",
@@ -41,8 +41,8 @@
     
     "pulseaudio": {
         "format": "{icon}  {volume}%",
-        "format-muted": "  Muted",
-        "format-icons": ["", "", ""],
+        "format-muted": "V: Muted",
+        // "format-icons": ["", "", ""],
         "on-click": "pavucontrol",
         "scroll-step": 5
     },
@@ -50,9 +50,9 @@
     "battery": {
         "bat": "BAT0",
         "format": "{icon}  {capacity}%",
-        "format-icons": ["", "", "", "", ""],
-        "format-charging": " {capacity}%",
-        "format-full": "  Full",
+        // "format-icons": ["", "", "", "", ""],
+        "format-charging": "B: {capacity}%",
+        "format-full": "B: Full",
         "tooltip-format": "{timeTo} remaining"
     },
     
