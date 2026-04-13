@@ -34,12 +34,12 @@ fn get_battery_perc() -> Result<f32, battery::Error> {
 
 fn process_perc(perc: f32) {
     if perc <= CRITICAL_PERC {
-        send_notification(format!("Battery critical: {perc}%"), true);
+        send_notification(format!("Battery critical: {perc:.0}%"), true);
         return;
     }
 
     if perc <= LOW_PERC {
-        send_notification(format!("Battery low: {perc}%"), false);
+        send_notification(format!("Battery low: {perc:.0}%"), false);
         return;
     }
 }
