@@ -78,6 +78,7 @@ alias pull="git pull"
 
 # programming.
 alias dc="docker-compose"
+alias py="python3"
 alias g="gradle"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!

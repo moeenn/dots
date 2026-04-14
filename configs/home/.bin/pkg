@@ -1,0 +1,176 @@
+#! /bin/python3
+
+import subprocess
+import sys
+
+COLOR_RESET = "\033[0m"
+COLOR_BLACK = "\033[30m"
+COLOR_RED = "\033[31m"
+COLOR_BLUE = "\033[34m"
+
+
+HELP = """usage: pkg [COMMAND] [PACKAGES]
+
+commands:
+    help             (h)   display this help message and exit.
+    search           (s)   search for a single package.
+    install          (i)   install new packages.
+    flatpak-install  (fi)  install flatpak packages.
+    update           (u)   update installed packages.
+    remove           (r)   remove provided packages.
+    flatpak-remove   (fr)  remove flatpak packages.
+    clean            (c)   remove orphan packages.
+"""
+
+
+def error_out(message: str) -> None:
+    print(f"{COLOR_RED}error: {message}.{COLOR_RESET}")
+    sys.exit(1)
+
+
+def execute(cmd: list[str], silent: bool = False) -> bool:
+    result = subprocess.run(cmd, capture_output=silent)
+    return result.returncode != 0
+
+
+def flatpak_exists() -> bool:
+    return execute(["which", "flatpak"], True)
+
+
+def flatpak_install(pkgs: list[str]) -> None:
+    cmd = ["sudo", "flatpak", "install", "flathub", "-y"] + pkgs
+    success = execute(cmd)
+    if not success:
+        error_out("failed to install flatpaks")
+
+
+def flatpak_update() -> None:
+    cmd = ["sudo", "flatpak", "update", "-y"]
+    success = execute(cmd)
+    if not success:
+        error_out("failed to update flatpaks")
+
+
+def flatpak_remove(pkgs: list[str]) -> None:
+    cmd = ["sudo", "flatpak", "uninstall", "--delete-data"] + pkgs
+    success = execute(cmd)
+    if not success:
+        error_out("failed to remove flatpaks")
+
+
+def flatpak_clean() -> None:
+    cmd = ["sudo", "flatpak", "uninstall", "--unused"]
+    success = execute(cmd)
+    if not success:
+        error_out("failed to clean flatpaks")
+
+
+def pkg_search(pkg: str) -> None:
+    cmd = ["apt-cache", "search", pkg]
+    success = execute(cmd)
+    if not success:
+        error_out("failed to search package")
+
+
+def pkg_install(pkgs: list[str]) -> None:
+    cmd = ["sudo", "apt-get", "install", "-y"] + pkgs
+    success = execute(cmd)
+    if not success:
+        error_out("failed to install packages")
+
+
+def pkg_update() -> None:
+    if not execute(["sudo", "apt-get", "update", "-y"]):
+        error_out("failed to update package lists")
+
+    if not execute(["sudo", "apt-get", "upgrade", "-y"]):
+        error_out("failed to upgrade system packages")
+
+    if not execute(["sudo", "apt-get", "dist-upgrade", "-y"]):
+        error_out("failed to perform distribution upgrade")
+
+
+def pkg_remove(pkgs: list[str]) -> None:
+    cmd = ["sudo", "apt-get", "remove", "-y"] + pkgs
+    success = execute(cmd)
+    if not success:
+        error_out("failed to remove packages")
+
+
+def pkg_clean() -> None:
+    cmd = ["sudo", "apt-get", "autoremove", "--purge", "-y"]
+    success = execute(cmd)
+    if not success:
+        error_out("failed to clean packages")
+
+
+def main(args: list[str]) -> None:
+    match args:
+        case []:
+            raise Exception("failed to identify script name")
+
+        case [_script]:
+            raise Exception("please provide a command to continue")
+
+        # no-arg commands.
+        case [_script, cmd]:
+            match cmd:
+                case "help" | "h":
+                    print(HELP)
+
+                case "update" | "u":
+                    pkg_update()
+                    if flatpak_exists():
+                        flatpak_update()
+
+                case "clean" | "c":
+                    pkg_clean()
+                    if flatpak_exists():
+                        flatpak_clean()
+
+                case _:
+                    raise Exception("unrecognized command: " + cmd)
+
+        # single-arg commands.
+        case [_script, cmd, pkg]:
+            match cmd:
+                case "search" | "s":
+                    pkg_search(pkg)
+
+                case _:
+                    raise Exception("unrecognized command: " + cmd)
+
+        # multi-arg commands:
+        case [_script, cmd, *pkgs]:
+            match cmd:
+                case "install" | "i":
+                    pkg_install(pkgs)
+
+                case "flatpak-install" | "fi":
+                    if not flatpak_exists():
+                        raise Exception("flatpak support not found on this system")
+                    flatpak_install(pkgs)
+
+                case "remove" | "r":
+                    pkg_remove(pkgs)
+
+                case "flatpak-remove" | "fr":
+                    if not flatpak_exists():
+                        raise Exception("flatpak support not found on this system")
+                    flatpak_remove(pkgs)
+
+                case _:
+                    raise Exception("unrecognized command: " + cmd)
+
+        case _:
+            raise Exception("invalid arguments")
+
+
+if __name__ == "__main__":
+    args = sys.argv
+    try:
+        main(args)
+    except KeyboardInterrupt:
+        print(f"{COLOR_BLACK}ctrl+c: exiting...{COLOR_RESET}")
+    except Exception as ex:
+        error_out(str(ex))

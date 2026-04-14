@@ -81,6 +81,7 @@ PYTHON_SYS_PACKAGES = ["python3-pip", "python3-venv", "pipx"]
 PYTHON_PIP_PACKAGES = ["pyright", "ruff", "mypy"]
 
 XORG_PACKAGES = [
+	"xdg-desktop-portal-wlr",
     "foot",  
     "thunar",
     "viewnior",

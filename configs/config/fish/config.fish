@@ -77,5 +77,5 @@ alias pull "git pull"
 
 # programming
 alias dc "docker-compose"
-
+alias py python3
 
