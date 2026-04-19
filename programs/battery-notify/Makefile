@@ -1,7 +1,7 @@
 NAME=battery-notify
-CC=g++
+CC=cc
 CFLAGS=-Wall -Wextra -pedantic -Werror -O3
-SRC=./src/main.cpp
+SRC=./src/main.c
 TARGET=./bin/${NAME}
 INSTALL_PATH=${HOME}/.local/bin
 

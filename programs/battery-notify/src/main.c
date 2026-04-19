@@ -1,7 +1,8 @@
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 const int LOW_PERC = 20;
 const int SLEEP_DELAY_SEC = 60 * 5; // 5 minutes.
