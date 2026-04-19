@@ -23,6 +23,9 @@
     <dropShadows>yes</dropShadows>
     <dropShadowsOnTiled>yes</dropShadowsOnTiled>
     <font name="Roboto" size="10" />    
+  	<titlebar>
+	  <layout>iconify max close</layout>
+  	</titlebar>    
   </theme>
 
   <windowSwitcher preview="yes" outlines="yes" unshade="yes">
