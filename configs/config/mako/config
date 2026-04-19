@@ -1,5 +1,5 @@
 anchor=bottom-right
-margin=10
+margin=8
 width=400
 
 font=JetBrains Mono 10
@@ -9,7 +9,9 @@ border-color=#1a1a1a
 border-size=2
 border-radius=6
 padding=20
-default-timeout=4000
+default-timeout=5000
 
 [urgency=high]
-text-color=#ff5555
+text-color=#ffffff
+background-color=#d10000
+border-color=#db0000

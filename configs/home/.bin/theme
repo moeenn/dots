@@ -7,6 +7,10 @@ gsettings set org.gnome.desktop.interface gtk-theme 'Your-Theme-Name'
 gsettings set org.gnome.desktop.interface icon-theme 'Your-Icon-Theme'
 gsettings set org.gnome.desktop.interface cursor-theme 'Your-Cursor-Theme'
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' # For GTK4/libadwaita
+
+find cursors:
+   find /usr/share/icons/ -type d -name "cursors"
+
 """
 
 USER = "moeenn"

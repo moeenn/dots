@@ -29,8 +29,9 @@ def error_out(message: str) -> None:
 
 
 def execute(cmd: list[str], silent: bool = False) -> bool:
+    print(f"{COLOR_BLUE}running: {' '.join(cmd)}{COLOR_RESET}")
     result = subprocess.run(cmd, capture_output=silent)
-    return result.returncode != 0
+    return result.returncode == 0
 
 
 def flatpak_exists() -> bool:
@@ -131,18 +132,12 @@ def main(args: list[str]) -> None:
                 case _:
                     raise Exception("unrecognized command: " + cmd)
 
-        # single-arg commands.
-        case [_script, cmd, pkg]:
-            match cmd:
-                case "search" | "s":
-                    pkg_search(pkg)
-
-                case _:
-                    raise Exception("unrecognized command: " + cmd)
-
         # multi-arg commands:
         case [_script, cmd, *pkgs]:
             match cmd:
+                case "search" | "s":
+                    pkg_search(pkgs[0])
+
                 case "install" | "i":
                     pkg_install(pkgs)
 
