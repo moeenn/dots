@@ -202,16 +202,16 @@
     <keybind key="A-F4">
       <action name="Close" />
     </keybind>
-    <keybind key="W-Up">
-      <action name="ToggleMaximize" />
-    </keybind>
 	<keybind key="W-m">
 	  <action name="Iconify" />
 	</keybind>
-	<keybind key="W-Left">
+    <keybind key="W-C-Up">
+      <action name="ToggleMaximize" />
+    </keybind>	
+	<keybind key="W-C-Left">
 	  <action name="SnapToEdge" direction="left" />
 	</keybind>
-	<keybind key="W-Right">
+	<keybind key="W-C-Right">
 	  <action name="SnapToEdge" direction="right" />
 	</keybind>
 
@@ -236,36 +236,34 @@
     </keybind>
 
 
-  <!-- SnapToRegion via W-Numpad -->
-  <!--
-    <keybind key="W-KP_7">
-      <action name="SnapToRegion" region="top-left" />
+	<!-- Move window -->
+	<keybind key="W-Right">
+		<action name="MoveRelative" x="20" y="0" />
+	</keybind>
+	<keybind key="W-Left">
+		<action name="MoveRelative" x="-20" y="0" />
+	</keybind>    
+	<keybind key="W-Up">
+		<action name="MoveRelative" x="0" y="-20" />
+	</keybind>    
+	<keybind key="W-Down">
+		<action name="MoveRelative" x="0" y="20" />
+	</keybind>    
+	
+	<!-- Resize window -->
+	<keybind key="W-S-Left">
+        <action name="ResizeRelative" right="-20" />
     </keybind>
-    <keybind key="W-KP_8">
-      <action name="SnapToRegion" region="top" />
+	<keybind key="W-S-Right">
+        <action name="ResizeRelative" right="20" />
+    </keybind>    
+	<keybind key="W-S-Down">
+        <action name="ResizeRelative" bottom="20" />
     </keybind>
-    <keybind key="W-KP_9">
-      <action name="SnapToRegion" region="top-right" />
+	<keybind key="W-S-Up">
+        <action name="ResizeRelative" bottom="-20" />
     </keybind>
-    <keybind key="W-KP_4">
-      <action name="SnapToRegion" region="left" />
-    </keybind>
-    <keybind key="W-KP_5">
-      <action name="SnapToRegion" region="center" />
-    </keybind>
-    <keybind key="W-KP_6">
-      <action name="SnapToRegion" region="right" />
-    </keybind>
-    <keybind key="W-KP_1">
-      <action name="SnapToRegion" region="bottom-left" />
-    </keybind>
-    <keybind key="W-KP_2">
-      <action name="SnapToRegion" region="bottom" />
-    </keybind>
-    <keybind key="W-KP_3">
-      <action name="SnapToRegion" region="bottom-right" />
-    </keybind>
-  -->
+
   <!-- keybind for client-list-combined-menu - will center in middle of screen -->
   <!--
     <keybind key="W-Space">
