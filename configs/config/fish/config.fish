@@ -43,6 +43,7 @@ alias link "ln -sr"
 alias ls "ls -ap --color=never"
 alias lsa "ls -alp"
 alias :w which
+alias q exit
 alias :q exit
 alias :Q exit
 alias reload "source ~/.config/fish/config.fish"
@@ -53,6 +54,7 @@ alias df "dfc -f -s"
 alias uptime "uptime -p"
 alias extract "dtrx -v"
 alias net "bwm-ng -t 1000"
+alias mtr "mtr -t"
 alias lsblk "lsblk -e 7"
 alias clock "tty-clock -cD"
 alias keyname "xev | grep keysym"

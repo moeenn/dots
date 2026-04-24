@@ -43,6 +43,7 @@ bind '"\e[Z":menu-complete' # use Shift-tab to select tab suggestion.
 # --------------------------------------------------------------------
 # general operations.
 alias cd="z"
+alias q="exit"
 alias :q="exit"
 alias :Q="exit"
 alias :w='which'
@@ -57,6 +58,7 @@ alias df="dfc -f -s"
 alias axel="axel -n 4"
 alias uptime="uptime -p"
 alias net="bwm-ng -t 1000"
+alias mtr="mtr -t"
 alias lsblk="lsblk -e 7"
 alias clock="tty-clock -cD"
 
