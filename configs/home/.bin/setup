@@ -76,9 +76,8 @@ PYTHON_PIP_PACKAGES = ["pyright", "ruff", "mypy"]
 
 WM_PACKAGES = [
     "xdg-desktop-portal-wlr",
-    "foot",
+    "alacritty",
     "thunar",
-    "viewnior",
     "imv",
     "pavucontrol",
     "mousepad",

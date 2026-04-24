@@ -188,7 +188,7 @@
       <action name="NextWindow" />
     </keybind>
     <keybind key="W-t">
-      <action name="Execute" command="foot" />
+      <action name="Execute" command="alacritty" />
     </keybind>
     <keybind key="W-e">
       <action name="Execute" command="thunar" />
