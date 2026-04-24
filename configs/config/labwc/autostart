@@ -15,3 +15,6 @@ mako >/dev/null 2>&1 &
 
 # setup low-battery notifications.
 battery-notify &
+
+# improve thunar startup times.
+thunar --daemon &
