@@ -43,7 +43,6 @@ bind '"\e[Z":menu-complete' # use Shift-tab to select tab suggestion.
 # --------------------------------------------------------------------
 # general operations.
 alias cd="z"
-alias ls="ls -l --color=auto"
 alias :q="exit"
 alias :Q="exit"
 alias :w='which'
@@ -60,7 +59,6 @@ alias uptime="uptime -p"
 alias net="bwm-ng -t 1000"
 alias lsblk="lsblk -e 7"
 alias clock="tty-clock -cD"
-alias keyname="xev | grep keysym"
 
 # super-user tasks.
 alias full_access="sudo chmod -R a+rw ./"

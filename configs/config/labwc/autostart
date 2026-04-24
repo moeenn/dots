@@ -2,7 +2,7 @@
 xrdb ~/.Xresources &
 
 # Set background.
-swaybg -i ~/Pictures/wall -m fill >/dev/null 2>&1 &
+# swaybg -i ~/Pictures/wall -m fill >/dev/null 2>&1 &
 
 # warm colors.
 gammastep -O 5000 &

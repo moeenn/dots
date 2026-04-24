@@ -209,7 +209,7 @@ typedef enum {
         return f"""
 NAME={self.project_name}
 CC=cc
-STD=c23
+STD=c2x
 CFLAGS=-Wall -Wextra -pedantic -Werror -O3
 INC=-I./include
 LDDFLAGS=-lm

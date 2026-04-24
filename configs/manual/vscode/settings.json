@@ -30,7 +30,6 @@
     "go.toolsManagement.autoUpdate": true,
     "editor.unicodeHighlight.nonBasicASCII": false,
     "editor.unicodeHighlight.ambiguousCharacters": false,
-    "workbench.colorTheme": "Solarized Light",
     "workbench.activityBar.location": "bottom",
     "workbench.navigationControl.enabled": false,
     "window.commandCenter": false,

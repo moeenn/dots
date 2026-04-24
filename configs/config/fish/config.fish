@@ -77,4 +77,4 @@ alias pull "git pull"
 # programming
 alias dc "docker-compose"
 alias py python3
-
+alias cfmt "clang-format --style=Microsoft -i"

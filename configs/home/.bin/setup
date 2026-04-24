@@ -1,13 +1,12 @@
 #! /bin/python3
 
-from dataclasses import dataclass
-import subprocess
 import os
+import shutil
+import subprocess
 import sys
 import tempfile
-import shutil
+from dataclasses import dataclass
 from typing import Protocol
-
 
 # -------------------------------------------------------------------------------------------------------
 #
@@ -81,11 +80,11 @@ PYTHON_SYS_PACKAGES = ["python3-pip", "python3-venv", "pipx"]
 PYTHON_PIP_PACKAGES = ["pyright", "ruff", "mypy"]
 
 XORG_PACKAGES = [
-	"xdg-desktop-portal-wlr",
-    "foot",  
+    "xdg-desktop-portal-wlr",
+    "foot",
     "thunar",
     "viewnior",
-	"pavucontrol",
+    "pavucontrol",
     "mousepad",
     "gnome-themes-extra",
     "labwc",
@@ -95,7 +94,7 @@ XORG_PACKAGES = [
     "brightnessctl",
     "mako-notifier",
     "gammastep",  # warm colors.
-    "fuzzle",     # dmenu alternative. 
+    "fuzzle",  # dmenu alternative.
     # "nwg-look", # lxappearance alternative.
 ]
 
@@ -394,7 +393,7 @@ class XorgConfig(IConfig):
     def __should_append(self) -> bool:
         with open("/etc/environment", "wt") as file:
             for line in file:
-                if line.startsWith("FREETYPE_PROPERTIES="):
+                if line.startswith("FREETYPE_PROPERTIES="):
                     return False
         return True
 
