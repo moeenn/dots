@@ -190,8 +190,8 @@ int main()
     def makefile_content(self) -> str:
         return f"""
 NAME={self.project_name}
-CC=cc
-STD=c2x
+CC=clang
+STD=c23
 CFLAGS=-Wall -Wextra -pedantic -Werror -O3
 INC=-I./include
 LDDFLAGS=-lm
