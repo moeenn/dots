@@ -1,23 +1,23 @@
 #! /bin/python3
 
-from dataclasses import dataclass
-import subprocess
 import os
+import shutil
+import subprocess
 import sys
 import tempfile
-import shutil
-from typing import Protocol
-
+from dataclasses import dataclass
+from typing import Protocol, override
 
 # -------------------------------------------------------------------------------------------------------
 #
 #  configurations.
 #
 # -------------------------------------------------------------------------------------------------------
-BASE_PACKAGES: list[str] = [
+BASE_PACKAGES = [
     "kakoune",
     "make",
     "cmake",
+    "pkg-config",
     "network-manager",
     "net-tools",
     "bwm-ng",
@@ -27,10 +27,8 @@ BASE_PACKAGES: list[str] = [
     "axel",
     "wget",
     "zip",
-    "dtrx",
     "git",
     "htop",
-    "redshift",
     "dfc",
     "mtr",
     "tmux",
@@ -40,17 +38,14 @@ BASE_PACKAGES: list[str] = [
     "p7zip",
     "fonts-jetbrains-mono",
     "fonts-roboto",
-    "fonts-firacode",
     "zoxide",
-    "pkg-config",
     "rsync",
     "scrot",
 ]
 
 COMMON_APPS = [
-    "chromium",
     "gimp",
-    "transmission-qt",
+    "transmission-gtk",
     "mpv",
     "gparted",
     "bleachbit",
@@ -58,17 +53,14 @@ COMMON_APPS = [
 ]
 
 FLATPAK_PACKAGES = [
-    # "org.chromium.Chromium",
+    "com.brave.Browser",
     "com.bitwarden.desktop",
     "io.beekeeperstudio.Studio",
-    # "com.usebruno.Bruno"
 ]
 
-VSCODE_VERSION = "1.107.18627"
+DOCKER_PACKAGES = ["python3-setuptools", "docker.io", "docker-compose"]
 
-DOCKER_PACKAGES = ["docker.io"]
-
-GO_VERSION = "1.26.0"
+GO_VERSION = "1.26.2"
 GO_PACKAGES = [
     "golang.org/x/tools/gopls@latest",
     "github.com/go-delve/delve/cmd/dlv@latest",
@@ -82,27 +74,23 @@ NODE_GLOBAL_DEPS = ["npm", "typescript-language-server"]
 PYTHON_SYS_PACKAGES = ["python3-pip", "python3-venv", "pipx"]
 PYTHON_PIP_PACKAGES = ["pyright", "ruff", "mypy"]
 
-XORG_PACKAGES = [
-    "xinit",
-    "cwm",
-    "hsetroot",
-    "lxappearance",
+WM_PACKAGES = [
+    "xdg-desktop-portal-wlr",
     "alacritty",
     "thunar",
     "imv",
-    "viewnior",
-    "i3lock",
-    "picom",
-    "dmenu",
+    "pavucontrol",
     "mousepad",
     "gnome-themes-extra",
-    "libssl-dev",
-    "libxrandr-dev",
-    "libxinerama-dev",
-    "libxcursor-dev",
-    "libxi-dev",
-    "libopengl-dev",
-    "libgl1-mesa-dev",
+    "labwc",
+    "swaybg",
+    "waybar",
+    "swaylock",
+    "brightnessctl",
+    "mako-notifier",
+    "gammastep",  # warm colors.
+    "fuzzel",  # dmenu alternative.
+    # "nwg-look", # lxappearance alternative.
 ]
 
 
@@ -129,7 +117,7 @@ def confirm(message: str) -> bool:
 
 def exec(cmd: list[str]) -> None:
     print(f"{COLOR_BLUE}running: {' '.join(cmd)}{COLOR_RESET}")
-    subprocess.run(cmd)
+    _ = subprocess.run(cmd)
 
 
 def current_user() -> str:
@@ -158,6 +146,7 @@ class SystemPackagesConfig(IConfig):
     base_packages: list[str]
     common_apps: list[str]
 
+    @override
     def name(self) -> str:
         return "System packages"
 
@@ -172,6 +161,7 @@ class SystemPackagesConfig(IConfig):
         cmd = ["sudo", "apt-get", "install", "-y"] + self.common_apps
         exec(cmd)
 
+    @override
     def apply(self) -> None:
         if confirm("Update mirrors"):
             self.__update_pm_mirrors()
@@ -187,6 +177,7 @@ class SystemPackagesConfig(IConfig):
 class FlatpakConfig(IConfig):
     packages: list[str]
 
+    @override
     def name(self) -> str:
         return "Flatpak"
 
@@ -209,6 +200,7 @@ class FlatpakConfig(IConfig):
         cmd = ["sudo", "flatpak", "install", "flathub", "-y"] + self.packages
         exec(cmd)
 
+    @override
     def apply(self) -> None:
         if confirm("Install flatpak support"):
             self.__install_support()
@@ -222,6 +214,7 @@ class FlatpakConfig(IConfig):
 class DockerConfig(IConfig):
     system_packages: list[str]
 
+    @override
     def name(self) -> str:
         return "Docker"
 
@@ -238,6 +231,7 @@ class DockerConfig(IConfig):
         cmd = ["sudo", "usermod", "-aG", "docker", user]
         exec(cmd)
 
+    @override
     def apply(self) -> None:
         if confirm("Install docker support"):
             self.__install_support()
@@ -247,6 +241,7 @@ class DockerConfig(IConfig):
 
 @dataclass
 class FishConfig(IConfig):
+    @override
     def name(self) -> str:
         return "Fish (shell)"
 
@@ -258,6 +253,7 @@ class FishConfig(IConfig):
         result = subprocess.run(["which", "fish"], capture_output=True)
         return result.stdout.decode("utf-8").strip()
 
+    @override
     def apply(self) -> None:
         if confirm("Install fish shell"):
             self.__install_support()
@@ -272,10 +268,11 @@ class GoConfig(IConfig):
     version: str
     packages: list[str]
 
+    @override
     def name(self) -> str:
         return "Golang"
 
-    def __download_tarball(self) -> tuple[str, str]:
+    def __download_tarball(self) -> str:
         filename = f"go{self.version}.linux-amd64.tar.gz"
         url = f"https://go.dev/dl/{filename}"
         download_path = os.path.join(tempfile.gettempdir(), filename)
@@ -283,10 +280,9 @@ class GoConfig(IConfig):
         if not os.path.exists(download_path):
             cmd = ["wget", url, "-O", download_path]
             exec(cmd)
+        return download_path
 
-        return (download_path, filename)
-
-    def __extract_tarball(self, filepath: str, filename: str) -> None:
+    def __extract_tarball(self, filepath: str) -> None:
         out_dir = os.path.join(get_home(), ".local")
         out_fullpath = os.path.join(out_dir, "go")
 
@@ -302,10 +298,11 @@ class GoConfig(IConfig):
             cmd = [gopath, "install", "-v", pkg]
             exec(cmd)
 
+    @override
     def apply(self) -> None:
         if confirm("Install go"):
-            download_path, filename = self.__download_tarball()
-            self.__extract_tarball(download_path, filename)
+            download_path = self.__download_tarball()
+            self.__extract_tarball(download_path)
 
         if confirm("Install go packages"):
             self.__install_packages()
@@ -316,6 +313,7 @@ class NodeJsConfig(IConfig):
     version: str
     global_deps: list[str]
 
+    @override
     def name(self) -> str:
         return "NodeJs"
 
@@ -341,21 +339,23 @@ class NodeJsConfig(IConfig):
         cmd = ["sudo", "apt-get", "install", "-y", "nodejs"]
         exec(cmd)
 
-    def __set_prefix(self) -> None:
+    def __set_configs(self) -> None:
         home = get_home()
-        cmd = ["npm", "config", "set", f"prefix={home}/.npm"]
-        exec(cmd)
+        exec(["npm", "config", "set", f"prefix={home}/.npm"])
+        exec(["npm", "config", "set", "min-release-age=7"])
+        exec(["npm", "config", "set", "ignore-scripts=true"])
 
     def __install_global_packages(self) -> None:
         cmd = ["npm", "i", "-g"] + self.global_deps
         exec(cmd)
 
+    @override
     def apply(self) -> None:
         if confirm("Install nodejs"):
             installer_path = self.__download_installer()
             self.__install_sources(installer_path)
             self.__install_support()
-            self.__set_prefix()
+            self.__set_configs()
 
         if confirm("Install global dependencies"):
             self.__install_global_packages()
@@ -366,6 +366,7 @@ class PythonConfig(IConfig):
     system_packages: list[str]
     pip_packages: list[str]
 
+    @override
     def name(self) -> str:
         return "Python"
 
@@ -374,9 +375,10 @@ class PythonConfig(IConfig):
         exec(cmd)
 
     def __install_pip_packages(self) -> None:
-        cmd = ["pipx", "install"] + self.pip_packages
+        cmd = ["pipx", "install", "--force"] + self.pip_packages
         exec(cmd)
 
+    @override
     def apply(self) -> None:
         if confirm("Install python support"):
             self.__install_support()
@@ -386,9 +388,10 @@ class PythonConfig(IConfig):
 
 
 @dataclass
-class XorgConfig(IConfig):
+class WMConfig(IConfig):
     system_packages: list[str]
 
+    @override
     def name(self) -> str:
         return "Xorg"
 
@@ -396,17 +399,36 @@ class XorgConfig(IConfig):
         cmd = ["sudo", "apt-get", "install", "-y"] + self.system_packages
         exec(cmd)
 
+    def __should_append(self) -> bool:
+        with open("/etc/environment", "wt") as file:
+            for line in file:
+                if line.startswith("FREETYPE_PROPERTIES="):
+                    return False
+        return True
+
+    def __improve_font_rendering(self) -> None:
+        if self.__should_append():
+            target_file = "/etc/environment"
+            content = """FREETYPE_PROPERTIES="cff:no-stem-darkening=0 autofitter:no-stem-darkening=0" """
+            cmd = f"echo '{content}' | sudo tee -a {target_file} > /dev/null"
+            _ = subprocess.run(cmd, shell=True, check=True)
+
+    @override
     def apply(self) -> None:
         if confirm("Install xorg packages"):
             self.__install_packages()
 
+        if confirm("Improve font rendering"):
+            self.__improve_font_rendering()
+
 
 @dataclass
 class SymlinksConfig(IConfig):
+    @override
     def name(self) -> str:
         return "Symlinks"
 
-    def __link_files(self, src_path: str, target_path) -> None:
+    def __link_files(self, src_path: str, target_path: str) -> None:
         dir_entries = os.listdir(src_path)
         if not os.path.exists(target_path):
             os.mkdir(target_path)
@@ -427,6 +449,7 @@ class SymlinksConfig(IConfig):
             print(f"linking: {dst}")
             os.symlink(src, dst)
 
+    @override
     def apply(self) -> None:
         if confirm("Link config files"):
             """link $HOME files"""
@@ -438,31 +461,6 @@ class SymlinksConfig(IConfig):
             target_dir = os.path.join(target_dir, ".config")
             xdg_configs = os.path.join(os.getcwd(), "configs", "config")
             self.__link_files(xdg_configs, target_dir)
-
-
-@dataclass
-class VscodeConfig(IConfig):
-    version: str
-
-    def name(self) -> str:
-        return "VSCode"
-
-    def __download(self) -> str:
-        filename = f"codium_{self.version}_amd64.deb"
-        url = f"https://github.com/VSCodium/vscodium/releases/download/{self.version}/{filename}"
-        download_path = os.path.join(tempfile.gettempdir(), filename)
-        cmd = ["wget", url, "-O", download_path]
-        exec(cmd)
-        return download_path
-
-    def __install(self, download_path: str) -> None:
-        cmd = ["sudo", "dpkg", "-i", download_path]
-        exec(cmd)
-
-    def apply(self) -> None:
-        if confirm("Install VSCodium"):
-            download_path = self.__download()
-            self.__install(download_path)
 
 
 # -------------------------------------------------------------------------------------------------------
@@ -478,11 +476,10 @@ class Config:
     flatpak: FlatpakConfig
     docker: DockerConfig
     fish: FishConfig
-    vscode: VscodeConfig
     go: GoConfig
     nodejs: NodeJsConfig
     python: PythonConfig
-    xorg: XorgConfig
+    wm: WMConfig
     __steps: list[IConfig]
 
     def __init__(self) -> None:
@@ -490,21 +487,19 @@ class Config:
         self.flatpak = FlatpakConfig(FLATPAK_PACKAGES)
         self.docker = DockerConfig(DOCKER_PACKAGES)
         self.fish = FishConfig()
-        self.vscode = VscodeConfig(VSCODE_VERSION)
         self.go = GoConfig(GO_VERSION, GO_PACKAGES)
         self.nodejs = NodeJsConfig(NODE_VERSION, NODE_GLOBAL_DEPS)
         self.python = PythonConfig(PYTHON_SYS_PACKAGES, PYTHON_PIP_PACKAGES)
-        self.xorg = XorgConfig(XORG_PACKAGES)
+        self.wm = WMConfig(WM_PACKAGES)
         self.symlink = SymlinksConfig()
 
         self.__steps = [
             self.symlink,
             self.system_packages,
-            self.xorg,
+            self.wm,
             self.flatpak,
             self.docker,
             self.fish,
-            self.vscode,
             self.go,
             self.nodejs,
             self.python,

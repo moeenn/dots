@@ -3,12 +3,15 @@
 #   shell colors and PS
 #
 # --------------------------------------------------------------------
-parse_git_branch() {
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
+# parse_git_branch() {
+# 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+# }
+# PS1='[\u@\h] \W \[\e[0;$(($?==0?0:91))m\]$ \[\e[0m\]'
 
-# PS1='${debian_chroot:+($debian_chroot)}\W$(parse_git_branch) \$  '
-PS1='[\u@\h] \W \[\e[0;$(($?==0?0:91))m\]$ \[\e[0m\]'
+GREEN='\[\e[1;32m\]'
+RESET='\[\e[0m\]'
+PS1="${GREEN}\W ${RESET}\$ "
+
 
 # --------------------------------------------------------------------
 #
@@ -40,25 +43,24 @@ bind '"\e[Z":menu-complete' # use Shift-tab to select tab suggestion.
 # --------------------------------------------------------------------
 # general operations.
 alias cd="z"
-alias ls="ls -l --color=auto"
+alias q="exit"
 alias :q="exit"
 alias :Q="exit"
+alias :w='which'
 alias ls="ls -aC --color=never"
 alias reload="source ~/.bashrc"
 
 # programs.
 alias k="kak"
-alias rsync="rsync -av --progress"
+alias rs="rsync -av --progress"
 alias load="htop -u $(whoami)"
 alias df="dfc -f -s"
 alias axel="axel -n 4"
 alias uptime="uptime -p"
 alias net="bwm-ng -t 1000"
+alias mtr="mtr -t"
 alias lsblk="lsblk -e 7"
 alias clock="tty-clock -cD"
-alias cf="cfiles"
-alias winclass="xprop WM_CLASS"
-alias keyname="xev | grep keysym"
 
 # super-user tasks.
 alias full_access="sudo chmod -R a+rw ./"
@@ -77,10 +79,7 @@ alias pull="git pull"
 # programming.
 alias dc="docker-compose"
 alias py="python3"
-alias delete_dstore="find . -name '.DS_Store' -type f -delete -print"
-alias valgrind="valgrind -s --leak-check=full --show-leak-kinds=all"
-alias g="gradle" 
-alias c="code"
+alias g="gradle"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

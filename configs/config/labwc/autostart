@@ -1,0 +1,20 @@
+# optional: load Xresources.
+xrdb ~/.Xresources &
+
+# Set background.
+# swaybg -i ~/Pictures/wall -m fill >/dev/null 2>&1 &
+
+# warm colors.
+gammastep -O 5000 &
+
+# panel.
+waybar >/dev/null 2>&1 &
+
+# Enable notifications.
+mako >/dev/null 2>&1 &
+
+# setup low-battery notifications.
+battery-notify &
+
+# improve thunar startup times.
+thunar --daemon &

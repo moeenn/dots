@@ -1,0 +1,299 @@
+<labwc_config>
+  <core>
+    <decoration>server</decoration>
+    <gap>8</gap>
+    <adaptiveSync>no</adaptiveSync>
+    <allowTearing>no</allowTearing>
+    <autoEnableOutputs>yes</autoEnableOutputs>
+    <reuseOutputMode>no</reuseOutputMode>
+    <xwaylandPersistence>no</xwaylandPersistence>
+    <primarySelection>yes</primarySelection>
+  </core>
+
+  <placement>
+    <policy>cascade</policy>
+  </placement>
+
+  <!-- <font><theme> can be defined without an attribute to set all places -->
+  <theme>
+    <name>adwaita-dark</name>
+    <cornerRadius>8</cornerRadius>
+    <keepBorder>yes</keepBorder>
+	<maximizedDecoration>titlebar</maximizedDecoration>
+    <dropShadows>yes</dropShadows>
+    <dropShadowsOnTiled>yes</dropShadowsOnTiled>
+    <font name="Roboto" size="10" />    
+  	<titlebar>
+	  <layout>iconify max close</layout>
+  	</titlebar>    
+  </theme>
+
+  <windowSwitcher preview="yes" outlines="yes" unshade="yes">
+    <osd show="yes" style="classic" output="all" thumbnailLabelFormat="%T" />
+    <fields>
+      <field content="icon" width="5%" />
+      <field content="desktop_entry_name" width="30%" />
+      <field content="title" width="65%" />
+    </fields>
+  </windowSwitcher>
+
+  <!-- edge strength is in pixels -->
+  <resistance>
+    <screenEdgeStrength>20</screenEdgeStrength>
+    <windowEdgeStrength>20</windowEdgeStrength>
+    <unSnapThreshold>20</unSnapThreshold>
+    <unMaximizeThreshold>150</unMaximizeThreshold>
+  </resistance>
+
+  <resize>
+    <!-- Show a simple resize and move indicator -->
+    <popupShow>Never</popupShow>
+    <!-- Let client redraw its contents while resizing -->
+    <drawContents>yes</drawContents>
+    <!-- Borders are effectively 8 pixels wide regardless of visual appearance -->
+    <minimumArea>8</minimumArea>
+    <cornerRange>8</cornerRange>
+  </resize>
+
+  <focus>
+    <followMouse>no</followMouse>
+    <followMouseRequiresMovement>yes</followMouseRequiresMovement>
+    <raiseOnFocus>no</raiseOnFocus>
+  </focus>
+
+  <snapping>
+    <!-- Set inner and outer range to 0 to disable window snapping completely -->
+    <range inner="10" outer="10" />
+    <cornerRange>50</cornerRange>
+    <overlay enabled="yes">
+      <delay inner="500" outer="500" />
+    </overlay>
+    <topMaximize>yes</topMaximize>
+    <notifyClient>always</notifyClient>
+  </snapping>
+
+  <!--
+    Workspaces can be configured like this:
+    <desktops>
+      <popupTime>1000</popupTime>
+      <initial>Workspace 1</initial>
+      <names>
+        <name>Workspace 1</name>
+        <name>Workspace 2</name>
+        <name>Workspace 3</name>
+        <name>Workspace 4</name>
+      </names>
+    </desktops>
+
+    Or it can also be configured like this:
+    <desktops number="4" />
+
+    Or like this:
+    <desktops>
+      <popupTime>500</popupTime>
+      <number>5</number>
+      <prefix>ws</prefix>
+    </desktops>
+
+    Or:
+    <desktops number="4" popupTime="500" prefix="ws" />
+
+    popupTime defaults to 1000 so could be left out.
+    Set to 0 to completely disable the workspace OSD.
+
+    prefix defaults to "Workspace" when using number instead of names.
+
+    Use GoToDesktop left | right to switch workspaces.
+    Use SendToDesktop left | right to move windows.
+    See man labwc-actions for further information.
+  -->
+    <desktops number="6" popupTime="3000" prefix="ws" />
+
+<!--  <desktops>
+    <popupTime>1000</popupTime>
+    <names>
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
+      <name>5</name>
+      <name>6</name>
+    </names>
+  </desktops>-->
+
+  <!--
+    <margin> can be used to reserve space where new/maximized/tiled
+    windows will not be placed. Clients using layer-shell protocol reserve
+    space automatically, so <margin> is only intended for other, specialist
+    cases.
+
+    If 'output' is not provided, the margin will be applied to all outputs.
+
+    <margin top="10" bottom="10" left="10" right="10" output="HDMI-A-1" />
+  -->
+
+  <!-- Percent based regions based on output usable area, % char is required -->
+  <!--
+    <regions>
+      <region name="top-left"     x="0%"  y="0%"  height="50%"  width="50%"  />
+      <region name="top"          x="0%"  y="0%"  height="50%"  width="100%" />
+      <region name="top-right"    x="50%" y="0%"  height="50%"  width="50%"  />
+      <region name="left"         x="0%"  y="0%"  height="100%" width="50%"  />
+      <region name="center"       x="10%" y="10%" height="80%"  width="80%"  />
+      <region name="right"        x="50%" y="0%"  height="100%" width="50%"  />
+      <region name="bottom-left"  x="0%"  y="50%" height="50%"  width="50%"  />
+      <region name="bottom"       x="0%"  y="50%" height="50%"  width="100%" />
+      <region name="bottom-right" x="50%" y="50%" height="50%"  width="50%"  />
+    </regions>
+  -->
+
+  <!--
+    Keybind actions are specified in labwc-actions(5)
+    The following keybind modifiers are supported:
+      W - window/super/logo
+      A - alt
+      C - ctrl
+      S - shift
+
+    Use <keyboard><default /> to load all the default keybinds (those listed
+    below). If the default keybinds are largely what you want, a sensible
+    approach could be to start the <keyboard> section with a <default />
+    element, and then (re-)define any special binds you need such as launching
+    your favourite terminal or application launcher. See rc.xml for an example.
+  -->
+  <keyboard>
+    <!--
+      # Numlock is not set by default
+      <numlock>on|off</numlock>
+    -->
+    <layoutScope>global</layoutScope>
+    <repeatRate>40</repeatRate>
+    <repeatDelay>250</repeatDelay>
+
+    <keybind key="C-A-Left">
+      <action name="GoToDesktop" to="left" wrap="yes"/>
+    </keybind>
+    <keybind key="C-A-Right">
+      <action name="GoToDesktop" to="right" wrap="yes"/>
+    </keybind>
+
+    <keybind key="S-A-Left">
+      <action name="SendToDesktop" to="left" wrap="yes"/>
+    </keybind>
+    <keybind key="S-A-Right">
+      <action name="SendToDesktop" to="right" wrap="yes"/>
+    </keybind>
+
+    <keybind key="A-Tab">
+      <action name="NextWindow" />
+    </keybind>
+    <keybind key="W-t">
+      <action name="Execute" command="alacritty" />
+    </keybind>
+    <keybind key="W-e">
+      <action name="Execute" command="thunar" />
+    </keybind>
+    <keybind key="W-l">
+      <action name="Execute" command="swaylock -c 000000" />
+    </keybind>
+    <keybind key="A-p">
+      <action name="Execute" command="fuzzel" />
+    </keybind>
+    <keybind key="A-F4">
+      <action name="Close" />
+    </keybind>
+	<keybind key="W-m">
+	  <action name="Iconify" />
+	</keybind>
+    <keybind key="W-C-Up">
+      <action name="ToggleMaximize" />
+    </keybind>	
+	<keybind key="W-C-Left">
+	  <action name="SnapToEdge" direction="left" />
+	</keybind>
+	<keybind key="W-C-Right">
+	  <action name="SnapToEdge" direction="right" />
+	</keybind>
+
+    <!-- sound & brightness -->
+    <keybind key="A-Space">
+      <action name="ShowMenu" menu="client-menu" atCursor="no" />
+    </keybind>
+    <keybind key="XF86_AudioLowerVolume">
+      <action name="Execute" command="pactl set-sink-volume @DEFAULT_SINK@ -5%" />
+    </keybind>
+    <keybind key="XF86_AudioRaiseVolume">
+      <action name="Execute" command="pactl set-sink-volume @DEFAULT_SINK@ +5%" />
+    </keybind>
+    <keybind key="XF86_AudioMute">
+      <action name="Execute" command="pactl set-sink-mute @DEFAULT_SINK@ toggle" />
+    </keybind>
+    <keybind key="XF86_MonBrightnessUp">
+      <action name="Execute" command="brightnessctl set +10%" />
+    </keybind>
+    <keybind key="XF86_MonBrightnessDown">
+      <action name="Execute" command="brightnessctl set 10%-" />
+    </keybind>
+
+
+	<!-- Move window -->
+	<keybind key="W-Right">
+		<action name="MoveRelative" x="20" y="0" />
+	</keybind>
+	<keybind key="W-Left">
+		<action name="MoveRelative" x="-20" y="0" />
+	</keybind>    
+	<keybind key="W-Up">
+		<action name="MoveRelative" x="0" y="-20" />
+	</keybind>    
+	<keybind key="W-Down">
+		<action name="MoveRelative" x="0" y="20" />
+	</keybind>    
+	
+	<!-- Resize window -->
+	<keybind key="W-S-Left">
+        <action name="ResizeRelative" right="-20" />
+    </keybind>
+	<keybind key="W-S-Right">
+        <action name="ResizeRelative" right="20" />
+    </keybind>    
+	<keybind key="W-S-Down">
+        <action name="ResizeRelative" bottom="20" />
+    </keybind>
+	<keybind key="W-S-Up">
+        <action name="ResizeRelative" bottom="-20" />
+    </keybind>
+
+  <!-- keybind for client-list-combined-menu - will center in middle of screen -->
+  <!--
+    <keybind key="W-Space">
+      <action name="ShowMenu" menu="client-list-combined-menu" />
+      <position>
+        <x>center</x>
+        <y>center</y>
+      </position>
+    </keybind>
+  -->
+  </keyboard>
+
+  <libinput>
+    <device category="default">
+      <naturalScroll>yes</naturalScroll>
+      <!-- <leftHanded>no</leftHanded> -->
+      <!-- <pointerSpeed>0.0</pointerSpeed> -->
+      <!-- <accelProfile>adaptive</accelProfile> -->
+      <tap>yes</tap>
+      <!-- <tapButtonMap>lrm</tapButtonMap> -->
+      <!-- <tapAndDrag>yes</tapAndDrag> -->
+      <!-- <dragLock>yes</dragLock> -->
+      <!-- <threeFingerDrag>yes</threeFingerDrag> -->
+      <!-- <middleEmulation>no</middleEmulation> -->
+      <!-- <disableWhileTyping>yes</disableWhileTyping> -->
+      <!-- <clickMethod>buttonAreas</clickMethod> -->
+      <!-- <scrollMethod>twofinger</scrollMethod> -->
+      <!-- <sendEventsMode>yes</sendEventsMode> -->
+      <!-- <calibrationMatrix>1 0 0 0 1 0</calibrationMatrix> -->
+      <scrollFactor>1.4</scrollFactor>
+    </device>
+  </libinput>
+</labwc_config>

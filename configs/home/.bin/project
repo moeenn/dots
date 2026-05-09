@@ -1,15 +1,17 @@
 #! /usr/bin/python3
 
-from abc import ABC, abstractmethod
-import os
 import argparse
+import os
 import subprocess
+from abc import ABC, abstractmethod
+from typing import override
 
 
 class BaseTemplate(ABC):
     """
     abstract class which will be inherited by all template classes.
     """
+
     project_name: str
     project_dir: str
     files_and_content: dict[str, str]
@@ -28,7 +30,7 @@ class BaseTemplate(ABC):
 
         # initialize git repo.
         cmd = ["git", "init"]
-        subprocess.run(cmd, cwd=self.project_dir)
+        _ = subprocess.run(cmd, cwd=self.project_dir)
 
     def create_dir(self, dir_path: str) -> None:
         if os.path.exists(dir_path):
@@ -41,7 +43,7 @@ class BaseTemplate(ABC):
             raise Exception(f"file already exists: {file_path}")
         else:
             with open(file_path, "w") as f:
-                f.write(content)
+                _ = f.write(content)
 
     @staticmethod
     @abstractmethod
@@ -73,32 +75,33 @@ class GoTemplate(BaseTemplate):
 
     def __init__(self, project_name: str) -> None:
         super().__init__(project_name)
-
-        main_go_path = os.path.join("cmd", self.project_name, "main.go")
         self.files_and_content = {
-            main_go_path: self.main_go_content(),
-            "Makefile": self.makefile_content(),
+            "main.go": self.main_go_content(),
             ".golangci.yml": self.golangci_lint_content(),
         }
 
+    @override
     @staticmethod
     def template_names() -> list[str]:
         return ["go"]
 
+    @override
     def gitignore_entries(self) -> list[str]:
         return ["bin"]
 
+    @override
     def project_directories(self) -> list[str]:
         return [
-            os.path.join("cmd", self.project_name),
+            "internal",
         ]
 
+    @override
     def execute(self) -> None:
         super().execute()
 
         # init go module.
         cmd = ["go", "mod", "init", self.project_name]
-        subprocess.run(cmd, cwd=self.project_dir)
+        _ = subprocess.run(cmd, cwd=self.project_dir)
 
     def main_go_content(self) -> str:
         return """package main
@@ -136,35 +139,7 @@ linters:
     - gochecknoinits
     - godox
     - misspell
-    - sloglint
-
-  settings:
-    sloglint:
-      no-mixed-args: true
-      static-msg: true
-      key-naming-case: camel
-      args-on-sep-lines: true
 """.strip()
-
-    def makefile_content(self) -> str:
-        return f"""
-PROJECT = {self.project_name}
-MAIN_FILE = ./cmd/$(PROJECT)/main.go
-
-lint:
-	golangci-lint run ./...
-
-test:
-	go test ./...
-
-run:
-	go run $(MAIN_FILE)
-
-build: lint test
-	go build -o ./bin/$(PROJECT) $(MAIN_FILE)
-
-.PHONY: lint test run
-  """.strip()
 
 
 class CTemplate(BaseTemplate):
@@ -175,63 +150,39 @@ class CTemplate(BaseTemplate):
     def __init__(self, project_name: str) -> None:
         super().__init__(project_name)
         main_c_path = os.path.join("src", "main.c")
-        common_h_path = os.path.join("include", "common.h")
         self.files_and_content = {
             main_c_path: self.main_c_content(),
-            common_h_path: self.common_h_content(),
             "Makefile": self.makefile_content(),
         }
 
+    @override
     @staticmethod
     def template_names() -> list[str]:
         return ["c"]
 
+    @override
     def gitignore_entries(self) -> list[str]:
-        return ["bin/*", ".cache/", "compile_commands.json"]
+        return ["bin/*", ".cache/"]
 
+    @override
     def project_directories(self) -> list[str]:
         return ["src", "bin", "include"]
 
-    def execute(self) -> None:
-        super().execute()
-        cmd = ["clang-format", "-style=Microsoft", "--dump-config"]
-        output = subprocess.run(cmd, capture_output=True, text=True)
-        with open(os.path.join(self.project_dir, ".clang-format"), "wt") as file:
-            file.write(output.stdout)
-
     def main_c_content(self) -> str:
         return """
-#include "common.h"
 #include <stdio.h>
 
 int main()
 {
     printf("hello world\\n");
-    return RESULT_OK;
+    return 0;
 }
     """.lstrip()
-
-    def common_h_content(self) -> str:
-        return """
-#pragma once
-
-typedef enum {
-    RESULT_OK = 0,
-    RESULT_ERR = 1,
-} result_e;
-
-#define passert(condition)                                                      \\
-    if (!(condition))                                                           \\
-    {                                                                           \\
-        fprintf(stderr, "%s:%d assertion failed\\n", __FILE_NAME__, __LINE__);   \\
-        exit(EXIT_FAILURE);                                                     \\
-    }
-		""".lstrip()
 
     def makefile_content(self) -> str:
         return f"""
 NAME={self.project_name}
-CC=cc
+CC=clang
 STD=c23
 CFLAGS=-Wall -Wextra -pedantic -Werror -O3
 INC=-I./include
@@ -256,37 +207,47 @@ class CppTemplate(BaseTemplate):
     def __init__(self, project_name: str) -> None:
         super().__init__(project_name)
         main_cpp_path = os.path.join("src", "main.cpp")
+        common_hpp_path = os.path.join("include", "common.hpp")
         self.files_and_content = {
             main_cpp_path: self.main_cpp_content(),
+            common_hpp_path: self.common_hpp_content(),
             "CMakeLists.txt": self.cmakelists_content(),
         }
 
+    @override
     @staticmethod
     def template_names() -> list[str]:
         return ["cpp", "c++"]
 
+    @override
     def gitignore_entries(self) -> list[str]:
         return ["build/*", ".cache/", "compile_commands.json"]
 
+    @override
     def project_directories(self) -> list[str]:
         return ["src", "build", "include"]
 
-    def execute(self) -> None:
-        super().execute()
-        cmd = ["clang-format", "-style=Microsoft", "--dump-config"]
-        output = subprocess.run(cmd, capture_output=True, text=True)
-        with open(os.path.join(self.project_dir, ".clang-format"), "wt") as file:
-            file.write(output.stdout)
-
     def main_cpp_content(self) -> str:
         return """
-#include <iostream>
+#include <cstdio>
 
 int main()
 {
-    std::cout << "hello world\\n";
+    puts("hello world");
 }
     """.lstrip()
+
+    def common_hpp_content(self) -> str:
+        return """
+#pragma once
+#include <cstdlib>
+
+#define passert(condition)                                                      \\
+    if (!(condition)) {                                                         \\
+        fprintf(stderr, "%s:%d assertion failed\\n", __FILE_NAME__, __LINE__);  \\
+        exit(1);                                                                \\
+    }
+        """.strip()
 
     def cmakelists_content(self) -> str:
         return f"""
@@ -328,13 +289,16 @@ class JavaTemplateMaven(BaseTemplate):
             "pom.xml": self.pom_xml_content(),
         }
 
+    @override
     @staticmethod
     def template_names() -> list[str]:
         return ["java-maven"]
 
+    @override
     def gitignore_entries(self) -> list[str]:
         return [".classpath", "target", ".project", ".settings", ".idea", ".vscode"]
 
+    @override
     def project_directories(self) -> list[str]:
         return [
             os.path.join("src", "main", "resources"),
@@ -342,11 +306,12 @@ class JavaTemplateMaven(BaseTemplate):
             os.path.join("src", "test", "java", "com", self.project_name),
         ]
 
+    @override
     def execute(self) -> None:
         super().execute()
         print("Performing first compile...")
         cmd = ["mvn", "compile"]
-        subprocess.run(cmd, cwd=self.project_dir)
+        _ = subprocess.run(cmd, cwd=self.project_dir)
 
     def main_content(self) -> str:
         return f"""
@@ -356,7 +321,7 @@ public class Main {{
     public static void main(String[] args) {{
         System.out.println("hello world");
     }}
-}}           
+}}
         """.strip()
 
     def test_content(self) -> str:
@@ -371,7 +336,7 @@ public class MainTest {{
   public void testAssertion() {{
     assertEquals(1, 1);
   }}
-}}        
+}}
         """.strip()
 
     def pom_xml_content(self) -> str:
@@ -391,7 +356,7 @@ public class MainTest {{
     <maven.compiler.target>${{java.version}}</maven.compiler.target>
     <maven.compiler.release>${{java.version}}</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>    
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
 
   <build>
@@ -479,13 +444,30 @@ class JavaTemplateGradle(BaseTemplate):
             "gradle.properties": self.gradle_properties_content(),
         }
 
+    @override
     @staticmethod
     def template_names() -> list[str]:
         return ["java-gradle"]
 
+    @override
     def gitignore_entries(self) -> list[str]:
-        return [".classpath", "target", ".project", ".settings", ".idea", ".gradle", "build", "bin", ".vscode"]
+        return [
+            ".classpath",
+            "target",
+            ".project",
+            ".settings",
+            ".idea",
+            ".gradle",
+            "build",
+            "bin",
+            ".vscode",
+            ".idea",
+            "gradlew",
+            "gradlew.bat",
+            "gradle",
+        ]
 
+    @override
     def project_directories(self) -> list[str]:
         return [
             os.path.join("src", "main", "resources"),
@@ -606,10 +588,12 @@ class ScalaTemplate(BaseTemplate):
             ".scalafmt.conf": self.scalafmt_content(),
         }
 
+    @override
     @staticmethod
     def template_names() -> list[str]:
         return ["scala"]
 
+    @override
     def gitignore_entries(self) -> list[str]:
         return [
             ".classpath",
@@ -624,17 +608,19 @@ class ScalaTemplate(BaseTemplate):
             ".bloop",
         ]
 
+    @override
     def project_directories(self) -> list[str]:
         return [
             os.path.join("src", "main", "scala", "com", self.project_name),
         ]
 
+    @override
     def execute(self) -> None:
         super().execute()
         # setup bloop.
         print("Running bloopInstall")
         cmd = ["mvn", "ch.epfl.scala:bloop-maven-plugin:bloopInstall"]
-        subprocess.run(cmd, cwd=self.project_dir)
+        _ = subprocess.run(cmd, cwd=self.project_dir)
 
     def main_content(self) -> str:
         return f"""
@@ -786,16 +772,20 @@ class TsTemplate(BaseTemplate):
             "eslint.config.js": self.eslint_config_content(),
         }
 
+    @override
     @staticmethod
     def template_names() -> list[str]:
         return ["ts", "typescript"]
 
+    @override
     def gitignore_entries(self) -> list[str]:
         return ["node_modules/", ".DS_Store", "dist/"]
 
+    @override
     def project_directories(self) -> list[str]:
         return ["src"]
 
+    @override
     def execute(self) -> None:
         super().execute()
 
@@ -915,11 +905,11 @@ test("simple test", async () => {
         "#src/*": "./src/*"
     },
     "devDependencies": {
-        "@types/node": "^24.2.0",
-        "esbuild": "^0.27.0",
-        "eslint": "^9.32.0",
+        "@types/node": "^25.6.0",
+        "esbuild": "^0.28.0",
+        "eslint": "^10.3.0",
         "prettier": "^3.6.2",
-        "typescript": "^5.9.2",
+        "typescript": "^6.0.3",
         "typescript-eslint": "^8.47.0"
     }
 }
@@ -976,10 +966,12 @@ class PythonTemplate(BaseTemplate):
             "pyproject.toml": self.pyproject_toml_content(),
         }
 
+    @override
     @staticmethod
     def template_names() -> list[str]:
         return ["py", "python"]
 
+    @override
     def gitignore_entries(self) -> list[str]:
         return [
             "__pycache__",
@@ -991,6 +983,7 @@ class PythonTemplate(BaseTemplate):
             ".venv",
         ]
 
+    @override
     def project_directories(self) -> list[str]:
         return ["app"]
 
@@ -1059,8 +1052,8 @@ dev = []
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("-n", "--name", help="Project name", required=True)
-    parser.add_argument("-t", "--template", help="Project template", required=True)
+    _ = parser.add_argument("-n", "--name", help="Project name", required=True)
+    _ = parser.add_argument("-t", "--template", help="Project template", required=True)
     args = parser.parse_args()
 
     registered_templates: list[BaseTemplate] = [

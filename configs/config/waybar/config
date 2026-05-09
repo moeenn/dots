@@ -1,0 +1,65 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "exclusive": true, // true means reserve space.    
+    "passthrough": false, // true means bar is not clickable.
+    "height": 40,
+    "spacing": 0,
+    "modules-left": [],
+    "modules-center": [],
+    "modules-right": ["tray", "network", "pulseaudio", "battery", "clock"],
+        
+    "clock": {
+        "format": "{:%B %d - %H:%M}",
+        "calendar": {
+            "mode"          : "month",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "on-click-right": "mode",
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+    
+    "network": {
+        "format-wifi": "W: {essid}",
+        "format-ethernet": "W: connected",
+        "format-disconnected": "W: Offline",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}",
+        "tooltip-format-disconnected": "Disconnected"
+    },
+    
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "{icon} Muted",
+        "format-icons": ["V:", "V:", "V:"],
+        "on-click": "pavucontrol",
+        "scroll-step": 5
+    },
+    
+    "battery": {
+        "bat": "BAT0",
+        "format": "{icon} {capacity}%",
+        "format-icons": ["B:", "B:", "B:", "B:", "B:"],
+        "format-charging": "{icon} {capacity}%",
+        "format-full": "{icon} Full",
+        "tooltip-format": "{timeTo} remaining",
+        "states": {
+            "low": 20,
+            "critical": 10,
+        },
+    },
+    
+    "tray": {
+        "icon-size": 24,
+        "spacing": 8
+    }
+}

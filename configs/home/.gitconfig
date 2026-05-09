@@ -9,7 +9,7 @@
     default = simple
 
 [credential]
-	helper = store
+	helper = cache
 
 [init]
 	defaultBranch = main
