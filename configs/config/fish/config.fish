@@ -26,8 +26,7 @@ set BUNBIN {$HOME}/.bun/bin
 set GOINSTALL {$HOME}/.local/go/bin
 set GOBIN {$HOME}/go/bin
 set CARGOBIN {$HOME}/.cargo/bin
-set ZIGBIN {$HOME}/.zig/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$BUNBIN} {$GOINSTALL} {$GOBIN} {$CARGOBIN} {$ZIGBIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$BUNBIN} {$GOINSTALL} {$GOBIN} {$CARGOBIN}
 
 # --------------------------------------------------------------------
 #
@@ -79,6 +78,6 @@ alias push "git push"
 alias pull "git pull"
 
 # programming
-alias dc "docker-compose"
+alias dc docker-compose
 alias py python3
 alias cfmt "clang-format --style=Microsoft -i"
