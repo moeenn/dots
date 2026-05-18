@@ -4,7 +4,7 @@ LastActiveRenamer=ThunarSbrNumberRenamer
 
 [ThunarSbrNumberRenamer]
 TextMode=THUNAR_SBR_TEXT_MODE_NT
-Text=.jpg
+Text=.jpeg
 Mode=THUNAR_SBR_NUMBER_MODE_001002003
-Start=1100
+Start=284
 

@@ -219,7 +219,7 @@ class CppTemplate(BaseTemplate):
 
     @override
     def gitignore_entries(self) -> list[str]:
-        return ["build/*", ".cache/", "compile_commands.json"]
+        return ["build/*", ".cache/"]
 
     @override
     def project_directories(self) -> list[str]:

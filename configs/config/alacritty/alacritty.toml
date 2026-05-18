@@ -4,8 +4,8 @@ padding = { x = 10, y = 10 }
 
 [font]
 size = 11.0
-normal = { family = "JetBrains Mono", style = "Regular" }
-bold = { family = "JetBrains Mono", style = "Regular" }
+normal = { family = "Cascadia Code", style = "Regular" }
+bold = { family = "Cascadia Code", style = "Regular" }
 
 [font.offset]
 x = 0
@@ -19,3 +19,27 @@ y = 4
 style = { shape = "Underline", blinking = "Off" }
 unfocused_hollow = true
 
+# theme: everblush.
+[colors.primary]
+background = '#141b1e'
+foreground = '#dadada'
+
+[colors.normal]
+black   = '#232a2d'
+red     = '#e57474'
+green   = '#8ccf7e'
+yellow  = '#e5c76b'
+blue    = '#67b0e8'
+magenta = '#c47fd5'
+cyan    = '#6cbfbf'
+white   = '#b3b9b8'
+
+[colors.bright]
+black   = '#2d3437'
+red     = '#ef7e7e'
+green   = '#96d988'
+yellow  = '#efd175'
+blue    = '#71baef'
+magenta = '#ce89df'
+cyan    = '#76c9c9'
+white   = '#bdc3c2'

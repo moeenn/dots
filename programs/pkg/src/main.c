@@ -272,6 +272,11 @@ int main(int argc, char* argv[])
 			return 1;
 		}
 
+		if (!pkg_clean()) {
+			errorOut("failed to clean packages");
+			return 1;
+		}
+
 		return 0;
 	}
 
