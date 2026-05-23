@@ -170,23 +170,7 @@
     <repeatRate>40</repeatRate>
     <repeatDelay>250</repeatDelay>
 
-    <keybind key="C-A-Left">
-      <action name="GoToDesktop" to="left" wrap="yes"/>
-    </keybind>
-    <keybind key="C-A-Right">
-      <action name="GoToDesktop" to="right" wrap="yes"/>
-    </keybind>
-
-    <keybind key="S-A-Left">
-      <action name="SendToDesktop" to="left" wrap="yes"/>
-    </keybind>
-    <keybind key="S-A-Right">
-      <action name="SendToDesktop" to="right" wrap="yes"/>
-    </keybind>
-
-    <keybind key="A-Tab">
-      <action name="NextWindow" />
-    </keybind>
+    <!-- application shortcuts -->
     <keybind key="W-t">
       <action name="Execute" command="alacritty" />
     </keybind>
@@ -199,21 +183,6 @@
     <keybind key="A-p">
       <action name="Execute" command="fuzzel" />
     </keybind>
-    <keybind key="A-F4">
-      <action name="Close" />
-    </keybind>
-	<keybind key="W-m">
-	  <action name="Iconify" />
-	</keybind>
-    <keybind key="W-C-Up">
-      <action name="ToggleMaximize" />
-    </keybind>	
-	<keybind key="W-C-Left">
-	  <action name="SnapToEdge" direction="left" />
-	</keybind>
-	<keybind key="W-C-Right">
-	  <action name="SnapToEdge" direction="right" />
-	</keybind>
 
     <!-- sound & brightness -->
     <keybind key="A-Space">
@@ -235,6 +204,25 @@
       <action name="Execute" command="brightnessctl set 10%-" />
     </keybind>
 
+    <!-- common window management shortcuts -->
+    <keybind key="A-Tab">
+      <action name="NextWindow" />
+    </keybind>
+    <keybind key="A-F4">
+      <action name="Close" />
+    </keybind>
+	<keybind key="W-m">
+	  <action name="Iconify" />
+	</keybind>
+    <keybind key="W-C-Up">
+      <action name="ToggleMaximize" />
+    </keybind>	
+	<keybind key="W-C-Left">
+	  <action name="SnapToEdge" direction="left" />
+	</keybind>
+	<keybind key="W-C-Right">
+	  <action name="SnapToEdge" direction="right" />
+	</keybind>
 
 	<!-- Move window -->
 	<keybind key="W-Right">
@@ -249,6 +237,36 @@
 	<keybind key="W-Down">
 		<action name="MoveRelative" x="0" y="20" />
 	</keybind>    
+
+    <!-- move window to edge -->
+	<keybind key="C-A-S-Up">
+	  <action name="MoveToEdge" direction="up"/>
+	</keybind>
+	<keybind key="C-A-S-Down">
+	  <action name="MoveToEdge" direction="down"/>
+	</keybind>
+	<keybind key="C-A-S-Left">
+	  <action name="MoveToEdge" direction="left"/>
+	</keybind>	
+	<keybind key="C-A-S-Right">
+	  <action name="MoveToEdge" direction="right"/>
+	</keybind>
+
+    <!-- switch desktop -->
+    <keybind key="C-A-Left">
+      <action name="GoToDesktop" to="left" wrap="yes"/>
+    </keybind>
+    <keybind key="C-A-Right">
+      <action name="GoToDesktop" to="right" wrap="yes"/>
+    </keybind>
+
+	<!-- move window between desktop -->
+    <keybind key="S-A-Left">
+      <action name="SendToDesktop" to="left" wrap="yes"/>
+    </keybind>
+    <keybind key="S-A-Right">
+      <action name="SendToDesktop" to="right" wrap="yes"/>
+    </keybind>
 	
 	<!-- Resize window -->
 	<keybind key="W-S-Left">
