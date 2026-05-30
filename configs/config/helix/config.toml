@@ -27,7 +27,7 @@ hidden = false
 
 [editor.statusline]
 mode.normal = "NORMAL"
-mode.insert = "--INSERT--"
+mode.insert = "INSERT"
 mode.select = "SELECT"
 
 [keys.normal]

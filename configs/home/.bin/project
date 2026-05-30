@@ -992,9 +992,7 @@ $ python -m main
 """.strip()
 
     def init_app_content(self) -> str:
-        return """
-from .app import main
-      """.strip()
+        return ""
 
     def app_content(self) -> str:
         return """
@@ -1014,7 +1012,7 @@ class TestMain(TestCase):
 
     def main_content(self) -> str:
         return """
-from app import main
+from app.app import main
 
 
 if __name__ == "__main__":
