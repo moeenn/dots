@@ -25,8 +25,7 @@ set NODEBIN {$HOME}/.npm/bin
 set BUNBIN {$HOME}/.bun/bin
 set GOINSTALL {$HOME}/.local/go/bin
 set GOBIN {$HOME}/go/bin
-set CARGOBIN {$HOME}/.cargo/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$BUNBIN} {$GOINSTALL} {$GOBIN} {$CARGOBIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$BUNBIN} {$GOINSTALL} {$GOBIN}
 
 # --------------------------------------------------------------------
 #
@@ -48,6 +47,13 @@ alias q exit
 alias :q exit
 alias :Q exit
 alias reload "source ~/.config/fish/config.fish"
+
+# Package management
+alias pkg:u "sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y"
+alias pkg:s "apt-cache search"
+alias pkg:i "sudo apt-get install -y"
+alias pkg:c "sudo apt-get autoremove --purge -y" 
+alias pkg:r "sudo apt-get remove -y && pkg:c"
 
 # Programs
 alias load "htop -u moeenn"
@@ -80,4 +86,3 @@ alias pull "git pull"
 # programming
 alias dc docker-compose
 alias py python3
-alias cfmt "clang-format --style=Microsoft -i"
