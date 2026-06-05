@@ -25,7 +25,9 @@ set NODEBIN {$HOME}/.npm/bin
 set BUNBIN {$HOME}/.bun/bin
 set GOINSTALL {$HOME}/.local/go/bin
 set GOBIN {$HOME}/go/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$BUNBIN} {$GOINSTALL} {$GOBIN}
+set GRADLE_HOME {$HOME}/.local/share/gradle
+set GRADLE_BIN {$GRADLE_HOME}/bin
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$BUNBIN} {$GOINSTALL} {$GOBIN} {$GRADLE_BIN}
 
 # --------------------------------------------------------------------
 #
@@ -86,3 +88,4 @@ alias pull "git pull"
 # programming
 alias dc docker-compose
 alias py python3
+alias g gradle
