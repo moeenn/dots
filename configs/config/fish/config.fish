@@ -22,12 +22,12 @@ set SYSPATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin
 set FLATPAK_PATH /var/lib/flatpak/exports/bin
 set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
 set NODEBIN {$HOME}/.npm/bin
-set BUNBIN {$HOME}/.bun/bin
 set GOINSTALL {$HOME}/.local/go/bin
 set GOBIN {$HOME}/go/bin
 set GRADLE_HOME {$HOME}/.local/share/gradle
 set GRADLE_BIN {$GRADLE_HOME}/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$BUNBIN} {$GOINSTALL} {$GOBIN} {$GRADLE_BIN}
+set IDEA_BIN {$HOME/.idea/bin}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$GRADLE_BIN} {$IDEA_BIN}
 
 # --------------------------------------------------------------------
 #
@@ -49,13 +49,6 @@ alias q exit
 alias :q exit
 alias :Q exit
 alias reload "source ~/.config/fish/config.fish"
-
-# Package management
-alias pkg:u "sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y"
-alias pkg:s "apt-cache search"
-alias pkg:i "sudo apt-get install -y"
-alias pkg:c "sudo apt-get autoremove --purge -y" 
-alias pkg:r "sudo apt-get remove -y && pkg:c"
 
 # Programs
 alias load "htop -u moeenn"

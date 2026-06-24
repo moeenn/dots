@@ -6,3 +6,5 @@ fi
 if [[ $- == *i* && -f ~/.bashrc ]]; then
     . ~/.bashrc
 fi
+
+. "$HOME/.config/../bin/env"

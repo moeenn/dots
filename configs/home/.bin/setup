@@ -68,7 +68,7 @@ GO_PACKAGES = [
     "github.com/nametake/golangci-lint-langserver@latest",
 ]
 
-NODE_VERSION = "25"
+NODE_VERSION = "26"
 NODE_GLOBAL_DEPS = ["npm", "typescript-language-server"]
 
 PYTHON_SYS_PACKAGES = ["python3-pip", "python3-venv", "pipx"]
