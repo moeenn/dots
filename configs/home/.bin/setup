@@ -76,7 +76,7 @@ JAVA_VERSION = "25"
 GRADLE_VERSION = "9.6.1"
 
 PYTHON_SYS_PACKAGES = ["python3-pip", "python3-venv", "pipx"]
-PYTHON_PIP_PACKAGES = ["pyright", "ruff", "mypy"]
+PYTHON_PIP_PACKAGES = ["pyright", "ruff", "mypy", "uv"]
 
 WM_PACKAGES = [
     "xdg-desktop-portal-wlr",

@@ -1,6 +1,9 @@
 #! /bin/python3
 
 import os
+from typing import Generator
+from dataclasses import dataclass
+from enum import StrEnum, auto
 
 """
 gsettings set org.gnome.desktop.interface gtk-theme 'Your-Theme-Name'
@@ -13,30 +16,64 @@ find cursors:
 
 """
 
-USER = "moeenn"
-THEME_LOCATIONS = [
-    ("Local", os.path.join("/", "home", USER, ".themes")),
-    ("Global", os.path.join("/", "usr", "share", "themes")),
-]
 
-ICON_LOCATIONS = [
-    ("Local", os.path.join("/", "home", USER, ".icons")),
-    ("Global", os.path.join("/", "usr", "share", "icons")),
-]
+class LocationType(StrEnum):
+    Local = auto()
+    Global = auto()
 
-def list_folders(locations) -> list[str]:
-    themes = []
-    for tl in locations:
-        id, l = tl
-        if os.path.exists(l):
-            folders = folders = [f"{id} - {f}" for f in os.listdir(l) if os.path.isdir(os.path.join(l, f))]
-            themes += folders
 
-    return themes
+@dataclass
+class ThemeLocation:
+    type: LocationType
+    path: str
+
+
+def get_username() -> str:
+    user = os.getenv("USER")
+    if user is None:
+        raise Exception("failed to determine current user")
+    return user.strip()
+
+
+def get_theme_locations(username: str) -> list[ThemeLocation]:
+    return [
+        ThemeLocation(
+            LocationType.Local, os.path.join("/", "home", username, ".themes")
+        ),
+        ThemeLocation(LocationType.Global, os.path.join("/", "usr", "share", "themes")),
+    ]
+
+
+def get_icon_locations(username: str) -> list[ThemeLocation]:
+    return [
+        ThemeLocation(
+            LocationType.Local, os.path.join("/", "home", username, ".icons")
+        ),
+        ThemeLocation(LocationType.Global, os.path.join("/", "usr", "share", "icons")),
+    ]
+
+
+@dataclass
+class ThemeEntry:
+    name: str
+    is_global: bool
+
+
+def list_folders(locations: list[ThemeLocation]) -> Generator[ThemeEntry, None, None]:
+    for location in locations:
+        if os.path.exists(location.path):
+            entries = [
+                ThemeEntry(name=f, is_global=(location.type == LocationType.Global))
+                for f in os.listdir(location.path)
+                if os.path.isdir(os.path.join(location.path, f))
+            ]
+            yield from entries
 
 
 def main() -> None:
-    themes = list_folders(ICON_LOCATIONS)
+    username = get_username()
+    icon_locations = get_icon_locations(username)
+    themes = list_folders(icon_locations)
     for t in themes:
         print(t)
 
@@ -47,4 +84,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("ctrl+c: exiting...")
     except Exception as e:
-        print("error: {str(e)}")
+        print(f"error: {str(e)}")

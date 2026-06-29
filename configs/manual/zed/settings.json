@@ -1,17 +1,90 @@
 {
-    "ui_font_size": 15,
-    "ui_font_family": "Roboto",
-    "buffer_font_size": 14,
-    "buffer_font_family": "JetBrains Mono",
-    "buffer_line_height": { "custom": 1.8 },
-    "show_wrap_guides": true,
-    "hard_tabs": false,
-    "tab_size": 4,
-    "wrap_guides": [80],
-    "format_on_save": "on",
-    "theme": {
-        "mode": "system",
-        "light": "Ayu Mirage",
-        "dark": "Gruvbox Dark",
-    },
+	"icon_theme": {
+		"mode": "light",
+		"light": "Zed (Default)",
+		"dark": "Zed (Default)",
+	},
+	"vim_mode": false,
+	"lsp": {
+		"vtsls": {
+			"settings": {
+				"typescript": {
+					"updateImportsOnFileMove": {
+						"enabled": "always",
+					},
+				},
+				"javascript": {
+					"updateImportsOnFileMove": {
+						"enabled": "always",
+					},
+				},
+			},
+			"enable_lsp_tasks": true,
+		},
+	},
+	"cli_default_open_behavior": "new_window",
+	"project_panel": {
+		"dock": "left",
+	},
+	"outline_panel": {
+		"dock": "left",
+	},
+	"collaboration_panel": {
+		"dock": "left",
+	},
+	"agent": {
+		"dock": "right",
+		"favorite_models": [],
+		"model_parameters": [],
+	},
+	"git_panel": {
+		"dock": "left",
+	},
+	"ui_font_size": 16,
+	"ui_font_family": "Roboto",
+	"buffer_font_size": 13,
+	"buffer_font_family": "JetBrains Mono",
+	"buffer_line_height": { "custom": 1.8 },
+	"show_wrap_guides": true,
+	"hard_tabs": true,
+	"tab_size": 4,
+	"wrap_guides": [80],
+	"format_on_save": "on",
+	"theme": {
+		"mode": "dark",
+		"light": "Ayu Mirage",
+		"dark": "Ayu Mirage",
+	},
+	"languages": {
+		"Python": {
+			"hard_tabs": false,
+			"tab_size": 4,
+		},
+		"C": {
+			"hard_tabs": true,
+			"tab_size": 4,
+			"formatter": {
+				"external": {
+					"command": "clang-format",
+					"arguments": [
+						"--style=Microsoft",
+						"--assume-filename={buffer_path}",
+					],
+				},
+			},
+		},
+		"C++": {
+			"hard_tabs": true,
+			"tab_size": 4,
+			"formatter": {
+				"external": {
+					"command": "clang-format",
+					"arguments": [
+						"--style=Microsoft",
+						"--assume-filename={buffer_path}",
+					],
+				},
+			},
+		},
+	},
 }
