@@ -24,10 +24,11 @@ set USER_PATH {$HOME}/.bin {$HOME}/.local/bin
 set NODEBIN {$HOME}/.npm/bin
 set GOINSTALL {$HOME}/.local/go/bin
 set GOBIN {$HOME}/go/bin
-set GRADLE_HOME {$HOME}/.local/share/gradle
+set CARGO_BIN {$HOME}/.cargo/bin
+set GRADLE_HOME {$HOME}/.local/gradle
 set GRADLE_BIN {$GRADLE_HOME}/bin
 set IDEA_BIN {$HOME/.idea/bin}
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$GRADLE_BIN} {$IDEA_BIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$CARGO_BIN} {$GRADLE_BIN} {$IDEA_BIN}
 
 # --------------------------------------------------------------------
 #
@@ -65,6 +66,7 @@ alias k kak
 # Super User Tasks
 alias full_access "sudo chmod -R a+rw ./"
 alias mount "sudo mount -o rw"
+alias asroot "sudo -E"
 
 # git
 alias g git

@@ -30,6 +30,7 @@ BASE_PACKAGES = [
     "git",
     "htop",
     "dfc",
+    "unzip",
     "mtr",
     "tmux",
     "xterm",
@@ -60,7 +61,7 @@ FLATPAK_PACKAGES = [
 
 DOCKER_PACKAGES = ["python3-setuptools", "docker.io", "docker-compose"]
 
-GO_VERSION = "1.26.2"
+GO_VERSION = "1.26.4"
 GO_PACKAGES = [
     "golang.org/x/tools/gopls@latest",
     "github.com/go-delve/delve/cmd/dlv@latest",
@@ -70,6 +71,9 @@ GO_PACKAGES = [
 
 NODE_VERSION = "26"
 NODE_GLOBAL_DEPS = ["npm", "typescript-language-server"]
+
+JAVA_VERSION = "25"
+GRADLE_VERSION = "9.6.1"
 
 PYTHON_SYS_PACKAGES = ["python3-pip", "python3-venv", "pipx"]
 PYTHON_PIP_PACKAGES = ["pyright", "ruff", "mypy"]
@@ -362,6 +366,54 @@ class NodeJsConfig(IConfig):
 
 
 @dataclass
+class JavaConfig(IConfig):
+    jdk_version: str
+    gradle_version: str
+
+    @override
+    def name(self) -> str:
+        return "Java"
+
+    def __install_jdk(self) -> None:
+        jdk = f"openjdk-{self.jdk_version}-jdk"
+        cmd = ["sudo", "apt-get", "install", "-y", jdk]
+        exec(cmd)
+
+    def __download_gradle_installer(self) -> str:
+        filename = f"gradle-{self.gradle_version}-bin.zip"
+        full_url = f"https://services.gradle.org/distributions/{filename}"
+        download_path = os.path.join(tempfile.gettempdir(), filename)
+
+        if not os.path.exists(download_path):
+            cmd = ["wget", full_url, "-O", download_path]
+            exec(cmd)
+        return download_path
+
+    def __extract_installer(self, filepath: str) -> None:
+        out_dir = os.path.join(get_home(), ".local")
+        if os.path.exists(out_dir):
+            shutil.rmtree(out_dir)
+
+        new_dir = os.path.join(out_dir, "gradle")
+        if os.path.exists(new_dir):
+            raise Exception(f"gradle installation already exists at {new_dir}")
+
+        cmd = ["unzip", filepath, "-d", out_dir]
+        exec(cmd)
+        current_dir = os.path.join(out_dir, f"gradle-{self.gradle_version}")
+        os.rename(current_dir, new_dir)
+
+    @override
+    def apply(self) -> None:
+        if confirm("Install Java JDK"):
+            self.__install_jdk()
+
+        if confirm("Install Gradle"):
+            installer_path = self.__download_gradle_installer()
+            self.__extract_installer(installer_path)
+
+
+@dataclass
 class PythonConfig(IConfig):
     system_packages: list[str]
     pip_packages: list[str]
@@ -477,6 +529,7 @@ class Config:
     docker: DockerConfig
     fish: FishConfig
     go: GoConfig
+    java: JavaConfig
     nodejs: NodeJsConfig
     python: PythonConfig
     wm: WMConfig
@@ -488,6 +541,7 @@ class Config:
         self.docker = DockerConfig(DOCKER_PACKAGES)
         self.fish = FishConfig()
         self.go = GoConfig(GO_VERSION, GO_PACKAGES)
+        self.java = JavaConfig(JAVA_VERSION, GRADLE_VERSION)
         self.nodejs = NodeJsConfig(NODE_VERSION, NODE_GLOBAL_DEPS)
         self.python = PythonConfig(PYTHON_SYS_PACKAGES, PYTHON_PIP_PACKAGES)
         self.wm = WMConfig(WM_PACKAGES)
@@ -501,6 +555,7 @@ class Config:
             self.docker,
             self.fish,
             self.go,
+            self.java,
             self.nodejs,
             self.python,
         ]
