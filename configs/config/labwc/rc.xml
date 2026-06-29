@@ -184,6 +184,14 @@
       <action name="Execute" command="fuzzel" />
     </keybind>
 
+    <!-- screenshots -->     
+    <keybind key="Print">
+	  <action name="Execute" command="screenshot region" />
+	</keybind>
+	<keybind key="S-Print">
+	  <action name="Execute" command="screenshot copy" />
+	</keybind>	
+
     <!-- sound & brightness -->
     <keybind key="A-Space">
       <action name="ShowMenu" menu="client-menu" atCursor="no" />

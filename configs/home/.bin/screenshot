@@ -1,0 +1,15 @@
+#! /bin/bash
+
+ARG=$1;
+NOW=$(date +"%Y-%m-%d-%H:%M:%S");
+
+if [ "$ARG" == "region" ]; then
+	grim -g "$(slurp)" ~/Pictures/${NOW}.png;
+	notify-send 'Screenshot saved';	
+elif [ "$ARG" == "copy" ]; then
+	grim -g "$(slurp)" - | wl-copy;
+	notify-send 'Screenshot copied to clipboard';
+else 
+	grim ~/Pictures/${NOW}.png;
+	notify-send 'Screenshot saved';	
+fi

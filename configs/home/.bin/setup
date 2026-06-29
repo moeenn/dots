@@ -94,6 +94,9 @@ WM_PACKAGES = [
     "mako-notifier",
     "gammastep",  # warm colors.
     "fuzzel",  # dmenu alternative.
+    "grim",
+    "slurp",
+    "wl-clipboard",    
     # "nwg-look", # lxappearance alternative.
 ]
 
