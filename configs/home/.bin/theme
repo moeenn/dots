@@ -1,87 +1,97 @@
 #! /bin/python3
 
-import os
-from typing import Generator
-from dataclasses import dataclass
-from enum import StrEnum, auto
+import sys
+import subprocess
+from enum import Enum, auto
 
 """
 gsettings set org.gnome.desktop.interface gtk-theme 'Your-Theme-Name'
 gsettings set org.gnome.desktop.interface icon-theme 'Your-Icon-Theme'
 gsettings set org.gnome.desktop.interface cursor-theme 'Your-Cursor-Theme'
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' # For GTK4/libadwaita
-
-find cursors:
-   find /usr/share/icons/ -type d -name "cursors"
-
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 """
 
+THEME_DARK = "Adwaita-dark"
+ICON_DARK = "ePapirus-Dark"
+CURSOR_DARK = "DMZ-White"
 
-class LocationType(StrEnum):
-    Local = auto()
-    Global = auto()
-
-
-@dataclass
-class ThemeLocation:
-    type: LocationType
-    path: str
+THEME_LIGHT = "Adwaita"
+ICON_LIGHT = "ePapirus"
+CURSOR_LIGHT = "DMZ-Black"
 
 
-def get_username() -> str:
-    user = os.getenv("USER")
-    if user is None:
-        raise Exception("failed to determine current user")
-    return user.strip()
+class ThemeMode(Enum):
+    Light = auto()
+    Dark = auto()
+
+    @classmethod
+    def from_string(cls, raw: str):
+        match raw:
+            case "light":
+                return ThemeMode.Light
+
+            case "dark":
+                return ThemeMode.Dark
+
+            case _:
+                raise Exception(f"invalid theme mode: {raw}")
 
 
-def get_theme_locations(username: str) -> list[ThemeLocation]:
-    return [
-        ThemeLocation(
-            LocationType.Local, os.path.join("/", "home", username, ".themes")
-        ),
-        ThemeLocation(LocationType.Global, os.path.join("/", "usr", "share", "themes")),
-    ]
+def set_theme(mode: ThemeMode) -> None:
+    subprocess.run(
+        [
+            "gsettings",
+            "set",
+            "org.gnome.desktop.interface",
+            "gtk-theme",
+            f"'{THEME_LIGHT if mode == ThemeMode.Light else THEME_DARK}'",
+        ]
+    )
+    subprocess.run(
+        [
+            "gsettings",
+            "set",
+            "org.gnome.desktop.interface",
+            "icon-theme",
+            f"'{ICON_LIGHT if mode == ThemeMode.Light else ICON_DARK}'",
+        ]
+    )
+    subprocess.run(
+        [
+            "gsettings",
+            "set",
+            "org.gnome.desktop.interface",
+            "cursor-theme",
+            f"'{CURSOR_LIGHT if mode == ThemeMode.Light else CURSOR_DARK}'",
+        ]
+    )
+    subprocess.run(
+        [
+            "gsettings",
+            "set",
+            "org.gnome.desktop.interface",
+            "color-scheme",
+            f"{'prefer-light' if mode == ThemeMode.Light else 'prefer-dark'}",
+        ]
+    )
 
 
-def get_icon_locations(username: str) -> list[ThemeLocation]:
-    return [
-        ThemeLocation(
-            LocationType.Local, os.path.join("/", "home", username, ".icons")
-        ),
-        ThemeLocation(LocationType.Global, os.path.join("/", "usr", "share", "icons")),
-    ]
+def main(args: list[str]) -> None:
+    if len(args) != 1:
+        raise Exception(
+            "Please provide a theme mode to continue (allowed values: light, dark)."
+        )
 
-
-@dataclass
-class ThemeEntry:
-    name: str
-    is_global: bool
-
-
-def list_folders(locations: list[ThemeLocation]) -> Generator[ThemeEntry, None, None]:
-    for location in locations:
-        if os.path.exists(location.path):
-            entries = [
-                ThemeEntry(name=f, is_global=(location.type == LocationType.Global))
-                for f in os.listdir(location.path)
-                if os.path.isdir(os.path.join(location.path, f))
-            ]
-            yield from entries
-
-
-def main() -> None:
-    username = get_username()
-    icon_locations = get_icon_locations(username)
-    themes = list_folders(icon_locations)
-    for t in themes:
-        print(t)
+    parsed_mode = ThemeMode.from_string(args[0])
+    set_theme(parsed_mode)
+    print("[info] theme set successfully.")
 
 
 if __name__ == "__main__":
+    args = sys.argv[1:]
     try:
-        main()
+        main(args)
     except KeyboardInterrupt:
-        print("ctrl+c: exiting...")
+        print("[ctrl+c]: exiting...")
     except Exception as e:
-        print(f"error: {str(e)}")
+        print(f"[error] {str(e)}")
