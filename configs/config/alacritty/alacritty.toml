@@ -4,16 +4,16 @@ padding = { x = 10, y = 10 }
 
 [font]
 size = 10.0
-normal = { family = "Fira Code", style = "Retina" }
-bold = { family = "Fira Code", style = "Retina" }
+normal = { family = "JetBrains Mono", style = "Regular" }
+bold = { family = "JetBrains Mono", style = "Regular" }
 
 [font.offset]
 x = 0
-y = 6
+y = 8
 
 [font.glyph_offset]
 x = 0
-y = 3
+y = 4
 
 [cursor]
 style = { shape = "Underline", blinking = "Off" }

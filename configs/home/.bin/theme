@@ -4,20 +4,17 @@ import sys
 import subprocess
 from enum import Enum, auto
 
-"""
-gsettings set org.gnome.desktop.interface gtk-theme 'Your-Theme-Name'
-gsettings set org.gnome.desktop.interface icon-theme 'Your-Icon-Theme'
-gsettings set org.gnome.desktop.interface cursor-theme 'Your-Cursor-Theme'
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-"""
+CURSOR_SIZE = 24
+FONT_NAME = "Roboto 11"
+MONO_FONT_NAME = "JetBrains Mono 10"
 
 THEME_DARK = "Adwaita-dark"
 ICON_DARK = "ePapirus-Dark"
-CURSOR_DARK = "DMZ-White"
+CURSOR_DARK = "DMZ-Black"
 
 THEME_LIGHT = "Adwaita"
 ICON_LIGHT = "ePapirus"
-CURSOR_LIGHT = "DMZ-Black"
+CURSOR_LIGHT = "DMZ-White"
 
 
 class ThemeMode(Enum):
@@ -37,7 +34,40 @@ class ThemeMode(Enum):
                 raise Exception(f"invalid theme mode: {raw}")
 
 
+def set_ui() -> None:
+    subprocess.run(
+        [
+            "gsettings",
+            "set",
+            "org.gnome.desktop.interface",
+            "font-name",
+            f"{FONT_NAME}",
+        ]
+    )
+
+    subprocess.run(
+        [
+            "gsettings",
+            "set",
+            "org.gnome.desktop.interface",
+            "monospace-font-name",
+            f"{MONO_FONT_NAME}",
+        ]
+    )
+
+    subprocess.run(
+        [
+            "gsettings",
+            "set",
+            "org.gnome.desktop.interface",
+            "cursor-size",
+            f"{CURSOR_SIZE}",
+        ]
+    )
+
+
 def set_theme(mode: ThemeMode) -> None:
+
     subprocess.run(
         [
             "gsettings",
@@ -84,6 +114,7 @@ def main(args: list[str]) -> None:
 
     parsed_mode = ThemeMode.from_string(args[0])
     set_theme(parsed_mode)
+    set_ui()
     print("[info] theme set successfully.")
 
 
