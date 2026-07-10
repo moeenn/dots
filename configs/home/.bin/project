@@ -87,7 +87,7 @@ class GoTemplate(BaseTemplate):
 
     @override
     def gitignore_entries(self) -> list[str]:
-        return ["bin"]
+        return ["bin", ".vscode", ".zed", ".env"]
 
     @override
     def project_directories(self) -> list[str]:
@@ -587,6 +587,12 @@ class PythonTemplate(BaseTemplate):
     @override
     def project_directories(self) -> list[str]:
         return ["app"]
+
+    @override
+    def execute(self) -> None:
+        super().execute()
+        print("creating project virtual environment (.venv)")
+        subprocess.run(["python3", "-m", "venv", ".venv"], cwd=self.project_dir)
 
     def readme_content(self) -> str:
         return f"""

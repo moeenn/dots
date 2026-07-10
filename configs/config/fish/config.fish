@@ -28,7 +28,8 @@ set CARGO_BIN {$HOME}/.cargo/bin
 set GRADLE_HOME {$HOME}/.local/gradle
 set GRADLE_BIN {$GRADLE_HOME}/bin
 set IDEA_BIN {$HOME/.idea/bin}
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$CARGO_BIN} {$GRADLE_BIN} {$IDEA_BIN}
+set COMPOSER_BIN {$HOME}/.config/composer/vendor/bin
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$CARGO_BIN} {$GRADLE_BIN} {$IDEA_BIN} {$COMPOSER_BIN}
 
 # --------------------------------------------------------------------
 #
@@ -60,7 +61,6 @@ alias net "bwm-ng -t 1000"
 alias mtr "mtr -t"
 alias lsblk "lsblk -e 7"
 alias clock "tty-clock -cD"
-alias keyname "xev | grep keysym"
 alias k kak
 
 # Super User Tasks

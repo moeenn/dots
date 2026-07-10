@@ -5,7 +5,7 @@ import subprocess
 from enum import Enum, auto
 
 CURSOR_SIZE = 24
-FONT_NAME = "Roboto 11"
+FONT_NAME = "Roboto 10"
 MONO_FONT_NAME = "JetBrains Mono 10"
 
 THEME_DARK = "Adwaita-dark"
@@ -67,7 +67,6 @@ def set_ui() -> None:
 
 
 def set_theme(mode: ThemeMode) -> None:
-
     subprocess.run(
         [
             "gsettings",

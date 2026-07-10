@@ -1,0 +1,104 @@
+#! /usr/bin/env python3
+
+import os
+import shutil
+from pathlib import Path
+from enum import Enum, auto
+from dataclasses import dataclass
+
+
+class PathType(Enum):
+    File = auto()
+    Dir = auto()
+
+
+@dataclass
+class PathEntry:
+    type: PathType
+    full_path: str
+
+
+def get_paths(user_home: str) -> list[PathEntry]:
+    return [
+        PathEntry(
+            type=PathType.File, full_path=os.path.join(user_home, ".xsession-errors")
+        ),
+        PathEntry(type=PathType.File, full_path=os.path.join(user_home, ".wget-hsts")),
+        PathEntry(
+            type=PathType.File, full_path=os.path.join(user_home, ".python_history")
+        ),
+        PathEntry(
+            type=PathType.File, full_path=os.path.join(user_home, ".node_repl_history")
+        ),
+        PathEntry(
+            type=PathType.File,
+            full_path=os.path.join(user_home, ".sudo_as_admin_successful"),
+        ),
+        PathEntry(
+            type=PathType.File,
+            full_path=os.path.join(user_home, ".lesshst"),
+        ),
+        PathEntry(
+            type=PathType.Dir, full_path=os.path.join(user_home, ".cache", "thumbnails")
+        ),
+    ]
+
+
+def get_dir_size(path):
+    return sum(f.stat().st_size for f in Path(path).rglob("*") if f.is_file())
+
+
+def delete_pathentry(entry: PathEntry) -> int:
+    if not os.path.exists(entry.full_path):
+        return 0
+
+    size_bytes = 0
+    match entry.type:
+        case PathType.File:
+            size_bytes = os.path.getsize(entry.full_path)
+            print(f"[info] removing file {entry.full_path}")
+            os.remove(entry.full_path)
+
+        case PathType.Dir:
+            size_bytes = get_dir_size(entry.full_path)
+            print(f"[info] removing dir {entry.full_path}")
+            shutil.rmtree(entry.full_path)
+
+    return size_bytes
+
+
+def get_username() -> str:
+    username = os.getenv("USER")
+    if username is None:
+        raise Exception("failed to read $USER variable.")
+    return username.strip()
+
+
+def get_user_home() -> str:
+    username = get_username()
+    return os.path.join("/", "home", username)
+
+
+def main() -> None:
+    home = get_user_home()
+    target_paths = get_paths(home)
+
+    removed_bytes = 0
+    for p in target_paths:
+        try:
+            removed_bytes += delete_pathentry(p)
+        except Exception as e:
+            print(f"[error]: failed to cleanup ({p.full_path}): {str(e)}")
+
+    mbs = removed_bytes / (1024 * 1024)
+    if mbs == 0:
+        print("[info] no cleanup required")
+    else:
+        print(f"[info] cleaned up space: {mbs:0.2f} MB")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        print(f"error: {str(e)}")
