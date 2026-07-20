@@ -172,7 +172,7 @@
 
     <!-- application shortcuts -->
     <keybind key="W-t">
-      <action name="Execute" command="alacritty" />
+      <action name="Execute" command="foot" />
     </keybind>
     <keybind key="W-e">
       <action name="Execute" command="thunar" />

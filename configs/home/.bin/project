@@ -593,6 +593,8 @@ class PythonTemplate(BaseTemplate):
         super().execute()
         print("creating project virtual environment (.venv)")
         subprocess.run(["python3", "-m", "venv", ".venv"], cwd=self.project_dir)
+        print("marking entry-point (main.py) as executable")        
+        subprocess.run(["chmod", "+x", "main.py"], cwd=self.project_dir)
 
     def readme_content(self) -> str:
         return f"""
@@ -633,6 +635,7 @@ class TestMain(TestCase):
 
     def main_content(self) -> str:
         return """
+#! /bin/env python3
 from app.app import main
 
 

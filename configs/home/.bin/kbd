@@ -1,0 +1,18 @@
+#! /bin/bash
+
+# use `brightnessctl --list` to find the keyboard backlight device name.
+device="tpacpi::kbd_backlight"
+current_level=$(brightnessctl -d tpacpi::kbd_backlight | grep -oE '[0-9]+' | head -1)
+usage="usage: kbd <up|down>"
+
+if [[ "$1" == 'up' ]]; then
+  new_level=$(echo $current_level +1 | bc)
+  sudo brightnessctl -d $device set $new_level >/dev/null
+elif [[ "$1" == 'down' ]]; then
+  new_level=$(echo $current_level -1 | bc)
+  sudo brightnessctl -d $device set $new_level >/dev/null
+elif [[ "$1" == "help" || "$1" == "-h" ]]; then
+  echo "$usage"
+else
+  echo "error: missing or invalid command. ${usage}"
+fi

@@ -28,8 +28,7 @@ set CARGO_BIN {$HOME}/.cargo/bin
 set GRADLE_HOME {$HOME}/.local/gradle
 set GRADLE_BIN {$GRADLE_HOME}/bin
 set IDEA_BIN {$HOME/.idea/bin}
-set COMPOSER_BIN {$HOME}/.config/composer/vendor/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$CARGO_BIN} {$GRADLE_BIN} {$IDEA_BIN} {$COMPOSER_BIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$CARGO_BIN} {$GRADLE_BIN} {$IDEA_BIN}
 
 # --------------------------------------------------------------------
 #
