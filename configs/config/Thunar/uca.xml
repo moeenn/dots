@@ -5,7 +5,7 @@
 	<name>Open Terminal Here</name>
 	<submenu></submenu>
 	<unique-id>1775677650733057-1</unique-id>
-	<command>alacritty --working-directory %f</command>
+	<command>foot --working-directory=%f</command>
 	<description>Example for a custom action</description>
 	<range></range>
 	<patterns>*</patterns>
