@@ -1,0 +1,72 @@
+#! /bin/env python3
+
+import sys
+import os
+import subprocess
+import shutil
+
+
+def find_and_run_pkg(bin_path: str, pkg_name: str, args: list[str]) -> None:
+    full_path = os.path.join(bin_path, pkg_name)
+    if not os.path.exists(full_path):
+        raise Exception(f"package not found: {pkg_name}")
+    subprocess.run(["java", "-jar", full_path] + args)
+
+
+def install_package(bin_path: str, src_path: str, target_name: str) -> None:
+    if not os.path.exists(src_path):
+        raise Exception("source path does not exist")
+
+    full_path = os.path.join(bin_path, target_name)
+    with open(src_path, "rb") as src, open(full_path, "wb") as dst:
+        shutil.copyfileobj(src, dst)
+
+
+def main() -> None:
+    user = os.getenv("USER")
+    if user is None:
+        raise Exception("failed to determine current user")
+
+    bin_path = os.path.join("/", "home", user, ".java", "bin")
+    if not os.path.exists(bin_path):
+        try:
+            os.makedirs(bin_path)
+        except Exception as e:
+            raise Exception(f"failed to create java bin directory: {str(e)}")
+
+    args = sys.argv[1:]
+    n_args = len(args)
+    if n_args == 0:
+        raise Exception("please provide a command to continue")
+
+    raw_cmd = args[0]
+    match raw_cmd:
+        case "help" | "h":
+            print("usage: jx <run(r) | install(i)> <package-name>")
+            return
+
+        case "install" | "i":
+            if n_args < 2:
+                raise Exception("source package path not provided")
+            if n_args < 3:
+                raise Exception("target package name not provided")
+
+            src_path = args[1]
+            target_name = args[2]
+            install_package(bin_path, src_path, target_name)
+            print("package installed")
+
+        case "run" | "r":
+            if n_args < 2:
+                raise Exception("please provide a package name to run")
+            pkg_name = args[1]
+            find_and_run_pkg(bin_path, pkg_name, args[2:])
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("ctrl+c: exiting...")
+    except Exception as e:
+        print(f"error: {str(e)}")

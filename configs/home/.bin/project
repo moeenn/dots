@@ -76,6 +76,7 @@ class GoTemplate(BaseTemplate):
     def __init__(self, project_name: str) -> None:
         super().__init__(project_name)
         self.files_and_content = {
+            "README.md": self.readme_md_content(),
             "main.go": self.main_go_content(),
             ".golangci.yml": self.golangci_lint_content(),
         }
@@ -140,6 +141,10 @@ linters:
     - godox
     - misspell
 """.strip()
+
+    def readme_md_content(self) -> str:
+        return f"""## {self.project_name}
+        """	
 
 
 class CppTemplate(BaseTemplate):
