@@ -13,14 +13,22 @@ def find_and_run_pkg(bin_path: str, pkg_name: str, args: list[str]) -> None:
     subprocess.run(["java", "-jar", full_path] + args)
 
 
-def install_package(bin_path: str, src_path: str, target_name: str) -> None:
+def install_package(bin_path: str, src_path: str, target_name: str) -> bool:
     if not os.path.exists(src_path):
         raise Exception("source path does not exist")
 
     full_path = os.path.join(bin_path, target_name)
+    is_update = False
+    
+    if os.path.exists(full_path):
+    	is_update = True
+    	os.remove(full_path)
+    
     with open(src_path, "rb") as src, open(full_path, "wb") as dst:
         shutil.copyfileobj(src, dst)
 
+    return is_update
+	
 
 def main() -> None:
     user = os.getenv("USER")
@@ -53,8 +61,11 @@ def main() -> None:
 
             src_path = args[1]
             target_name = args[2]
-            install_package(bin_path, src_path, target_name)
-            print("package installed")
+            is_update = install_package(bin_path, src_path, target_name)
+            if is_update:
+            	print("package updated")
+            else:
+	            print("package installed")
 
         case "run" | "r":
             if n_args < 2:
