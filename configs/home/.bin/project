@@ -163,6 +163,7 @@ class CTemplate(BaseTemplate):
         self.files_and_content = {
             main_c_path: self.main_c_content(),
             "Makefile": self.makefile_content(),
+            ".clang-tidy": self.clangtidy_content(),
         }
 
     @override
@@ -205,6 +206,16 @@ main:
 run: main
 	@${{TARGET}}
 	""".lstrip()
+
+    def clangtidy_content(self) -> str:
+        return """
+Checks: >
+    *,
+    -readability-magic-numbers,
+    -modernize-use-trailing-return-type,
+    -llvm-header-guard,
+    -llvmlibc-restrict-system-libc-headers
+        """.lstrip()
 
 
 class JavaTemplateGradle(BaseTemplate):
