@@ -140,66 +140,71 @@ linters:
     - gochecknoinits
     - godox
     - misspell
+    - govet
+
+  settings:
+    govet:
+      enable-all: true
 """.strip()
 
     def readme_md_content(self) -> str:
         return f"""## {self.project_name}
-        """	
+        """
 
 
-class CppTemplate(BaseTemplate):
+class CTemplate(BaseTemplate):
     """
-    template class for c++ projects.
+    template class for c projects.
     """
 
     def __init__(self, project_name: str) -> None:
         super().__init__(project_name)
-        main_cpp_path = os.path.join("src", "main.cpp")
+        main_c_path = os.path.join("src", "main.c")
         self.files_and_content = {
-            main_cpp_path: self.main_cpp_content(),
-            "CMakeLists.txt": self.cmakelists_content(),
+            main_c_path: self.main_c_content(),
+            "Makefile": self.makefile_content(),
         }
 
     @override
     @staticmethod
     def template_names() -> list[str]:
-        return ["cpp", "c++"]
+        return ["c"]
 
     @override
     def gitignore_entries(self) -> list[str]:
-        return ["build/*", ".cache/"]
+        return ["bin/*", ".cache/", "compile_commands.json"]
 
     @override
     def project_directories(self) -> list[str]:
-        return ["src", "build", "include"]
+        return ["src", "bin", "include"]
 
-    def main_cpp_content(self) -> str:
+    def main_c_content(self) -> str:
         return """
-#include <iostream>
+#include <stdio.h>
 
 int main()
 {
-    std::cout << "hello world\\n";
+    puts("hello world");
+    return 0;
 }
-    """.lstrip()
+""".lstrip()
 
-    def cmakelists_content(self) -> str:
+    def makefile_content(self) -> str:
         return f"""
-cmake_minimum_required(VERSION 3.10)
-project({self.project_name} VERSION 1.0.0 LANGUAGES CXX)
+NAME={self.project_name}
+CC=clang
+CFLAGS=-Wall -Wextra -pedantic -Werror -std=c2x -O3
+INC=-I./include
+LDDFLAGS=-lm
+SRC=./src/main.c
+TARGET=./bin/${{NAME}}
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
-set(CMAKE_BUILD_TYPE Release)
+main:
+	${{CC}} ${{SRC}} ${{INC}} ${{CFLAGS}} ${{LDDFLAGS}} -o ${{TARGET}}
 
-file(GLOB_RECURSE SOURCES src/*.cpp)
-add_executable(${{PROJECT_NAME}} ${{SOURCES}})
-target_include_directories(${{PROJECT_NAME}} PRIVATE "include")
-target_link_directories(${{PROJECT_NAME}} PRIVATE)
-
-set_property(TARGET ${{PROJECT_NAME}} PROPERTY CXX_STANDARD 20)
-target_compile_options(${{PROJECT_NAME}} PUBLIC -Wextra -Werror -Wall -Wpedantic)
-target_link_libraries(${{PROJECT_NAME}} m)
-        """.strip()
+run: main
+	@${{TARGET}}
+	""".lstrip()
 
 
 class JavaTemplateGradle(BaseTemplate):
@@ -598,7 +603,7 @@ class PythonTemplate(BaseTemplate):
         super().execute()
         print("creating project virtual environment (.venv)")
         subprocess.run(["python3", "-m", "venv", ".venv"], cwd=self.project_dir)
-        print("marking entry-point (main.py) as executable")        
+        print("marking entry-point (main.py) as executable")
         subprocess.run(["chmod", "+x", "main.py"], cwd=self.project_dir)
 
     def readme_content(self) -> str:
@@ -671,7 +676,7 @@ def main() -> None:
 
     registered_templates: list[BaseTemplate] = [
         GoTemplate(args.name),
-        CppTemplate(args.name),
+        CTemplate(args.name),
         JavaTemplateGradle(args.name),
         TsTemplate(args.name),
         PythonTemplate(args.name),
