@@ -83,3 +83,4 @@ alias pull "git pull"
 alias dc docker-compose
 alias py python3
 alias g gradle
+alias valgrind "valgrind --leak-check=full"

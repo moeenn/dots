@@ -1,7 +1,7 @@
-<labwc_config>
+<labwc_config> 
   <core>
     <decoration>server</decoration>
-    <gap>8</gap>
+    <gap>0</gap>
     <adaptiveSync>no</adaptiveSync>
     <allowTearing>no</allowTearing>
     <autoEnableOutputs>yes</autoEnableOutputs>

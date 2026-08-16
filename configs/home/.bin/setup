@@ -401,8 +401,7 @@ class JavaConfig(IConfig):
         if os.path.exists(new_dir):
             raise Exception(f"gradle installation already exists at {new_dir}")
 
-        cmd = ["unzip", filepath, "-d", out_dir]
-        exec(cmd)
+        exec(["unzip", filepath, "-d", out_dir])
         current_dir = os.path.join(out_dir, f"gradle-{self.gradle_version}")
         os.rename(current_dir, new_dir)
 
