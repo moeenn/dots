@@ -1,4 +1,4 @@
-theme = "kanagawa"
+theme = "adwaita-dark"
 
 [editor]
 line-number = "absolute"

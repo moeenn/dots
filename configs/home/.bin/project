@@ -215,6 +215,8 @@ Checks: >
     -modernize-use-trailing-return-type,
     -llvm-header-guard,
     -llvmlibc-restrict-system-libc-headers
+    -llvmlibc-implementation-in-namespace,
+    -llvmlibc-callee-namespace    
         """.lstrip()
 
 

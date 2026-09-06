@@ -61,7 +61,7 @@ FLATPAK_PACKAGES = [
 
 DOCKER_PACKAGES = ["python3-setuptools", "docker.io", "docker-compose"]
 
-GO_VERSION = "1.26.4"
+GO_VERSION = "1.26.2"
 GO_PACKAGES = [
     "golang.org/x/tools/gopls@latest",
     "github.com/go-delve/delve/cmd/dlv@latest",
@@ -96,7 +96,7 @@ WM_PACKAGES = [
     "fuzzel",  # dmenu alternative.
     "grim",
     "slurp",
-    "wl-clipboard",    
+    "wl-clipboard",
     # "nwg-look", # lxappearance alternative.
 ]
 

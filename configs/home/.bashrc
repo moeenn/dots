@@ -35,7 +35,6 @@ bind '"\e[Z":menu-complete' # use Shift-tab to select tab suggestion.
 #
 # --------------------------------------------------------------------
 # general operations.
-alias cd="z"
 alias q="exit"
 alias :q="exit"
 alias :Q="exit"

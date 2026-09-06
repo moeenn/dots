@@ -68,7 +68,6 @@ alias mount "sudo mount -o rw"
 alias asroot "sudo -E"
 
 # git
-alias g git
 alias :s "git status"
 alias :S "git status"
 alias :c "git commit -m"
