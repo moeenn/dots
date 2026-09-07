@@ -79,7 +79,7 @@ alias push "git push"
 alias pull "git pull"
 
 # programming
-alias dc docker-compose
+alias dc "docker compose"
 alias py python3
 alias g gradle
 alias valgrind "valgrind --leak-check=full"
