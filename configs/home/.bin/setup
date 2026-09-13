@@ -42,6 +42,8 @@ BASE_PACKAGES = [
     "zoxide",
     "rsync",
     "scrot",
+    "sshpass",
+    "webp",
 ]
 
 COMMON_APPS = [
@@ -394,12 +396,12 @@ class JavaConfig(IConfig):
 
     def __extract_installer(self, filepath: str) -> None:
         out_dir = os.path.join(get_home(), ".local")
-        if os.path.exists(out_dir):
-            shutil.rmtree(out_dir)
+        if not os.path.exists(out_dir):
+            os.makedirs(out_dir, exist_ok=True)
 
         new_dir = os.path.join(out_dir, "gradle")
         if os.path.exists(new_dir):
-            raise Exception(f"gradle installation already exists at {new_dir}")
+            shutil.rmtree(new_dir)
 
         exec(["unzip", filepath, "-d", out_dir])
         current_dir = os.path.join(out_dir, f"gradle-{self.gradle_version}")
