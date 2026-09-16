@@ -20,6 +20,7 @@ commands:
     remove           (r)   remove provided packages.
     flatpak-remove   (fr)  remove flatpak packages.
     clean            (c)   remove orphan packages.
+    version          (v)   check package version.
 """
 
 
@@ -105,6 +106,13 @@ def pkg_clean() -> None:
         error_out("failed to clean packages")
 
 
+def pkg_version(pkg: str) -> None:
+    cmd = ["apt", "policy", pkg]
+    success = execute(cmd)
+    if not success:
+        error_out("failed to check package version")
+
+
 def main(args: list[str]) -> None:
     match args:
         case []:
@@ -137,6 +145,9 @@ def main(args: list[str]) -> None:
             match cmd:
                 case "search" | "s":
                     pkg_search(pkgs[0])
+
+                case "version" | "v":
+                    pkg_version(pkgs[0])
 
                 case "install" | "i":
                     pkg_install(pkgs)

@@ -27,7 +27,7 @@ set GOBIN {$HOME}/go/bin
 set CARGO_BIN {$HOME}/.cargo/bin
 set GRADLE_HOME {$HOME}/.local/gradle
 set GRADLE_BIN {$GRADLE_HOME}/bin
-set IDEA_BIN {$HOME/.idea/bin}
+set IDEA_BIN {$HOME/local/idea/bin}
 set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$CARGO_BIN} {$GRADLE_BIN} {$IDEA_BIN}
 
 # --------------------------------------------------------------------

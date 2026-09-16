@@ -1,10 +1,10 @@
 [[language]]
 name = "python"
 auto-format = true
+formatter = { command = "bash", args = ["-c", "ruff check --fix - | ruff format -"] }
 language-servers = [
     {name = "pyright"},
-    {name = "ruff"},
-    {name = "mypy"}
+    {name = "ruff"}
 ]
 
 [language-server.pyright]
