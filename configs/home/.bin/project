@@ -576,16 +576,11 @@ class PythonTemplate(BaseTemplate):
 
     def __init__(self, project_name: str) -> None:
         super().__init__(project_name)
-
-        app_path = os.path.join("app", "app.py")
-        app_test_path = os.path.join("app", "app_test.py")
         init_app_path = os.path.join("app", "__init__.py")
 
         self.files_and_content = {
             "README.md": self.readme_content(),
-            app_path: self.app_content(),
-            app_test_path: self.app_test_content(),
-            init_app_path: self.init_app_content(),
+            init_app_path: "",
             "main.py": self.main_content(),
             "pyproject.toml": self.pyproject_toml_content(),
         }
@@ -637,36 +632,20 @@ $ python -m main
 ```
 """.strip()
 
-    def init_app_content(self) -> str:
-        return ""
-
-    def app_content(self) -> str:
-        return """
-def main() -> None:
-    print("hello world")
-        """.strip()
-
-    def app_test_content(self) -> str:
-        return """
-from unittest import TestCase
-
-
-class TestMain(TestCase):
-    def test_main(self) -> None:
-        self.assertTrue(True)
-      """.strip()
-
     def main_content(self) -> str:
         return """
 #! /bin/env python3
-from app.app import main
+
+
+def main() -> None:
+    print("hello world")
 
 
 if __name__ == "__main__":
     try:
         main()
-    except Exception as ex:
-        print("error: ", ex)
+    except KeyboardInterrupt:
+        print("ctrl+c: exiting...")
         """.strip()
 
     def pyproject_toml_content(self) -> str:
