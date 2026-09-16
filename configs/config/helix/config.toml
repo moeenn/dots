@@ -1,4 +1,4 @@
-theme = "gruvbox_light_hard"
+theme = "github_light_high_contrast"
 
 [editor]
 line-number = "absolute"
