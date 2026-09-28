@@ -1,6 +1,6 @@
 {
 	"icon_theme": {
-		"mode": "light",
+		"mode": "dark",
 		"light": "Zed (Default)",
 		"dark": "Zed (Default)",
 	},
@@ -51,9 +51,9 @@
 	"wrap_guides": [80],
 	"format_on_save": "on",
 	"theme": {
-		"mode": "dark",
-		"light": "Ayu Mirage",
-		"dark": "Ayu Mirage",
+		"mode": "light",
+		"light": "GitHub Light",
+		"dark": "GitHub Dark Dimmed",
 	},
 	"languages": {
 		"Python": {
@@ -87,4 +87,11 @@
 			},
 		},
 	},
+	"file_scan_exclusions": [
+		"**/__pycache__",
+		"**/.git",
+		"**/.ruff_cache",
+		"**/.DS_Store",
+		"**/.venv",
+	],
 }

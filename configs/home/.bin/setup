@@ -1,5 +1,6 @@
 #! /bin/python3
 
+import logging
 import os
 import shutil
 import subprocess
@@ -126,20 +127,20 @@ def confirm(message: str) -> bool:
 
 def exec(cmd: list[str]) -> None:
     print(f"{COLOR_BLUE}running: {' '.join(cmd)}{COLOR_RESET}")
-    _ = subprocess.run(cmd)
+    _ = subprocess.run(cmd, check=True)
 
 
 def current_user() -> str:
     user = os.getenv("USER")
     if user is None:
-        raise Exception("failed to read $USER from environment")
+        raise MissingEnvVariableException("USER")
     return user.strip()
 
 
 def get_home() -> str:
     home = os.getenv("HOME")
     if home is None:
-        raise Exception("failed to read $HOME from environment")
+        raise MissingEnvVariableException("HOME")
     return home.strip()
 
 
@@ -259,7 +260,7 @@ class FishConfig(IConfig):
         exec(cmd)
 
     def __whereis_fish(self) -> str:
-        result = subprocess.run(["which", "fish"], capture_output=True)
+        result = subprocess.run(["which", "fish"], capture_output=True, check=True)
         return result.stdout.decode("utf-8").strip()
 
     @override
@@ -521,6 +522,23 @@ class SymlinksConfig(IConfig):
 
 # -------------------------------------------------------------------------------------------------------
 #
+# custom exceptions.
+#
+# -------------------------------------------------------------------------------------------------------
+
+
+class InvalidSelectionException(Exception):
+    def __init__(self) -> None:
+        super().__init__("invalid selection")
+
+
+class MissingEnvVariableException(Exception):
+    def __init__(self, env_name: str) -> None:
+        super().__init__(f"failed to read ${env_name} from environment")
+
+
+# -------------------------------------------------------------------------------------------------------
+#
 #  configuration driver class.
 #
 # -------------------------------------------------------------------------------------------------------
@@ -572,8 +590,8 @@ class Config:
         pieces = selection.split(",")
         try:
             return [int(piece.strip()) for piece in pieces]
-        except Exception:
-            raise Exception("invalid selection")
+        except ValueError:
+            raise InvalidSelectionException()
 
     def __print_menu(self) -> list[int]:
         print(f"{COLOR_BLUE}Please select an options:{COLOR_RESET}")
@@ -584,18 +602,18 @@ class Config:
 
         print(" q: Quit")
         selection = input(
-            f"{COLOR_BLUE}Selection (separate with commas): {COLOR_RESET}"
+            f"{COLOR_BLUE}Selections (separate with commas): {COLOR_RESET}"
         ).strip()
         return self.__parse_selection(selection)
 
     def __apply_selected(self, selection: list[int]) -> None:
         for s in selection:
             if s < 1 or s > len(self.__steps):
-                raise Exception("invalid selection")
+                raise InvalidSelectionException()
 
             target_step = self.__steps[s - 1]
             if not target_step:
-                raise Exception("invalid selection")
+                raise InvalidSelectionException()
             target_step.apply()
 
     def __apply_all(self) -> None:
@@ -621,6 +639,7 @@ class Config:
 # -------------------------------------------------------------------------------------------------------
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
     try:
         Config().execute()
     except KeyboardInterrupt:
