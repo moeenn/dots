@@ -1,128 +1,78 @@
-#! /bin/python3
+#! /bin/bash
 
-from enum import auto, Enum
-import sys
-import subprocess
+CURSOR_SIZE=24
+FONT_NAME="Roboto 10"
+MONO_FONT_NAME="JetBrains Mono 10"
 
+THEME_DARK="Adwaita-dark"
+ICON_DARK="ePapirus-Dark"
+CURSOR_DARK="DMZ-Black"
 
-CURSOR_SIZE = 24
-FONT_NAME = "Roboto 10"
-MONO_FONT_NAME = "JetBrains Mono 10"
+THEME_LIGHT="Adwaita"
+ICON_LIGHT="ePapirus"
+CURSOR_LIGHT="DMZ-White"
 
-THEME_DARK = "Adwaita-dark"
-ICON_DARK = "ePapirus-Dark"
-CURSOR_DARK = "DMZ-Black"
+# theme & icons.
+function set_theme() {
+    case "$1" in
+        "light" | "l")
+            gsettings set org.gnome.desktop.interface gtk-theme $THEME_LIGHT;
+            gsettings set org.gnome.desktop.interface color-scheme prefer-light;
+            gsettings set org.gnome.desktop.interface icon-theme $ICON_LIGHT;
+        ;;
 
-THEME_LIGHT = "Adwaita"
-ICON_LIGHT = "ePapirus"
-CURSOR_LIGHT = "DMZ-White"
+        "dark" | "d")
+            gsettings set org.gnome.desktop.interface gtk-theme $THEME_DARK;
+            gsettings set org.gnome.desktop.interface color-scheme prefer-dark;
+            gsettings set org.gnome.desktop.interface icon-theme $ICON_DARK;
+        ;;
+    esac
+}
 
+# fixed + variable size fonts.
+function set_font() {
+    gsettings set org.gnome.desktop.interface font-name "$FONT_NAME";
+    gsettings set org.gnome.desktop.interface monospace-font-name "$MONO_FONT_NAME";
+}
 
-class ThemeMode(Enum):
-    Light = auto()
-    Dark = auto()
+# cursor theme + size.
+function set_cursor() {
+    gsettings set org.gnome.desktop.interface cursor-size "$CURSOR_SIZE";
+    case "$1" in
+        "light" | "l")
+            gsettings set org.gnome.desktop.interface cursor-theme "$CURSOR_LIGHT";
+        ;;
 
-    @classmethod
-    def from_string(cls, raw: str):
-        match raw:
-            case "light":
-                return ThemeMode.Light
+        "dark" | "d")
+            gsettings set org.gnome.desktop.interface cursor-theme "$CURSOR_DARK";
+        ;;
+    esac
+}
 
-            case "dark":
-                return ThemeMode.Dark
+# set light / dark.
+function update_configs() {
+    echo "info: updated theme."
+    set_theme $1;
 
-            case _:
-                raise Exception(f"invalid theme mode: {raw}")
+    echo "info: updated fonts."
+    set_font $1;
 
+    echo "info: updated cursor."
+    set_cursor $1;
+}
 
-def set_ui() -> None:
-    subprocess.run(
-        [
-            "gsettings",
-            "set",
-            "org.gnome.desktop.interface",
-            "font-name",
-            f"{FONT_NAME}",
-        ]
-    )
+case "$1" in
+    "light" | "l")
+        echo "info: setting light theme.";
+        update_configs $1;
+    ;;
 
-    subprocess.run(
-        [
-            "gsettings",
-            "set",
-            "org.gnome.desktop.interface",
-            "monospace-font-name",
-            f"{MONO_FONT_NAME}",
-        ]
-    )
+    "dark" | "d")
+        echo "info: setting dark theme.";
+        update_configs $1;
+    ;;
 
-    subprocess.run(
-        [
-            "gsettings",
-            "set",
-            "org.gnome.desktop.interface",
-            "cursor-size",
-            f"{CURSOR_SIZE}",
-        ]
-    )
-
-
-def set_theme(mode: ThemeMode) -> None:
-    subprocess.run(
-        [
-            "gsettings",
-            "set",
-            "org.gnome.desktop.interface",
-            "gtk-theme",
-            f"'{THEME_LIGHT if mode == ThemeMode.Light else THEME_DARK}'",
-        ]
-    )
-    subprocess.run(
-        [
-            "gsettings",
-            "set",
-            "org.gnome.desktop.interface",
-            "icon-theme",
-            f"'{ICON_LIGHT if mode == ThemeMode.Light else ICON_DARK}'",
-        ]
-    )
-    subprocess.run(
-        [
-            "gsettings",
-            "set",
-            "org.gnome.desktop.interface",
-            "cursor-theme",
-            f"'{CURSOR_LIGHT if mode == ThemeMode.Light else CURSOR_DARK}'",
-        ]
-    )
-    subprocess.run(
-        [
-            "gsettings",
-            "set",
-            "org.gnome.desktop.interface",
-            "color-scheme",
-            f"{'prefer-light' if mode == ThemeMode.Light else 'prefer-dark'}",
-        ]
-    )
-
-
-def main(args: list[str]) -> None:
-    if len(args) != 1:
-        raise Exception(
-            "Please provide a theme mode to continue (allowed values: light, dark)."
-        )
-
-    parsed_mode = ThemeMode.from_string(args[0])
-    set_theme(parsed_mode)
-    set_ui()
-    print("[info] theme set successfully.")
-
-
-if __name__ == "__main__":
-    args = sys.argv[1:]
-    try:
-        main(args)
-    except KeyboardInterrupt:
-        print("[ctrl+c]: exiting...")
-    except Exception as e:
-        print(f"[error] {str(e)}")
+    *)
+        echo "warn: please provide a valid theme mode (light, dark).";
+    ;;
+esac

@@ -19,13 +19,13 @@ declare -a targets=(
     ~/.cache/plasmashell/qmlcache/*
 )
 
-set -o pipefail
 SIZE=0;
 for target in ${targets[@]}; do
-    if target_size=$(du -sk "$target" 2>/dev/null | cut -f1); then
+    if [[ -e "$target" ]]; then
+        target_size=$(du -sk "$target" | cut -f1);
     	SIZE=$(( SIZE + target_size));
+        rm -rvf $target;
     fi
-    rm -rvf $target;
 done
 
 echo "total cleaned: ${SIZE} KB.";
