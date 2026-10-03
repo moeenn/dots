@@ -1,0 +1,31 @@
+#! /bin/bash
+
+declare -a targets=(
+    ~/.xsession-errors
+    ~/.wget-hsts
+    ~/.python_history
+    ~/.node_repl_history
+    ~/.sudo_as_admin_successful
+    ~/.lesshst
+    ~/.copilot/logs/*
+    ~/.gradle/tmp/*
+    ~/.npm/_logs/*
+    ~/.npm/_cacache/tmp/*
+    ~/.cache/thumbnails
+    ~/.cache/kcrash-metadata
+    ~/.cache/kwin/qmlcache/*
+    ~/.cache/dolphin/qmlcache/*
+    ~/.cache/drkonqi/qmlcache/*
+    ~/.cache/plasmashell/qmlcache/*
+)
+
+set -o pipefail
+SIZE=0;
+for target in ${targets[@]}; do
+    if target_size=$(du -sk "$target" 2>/dev/null | cut -f1); then
+    	SIZE=$(( SIZE + target_size));
+    fi
+    rm -rvf $target;
+done
+
+echo "total cleaned: ${SIZE} KB.";
