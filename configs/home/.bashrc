@@ -43,7 +43,6 @@ alias ls="ls -aC --color=never"
 alias reload="source ~/.bashrc"
 
 # programs.
-alias k="kak"
 alias rs="rsync -av --progress"
 alias load="htop -u $(whoami)"
 alias df="dfc -f -s"
@@ -65,10 +64,8 @@ alias :c="git commit -m"
 alias :C="git commit -m"
 alias :b="git branch"
 alias :B="git branch"
-alias push="git push"
-alias pull="git pull"
 
 # programming.
-alias dc="docker-compose"
+alias dc="docker compose"
 alias py="python3"
-
+alias g="gradle"

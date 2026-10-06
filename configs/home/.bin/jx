@@ -1,81 +1,57 @@
-#! /bin/env python3
+#! /bin/bash
 
-import sys
-import os
-import subprocess
-import shutil
+BIN_PATH=~/.java/bin;
+if [[ ! -e "$BIN_PATH" ]]; then
+    mkdir -p $BIN_PATH;
+fi
 
+case "$1" in
+    "help" | "h")
+        echo "usage: jx <run(r) | install(i)> <package-name>";
+    ;;
 
-def find_and_run_pkg(bin_path: str, pkg_name: str, args: list[str]) -> None:
-    full_path = os.path.join(bin_path, pkg_name)
-    if not os.path.exists(full_path):
-        raise Exception(f"package not found: {pkg_name}")
-    subprocess.run(["java", "-jar", full_path] + args)
+    "install" | "i")
+        if (( $# < 2 )); then
+            echo "error: source and target name not provided." >&2;
+        elif (( $# < 3 )); then
+            echo "error: target name not provided." >&2;
+        fi
 
+        SRC=$2;
+        TARGET_NAME=$3;
+        TARGET_PATH="$BIN_PATH/$TARGET_NAME";
+        if [[ ! -f "$SRC" ]]; then
+            echo "error: provided source file does not exist." >&2;
+            return 1;
+        fi
 
-def install_package(bin_path: str, src_path: str, target_name: str) -> bool:
-    if not os.path.exists(src_path):
-        raise Exception("source path does not exist")
+        if [[ -e "$TARGET_PATH" ]]; then
+            echo "info: updating package.";
+        else
+            echo "info: installing package.";
+        fi
+        cp $SRC $TARGET_PATH;
+    ;;
 
-    full_path = os.path.join(bin_path, target_name)
-    is_update = False
-    
-    if os.path.exists(full_path):
-    	is_update = True
-    	os.remove(full_path)
-    
-    with open(src_path, "rb") as src, open(full_path, "wb") as dst:
-        shutil.copyfileobj(src, dst)
+    "list" | "l")
+        ls $BIN_PATH;
+    ;;
 
-    return is_update
-	
+    "run" | "r")
+        if (( $# < 2 )); then
+            echo "error: package name not provided." >&2;
+        fi
 
-def main() -> None:
-    user = os.getenv("USER")
-    if user is None:
-        raise Exception("failed to determine current user")
+        PKG=$2;
+        PKG_PATH="$BIN_PATH/$PKG";
+        if [[ ! -e "$PKG_PATH" ]]; then
+            echo "error: package not found." >&2;
+        else
+            java -jar $PKG_PATH "${@:3}";
+        fi
+    ;;
 
-    bin_path = os.path.join("/", "home", user, ".java", "bin")
-    if not os.path.exists(bin_path):
-        try:
-            os.makedirs(bin_path)
-        except Exception as e:
-            raise Exception(f"failed to create java bin directory: {str(e)}")
-
-    args = sys.argv[1:]
-    n_args = len(args)
-    if n_args == 0:
-        raise Exception("please provide a command to continue")
-
-    raw_cmd = args[0]
-    match raw_cmd:
-        case "help" | "h":
-            print("usage: jx <run(r) | install(i)> <package-name>")
-            return
-
-        case "install" | "i":
-            if n_args < 2:
-                raise Exception("source package path not provided")
-            if n_args < 3:
-                raise Exception("target package name not provided")
-
-            src_path = args[1]
-            target_name = args[2]
-            is_update = install_package(bin_path, src_path, target_name)
-            if is_update:
-            	print("package updated")
-            else:
-	            print("package installed")
-
-        case "run" | "r":
-            if n_args < 2:
-                raise Exception("please provide a package name to run")
-            pkg_name = args[1]
-            find_and_run_pkg(bin_path, pkg_name, args[2:])
-
-
-if __name__ == "__main__":
-    try:
-        main()
-    except KeyboardInterrupt:
-        print("ctrl+c: exiting...")
+    *)
+        echo "error: please provide a command to continue." >&2;
+    ;;
+esac

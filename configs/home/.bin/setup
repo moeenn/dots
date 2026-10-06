@@ -15,7 +15,7 @@ from typing import Protocol, override
 #
 # -------------------------------------------------------------------------------------------------------
 BASE_PACKAGES = [
-    "kakoune",
+    "vim",
     "make",
     "cmake",
     "pkg-config",

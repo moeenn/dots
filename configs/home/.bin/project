@@ -132,7 +132,7 @@ version: "2"
 linters:
   enable:
     - exhaustive
-    - exhaustruct
+    - exhaustruct_v5
     - gosec
     - nilnil
     - nilerr
