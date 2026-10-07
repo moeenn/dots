@@ -40,6 +40,7 @@ BASE_PACKAGES = [
     "p7zip",
     "fonts-jetbrains-mono",
     "fonts-roboto",
+    "fonts-ibm-plex",
     "zoxide",
     "rsync",
     "scrot",
