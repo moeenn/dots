@@ -1,0 +1,71 @@
+#! /bin/env python3
+
+import logging
+import os
+import sqlite3
+import argparse
+from datetime import datetime
+from sqlite3 import Connection
+from typing import Final
+from zoneinfo import ZoneInfo
+
+logger = logging.getLogger(__name__)
+
+
+class MigrationManager:
+    __dir: str
+
+    def __init__(self, dir="migrations") -> None:
+        self.__dir = dir
+
+    def __ensure_migrations_table(self, conn: Connection) -> None:
+        query = """
+            create table if not exists migrations (
+                id varchar (400) primary key
+            );
+        """
+        conn.executescript(query)
+
+    def __list_applied_migrations(self, conn: Connection) -> list[str]:
+        query = "select id from migrations"
+        rows = conn.execute(query).fetchall()
+        return [str(row["id"]) for row in rows]
+
+    def __insert_migration_entry(self, conn: Connection, migration_name: str) -> None:
+        query = "insert into migrations (id) values (?)"
+        conn.execute(query, (migration_name,))
+
+    def migrate(self, conn: Connection) -> None:
+        self.__ensure_migrations_table(conn)
+        applied_migrations = self.__list_applied_migrations(conn)
+
+        files = os.listdir(self.__dir)
+        files.sort()
+        for filename in files:
+            if filename.endswith(".sql"):
+                if filename in applied_migrations:
+                    logger.info(f"skipping migration {filename}")
+                    continue
+
+                logger.info(f"running migration: {filename}")
+                with open(os.path.join(self.__dir, filename)) as file:
+                    migration = file.read()
+                    conn.executescript(migration)
+                    self.__insert_migration_entry(conn, filename)
+
+        conn.commit()
+
+
+# establish connection with database.
+def connect(filename="site.db") -> Connection:
+    conn = sqlite3.connect(filename)
+    conn.row_factory = sqlite3.Row
+    MigrationManager().migrate(conn)
+    return conn
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Run Sqlite migrations")
+    parser.add_argument("-db", type=str, default="site.db", help="Path to database file")
+    args = parser.parse_args()
+    connect(args.db)

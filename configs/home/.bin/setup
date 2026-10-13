@@ -32,6 +32,7 @@ declare -a SYSTEM_PACKAGES=(
 	scrot
 	sshpass
 	webp
+	brightnessctl
 );
 
 declare -a COMMON_APPS=(
@@ -62,7 +63,6 @@ declare -a WM_PACKAGES=(
     swaybg
     waybar
     swaylock
-    brightnessctl
     mako-notifier
     gammastep  # warm colors.
     fuzzel  # dmenu alternative.
@@ -103,9 +103,6 @@ declare -a NODE_GLOBAL_DEPS=(
 	npm
 );
 
-JAVA_VERSION=26;
-GRADLE_VERSION="9.7.1";
-
 COLOR_RED='\033[0;31m';
 COLOR_BLUE='\033[0;34m';
 COLOR_RESET='\033[0m';
@@ -122,7 +119,6 @@ Available options:
  - go
  - python
  - node
- - java
 ";
 
 function action_syspackages() {
@@ -262,28 +258,6 @@ function action_node() {
 	npm i -g "${NODE_GLOBAL_DEPS[@]}";
 }
 
-function action_java() {
-	echo -e "${COLOR_BLUE}info: installing java ${COLOR_RESET}";
-	sudo apt-get install -y "openjdk-${JAVA_VERSION}-jdk";
-
-	gradle_filename="gradle-${GRADLE_VERSION}-bin.zip";
-	gradle_full_url="https://services.gradle.org/distributions/${gradle_filename}";
-	download_path=/tmp/$gradle_filename;
-
-	if [[ ! -e "$download_path" ]]; then
-		echo -e "${COLOR_BLUE}info: downloading gradle installer ${COLOR_RESET}";
-		wget "$gradle_full_url" -O download_path;
-	fi
-
-	echo -e "${COLOR_BLUE}info: extracting gradle installer ${COLOR_RESET}";
-	installation_dir=~/.local;
-	mkdir -p "$installation_dir";
-	rm -rf $installation_dir/gradle 2>/dev/null;
-
-	unzip "$download_path" -d  $installation_dir;
-	mv -v installation_dir/gradle-$GRADLE_VERSION $installation_dir/gradle;
-}
-
 case "$1" in
     "help" | "h")
         echo "$HELP";
@@ -327,10 +301,6 @@ case "$1" in
 
 	"node")
 		action_node;
-	;;
-
-	"java")
-		action_java;
 	;;
 
     *)
