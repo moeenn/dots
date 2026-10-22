@@ -25,6 +25,12 @@
     "files.exclude": {
         "**/__pycache__": true
     },
+    "java.format.settings.url": "~/.config/java/style.xml",
+    "java.format.settings.profile": "Allman",
+    "[java]": {
+        "editor.defaultFormatter": "redhat.java",
+        "editor.formatOnSave": true
+    },
     "editor.codeLens": false,
     "editor.unicodeHighlight.nonBasicASCII": false,
     "editor.unicodeHighlight.ambiguousCharacters": false,
@@ -36,6 +42,11 @@
     "chat.titleBar.openInAgentsWindow.enabled": false,
     "chat.titleBar.signIn.enabled": false,
     "workbench.secondarySideBar.defaultVisibility": "hidden",
-    "workbench.colorTheme": "Dark Modern",
+    "workbench.colorTheme": "Light+",
     "redhat.telemetry.enabled": true,
+    "update.showReleaseNotes": false,
+    "claudeCode.preferredLocation": "panel",
+    "debug.javascript.automaticallyTunnelRemoteServer": false,
+    "java.sharedIndexes.enabled": "on",
+    "go.toolsManagement.autoUpdate": true,
 }
