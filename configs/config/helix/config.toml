@@ -1,4 +1,4 @@
-theme = "github_light_high_contrast"
+theme = "solarized_dark"
 
 [editor]
 line-number = "absolute"

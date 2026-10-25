@@ -83,3 +83,10 @@ alias dc "docker compose"
 alias py python3
 alias g gradle
 alias valgrind "valgrind --leak-check=full"
+
+# pnpm
+set -gx PNPM_HOME '/home/moeenn/.config/pnpm'
+if test "$PATH[1]" != "$PNPM_HOME/bin"
+  set -gx PATH "$PNPM_HOME/bin" $PATH
+end
+# pnpm end
