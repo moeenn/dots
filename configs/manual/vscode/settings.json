@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontFamily": "Cascadia Code PL",
     "window.menuBarVisibility": "toggle",
     "editor.fontLigatures": true,
     "editor.fontSize": 13,
@@ -8,7 +8,7 @@
     "workbench.editor.enablePreview": false,
     "editor.bracketPairColorization.enabled": true,
     "workbench.startupEditor": "none",
-    "window.zoomLevel": 0.3,
+    "window.zoomLevel": 1.0,
     "window.confirmSaveUntitledWorkspace": false,
     "editor.formatOnSave": true,
     "editor.tabSize": 4,
@@ -23,6 +23,13 @@
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
     "files.exclude": {
+        "**/__pycache__": true
+    },
+    "files.watcherExclude": {
+        "**/node_modules": true,
+        "**/.git": true,
+        "**/dist": true,
+        "**/build": true,
         "**/__pycache__": true
     },
     "java.format.settings.url": "~/.config/java/style.xml",
@@ -42,11 +49,21 @@
     "chat.titleBar.openInAgentsWindow.enabled": false,
     "chat.titleBar.signIn.enabled": false,
     "workbench.secondarySideBar.defaultVisibility": "hidden",
-    "workbench.colorTheme": "Light+",
     "redhat.telemetry.enabled": true,
     "update.showReleaseNotes": false,
     "claudeCode.preferredLocation": "panel",
     "debug.javascript.automaticallyTunnelRemoteServer": false,
     "java.sharedIndexes.enabled": "on",
     "go.toolsManagement.autoUpdate": true,
+    "workbench.colorTheme": "Visual Studio Dark",
+    "extensions.autoCheckUpdates": false,
+    "extensions.autoUpdate": "off",
+    "update.mode": "none",
+    "telemetry.telemetryLevel": "off",
+    "extensions.ignoreRecommendations": true,
+    "security.workspace.trust.enabled": false,
+    "terminal.integrated.gpuAcceleration": "off",
+    "workbench.editor.autoLockGroups": {
+        "mainThreadWebview-markdown.preview": true
+    }
 }
