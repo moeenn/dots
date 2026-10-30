@@ -1,4 +1,4 @@
-theme = "solarized_dark"
+theme = "catppuccin_macchiato"
 
 [editor]
 line-number = "absolute"

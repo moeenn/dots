@@ -25,10 +25,7 @@ set NODEBIN {$HOME}/.npm/bin
 set GOINSTALL {$HOME}/.local/go/bin
 set GOBIN {$HOME}/go/bin
 set CARGO_BIN {$HOME}/.cargo/bin
-set GRADLE_HOME {$HOME}/.local/gradle
-set GRADLE_BIN {$GRADLE_HOME}/bin
-set IDEA_BIN {$HOME}/.local/idea/bin
-set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$CARGO_BIN} {$GRADLE_BIN} {$IDEA_BIN}
+set -U fish_user_paths {$SYSPATH} {$FLATPAK_PATH} {$USER_PATH} {$NODEBIN} {$GOINSTALL} {$GOBIN} {$CARGO_BIN}
 
 # --------------------------------------------------------------------
 #
@@ -87,6 +84,6 @@ alias valgrind "valgrind --leak-check=full"
 # pnpm
 set -gx PNPM_HOME '/home/moeenn/.config/pnpm'
 if test "$PATH[1]" != "$PNPM_HOME/bin"
-  set -gx PATH "$PNPM_HOME/bin" $PATH
+    set -gx PATH "$PNPM_HOME/bin" $PATH
 end
 # pnpm end
